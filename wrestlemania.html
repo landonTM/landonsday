@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WrestleMania Matches — Landon's Day</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body>
+
+    <nav class="page-nav">
+        <a class="back-link" href="index.html">&larr; Landon's Day</a>
+        <a class="back-link" href="wrestling.html">&larr; Wrestling</a>
+    </nav>
+
+    <div class="page-hero">
+        <img src="./assets/images/wrestlemania.jpg" alt="WrestleMania">
+        <h1 class="page-hero-title">WrestleMania Matches</h1>
+    </div>
+
+    <div class="filter-bar">
+        <div class="filter-group">
+            <label for="eventFilter">Filter by Event:</label>
+            <select id="eventFilter">
+                <option value="all">All</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="wrestlerSearch">Search Wrestler:</label>
+            <input type="text" id="wrestlerSearch" placeholder="e.g. Roman Reigns">
+        </div>
+    </div>
+
+    <div class="stats-bar" id="eventStats">
+        Showing all events. Total matches: <span id="matchCount"></span>
+    </div>
+
+    <table class="matches-table" id="matchTable">
+        <thead>
+            <tr>
+                <th>Rating</th>
+                <th>Date</th>
+                <th>Match</th>
+                <th>Event</th>
+                <th>Winner</th>
+                <th>Loser</th>
+                <th>Match Type</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <footer>
+        <p>&copy; 2025 Landon's Day. All rights reserved.</p>
+    </footer>
+
+    <script>
+        async function loadMatches() {
+            const res = await fetch('matches.json');
+            const data = await res.json();
+            const tableBody = document.querySelector('#matchTable tbody');
+            const eventSet = new Set();
+
+            tableBody.innerHTML = '';
+
+            data.forEach(match => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${match.rating}</td>
+                    <td>${match.date}</td>
+                    <td>${match.match}</td>
+                    <td>${match.event}</td>
+                    <td>${match.winner}</td>
+                    <td>${match.loser}</td>
+                    <td>${match.type || ''}</td>
+                `;
+                tableBody.appendChild(row);
+                eventSet.add(match.event);
+            });
+
+            const filter = document.getElementById('eventFilter');
+            const wrestlerInput = document.getElementById('wrestlerSearch');
+
+            Array.from(eventSet)
+                .sort((a, b) => parseInt(b.match(/\d+/)) - parseInt(a.match(/\d+/)))
+                .forEach(event => {
+                    const opt = document.createElement('option');
+                    opt.value = event;
+                    opt.textContent = event;
+                    filter.appendChild(opt);
+                });
+
+            function applyCombinedFilters() {
+                const eventValue = filter.value;
+                const term = wrestlerInput.value.toLowerCase();
+                const rows = document.querySelectorAll('#matchTable tbody tr');
+
+                rows.forEach(row => {
+                    const event = row.children[3].innerText;
+                    const match = row.children[2].innerText.toLowerCase();
+                    const winner = row.children[4].innerText.toLowerCase();
+                    const loser = row.children[5].innerText.toLowerCase();
+
+                    const eventMatch = eventValue === 'all' || event === eventValue;
+                    const wrestlerMatch = match.includes(term) || winner.includes(term) || loser.includes(term);
+
+                    row.style.display = eventMatch && wrestlerMatch ? '' : 'none';
+                });
+
+                updateStats();
+            }
+
+            filter.addEventListener('change', applyCombinedFilters);
+            wrestlerInput.addEventListener('input', applyCombinedFilters);
+
+            applyCombinedFilters();
+        }
+
+        function extractRating(text) {
+            const negative = text.includes('-');
+            const full = (text.match(/⭐/g) || []).length;
+            const fraction = text.includes('¾') ? 0.75 : text.includes('½') ? 0.5 : text.includes('¼') ? 0.25 : 0;
+            const rating = full + fraction;
+            return negative ? -rating : rating;
+        }
+
+        function updateStats() {
+            const filter = document.getElementById('eventFilter');
+            const rows = document.querySelectorAll('#matchTable tbody tr');
+            const stats = document.getElementById('eventStats');
+
+            const visibleRows = Array.from(rows).filter(row => row.style.display !== 'none');
+
+            const ratings = visibleRows
+                .map(row => extractRating(row.children[0].innerText))
+                .filter(r => typeof r === 'number' && !isNaN(r));
+            const avgRating = ratings.length ? (ratings.reduce((a, b) => a + b, 0) / ratings.length).toFixed(2) : 'N/A';
+
+            const eventName = filter.value === 'all' ? 'all events' : filter.value;
+            stats.innerHTML = `Showing ${eventName}. Total matches: <span id="matchCount">${visibleRows.length}</span>. Average rating: <strong>${avgRating}</strong>`;
+        }
+
+        loadMatches();
+    </script>
+
+</body>
+</html>
