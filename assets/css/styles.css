@@ -361,8 +361,6 @@ footer {
   .matches-table,
   .matches-table thead,
   .matches-table tbody,
-  .matches-table th,
-  .matches-table td,
   .matches-table tr {
     display: block;
     width: auto;
@@ -373,39 +371,84 @@ footer {
   }
 
   .matches-table tr {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 1rem;
+    padding: 1rem 1.1rem;
     border: 1px solid #2c2c2c;
-    border-radius: 8px;
-    overflow: hidden;
+    border-radius: 10px;
     background-color: #161616;
   }
 
   .matches-table td {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    text-align: right;
-    padding: 0.6rem 0.9rem;
+    display: block;
+    text-align: left;
     border: none;
-    border-bottom: 1px solid #222;
+    padding: 0;
     width: auto;
   }
 
-  .matches-table td:last-child {
-    border-bottom: none;
-  }
-
-  .matches-table td::before {
-    content: attr(data-label);
-    text-align: left;
+  /* Match name = the headline of the card */
+  .matches-table td:nth-child(3) {
+    order: 1;
+    font-size: 1.05rem;
     font-weight: bold;
-    color: #00aaff;
-    flex-shrink: 0;
+    color: #fff;
+    margin-bottom: 0.5rem;
   }
 
-  /* Keep star ratings on one line instead of wrapping star-by-star */
-  .matches-table td:nth-child(1) {
-    white-space: nowrap;
+  /* Meta chips: Rating, Event, Date */
+  .matches-table td:nth-child(1),
+  .matches-table td:nth-child(4),
+  .matches-table td:nth-child(2) {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.8rem;
+    color: #aaa;
+    margin: 0 0.6rem 0.4rem 0;
+  }
+
+  .matches-table td:nth-child(1) { order: 2; white-space: nowrap; }
+  .matches-table td:nth-child(4) { order: 3; }
+  .matches-table td:nth-child(2) { order: 4; }
+
+  .matches-table td:nth-child(1)::before,
+  .matches-table td:nth-child(4)::before,
+  .matches-table td:nth-child(2)::before {
+    content: attr(data-label) ":";
+    color: #00aaff;
+    font-weight: bold;
+  }
+
+  /* Result line: Winner def. Loser */
+  .matches-table td:nth-child(5) {
+    order: 5;
+    color: #6fdc8c;
+    font-size: 0.95rem;
+    margin-top: 0.3rem;
+  }
+
+  .matches-table td:nth-child(5)::before {
+    content: "🏆 ";
+  }
+
+  .matches-table td:nth-child(6) {
+    order: 6;
+    color: #999;
+    font-size: 0.85rem;
+  }
+
+  .matches-table td:nth-child(6)::before {
+    content: "def. ";
+  }
+
+  /* Match type, small subtitle at the bottom */
+  .matches-table td:nth-child(7):not(:empty) {
+    order: 7;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: #888;
+    margin-top: 0.4rem;
   }
 }
