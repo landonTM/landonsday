@@ -9,12 +9,20 @@
 </head>
 <body class="movies-page">
 
-    <nav class="page-nav">
-        <a class="back-link" href="index.html">&larr; Landon's Day</a>
+        <nav class="site-nav">
+        <a class="site-nav-logo" href="index">Landon's Day</a>
+        <div class="site-nav-links">
+            <a class="site-nav-link" href="marvel">Marvel</a>
+            <a class="site-nav-link active" href="movies">Movies</a>
+            <a class="site-nav-link" href="rosie">Rosie</a>
+            <a class="site-nav-link" href="games">Games</a>
+            <a class="site-nav-link" href="life">Life</a>
+            <a class="site-nav-link" href="wrestling">Wrestling</a>
+        </div>
     </nav>
 
     <div class="page-hero">
-        <img src="./assets/images/barbie.jpg" alt="Movies & Shows">
+        <img src="./assets/images/movies.png" alt="Movies & Shows">
         <h1 class="page-hero-title">Movies & Shows</h1>
     </div>
 
@@ -303,7 +311,7 @@
         async function loadMovies() {
             let data = [];
             try {
-                const res = await fetch('movies.json');
+                const res = await fetch('data/movies.json');
                 data = await res.json();
             } catch (e) {
                 console.log('movies.json not available yet');
@@ -351,7 +359,7 @@
         async function loadPerfectEpisodes() {
             let episodes = [];
             try {
-                const res = await fetch('perfect_episodes.json');
+                const res = await fetch('data/perfect_episodes.json');
                 episodes = await res.json();
             } catch (e) {
                 console.log('perfect_episodes.json not available yet');

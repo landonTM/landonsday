@@ -9,19 +9,72 @@
 </head>
 <body>
 
+    <nav class="site-nav">
+        <a class="site-nav-logo" href="index">Landon's Day</a>
+        <div class="site-nav-links">
+            <a class="site-nav-link" href="marvel">Marvel</a>
+            <a class="site-nav-link" href="movies">Movies</a>
+            <a class="site-nav-link" href="rosie">Rosie</a>
+            <a class="site-nav-link" href="games">Games</a>
+            <a class="site-nav-link" href="life">Life</a>
+            <a class="site-nav-link" href="wrestling">Wrestling</a>
+        </div>
+    </nav>
+
     <header>
         <h1>Landon's Day</h1>
     </header>
 
     <div class="slider">
-        <img src="./assets/images/disney1.jpg" alt="Disney 1" class="active">
-        <img src="./assets/images/bray.jpg" alt="Bray">
-        <img src="./assets/images/miley.jpg" alt="Miley">
-        <img src="./assets/images/zoo1.jpg" alt="Zoo">
-        <img src="./assets/images/dc1.jpg" alt="DC 1">
-        <img src="./assets/images/disney2.jpg" alt="Disney 2">
-        <img src="./assets/images/ciccu.jpg" alt="Ciccu">
-        <img src="./assets/images/aj.jpg" alt="AJ">
+        <div class="slide active">
+            <img class="slide-bg" src="./assets/images/slider/disney1.jpg" alt="">
+            <img class="slide-fg" src="./assets/images/slider/disney1.jpg" alt="Disney 1">
+        </div>
+        <div class="slide">
+            <img class="slide-bg" src="./assets/images/slider/bray.jpg" alt="">
+            <img class="slide-fg" src="./assets/images/slider/bray.jpg" alt="Bray">
+        </div>
+        <div class="slide">
+            <img class="slide-bg" src="./assets/images/slider/miley.jpg" alt="">
+            <img class="slide-fg" src="./assets/images/slider/miley.jpg" alt="Miley">
+        </div>
+        <div class="slide">
+            <img class="slide-bg" src="./assets/images/slider/zoo1.jpg" alt="">
+            <img class="slide-fg" src="./assets/images/slider/zoo1.jpg" alt="Zoo">
+        </div>
+        <div class="slide">
+            <img class="slide-bg" src="./assets/images/slider/dc1.jpg" alt="">
+            <img class="slide-fg" src="./assets/images/slider/dc1.jpg" alt="DC 1">
+        </div>
+        <div class="slide">
+            <img class="slide-bg" src="./assets/images/slider/dc2023.jpg" alt="">
+            <img class="slide-fg" src="./assets/images/slider/dc2023.jpg" alt="DC 2023">
+        </div>
+        <div class="slide">
+            <img class="slide-bg" src="./assets/images/slider/disney2.jpg" alt="">
+            <img class="slide-fg" src="./assets/images/slider/disney2.jpg" alt="Disney 2">
+        </div>
+        <div class="slide">
+            <img class="slide-bg" src="./assets/images/slider/disney2022.jpg" alt="">
+            <img class="slide-fg" src="./assets/images/slider/disney2022.jpg" alt="Disney 2022">
+        </div>
+        <div class="slide">
+            <img class="slide-bg" src="./assets/images/slider/ciccu.jpg" alt="">
+            <img class="slide-fg" src="./assets/images/slider/ciccu.jpg" alt="Ciccu">
+        </div>
+        <div class="slide">
+            <img class="slide-bg" src="./assets/images/slider/aj.jpg" alt="">
+            <img class="slide-fg" src="./assets/images/slider/aj.jpg" alt="AJ">
+        </div>
+    </div>
+
+    <div class="category-bar">
+        <a class="category-tile" data-title="Marvel" href="marvel"><img src="./assets/images/marvel.png" alt="Marvel"></a>
+        <a class="category-tile" data-title="Movies & Shows" href="movies"><img src="./assets/images/movies.png" alt="Movies"></a>
+        <a class="category-tile" data-title="Rosie" href="rosie"><img src="./assets/images/rosie.jpg" alt="Rosie"></a>
+        <a class="category-tile" data-title="Games" href="games"><img src="./assets/images/games.png" alt="Games"></a>
+        <a class="category-tile" data-title="Life" href="life"><img src="./assets/images/life.png" alt="Life"></a>
+        <a class="category-tile" data-title="Wrestling" href="wrestling"><img src="./assets/images/wrestling.png" alt="Wrestling"></a>
     </div>
 
     <div class="about-section">
@@ -40,13 +93,6 @@
         </div>
     </div>
 
-    <div class="mcu-row-section" id="topRatedWrestlingSection" style="display:none;">
-        <h2 class="mcu-row-heading">Top Rated WrestleMania Matches</h2>
-        <div class="poster-row-wrap">
-            <div class="poster-row" id="topRatedWrestlingRow"></div>
-        </div>
-    </div>
-
     <div class="mcu-row-section" id="topRatedMoviesSection" style="display:none;">
         <h2 class="mcu-row-heading">Top Rated Movies & Shows</h2>
         <div class="poster-row-wrap">
@@ -54,35 +100,29 @@
         </div>
     </div>
 
+    <div class="mcu-row-section" id="topRatedWrestlingSection" style="display:none;">
+        <h2 class="mcu-row-heading">Top Rated WrestleMania Matches</h2>
+        <div class="poster-row-wrap">
+            <div class="poster-row" id="topRatedWrestlingRow"></div>
+        </div>
+    </div>
+
     <div class="coming-grid-section">
         <h2>What's Coming</h2>
         <div class="coming-grid">
-            <a class="coming-grid-card" href="movies.html">
-                <h3>Movies</h3>
-                <p>A full watchlist and ratings tracker for everything I watch outside of Marvel.</p>
-            </a>
-            <a class="coming-grid-card" href="games.html">
-                <h3>Games</h3>
-                <p>My Steam library, plus live Marvel Rivals and Overwatch stats.</p>
-            </a>
-            <a class="coming-grid-card" href="rosie.html">
+            <a class="coming-grid-card" href="rosie">
                 <h3>Rosie</h3>
                 <p>Still deciding the format — photo calendar, timeline, or a full Rosie blog.</p>
             </a>
-            <a class="coming-grid-card" href="life.html">
+            <a class="coming-grid-card" href="games">
+                <h3>Games</h3>
+                <p>My Steam library, plus live Marvel Rivals and Overwatch stats.</p>
+            </a>
+            <a class="coming-grid-card" href="life">
                 <h3>Life</h3>
                 <p>My pseudo-blog for vacations, life updates, and everything in between.</p>
             </a>
         </div>
-    </div>
-
-    <div class="category-bar">
-        <a class="category-tile" href="wrestling.html"><img src="./assets/images/wrestling.png" alt="Wrestling"></a>
-        <a class="category-tile" href="marvel.html"><img src="./assets/images/marvel.png" alt="Marvel"></a>
-        <a class="category-tile" href="movies.html"><img src="./assets/images/movies.png" alt="Movies"></a>
-        <a class="category-tile" href="games.html"><img src="./assets/images/games.png" alt="Games"></a>
-        <a class="category-tile" href="rosie.html"><img src="./assets/images/rosie.jpg" alt="Rosie"></a>
-        <a class="category-tile" href="life.html"><img src="./assets/images/life.png" alt="Life"></a>
     </div>
 
     <footer>
@@ -91,9 +131,8 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const slides = document.querySelectorAll('.slider img');
+            const slides = document.querySelectorAll('.slider .slide');
             let current = 0;
-            slides[current].classList.add('active');
             setInterval(() => {
                 slides[current].classList.remove('active');
                 current = (current + 1) % slides.length;
@@ -116,21 +155,21 @@
             let moviesData = [];
 
             try {
-                const marvelRes = await fetch('marvel.json');
+                const marvelRes = await fetch('data/marvel.json');
                 marvelData = await marvelRes.json();
             } catch (e) {
                 console.log('marvel.json not available yet');
             }
 
             try {
-                const matchesRes = await fetch('matches.json');
+                const matchesRes = await fetch('data/matches.json');
                 matchesData = await matchesRes.json();
             } catch (e) {
                 console.log('matches.json not available yet');
             }
 
             try {
-                const moviesRes = await fetch('movies.json');
+                const moviesRes = await fetch('data/movies.json');
                 moviesData = await moviesRes.json();
             } catch (e) {
                 console.log('movies.json not available yet');
@@ -173,7 +212,7 @@
             if (topMarvel.length > 0) {
                 const row = document.getElementById('topRatedMarvelRow');
                 row.innerHTML = topMarvel.map(item => `
-                    <div class="poster-card" data-title="${item.title}" onclick="window.location.href='marvel.html'">
+                    <div class="poster-card" data-title="${item.title}" onclick="window.location.href='marvel'">
                         <img src="./assets/images/marvel/${item.poster}" alt="${item.title}"
                              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div class="poster-fallback">${item.title}</div>
@@ -193,7 +232,7 @@
             if (topMatches.length > 0) {
                 const row = document.getElementById('topRatedWrestlingRow');
                 row.innerHTML = topMatches.map(m => `
-                    <div class="match-card" onclick="window.location.href='wrestlemania.html'">
+                    <div class="match-card" onclick="window.location.href='wrestlemania'">
                         <div>
                             <div class="match-card-title">${m.match}</div>
                         </div>
@@ -238,7 +277,7 @@
             if (topMovies.length > 0) {
                 const row = document.getElementById('topRatedMoviesRow');
                 row.innerHTML = topMovies.map(item => `
-                    <div class="poster-card" data-title="${item.title}" onclick="window.location.href='movies.html'">
+                    <div class="poster-card" data-title="${item.title}" onclick="window.location.href='movies'">
                         <img src="./assets/images/movies/${item.poster}" alt="${item.title}"
                              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div class="poster-fallback">${item.title}</div>

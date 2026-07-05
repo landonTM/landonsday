@@ -9,34 +9,98 @@
 </head>
 <body>
 
-    <nav class="page-nav">
-        <a class="back-link" href="index.html">&larr; Landon's Day</a>
+        <nav class="site-nav">
+        <a class="site-nav-logo" href="index">Landon's Day</a>
+        <div class="site-nav-links">
+            <a class="site-nav-link" href="marvel">Marvel</a>
+            <a class="site-nav-link" href="movies">Movies</a>
+            <a class="site-nav-link" href="rosie">Rosie</a>
+            <a class="site-nav-link" href="games">Games</a>
+            <a class="site-nav-link" href="life">Life</a>
+            <a class="site-nav-link active" href="wrestling">Wrestling</a>
+        </div>
     </nav>
 
     <div class="page-hero">
-        <img src="./assets/images/wrestlemania.jpg" alt="WrestleMania">
+        <img src="./assets/images/wrestling.png" alt="Wrestling">
         <h1 class="page-hero-title">Wrestling</h1>
     </div>
 
     <div class="content-section">
-        <h2>Favorite Events</h2>
-        <div class="content-row">
-            <a class="content-card" href="wrestlemania.html"><img src="./assets/images/wrestlemania.jpg" alt="WrestleMania"></a>
-            <div class="content-card"><img src="./assets/images/summerslam.jpg" alt="SummerSlam"></div>
+        <h2>The Big 4</h2>
+        <div class="big4-row">
+            <a class="big4-card" data-title="WrestleMania" href="wrestlemania"><img src="./assets/images/wrestling/wrestlemania.jpg" alt="WrestleMania"></a>
+            <div class="big4-card" data-title="SummerSlam" onclick="showDeadModal('SummerSlam')"><img src="./assets/images/wrestling/summerslam.jpg" alt="SummerSlam"></div>
+            <div class="big4-card" data-title="Royal Rumble" onclick="showDeadModal('Royal Rumble')"><img src="./assets/images/wrestling/royalrumble.jpg" alt="Royal Rumble"></div>
+            <div class="big4-card" data-title="Money in the Bank" onclick="showDeadModal('Money in the Bank')"><img src="./assets/images/wrestling/mitb.jpg" alt="Money in the Bank"></div>
+        </div>
+
+        <div class="saga">
+            <div class="saga-chapter">
+                <span class="saga-number">Chapter 1</span>
+                <h3>The Project</h3>
+                <p>It started simple enough: rewatch every WrestleMania, SummerSlam, Royal Rumble, and Money in the Bank, working backwards from the most recent show all the way to the very first. Rate every match. Review every match. No skipping, no shortcuts.</p>
+            </div>
+            <div class="saga-chapter">
+                <span class="saga-number">Chapter 2</span>
+                <h3>The Execution</h3>
+                <p>Turns out wrestling is an unbelievably varied medium. Ladder matches, cinematic brawls, technical clinics, comedy segments dressed up as fights — the format bends in ways almost nothing else on TV does.</p>
+            </div>
+            <div class="saga-chapter">
+                <span class="saga-number">Chapter 3</span>
+                <h3>The Dread</h3>
+                <p>And then the fun started running out. Bad wrestling is spectacularly bad. Negative-star matches exist for a reason. Three, five, seven-hour pay-per-views stop feeling like entertainment and start feeling like a hostage situation.</p>
+            </div>
+            <div class="saga-chapter">
+                <span class="saga-number">Chapter 4</span>
+                <h3>The Downfall</h3>
+                <p>Eventually the novelty of modern wrestling wore off completely, and Marvel movies and regular ol' films started looking a lot more appealing — more consistent, better made, and reliably over in under three hours.</p>
+            </div>
+            <div class="saga-chapter">
+                <span class="saga-number">Chapter 5</span>
+                <h3>The End</h3>
+                <p>So here we are. The WrestleMania project is done, and I'm genuinely happy with how the charts turned out. I have no plans to pick the rest of the Big Four back up — truthfully, I don't even watch wrestling anymore. Consider this section permanently retired.</p>
+            </div>
         </div>
     </div>
 
-    <div class="content-section">
-        <h2>Favorite Superstars</h2>
-        <div class="content-row">
-            <div class="content-card"><img src="./assets/images/bray.jpg" alt="Bray Wyatt"></div>
-            <div class="content-card"><img src="./assets/images/aj.jpg" alt="AJ Styles"></div>
+    <div class="modal-overlay" id="deadModal">
+        <div class="modal-box">
+            <button class="modal-close" id="deadModalClose" aria-label="Close">&times;</button>
+            <h2 class="modal-title" id="deadModalTitle"></h2>
+            <div class="modal-review" id="deadModalBody"></div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2025 Landon's Day. All rights reserved.</p>
+        <p>&copy; 2026 Landon's Day. All rights reserved.</p>
     </footer>
+
+    <script>
+        const DEAD_MESSAGES = {
+            "SummerSlam": "There is nothing here. There was never anything here. I rewatched every WrestleMania and I have chosen peace. Please, I am begging you, stop clicking on SummerSlam.",
+            "Royal Rumble": "You've clicked on the Royal Rumble tile expecting content. There is no content. There is only the void, and my quiet acceptance that this project is over. Move along.",
+            "Money in the Bank": "Congratulations, you've cashed in your curiosity on absolutely nothing. This section is dead. It has been dead. It will remain dead. I don't even watch wrestling anymore. Let it rest."
+        };
+
+        function showDeadModal(name) {
+            document.getElementById('deadModalTitle').textContent = name;
+            document.getElementById('deadModalBody').textContent = DEAD_MESSAGES[name];
+            document.getElementById('deadModal').classList.add('open');
+        }
+
+        function closeDeadModal() {
+            document.getElementById('deadModal').classList.remove('open');
+        }
+
+        document.getElementById('deadModalClose').addEventListener('click', closeDeadModal);
+        document.getElementById('deadModal').addEventListener('click', (e) => {
+            if (e.target.id === 'deadModal') closeDeadModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeDeadModal();
+        });
+    </script>
 
 </body>
 </html>
