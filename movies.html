@@ -6,6 +6,16 @@
     <title>Movies & Shows — Landon's Day</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Movies & Shows — Landon's Day">
+    <meta property="og:description" content="My favorite movies and shows, a full rated archive, a watchlist, and the perfect episodes I consider flawless.">
+    <meta property="og:url" content="https://www.landonday.com/movies">
+    <meta property="og:image" content="https://www.landonday.com/assets/images/movies.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Movies & Shows — Landon's Day">
+    <meta name="twitter:description" content="My favorite movies and shows, a full rated archive, a watchlist, and the perfect episodes I consider flawless.">
+    <meta name="twitter:image" content="https://www.landonday.com/assets/images/movies.png">
+
 </head>
 <body class="movies-page">
 
@@ -528,5 +538,23 @@
         loadMovies();
     </script>
 
+
+    <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top" title="Back to top">&uarr;</button>
+
+    <script>
+        (function () {
+            const btn = document.getElementById('backToTopBtn');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    btn.classList.add('visible');
+                } else {
+                    btn.classList.remove('visible');
+                }
+            });
+            btn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
+    </script>
 </body>
 </html>

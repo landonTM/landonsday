@@ -39,6 +39,39 @@ header h1 {
   text-shadow: 0 0 20px rgba(0, 170, 255, 0.55);
 }
 
+/* ---- Back to top button (subtle, low-key) ---- */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(20, 20, 20, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, background-color 0.2s ease, color 0.2s ease;
+  z-index: 60;
+}
+
+.back-to-top-btn.visible {
+  opacity: 0.75;
+  pointer-events: auto;
+}
+
+.back-to-top-btn:hover {
+  opacity: 1;
+  background: rgba(35, 35, 35, 0.9);
+  color: #ccc;
+}
+
 /* ---- Site-wide navigation bar (all pages) ---- */
 .site-nav {
   display: flex;

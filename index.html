@@ -6,6 +6,16 @@
     <title>Landon's Day</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Landon's Day">
+    <meta property="og:description" content="A running log of everything I'm into: wrestling, a full Marvel rewatch, movies and shows, video games, my cat, and life in general.">
+    <meta property="og:url" content="https://www.landonday.com/">
+    <meta property="og:image" content="https://www.landonday.com/assets/images/slider/disney2022.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Landon's Day">
+    <meta name="twitter:description" content="A running log of everything I'm into: wrestling, a full Marvel rewatch, movies and shows, video games, my cat, and life in general.">
+    <meta name="twitter:image" content="https://www.landonday.com/assets/images/slider/disney2022.jpg">
+
 </head>
 <body>
 
@@ -291,5 +301,23 @@
         loadHomepageData();
     </script>
 
+
+    <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top" title="Back to top">&uarr;</button>
+
+    <script>
+        (function () {
+            const btn = document.getElementById('backToTopBtn');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    btn.classList.add('visible');
+                } else {
+                    btn.classList.remove('visible');
+                }
+            });
+            btn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
+    </script>
 </body>
 </html>

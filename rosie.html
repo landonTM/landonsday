@@ -6,6 +6,16 @@
     <title>Rosie — Landon's Day</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Rosie — Landon's Day">
+    <meta property="og:description" content="A whole page dedicated to Rosie, format still to be determined.">
+    <meta property="og:url" content="https://www.landonday.com/rosie">
+    <meta property="og:image" content="https://www.landonday.com/assets/images/rosie.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rosie — Landon's Day">
+    <meta name="twitter:description" content="A whole page dedicated to Rosie, format still to be determined.">
+    <meta name="twitter:image" content="https://www.landonday.com/assets/images/rosie.jpg">
+
 </head>
 <body>
 
@@ -38,5 +48,23 @@
         <p>&copy; 2026 Landon's Day. All rights reserved.</p>
     </footer>
 
+
+    <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top" title="Back to top">&uarr;</button>
+
+    <script>
+        (function () {
+            const btn = document.getElementById('backToTopBtn');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    btn.classList.add('visible');
+                } else {
+                    btn.classList.remove('visible');
+                }
+            });
+            btn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
+    </script>
 </body>
 </html>
