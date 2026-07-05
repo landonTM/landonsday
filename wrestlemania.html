@@ -29,6 +29,14 @@
             <label for="wrestlerSearch">Search Wrestler:</label>
             <input type="text" id="wrestlerSearch" placeholder="e.g. Roman Reigns">
         </div>
+        <div class="filter-group">
+            <label for="sortSelect">Sort by:</label>
+            <select id="sortSelect">
+                <option value="default">Match Order</option>
+                <option value="high">Rating: High to Low</option>
+                <option value="low">Rating: Low to High</option>
+            </select>
+        </div>
     </div>
 
     <div class="stats-bar" id="eventStats">
@@ -64,8 +72,9 @@
 
             tableBody.innerHTML = '';
 
-            data.forEach(match => {
+            data.forEach((match, index) => {
                 const row = document.createElement('tr');
+                row.dataset.originalIndex = index;
                 row.innerHTML = `
                     <td data-label="Rating">${match.rating}</td>
                     <td data-label="Date">${match.date}</td>
@@ -81,6 +90,7 @@
 
             const filter = document.getElementById('eventFilter');
             const wrestlerInput = document.getElementById('wrestlerSearch');
+            const sortSelect = document.getElementById('sortSelect');
 
             Array.from(eventSet)
                 .sort((a, b) => parseInt(b.match(/\d+/)) - parseInt(a.match(/\d+/)))
@@ -90,6 +100,25 @@
                     opt.textContent = event;
                     filter.appendChild(opt);
                 });
+
+            function applySort() {
+                const rows = Array.from(document.querySelectorAll('#matchTable tbody tr'));
+                const mode = sortSelect.value;
+
+                if (mode === 'high' || mode === 'low') {
+                    rows.sort((a, b) => {
+                        const ratingA = extractRating(a.children[0].innerText);
+                        const ratingB = extractRating(b.children[0].innerText);
+                        return mode === 'high' ? ratingB - ratingA : ratingA - ratingB;
+                    });
+                } else {
+                    rows.sort((a, b) => a.dataset.originalIndex - b.dataset.originalIndex);
+                }
+
+                const tbody = document.querySelector('#matchTable tbody');
+                rows.forEach(row => tbody.appendChild(row));
+                applyCombinedFilters();
+            }
 
             function applyCombinedFilters() {
                 const eventValue = filter.value;
@@ -113,6 +142,7 @@
 
             filter.addEventListener('change', applyCombinedFilters);
             wrestlerInput.addEventListener('input', applyCombinedFilters);
+            sortSelect.addEventListener('change', applySort);
 
             applyCombinedFilters();
         }
