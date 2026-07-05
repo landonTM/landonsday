@@ -1,0 +1,767 @@
+[
+  {
+    "title": "Blade",
+    "year": 1998,
+    "type": "Movie",
+    "category": "blade",
+    "poster": "blade.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "X-Men",
+    "year": 2000,
+    "type": "Movie",
+    "category": "xmen",
+    "poster": "x-men.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Blade 2",
+    "year": 2002,
+    "type": "Movie",
+    "category": "blade",
+    "poster": "blade-2.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Spider-Man",
+    "year": 2002,
+    "type": "Movie",
+    "category": "raimi",
+    "poster": "spider-man.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Daredevil",
+    "year": 2003,
+    "type": "Movie",
+    "category": "otherpre",
+    "poster": "daredevil.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "X2: X-Men United",
+    "year": 2003,
+    "type": "Movie",
+    "category": "xmen",
+    "poster": "x2-x-men-united.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Spider-Man 2",
+    "year": 2004,
+    "type": "Movie",
+    "category": "raimi",
+    "poster": "spider-man-2.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Blade: Trinity",
+    "year": 2004,
+    "type": "Movie",
+    "category": "blade",
+    "poster": "blade-trinity.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Elektra",
+    "year": 2005,
+    "type": "Movie",
+    "category": "otherpre",
+    "poster": "elektra.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Fantastic Four",
+    "year": 2005,
+    "type": "Movie",
+    "category": "otherpre",
+    "poster": "fantastic-four.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "X-Men: The Last Stand",
+    "year": 2006,
+    "type": "Movie",
+    "category": "xmen",
+    "poster": "x-men-the-last-stand.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Ghost Rider",
+    "year": 2007,
+    "type": "Movie",
+    "category": "otherpre",
+    "poster": "ghost-rider.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Spider-Man 3",
+    "year": 2007,
+    "type": "Movie",
+    "category": "raimi",
+    "poster": "spider-man-3.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Fantastic Four: Rise of the Silver Surfer",
+    "year": 2007,
+    "type": "Movie",
+    "category": "otherpre",
+    "poster": "fantastic-four-rise-of-the-silver-surfer.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Iron Man",
+    "year": 2008,
+    "type": "Movie",
+    "category": "p1",
+    "poster": "iron-man.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "The Incredible Hulk",
+    "year": 2008,
+    "type": "Movie",
+    "category": "p1",
+    "poster": "the-incredible-hulk.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "X-Men Origins: Wolverine",
+    "year": 2009,
+    "type": "Movie",
+    "category": "xmen",
+    "poster": "x-men-origins-wolverine.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Iron Man 2",
+    "year": 2010,
+    "type": "Movie",
+    "category": "p1",
+    "poster": "iron-man-2.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Thor",
+    "year": 2011,
+    "type": "Movie",
+    "category": "p1",
+    "poster": "thor.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "X-Men: First Class",
+    "year": 2011,
+    "type": "Movie",
+    "category": "xmen",
+    "poster": "x-men-first-class.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Captain America: The First Avenger",
+    "year": 2011,
+    "type": "Movie",
+    "category": "p1",
+    "poster": "captain-america-the-first-avenger.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Ghost Rider: Spirit of Vengeance",
+    "year": 2012,
+    "type": "Movie",
+    "category": "otherpre",
+    "poster": "ghost-rider-spirit-of-vengeance.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "The Avengers",
+    "year": 2012,
+    "type": "Movie",
+    "category": "p1",
+    "poster": "the-avengers.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "The Amazing Spider-Man",
+    "year": 2012,
+    "type": "Movie",
+    "category": "raimi",
+    "poster": "the-amazing-spider-man.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Iron Man 3",
+    "year": 2013,
+    "type": "Movie",
+    "category": "p2",
+    "poster": "iron-man-3.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "The Wolverine",
+    "year": 2013,
+    "type": "Movie",
+    "category": "xmen",
+    "poster": "the-wolverine.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Thor: The Dark World",
+    "year": 2013,
+    "type": "Movie",
+    "category": "p2",
+    "poster": "thor-the-dark-world.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Captain America: The Winter Soldier",
+    "year": 2014,
+    "type": "Movie",
+    "category": "p2",
+    "poster": "captain-america-the-winter-soldier.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "The Amazing Spider-Man 2",
+    "year": 2014,
+    "type": "Movie",
+    "category": "raimi",
+    "poster": "the-amazing-spider-man-2.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "X-Men: Days of Future Past",
+    "year": 2014,
+    "type": "Movie",
+    "category": "xmen",
+    "poster": "x-men-days-of-future-past.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Guardians of the Galaxy",
+    "year": 2014,
+    "type": "Movie",
+    "category": "p2",
+    "poster": "guardians-of-the-galaxy.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Daredevil Season 1",
+    "year": 2015,
+    "type": "Show",
+    "category": "tv",
+    "poster": "daredevil-season-1.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Avengers: Age of Ultron",
+    "year": 2015,
+    "type": "Movie",
+    "category": "p2",
+    "poster": "avengers-age-of-ultron.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Ant-Man",
+    "year": 2015,
+    "type": "Movie",
+    "category": "p2",
+    "poster": "ant-man.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Fantastic Four (2015)",
+    "year": 2015,
+    "type": "Movie",
+    "category": "otherpre",
+    "poster": "fantastic-four-2015.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Agents of S.H.I.E.L.D Season 3",
+    "year": 2015,
+    "type": "Show",
+    "category": "tv",
+    "poster": "agents-of-shield-season-3.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Deadpool",
+    "year": 2016,
+    "type": "Movie",
+    "category": "xmen",
+    "poster": "deadpool.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Daredevil Season 2",
+    "year": 2016,
+    "type": "Show",
+    "category": "tv",
+    "poster": "daredevil-season-2.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Captain America: Civil War",
+    "year": 2016,
+    "type": "Movie",
+    "category": "p3",
+    "poster": "captain-america-civil-war.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "X-Men: Apocalypse",
+    "year": 2016,
+    "type": "Movie",
+    "category": "xmen",
+    "poster": "x-men-apocalypse.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Luke Cage Season 1",
+    "year": 2016,
+    "type": "Show",
+    "category": "tv",
+    "poster": "luke-cage-season-1.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Doctor Strange",
+    "year": 2016,
+    "type": "Movie",
+    "category": "p3",
+    "poster": "doctor-strange.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Legion Season 1",
+    "year": 2017,
+    "type": "Show",
+    "category": "xmen",
+    "poster": "legion-season-1.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Logan",
+    "year": 2017,
+    "type": "Movie",
+    "category": "xmen",
+    "poster": "logan.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Iron Fist Season 1",
+    "year": 2017,
+    "type": "Show",
+    "category": "tv",
+    "poster": "iron-fist-season-1.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Guardians of the Galaxy Vol. 2",
+    "year": 2017,
+    "type": "Movie",
+    "category": "p3",
+    "poster": "guardians-of-the-galaxy-vol-2.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Spider-Man: Homecoming",
+    "year": 2017,
+    "type": "Movie",
+    "category": "p3",
+    "poster": "spider-man-homecoming.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "The Defenders Season 1",
+    "year": 2017,
+    "type": "Show",
+    "category": "tv",
+    "poster": "the-defenders-season-1.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "The Inhumans Season 1",
+    "year": 2017,
+    "type": "Show",
+    "category": "tv",
+    "poster": "the-inhumans-season-1.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Thor: Ragnarok",
+    "year": 2017,
+    "type": "Movie",
+    "category": "p3",
+    "poster": "thor-ragnarok.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "The Punisher Season 1",
+    "year": 2017,
+    "type": "Show",
+    "category": "tv",
+    "poster": "the-punisher-season-1.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "The Runaways Season 1",
+    "year": 2017,
+    "type": "Show",
+    "category": "tv",
+    "poster": "the-runaways-season-1.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Black Panther",
+    "year": 2018,
+    "type": "Movie",
+    "category": "p3",
+    "poster": "black-panther.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Jessica Jones Season 2",
+    "year": 2018,
+    "type": "Show",
+    "category": "tv",
+    "poster": "jessica-jones-season-2.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Legion Season 2",
+    "year": 2018,
+    "type": "Show",
+    "category": "xmen",
+    "poster": "legion-season-2.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Avengers: Infinity War",
+    "year": 2018,
+    "type": "Movie",
+    "category": "p3",
+    "poster": "avengers-infinity-war.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Deadpool 2",
+    "year": 2018,
+    "type": "Movie",
+    "category": "xmen",
+    "poster": "deadpool-2.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Luke Cage Season 2",
+    "year": 2018,
+    "type": "Show",
+    "category": "tv",
+    "poster": "luke-cage-season-2.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Cloak & Dagger Season 1",
+    "year": 2018,
+    "type": "Show",
+    "category": "tv",
+    "poster": "cloak-dagger-season-1.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Ant-Man and the Wasp",
+    "year": 2018,
+    "type": "Movie",
+    "category": "p3",
+    "poster": "ant-man-and-the-wasp.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Iron Fist Season 2",
+    "year": 2018,
+    "type": "Show",
+    "category": "tv",
+    "poster": "iron-fist-season-2.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Venom",
+    "year": 2018,
+    "type": "Movie",
+    "category": "sony",
+    "poster": "venom.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Daredevil Season 3",
+    "year": 2018,
+    "type": "Show",
+    "category": "tv",
+    "poster": "daredevil-season-3.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Spider-Man: Into the Spider-Verse",
+    "year": 2018,
+    "type": "Movie",
+    "category": "sony",
+    "poster": "spider-man-into-the-spider-verse.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "The Runaways Season 2",
+    "year": 2019,
+    "type": "Show",
+    "category": "tv",
+    "poster": "the-runaways-season-2.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "The Punisher Season 2",
+    "year": 2019,
+    "type": "Show",
+    "category": "tv",
+    "poster": "the-punisher-season-2.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Captain Marvel",
+    "year": 2019,
+    "type": "Movie",
+    "category": "p3",
+    "poster": "captain-marvel.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Cloak & Dagger Season 2",
+    "year": 2019,
+    "type": "Show",
+    "category": "tv",
+    "poster": "cloak-dagger-season-2.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Avengers: Endgame",
+    "year": 2019,
+    "type": "Movie",
+    "category": "p3",
+    "poster": "avengers-endgame.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Jessica Jones Season 3",
+    "year": 2019,
+    "type": "Show",
+    "category": "tv",
+    "poster": "jessica-jones-season-3.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "X-Men: Dark Phoenix",
+    "year": 2019,
+    "type": "Movie",
+    "category": "xmen",
+    "poster": "x-men-dark-phoenix.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Legion Season 3",
+    "year": 2019,
+    "type": "Show",
+    "category": "xmen",
+    "poster": "legion-season-3.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Spider-Man: Far From Home",
+    "year": 2019,
+    "type": "Movie",
+    "category": "p3",
+    "poster": "spider-man-far-from-home.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "The Runaways Season 3",
+    "year": 2019,
+    "type": "Show",
+    "category": "tv",
+    "poster": "the-runaways-season-3.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "The New Mutants",
+    "year": 2020,
+    "type": "Movie",
+    "category": "xmen",
+    "poster": "the-new-mutants.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "WandaVision",
+    "year": 2021,
+    "type": "Show",
+    "category": "p4",
+    "poster": "wandavision.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "The Falcon and The Winter Soldier Season 1",
+    "year": 2021,
+    "type": "Show",
+    "category": "p4",
+    "poster": "the-falcon-and-the-winter-soldier-season-1.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Loki Season 1",
+    "year": 2021,
+    "type": "Show",
+    "category": "p4",
+    "poster": "loki-season-1.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Black Widow",
+    "year": 2021,
+    "type": "Movie",
+    "category": "p4",
+    "poster": "black-widow.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "What If...? Season 1",
+    "year": 2021,
+    "type": "Show",
+    "category": "p4",
+    "poster": "what-if-season-1.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Shang-Chi and the Legend of the Ten Rings",
+    "year": 2021,
+    "type": "Movie",
+    "category": "p4",
+    "poster": "shang-chi-and-the-legend-of-the-ten-rings.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Venom: Let There Be Carnage",
+    "year": 2021,
+    "type": "Movie",
+    "category": "sony",
+    "poster": "venom-let-there-be-carnage.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Eternals",
+    "year": 2021,
+    "type": "Movie",
+    "category": "p4",
+    "poster": "eternals.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Hawkeye Season 1",
+    "year": 2021,
+    "type": "Show",
+    "category": "p4",
+    "poster": "hawkeye-season-1.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Spider-Man: No Way Home",
+    "year": 2021,
+    "type": "Movie",
+    "category": "p4",
+    "poster": "spider-man-no-way-home.jpg",
+    "rating": "",
+    "review": ""
+  }
+]

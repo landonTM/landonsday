@@ -13,21 +13,111 @@
     </nav>
 
     <div class="page-hero">
-        <img src="./assets/images/infinitywar.jpg" alt="Infinity War">
+        <img src="./assets/images/infinitywar.jpg" alt="Marvel">
         <h1 class="page-hero-title">Marvel</h1>
     </div>
 
-    <div class="content-section">
-        <h2>Favorite Movies</h2>
-        <div class="content-row">
-            <div class="content-card"><img src="./assets/images/infinitywar.jpg" alt="Infinity War"></div>
-            <div class="content-card"><img src="./assets/images/endgame.jpg" alt="Endgame"></div>
+    <div id="rows-container"></div>
+
+    <div class="modal-overlay" id="reviewModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <div class="modal-meta" id="modalMeta"></div>
+            <div class="modal-rating" id="modalRating"></div>
+            <div class="modal-review" id="modalReview"></div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2025 Landon's Day. All rights reserved.</p>
+        <p>&copy; 2026 Landon's Day. All rights reserved.</p>
     </footer>
+
+    <script>
+        const CATEGORY_ORDER = [
+            { key: "blade", label: "Blade Trilogy" },
+            { key: "xmen", label: "X-Men Universe" },
+            { key: "raimi", label: "Sony's Spider-Man (Raimi & Webb)" },
+            { key: "otherpre", label: "Other Pre-MCU Marvel Films" },
+            { key: "p1", label: "MCU — Phase One" },
+            { key: "p2", label: "MCU — Phase Two" },
+            { key: "tv", label: "Marvel Television (Netflix & ABC)" },
+            { key: "p3", label: "MCU — Phase Three" },
+            { key: "sony", label: "Sony's Spider-Man Universe" },
+            { key: "p4", label: "MCU — Phase Four" }
+        ];
+
+        async function loadMarvel() {
+            const res = await fetch('marvel.json');
+            const data = await res.json();
+            const container = document.getElementById('rows-container');
+
+            CATEGORY_ORDER.forEach(cat => {
+                const items = data.filter(item => item.category === cat.key);
+                if (items.length === 0) return;
+
+                const section = document.createElement('div');
+                section.className = 'mcu-row-section';
+
+                const heading = document.createElement('h2');
+                heading.className = 'mcu-row-heading';
+                heading.textContent = cat.label;
+                section.appendChild(heading);
+
+                const row = document.createElement('div');
+                row.className = 'poster-row';
+
+                items.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'poster-card';
+                    card.innerHTML = `
+                        <img src="./assets/images/marvel/${item.poster}" alt="${item.title}"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="poster-fallback">${item.title}</div>
+                        ${item.rating ? `<div class="poster-rating-badge">${item.rating}</div>` : ''}
+                    `;
+                    card.addEventListener('click', () => openModal(item));
+                    row.appendChild(card);
+                });
+
+                section.appendChild(row);
+                container.appendChild(section);
+            });
+        }
+
+        function openModal(item) {
+            document.getElementById('modalTitle').textContent = item.title;
+            document.getElementById('modalMeta').textContent = `${item.year} • ${item.type}`;
+
+            const ratingEl = document.getElementById('modalRating');
+            ratingEl.textContent = item.rating ? item.rating : '';
+
+            const reviewEl = document.getElementById('modalReview');
+            if (item.review) {
+                reviewEl.textContent = item.review;
+                reviewEl.classList.remove('pending');
+            } else {
+                reviewEl.textContent = "Review coming soon!";
+                reviewEl.classList.add('pending');
+            }
+
+            document.getElementById('reviewModal').classList.add('open');
+        }
+
+        function closeModal() {
+            document.getElementById('reviewModal').classList.remove('open');
+        }
+
+        document.getElementById('modalClose').addEventListener('click', closeModal);
+        document.getElementById('reviewModal').addEventListener('click', (e) => {
+            if (e.target.id === 'reviewModal') closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        loadMarvel();
+    </script>
 
 </body>
 </html>
