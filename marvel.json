@@ -288,6 +288,15 @@
     "review": ""
   },
   {
+    "title": "Jessica Jones Season 1",
+    "year": 2015,
+    "type": "Show",
+    "category": "tv",
+    "poster": "jessica-jones-season-1.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
     "title": "Avengers: Age of Ultron",
     "year": 2015,
     "type": "Movie",
@@ -311,15 +320,6 @@
     "type": "Movie",
     "category": "otherpre",
     "poster": "fantastic-four-2015.jpg",
-    "rating": "",
-    "review": ""
-  },
-  {
-    "title": "Agents of S.H.I.E.L.D Season 3",
-    "year": 2015,
-    "type": "Show",
-    "category": "tv",
-    "poster": "agents-of-shield-season-3.jpg",
     "rating": "",
     "review": ""
   },
@@ -472,7 +472,7 @@
     "year": 2018,
     "type": "Movie",
     "category": "p3",
-    "poster": "black-panther.jpg",
+    "poster": "blackpanther.jpg",
     "rating": "",
     "review": ""
   },
@@ -499,7 +499,7 @@
     "year": 2018,
     "type": "Movie",
     "category": "p3",
-    "poster": "avengers-infinity-war.jpg",
+    "poster": "infinity-war.jpg",
     "rating": "",
     "review": ""
   },
