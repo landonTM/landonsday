@@ -5,18 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landon's Day</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const slides = document.querySelectorAll('.slider img');
-            let current = 0;
-            slides[current].classList.add('active');
-            setInterval(() => {
-                slides[current].classList.remove('active');
-                current = (current + 1) % slides.length;
-                slides[current].classList.add('active');
-            }, 4000);
-        });
-    </script>
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
 </head>
 <body>
@@ -36,6 +24,51 @@
         <img src="./assets/images/aj.jpg" alt="AJ">
     </div>
 
+    <div class="about-section">
+        <h2>About This Site</h2>
+        <p id="aboutText">Hey, I'm Landon — welcome to my little corner of the internet. This site is basically a running log of the things I'm into: wrestling, a full Marvel rewatch (rated and reviewed one by one), video games, my cat, and just life in general. Poke around each section below — most of them keep growing as I add more.</p>
+    </div>
+
+    <div class="stats-strip" id="statsStrip">
+        <!-- filled in by JS -->
+    </div>
+
+    <div class="mcu-row-section" id="topRatedMarvelSection" style="display:none;">
+        <h2 class="mcu-row-heading">Top Rated Marvel</h2>
+        <div class="poster-row-wrap">
+            <div class="poster-row" id="topRatedMarvelRow"></div>
+        </div>
+    </div>
+
+    <div class="mcu-row-section" id="topRatedWrestlingSection" style="display:none;">
+        <h2 class="mcu-row-heading">Top Rated WrestleMania Matches</h2>
+        <div class="poster-row-wrap">
+            <div class="poster-row" id="topRatedWrestlingRow"></div>
+        </div>
+    </div>
+
+    <div class="coming-grid-section">
+        <h2>What's Coming</h2>
+        <div class="coming-grid">
+            <a class="coming-grid-card" href="movies.html">
+                <h3>Movies</h3>
+                <p>A full watchlist and ratings tracker for everything I watch outside of Marvel.</p>
+            </a>
+            <a class="coming-grid-card" href="games.html">
+                <h3>Games</h3>
+                <p>My Steam library, plus live Marvel Rivals and Overwatch stats.</p>
+            </a>
+            <a class="coming-grid-card" href="rosie.html">
+                <h3>Rosie</h3>
+                <p>Still deciding the format — photo calendar, timeline, or a full Rosie blog.</p>
+            </a>
+            <a class="coming-grid-card" href="life.html">
+                <h3>Life</h3>
+                <p>My pseudo-blog for vacations, life updates, and everything in between.</p>
+            </a>
+        </div>
+    </div>
+
     <div class="category-bar">
         <a class="category-tile" href="wrestling.html"><img src="./assets/images/wrestling.png" alt="Wrestling"></a>
         <a class="category-tile" href="marvel.html"><img src="./assets/images/marvel.png" alt="Marvel"></a>
@@ -46,8 +79,111 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Landon's Day. All rights reserved.</p>
+        <p>&copy; 2026 Landon's Day. All rights reserved.</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const slides = document.querySelectorAll('.slider img');
+            let current = 0;
+            slides[current].classList.add('active');
+            setInterval(() => {
+                slides[current].classList.remove('active');
+                current = (current + 1) % slides.length;
+                slides[current].classList.add('active');
+            }, 4000);
+        });
+
+        function parseStarRating(text) {
+            if (!text) return null;
+            const negative = text.includes('-');
+            const full = (text.match(/⭐/g) || []).length;
+            const fraction = text.includes('¾') ? 0.75 : text.includes('½') ? 0.5 : text.includes('¼') ? 0.25 : 0;
+            const rating = full + fraction;
+            return negative ? -rating : rating;
+        }
+
+        async function loadHomepageData() {
+            let marvelData = [];
+            let matchesData = [];
+
+            try {
+                const marvelRes = await fetch('marvel.json');
+                marvelData = await marvelRes.json();
+            } catch (e) {
+                console.log('marvel.json not available yet');
+            }
+
+            try {
+                const matchesRes = await fetch('matches.json');
+                matchesData = await matchesRes.json();
+            } catch (e) {
+                console.log('matches.json not available yet');
+            }
+
+            // ---- Stats strip ----
+            const statsStrip = document.getElementById('statsStrip');
+            const marvelWatchedCount = marvelData.length;
+            let statsHtml = '';
+            if (marvelData.length > 0) {
+                statsHtml += `
+                    <div class="stat-block">
+                        <div class="stat-number">${marvelWatchedCount}</div>
+                        <div class="stat-label">Marvel Projects Watched</div>
+                    </div>`;
+            }
+            if (matchesData.length > 0) {
+                statsHtml += `
+                    <div class="stat-block">
+                        <div class="stat-number">${matchesData.length}</div>
+                        <div class="stat-label">WrestleMania Matches Logged</div>
+                    </div>`;
+            }
+            statsStrip.innerHTML = statsHtml;
+
+            // ---- Top Rated Marvel ----
+            const topMarvel = marvelData
+                .filter(d => d.rating)
+                .map(d => ({ ...d, _numeric: parseStarRating(d.rating) }))
+                .sort((a, b) => b._numeric - a._numeric)
+                .slice(0, 10);
+
+            if (topMarvel.length > 0) {
+                const row = document.getElementById('topRatedMarvelRow');
+                row.innerHTML = topMarvel.map(item => `
+                    <div class="poster-card" data-title="${item.title}" onclick="window.location.href='marvel.html'">
+                        <img src="./assets/images/marvel/${item.poster}" alt="${item.title}"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="poster-fallback">${item.title}</div>
+                        <div class="poster-rating-badge">${item.rating}</div>
+                    </div>
+                `).join('');
+                document.getElementById('topRatedMarvelSection').style.display = 'block';
+            }
+
+            // ---- Top Rated Wrestling Matches ----
+            const topMatches = matchesData
+                .map(m => ({ ...m, _numeric: parseStarRating(m.rating) }))
+                .filter(m => m._numeric !== null)
+                .sort((a, b) => b._numeric - a._numeric)
+                .slice(0, 10);
+
+            if (topMatches.length > 0) {
+                const row = document.getElementById('topRatedWrestlingRow');
+                row.innerHTML = topMatches.map(m => `
+                    <div class="match-card" onclick="window.location.href='wrestlemania.html'">
+                        <div>
+                            <div class="match-card-title">${m.match}</div>
+                        </div>
+                        <div class="match-card-rating">${m.rating} • ${m.event}</div>
+                    </div>
+                `).join('');
+                document.getElementById('topRatedWrestlingSection').style.display = 'block';
+            }
+        }
+
+        loadHomepageData();
+    </script>
 
 </body>
 </html>
