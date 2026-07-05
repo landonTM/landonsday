@@ -553,6 +553,43 @@ header h1 {
   display: flex;
 }
 
+.modal-poster-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.modal-poster-thumb {
+  flex: 0 0 90px;
+  width: 90px;
+  height: 135px;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #222;
+}
+
+.modal-poster-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.modal-poster-thumb-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 1.5rem;
+}
+
+.modal-header-info {
+  flex: 1;
+  min-width: 0;
+}
+
 .modal-box {
   background-color: #161616;
   border: 1px solid #2c2c2c;
@@ -649,6 +686,461 @@ header h1 {
 .modal-review.pending {
   color: #888;
   font-style: italic;
+}
+
+/* ================================
+   Movies Page — distinct amber theme
+   ================================ */
+.movies-page .page-hero .page-hero-title,
+.movies-page .mcu-row-heading,
+.movies-page .content-section h2 {
+  text-shadow: 0 2px 10px rgba(0,0,0,0.7), 0 0 24px rgba(245, 166, 35, 0.35);
+}
+
+.movies-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 1rem;
+}
+
+.movies-section-heading {
+  font-family: 'Bebas Neue', 'Segoe UI', sans-serif;
+  font-size: 1.7rem;
+  letter-spacing: 0.05em;
+  color: #fff;
+  margin-bottom: 0.3rem;
+  text-shadow: 0 0 18px rgba(245, 166, 35, 0.35);
+}
+
+.movies-section-subheading {
+  color: #999;
+  font-size: 0.9rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ---- Favorites showcase (fixed 4-card grid, not scrollable) ---- */
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.favorite-card {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #2c2c2c, #141414);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid rgba(245, 166, 35, 0.25);
+}
+
+.favorite-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 22px rgba(245, 166, 35, 0.35);
+}
+
+.favorite-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.favorite-card .fav-ribbon {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  background: rgba(245, 166, 35, 0.92);
+  color: #1a1200;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+  z-index: 2;
+}
+
+.favorite-card .fav-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #ddd;
+}
+
+.favorite-card::after {
+  content: attr(data-title);
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 0.6rem 0.5rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* ---- Watchlist checklist ---- */
+.watchlist-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.watchlist-column h3 {
+  font-family: 'Bebas Neue', 'Segoe UI', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  color: #f5a623;
+  margin-bottom: 0.6rem;
+}
+
+.watchlist-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  columns: 230px auto;
+  column-gap: 1.5rem;
+}
+
+.watchlist-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #222;
+  color: #ddd;
+  font-size: 0.9rem;
+  break-inside: avoid;
+}
+
+.watchlist-number {
+  flex: 0 0 auto;
+  color: #f5a623;
+  font-family: 'Bebas Neue', 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  min-width: 1.6rem;
+}
+
+.watchlist-empty {
+  color: #888;
+  font-style: italic;
+  padding: 0.75rem 0;
+}
+
+/* ---- Rated archive (compact review list, not a poster grid) ---- */
+/* ---- Perfect Episode rows ---- */
+.perfect-ep-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 0.9rem;
+}
+
+.perfect-ep-row {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  background: linear-gradient(160deg, #181818, #101010);
+  border: 1px solid #2c2c2c;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.perfect-ep-row:hover {
+  border-color: rgba(245, 166, 35, 0.5);
+  transform: translateY(-3px);
+}
+
+.perfect-ep-thumb {
+  position: relative;
+  flex: 0 0 48px;
+  width: 48px;
+  height: 72px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #222;
+}
+
+.perfect-ep-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.perfect-ep-thumb-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.perfect-ep-badge {
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0.2rem;
+  background: rgba(245, 166, 35, 0.92);
+  color: #1a1200;
+  font-size: 0.6rem;
+  font-weight: bold;
+  padding: 0.1rem 0.3rem;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.perfect-ep-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.perfect-ep-showtitle {
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.98rem;
+  text-transform: none;
+}
+
+.perfect-ep-subline {
+  color: #aaa;
+  font-size: 0.85rem;
+  margin-top: 0.1rem;
+}
+
+.perfect-ep-stars {
+  color: #ffd54a;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+}
+
+.perfect-ep-date {
+  color: #777;
+  font-size: 0.75rem;
+  margin-top: 0.15rem;
+}
+.archive-toggle {
+  display: flex;
+  max-width: 400px;
+  margin: 0 0 1.25rem;
+  border: 1px solid rgba(245, 166, 35, 0.35);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.archive-toggle-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #999;
+  font-family: 'Bebas Neue', 'Segoe UI', sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.archive-toggle-btn.active {
+  background-color: #f5a623;
+  color: #1a1200;
+}
+
+.archive-toggle-btn:not(.active):hover {
+  background-color: rgba(245, 166, 35, 0.12);
+  color: #fff;
+}
+
+.archive-search {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 0 1.25rem;
+  padding: 0.6rem 1rem;
+  background-color: #1e1e1e;
+  border: 1px solid #2c2c2c;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.archive-search:focus {
+  outline: none;
+  border-color: rgba(245, 166, 35, 0.5);
+}
+
+.archive-search::placeholder {
+  color: #777;
+}
+
+/* ---- Pick Something For Me ---- */
+.pick-for-me {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.pick-for-me-btn {
+  background-color: #f5a623;
+  color: #1a1200;
+  border: none;
+  font-family: 'Bebas Neue', 'Segoe UI', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pick-for-me-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 16px rgba(245, 166, 35, 0.5);
+}
+
+.pick-result {
+  margin-top: 1rem;
+  color: #fff;
+  font-size: 1.05rem;
+}
+
+.pick-result-type {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.archive-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.archive-page-btn {
+  background-color: #1e1e1e;
+  border: 1px solid rgba(245, 166, 35, 0.35);
+  color: #f5a623;
+  font-family: 'Bebas Neue', 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.archive-page-btn:hover:not(:disabled) {
+  background-color: rgba(245, 166, 35, 0.15);
+}
+
+.archive-page-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.archive-page-label {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.review-list-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(160deg, #181818, #101010);
+  border: 1px solid #2c2c2c;
+  border-radius: 8px;
+  padding: 0.7rem 1.1rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.review-list-thumb {
+  flex: 0 0 42px;
+  width: 42px;
+  height: 63px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #222;
+  position: relative;
+}
+
+.review-list-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.review-list-thumb-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.review-list-info {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.review-list-item:hover {
+  border-color: rgba(245, 166, 35, 0.5);
+  transform: translateX(4px);
+}
+
+.review-list-title {
+  color: #fff;
+  font-weight: bold;
+}
+
+.review-list-meta {
+  color: #888;
+  font-size: 0.85rem;
+  font-weight: normal;
+}
+
+.review-list-rating {
+  color: #ffd54a;
+  white-space: nowrap;
+}
+
+/* ---- Recommend Something (form embed) ---- */
+.recommend-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 3rem;
+  text-align: center;
+}
+
+.recommend-section iframe {
+  width: 100%;
+  max-width: 640px;
+  height: 421px;
+  border: 1px solid #2c2c2c;
+  border-radius: 10px;
+  background: #fff;
 }
 
 /* ---- "Coming soon" placeholder for unbuilt category pages ---- */
@@ -966,5 +1458,33 @@ footer {
   .category-tile {
     width: 42%;
     height: 90px;
+  }
+
+  .favorites-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .watchlist-columns {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .movies-section-heading {
+    font-size: 1.4rem;
+  }
+
+  .perfect-ep-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .review-list-item {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .review-list-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
   }
 }

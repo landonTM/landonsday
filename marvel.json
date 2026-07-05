@@ -935,5 +935,338 @@
     "poster": "captain-america-brave-new-world.jpg",
     "rating": "⭐⭐⭐½",
     "review": "i feel like most of the reviews for this movie are in bad faith. i am keeping it spoiler free, so i will say the movie is action packed and told a good story. you can at some points see what are very obvious reshoots, but that doesn’t take away that badly.\n\nLast Watched: February 17th, 2025"
+  },
+  {
+    "title": "Moon Knight",
+    "year": 2022,
+    "type": "Show",
+    "category": "watching",
+    "poster": "moon-knight.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Morbius",
+    "year": 2022,
+    "type": "Movie",
+    "category": "watching",
+    "poster": "morbius.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Doctor Strange: Multiverse of Madness",
+    "year": 2022,
+    "type": "Movie",
+    "category": "watching",
+    "poster": "doctor-strange-multiverse-of-madness.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Ms. Marvel",
+    "year": 2022,
+    "type": "Show",
+    "category": "watching",
+    "poster": "ms-marvel.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Thor: Love & Thunder",
+    "year": 2022,
+    "type": "Movie",
+    "category": "watching",
+    "poster": "thor-love-thunder.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "She-Hulk",
+    "year": 2022,
+    "type": "Show",
+    "category": "watching",
+    "poster": "she-hulk.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Black Panther: Wakanda Forever",
+    "year": 2022,
+    "type": "Movie",
+    "category": "watching",
+    "poster": "black-panther-wakanda-forever.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Ant-Man & The Wasp: Quantumania",
+    "year": 2023,
+    "type": "Movie",
+    "category": "watching",
+    "poster": "ant-man-the-wasp-quantumania.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Werewolf by Night",
+    "year": 2022,
+    "type": "Movie",
+    "category": "watching",
+    "poster": "werewolf-by-night.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Guardians of the Galaxy 3",
+    "year": 2023,
+    "type": "Movie",
+    "category": "watching",
+    "poster": "guardians-of-the-galaxy-3.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Secret Invasion",
+    "year": 2023,
+    "type": "Show",
+    "category": "watching",
+    "poster": "secret-invasion.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Spider-Man: Across the Spider-Verse",
+    "year": 2023,
+    "type": "Movie",
+    "category": "watching",
+    "poster": "spider-man-across-the-spider-verse.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Loki Season 2",
+    "year": 2023,
+    "type": "Show",
+    "category": "watching",
+    "poster": "loki-season-2.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "The Marvels",
+    "year": 2023,
+    "type": "Movie",
+    "category": "watching",
+    "poster": "the-marvels.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "What-If? Season 2",
+    "year": 2023,
+    "type": "Show",
+    "category": "watching",
+    "poster": "what-if-season-2.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Echo",
+    "year": 2024,
+    "type": "Show",
+    "category": "watching",
+    "poster": "echo.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Madame Web",
+    "year": 2024,
+    "type": "Movie",
+    "category": "watching",
+    "poster": "madame-web.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "X-Men '97 Season 1",
+    "year": 2024,
+    "type": "Show",
+    "category": "watching",
+    "poster": "x-men-97-season-1.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Deadpool & Wolverine",
+    "year": 2024,
+    "type": "Movie",
+    "category": "watching",
+    "poster": "deadpool-wolverine.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Agatha All Along",
+    "year": 2024,
+    "type": "Show",
+    "category": "watching",
+    "poster": "agatha-all-along.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Venom 3",
+    "year": 2024,
+    "type": "Movie",
+    "category": "watching",
+    "poster": "venom-3.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "What-If Season 3",
+    "year": 2024,
+    "type": "Show",
+    "category": "watching",
+    "poster": "what-if-season-3.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Kraven the Hunter",
+    "year": 2024,
+    "type": "Movie",
+    "category": "watching",
+    "poster": "kraven-the-hunter.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Your Friendly Neighborhood Spider-Man Season 1",
+    "year": 2026,
+    "type": "Show",
+    "category": "watching",
+    "poster": "your-friendly-neighborhood-spider-man-season-1.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Captain America: Brave New World",
+    "year": 2025,
+    "type": "Movie",
+    "category": "watching",
+    "poster": "captain-america-brave-new-world.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Daredevil Born Again Season 1",
+    "year": 2025,
+    "type": "Show",
+    "category": "watching",
+    "poster": "daredevil-born-again-season-1.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Thunderbolts",
+    "year": 2025,
+    "type": "Movie",
+    "category": "watching",
+    "poster": "thunderbolts.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Ironheart",
+    "year": 2025,
+    "type": "Show",
+    "category": "watching",
+    "poster": "ironheart.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "The Fantastic Four: First Steps",
+    "year": 2025,
+    "type": "Movie",
+    "category": "watching",
+    "poster": "the-fantastic-four-first-steps.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Eyes of Wakanda",
+    "year": 2025,
+    "type": "Show",
+    "category": "watching",
+    "poster": "eyes-of-wakanda.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Marvel Zombies",
+    "year": 2025,
+    "type": "Show",
+    "category": "watching",
+    "poster": "marvel-zombies.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Wonder Man",
+    "year": 2025,
+    "type": "Show",
+    "category": "watching",
+    "poster": "wonder-man.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Daredevil Born Again Season 2",
+    "year": 2026,
+    "type": "Show",
+    "category": "watching",
+    "poster": "daredevil-born-again-season-2.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "The Punisher: One Last Kill",
+    "year": 2026,
+    "type": "Show",
+    "category": "watching",
+    "poster": "the-punisher-one-last-kill.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Spider-Noir Season 1",
+    "year": 2026,
+    "type": "Show",
+    "category": "watching",
+    "poster": "spider-noir-season-1.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "X-Men '97 Season 2",
+    "year": 2026,
+    "type": "Show",
+    "category": "watching",
+    "poster": "x-men-97-season-2.jpg",
+    "rating": "",
+    "review": ""
+  },
+  {
+    "title": "Spider-Man: Brand New Day",
+    "year": 2026,
+    "type": "Movie",
+    "category": "watching",
+    "poster": "spider-man-brand-new-day.jpg",
+    "rating": "",
+    "review": ""
   }
 ]

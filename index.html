@@ -47,6 +47,13 @@
         </div>
     </div>
 
+    <div class="mcu-row-section" id="topRatedMoviesSection" style="display:none;">
+        <h2 class="mcu-row-heading">Top Rated Movies & Shows</h2>
+        <div class="poster-row-wrap">
+            <div class="poster-row" id="topRatedMoviesRow"></div>
+        </div>
+    </div>
+
     <div class="coming-grid-section">
         <h2>What's Coming</h2>
         <div class="coming-grid">
@@ -95,7 +102,7 @@
         });
 
         function parseStarRating(text) {
-            if (!text) return null;
+            if (!text || !/[⭐¾½¼]/.test(text)) return null;
             const negative = text.includes('-');
             const full = (text.match(/⭐/g) || []).length;
             const fraction = text.includes('¾') ? 0.75 : text.includes('½') ? 0.5 : text.includes('¼') ? 0.25 : 0;
@@ -106,6 +113,7 @@
         async function loadHomepageData() {
             let marvelData = [];
             let matchesData = [];
+            let moviesData = [];
 
             try {
                 const marvelRes = await fetch('marvel.json');
@@ -119,6 +127,13 @@
                 matchesData = await matchesRes.json();
             } catch (e) {
                 console.log('matches.json not available yet');
+            }
+
+            try {
+                const moviesRes = await fetch('movies.json');
+                moviesData = await moviesRes.json();
+            } catch (e) {
+                console.log('movies.json not available yet');
             }
 
             // ---- Stats strip ----
@@ -137,6 +152,13 @@
                     <div class="stat-block">
                         <div class="stat-number">${matchesData.length}</div>
                         <div class="stat-label">WrestleMania Matches Logged</div>
+                    </div>`;
+            }
+            if (moviesData.length > 0) {
+                statsHtml += `
+                    <div class="stat-block">
+                        <div class="stat-number">${moviesData.length}</div>
+                        <div class="stat-label">Movies & Shows Logged</div>
                     </div>`;
             }
             statsStrip.innerHTML = statsHtml;
@@ -179,6 +201,51 @@
                     </div>
                 `).join('');
                 document.getElementById('topRatedWrestlingSection').style.display = 'block';
+            }
+
+            // ---- Top Rated Movies & Shows ----
+            function numberToStars(num) {
+                const full = Math.floor(num);
+                const remainder = num - full;
+                let s = '⭐'.repeat(full);
+                if (remainder >= 0.625) { s = '⭐'.repeat(full + 1); }
+                else if (remainder >= 0.375) { s += '½'; }
+                else if (remainder >= 0.125) { s += '¼'; }
+                return s || '';
+            }
+
+            function getEffectiveMovieRating(item) {
+                if (item.rating) return item.rating;
+                if (item.seasons && item.seasons.length > 0) {
+                    const values = item.seasons
+                        .map(s => parseStarRating(s.rating))
+                        .filter(v => v !== null && v >= 0);
+                    if (values.length > 0) {
+                        const avg = values.reduce((a, b) => a + b, 0) / values.length;
+                        return numberToStars(avg);
+                    }
+                }
+                return '';
+            }
+
+            const topMovies = moviesData
+                .map(d => ({ ...d, _effectiveRating: getEffectiveMovieRating(d) }))
+                .filter(d => d._effectiveRating)
+                .map(d => ({ ...d, _numeric: parseStarRating(d._effectiveRating) }))
+                .sort((a, b) => b._numeric - a._numeric)
+                .slice(0, 10);
+
+            if (topMovies.length > 0) {
+                const row = document.getElementById('topRatedMoviesRow');
+                row.innerHTML = topMovies.map(item => `
+                    <div class="poster-card" data-title="${item.title}" onclick="window.location.href='movies.html'">
+                        <img src="./assets/images/movies/${item.poster}" alt="${item.title}"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="poster-fallback">${item.title}</div>
+                        <div class="poster-rating-badge">${item._effectiveRating}</div>
+                    </div>
+                `).join('');
+                document.getElementById('topRatedMoviesSection').style.display = 'block';
             }
         }
 

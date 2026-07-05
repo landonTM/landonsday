@@ -23,8 +23,17 @@
     <div class="modal-overlay" id="reviewModal">
         <div class="modal-box">
             <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
-            <h2 class="modal-title" id="modalTitle"></h2>
-            <div class="modal-meta" id="modalMeta"></div>
+            <div class="modal-poster-row">
+                <div class="modal-poster-thumb" id="modalPosterThumb">
+                    <img id="modalPosterImg" src="" alt=""
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="modal-poster-thumb-fallback">🎬</div>
+                </div>
+                <div class="modal-header-info">
+                    <h2 class="modal-title" id="modalTitle"></h2>
+                    <div class="modal-meta" id="modalMeta"></div>
+                </div>
+            </div>
             <div class="modal-episodes" id="modalEpisodes" style="display:none;"></div>
             <div class="modal-season-label" id="modalSeasonLabel" style="display:none;">Season Overall</div>
             <div class="modal-rating" id="modalRating"></div>
@@ -38,6 +47,7 @@
 
     <script>
         const CATEGORY_ORDER = [
+            { key: "watching", label: "Up Next" },
             { key: "blade", label: "Blade Trilogy" },
             { key: "xmen", label: "X-Men Universe" },
             { key: "raimi", label: "Sony's Spider-Man (Raimi & Webb)" },
@@ -97,6 +107,13 @@
         function openModal(item) {
             document.getElementById('modalTitle').textContent = item.title;
             document.getElementById('modalMeta').textContent = `${item.year} • ${item.type}`;
+
+            const posterImg = document.getElementById('modalPosterImg');
+            const posterFallback = document.querySelector('.modal-poster-thumb-fallback');
+            posterImg.style.display = 'block';
+            posterFallback.style.display = 'none';
+            posterImg.src = `./assets/images/marvel/${item.poster}`;
+            posterImg.alt = item.title;
 
             const episodesEl = document.getElementById('modalEpisodes');
             if (item.episodes && item.episodes.length > 0) {
