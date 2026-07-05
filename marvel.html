@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marvel — Landon's Day</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
 </head>
 <body>
 
@@ -24,6 +25,8 @@
             <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
             <h2 class="modal-title" id="modalTitle"></h2>
             <div class="modal-meta" id="modalMeta"></div>
+            <div class="modal-episodes" id="modalEpisodes" style="display:none;"></div>
+            <div class="modal-season-label" id="modalSeasonLabel" style="display:none;">Season Overall</div>
             <div class="modal-rating" id="modalRating"></div>
             <div class="modal-review" id="modalReview"></div>
         </div>
@@ -44,7 +47,8 @@
             { key: "tv", label: "Marvel Television (Netflix & ABC)" },
             { key: "p3", label: "MCU — Phase Three" },
             { key: "sony", label: "Sony's Spider-Man Universe" },
-            { key: "p4", label: "MCU — Phase Four" }
+            { key: "p4", label: "MCU — Phase Four" },
+            { key: "p5", label: "MCU — Phase Five" }
         ];
 
         async function loadMarvel() {
@@ -64,12 +68,16 @@
                 heading.textContent = cat.label;
                 section.appendChild(heading);
 
+                const rowWrap = document.createElement('div');
+                rowWrap.className = 'poster-row-wrap';
+
                 const row = document.createElement('div');
                 row.className = 'poster-row';
 
                 items.forEach(item => {
                     const card = document.createElement('div');
                     card.className = 'poster-card';
+                    card.setAttribute('data-title', item.title);
                     card.innerHTML = `
                         <img src="./assets/images/marvel/${item.poster}" alt="${item.title}"
                              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -80,7 +88,8 @@
                     row.appendChild(card);
                 });
 
-                section.appendChild(row);
+                rowWrap.appendChild(row);
+                section.appendChild(rowWrap);
                 container.appendChild(section);
             });
         }
@@ -88,6 +97,19 @@
         function openModal(item) {
             document.getElementById('modalTitle').textContent = item.title;
             document.getElementById('modalMeta').textContent = `${item.year} • ${item.type}`;
+
+            const episodesEl = document.getElementById('modalEpisodes');
+            if (item.episodes && item.episodes.length > 0) {
+                episodesEl.innerHTML = item.episodes.map(ep =>
+                    `<div class="modal-episode-row"><span class="ep-name">${ep.title}</span><span class="ep-rating">${ep.rating || ''}</span></div>`
+                ).join('');
+                episodesEl.style.display = 'block';
+                document.getElementById('modalSeasonLabel').style.display = 'block';
+            } else {
+                episodesEl.style.display = 'none';
+                episodesEl.innerHTML = '';
+                document.getElementById('modalSeasonLabel').style.display = 'none';
+            }
 
             const ratingEl = document.getElementById('modalRating');
             ratingEl.textContent = item.rating ? item.rating : '';
