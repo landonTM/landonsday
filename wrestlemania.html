@@ -32,9 +32,10 @@
         <div class="filter-group">
             <label for="sortSelect">Sort by:</label>
             <select id="sortSelect">
-                <option value="default">Match Order</option>
                 <option value="high">Rating: High to Low</option>
                 <option value="low">Rating: Low to High</option>
+                <option value="date-desc">Date: Newest First</option>
+                <option value="date-asc">Date: Oldest First</option>
             </select>
         </div>
     </div>
@@ -101,19 +102,26 @@
                     filter.appendChild(opt);
                 });
 
+            function parseMatchDate(text) {
+                const cleaned = text.replace(/(\d+)(st|nd|rd|th)/, '$1');
+                return new Date(cleaned);
+            }
+
             function applySort() {
                 const rows = Array.from(document.querySelectorAll('#matchTable tbody tr'));
                 const mode = sortSelect.value;
 
-                if (mode === 'high' || mode === 'low') {
-                    rows.sort((a, b) => {
+                rows.sort((a, b) => {
+                    if (mode === 'high' || mode === 'low') {
                         const ratingA = extractRating(a.children[0].innerText);
                         const ratingB = extractRating(b.children[0].innerText);
                         return mode === 'high' ? ratingB - ratingA : ratingA - ratingB;
-                    });
-                } else {
-                    rows.sort((a, b) => a.dataset.originalIndex - b.dataset.originalIndex);
-                }
+                    } else {
+                        const dateA = parseMatchDate(a.children[1].innerText);
+                        const dateB = parseMatchDate(b.children[1].innerText);
+                        return mode === 'date-desc' ? dateB - dateA : dateA - dateB;
+                    }
+                });
 
                 const tbody = document.querySelector('#matchTable tbody');
                 rows.forEach(row => tbody.appendChild(row));
