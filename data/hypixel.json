@@ -14,65 +14,257 @@
     {
       "name": "Bedwars",
       "stats": [
-        { "label": "Level", "value": "77★" },
-        { "label": "Wins", "value": "431" },
-        { "label": "Losses", "value": "478" },
-        { "label": "Final Kills", "value": "1,589" },
-        { "label": "Final Deaths", "value": "464" },
-        { "label": "Beds Broken", "value": "1,086" }
-      ]
+        {
+          "label": "Level",
+          "value": "77★"
+        },
+        {
+          "label": "Wins",
+          "value": "431"
+        },
+        {
+          "label": "Losses",
+          "value": "478"
+        },
+        {
+          "label": "Final Kills",
+          "value": "1,589"
+        },
+        {
+          "label": "Final Deaths",
+          "value": "464"
+        },
+        {
+          "label": "Beds Broken",
+          "value": "1,086"
+        }
+      ],
+      "icon": "shears"
     },
     {
       "name": "SkyWars",
       "stats": [
-        { "label": "Kills", "value": "10,516" },
-        { "label": "Wins", "value": "1,666" },
-        { "label": "Losses", "value": "4,941" },
-        { "label": "Deaths", "value": "4,999" },
-        { "label": "Games Played", "value": "2,521" }
-      ]
+        {
+          "label": "Kills",
+          "value": "10,516"
+        },
+        {
+          "label": "Wins",
+          "value": "1,666"
+        },
+        {
+          "label": "Losses",
+          "value": "4,941"
+        },
+        {
+          "label": "Deaths",
+          "value": "4,999"
+        },
+        {
+          "label": "Games Played",
+          "value": "2,521"
+        }
+      ],
+      "icon": "feather"
     },
     {
       "name": "Duels — Classic",
       "stats": [
-        { "label": "Wins", "value": "1,415" },
-        { "label": "Losses", "value": "190" },
-        { "label": "Kills", "value": "1,410" },
-        { "label": "Deaths", "value": "195" }
-      ]
+        {
+          "label": "Wins",
+          "value": "1,415"
+        },
+        {
+          "label": "Losses",
+          "value": "190"
+        },
+        {
+          "label": "Kills",
+          "value": "1,410"
+        },
+        {
+          "label": "Deaths",
+          "value": "195"
+        }
+      ],
+      "icon": "fishing_rod"
     },
     {
       "name": "Duels — UHC (Solo)",
       "stats": [
-        { "label": "Wins", "value": "1,425" },
-        { "label": "Losses", "value": "160" },
-        { "label": "Kills", "value": "1,485" },
-        { "label": "Deaths", "value": "160" }
-      ]
+        {
+          "label": "Wins",
+          "value": "1,425"
+        },
+        {
+          "label": "Losses",
+          "value": "160"
+        },
+        {
+          "label": "Kills",
+          "value": "1,485"
+        },
+        {
+          "label": "Deaths",
+          "value": "160"
+        }
+      ],
+      "icon": "golden_apple"
     },
     {
       "name": "Guess The Build",
+      "icon": "painting",
       "stats": [
-        { "label": "Wins", "value": "420" },
-        { "label": "Correct Guesses", "value": "3,620" }
+        {
+          "label": "Wins",
+          "value": "420"
+        },
+        {
+          "label": "Correct Guesses",
+          "value": "3,620"
+        }
       ]
     },
     {
       "name": "Murder Mystery",
       "stats": [
-        { "label": "Wins", "value": "365" },
-        { "label": "Kills", "value": "514" },
-        { "label": "Deaths", "value": "238" },
-        { "label": "Wins as Murderer", "value": "19" },
-        { "label": "Wins as Detective", "value": "37" }
-      ]
-    },
-    {
-      "name": "SkyBlock",
-      "stats": [
-        { "label": "Profiles", "value": "Tomato, Strawberry, Cucumber" },
-        { "label": "Note", "value": "Skill levels & networth need a separate SkyBlock API call" }
-      ]
+        {
+          "label": "Wins",
+          "value": "365"
+        },
+        {
+          "label": "Kills",
+          "value": "514"
+        },
+        {
+          "label": "Deaths",
+          "value": "238"
+        },
+        {
+          "label": "Wins as Murderer",
+          "value": "19"
+        },
+        {
+          "label": "Wins as Detective",
+          "value": "37"
+        }
+      ],
+      "icon": "iron_sword"
     }
-  ]
+  ],
+  "skyblock": {
+    "profile_name": "Tomato",
+    "first_join": "February 17, 2020",
+    "overall_level": 212,
+    "average_skill_level": 44.9,
+    "purse": "567.29M",
+    "bank": "417.19M",
+    "networth": "4.78B",
+    "non_cosmetic_networth": "4.51B",
+    "fairy_souls": "233 / 273",
+    "skills": [
+      {
+        "name": "Alchemy",
+        "level": 50
+      },
+      {
+        "name": "Carpentry",
+        "level": 36
+      },
+      {
+        "name": "Combat",
+        "level": 39
+      },
+      {
+        "name": "Enchanting",
+        "level": 60
+      },
+      {
+        "name": "Farming",
+        "level": 60
+      },
+      {
+        "name": "Fishing",
+        "level": 41
+      },
+      {
+        "name": "Foraging",
+        "level": 45
+      },
+      {
+        "name": "Hunting",
+        "level": 15
+      },
+      {
+        "name": "Mining",
+        "level": 50
+      },
+      {
+        "name": "Runecrafting",
+        "level": 25
+      },
+      {
+        "name": "Social",
+        "level": 5
+      },
+      {
+        "name": "Taming",
+        "level": 53
+      }
+    ],
+    "slayers": [
+      {
+        "name": "Zombie",
+        "tier": 8
+      },
+      {
+        "name": "Spider",
+        "tier": 6
+      },
+      {
+        "name": "Wolf",
+        "tier": 6
+      },
+      {
+        "name": "Enderman",
+        "tier": 4
+      },
+      {
+        "name": "Blaze",
+        "tier": 0
+      },
+      {
+        "name": "Vampire",
+        "tier": 0
+      }
+    ],
+    "top_pets": [
+      {
+        "name": "Elephant",
+        "tier": "Legendary"
+      },
+      {
+        "name": "Golden Dragon",
+        "tier": "Legendary"
+      },
+      {
+        "name": "Mooshroom Cow",
+        "tier": "Legendary"
+      },
+      {
+        "name": "Slug",
+        "tier": "Legendary"
+      },
+      {
+        "name": "Ocelot",
+        "tier": "Legendary"
+      }
+    ],
+    "coop_members": [
+      {
+        "uuid": "7b441042bbe9405a81fe48597f56d98a",
+        "name": "Unfavorited"
+      }
+    ]
+  }
 }

@@ -290,6 +290,9 @@ header h1 {
 
 .stat-block {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .stat-number {
@@ -298,6 +301,10 @@ header h1 {
   color: #00aaff;
   text-shadow: 0 0 16px rgba(0, 170, 255, 0.4);
   line-height: 1;
+  min-height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .stat-label {
@@ -1248,6 +1255,15 @@ header h1 {
   cursor: default;
 }
 
+.games-page .archive-page-btn {
+  border-color: rgba(0, 170, 255, 0.35);
+  color: #00aaff;
+}
+
+.games-page .archive-page-btn:hover:not(:disabled) {
+  background-color: rgba(0, 170, 255, 0.15);
+}
+
 .archive-page-label {
   color: #999;
   font-size: 0.9rem;
@@ -1345,31 +1361,68 @@ header h1 {
 }
 
 /* ---- Hypixel stats cards ---- */
-.hypixel-top-row {
+.hypixel-layout {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
   gap: 2rem;
-  flex-wrap: wrap;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto 2rem;
   padding: 0 1.5rem;
+  flex-wrap: wrap;
+}
+
+.hypixel-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+#skinCanvas {
+  margin-top: 40px;
+}
+
+#skinCanvas2 {
+  margin-top: 130px;
 }
 
 .skin-canvas {
   cursor: grab;
   flex-shrink: 0;
+  border-radius: 8px;
+  margin: 0 auto;
 }
 
 .skin-canvas:active {
   cursor: grabbing;
 }
 
+.hypixel-right-col {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .hypixel-general-strip {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.75rem;
+}
+
+.hypixel-general-strip .stat-block {
+  min-height: 62px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  gap: 2rem;
+}
+
+.hypixel-general-strip .stat-number {
+  font-size: 1.2rem !important;
+  line-height: 1.25;
+  min-height: 1.5rem;
 }
 
 .hypixel-game-grid {
@@ -1383,6 +1436,8 @@ header h1 {
   border: 1px solid #2c2c2c;
   border-radius: 10px;
   padding: 1.1rem 1.25rem;
+  min-height: 230px;
+  box-sizing: border-box;
 }
 
 .hypixel-game-card h3 {
@@ -1391,6 +1446,16 @@ header h1 {
   letter-spacing: 0.04em;
   color: #00aaff;
   margin: 0 0 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hypixel-icon {
+  width: 22px;
+  height: 22px;
+  image-rendering: pixelated;
+  flex-shrink: 0;
 }
 
 .hypixel-stat-row {
@@ -1414,6 +1479,80 @@ header h1 {
   color: #fff;
   font-weight: bold;
   text-align: right;
+}
+
+@font-face {
+  font-family: 'Minecraftia';
+  src: url('../fonts/Minecraftia.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ---- Hypixel section: Minecraft-style font throughout ---- */
+#hypixelSection,
+#hypixelSection * {
+  font-family: 'Minecraftia', 'Bebas Neue', 'Segoe UI', sans-serif;
+}
+
+.skyblock-panel {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(160deg, #181818, #101010);
+  border: 1px solid #2c2c2c;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.skyblock-panel-title {
+  font-family: 'Bebas Neue', 'Segoe UI', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  color: #55d454;
+  margin: 0 0 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skyblock-key-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.6rem;
+  border-bottom: 1px solid #2c2c2c;
+}
+
+.skyblock-key-stats .stat-number {
+  font-size: 1.05rem !important;
+  min-height: 1.3rem;
+}
+
+.skyblock-coop-stat img {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  image-rendering: pixelated;
+  background-color: #222;
+}
+
+.skyblock-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.skyblock-column h4 {
+  color: #55d454;
+  font-size: 0.85rem;
+  margin: 0 0 0.25rem;
+}
+
+.skyblock-column .hypixel-stat-row {
+  padding: 0.12rem 0;
+  font-size: 0.78rem;
 }
 
 /* ---- Games page: Most Played showcase cards (landscape) ---- */
@@ -1489,7 +1628,7 @@ header h1 {
   right: 0;
   padding: 0.4rem 0.5rem;
   background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-  color: #ffd54a;
+  color: #00aaff;
   font-size: 0.78rem;
   text-align: center;
 }
@@ -1984,6 +2123,10 @@ footer {
 
   .game-list-title {
     max-width: 100%;
+  }
+
+  .skyblock-columns {
+    grid-template-columns: 1fr;
   }
 
   .library-table thead {

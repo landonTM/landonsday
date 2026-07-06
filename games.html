@@ -17,7 +17,7 @@
     <meta name="twitter:image" content="https://www.landonday.com/assets/images/games.png">
 
 </head>
-<body>
+<body class="games-page">
 
         <nav class="site-nav">
         <a class="site-nav-logo" href="index">Landon's Day</a>
@@ -48,14 +48,20 @@
         </div>
     </div>
 
-    <div class="movies-section">
-        <h2 class="movies-section-heading">Hypixel Stats</h2>
-        <p class="movies-section-subheading" id="hypixelUpdatedCaption"></p>
-        <div class="hypixel-top-row">
-            <canvas id="skinCanvas" class="skin-canvas"></canvas>
-            <div class="hypixel-general-strip" id="hypixelGeneralStrip"></div>
+    <div class="movies-section" id="hypixelSection">
+        <h2 class="movies-section-heading" style="text-align:center;">Hypixel Stats</h2>
+        <p class="movies-section-subheading" id="hypixelUpdatedCaption" style="text-align:center;"></p>
+        <div class="hypixel-layout">
+            <div class="hypixel-left-col">
+                <canvas id="skinCanvas" class="skin-canvas"></canvas>
+                <canvas id="skinCanvas2" class="skin-canvas"></canvas>
+            </div>
+            <div class="hypixel-right-col">
+                <div class="hypixel-general-strip" id="hypixelGeneralStrip"></div>
+                <div class="hypixel-game-grid" id="hypixelGameGrid"></div>
+                <div class="skyblock-panel" id="skyblockPanel"></div>
+            </div>
         </div>
-        <div class="hypixel-game-grid" id="hypixelGameGrid"></div>
     </div>
 
     <div class="movies-section">
@@ -80,20 +86,45 @@
         <p>&copy; 2026 Landon's Day. All rights reserved.</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/skinview3d@3.1.0/bundles/skinview3d.bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skinview3d@3.4.1/bundles/skinview3d.bundle.js"></script>
     <script>
         (function () {
-            const skinViewer = new skinview3d.SkinViewer({
-                canvas: document.getElementById("skinCanvas"),
-                width: 200,
-                height: 300,
-                skin: "https://crafatar.com/skins/e934205f-1ca2-49a7-9f42-0baf325d65fe"
-            });
-            skinViewer.controls.enableRotate = true;
-            skinViewer.controls.enableZoom = true;
-            skinViewer.controls.enablePan = false;
-            skinViewer.autoRotate = false;
-            skinViewer.zoom = 0.9;
+            const canvas = document.getElementById("skinCanvas");
+            try {
+                const skinViewer = new skinview3d.SkinViewer({
+                    canvas: canvas,
+                    width: 260,
+                    height: 380,
+                    skin: "./assets/images/skin.png"
+                });
+                skinViewer.controls.enableRotate = true;
+                skinViewer.controls.enableZoom = true;
+                skinViewer.controls.enablePan = false;
+                skinViewer.autoRotate = false;
+                skinViewer.zoom = 0.95;
+                skinViewer.background = null;
+            } catch (err) {
+                console.error("Skin viewer failed to load:", err);
+                canvas.parentElement.innerHTML = '<p style="color:#888; font-style:italic;">Skin viewer unavailable right now.</p>';
+            }
+
+            const canvas2 = document.getElementById("skinCanvas2");
+            try {
+                const skinViewer2 = new skinview3d.SkinViewer({
+                    canvas: canvas2,
+                    width: 260,
+                    height: 380,
+                    skin: "./assets/images/coop-skin.png"
+                });
+                skinViewer2.controls.enableRotate = true;
+                skinViewer2.controls.enableZoom = true;
+                skinViewer2.controls.enablePan = false;
+                skinViewer2.autoRotate = false;
+                skinViewer2.zoom = 0.95;
+                skinViewer2.background = null;
+            } catch (err) {
+                console.error("Second skin viewer failed to load:", err);
+            }
         })();
     </script>
 
@@ -307,7 +338,10 @@
             const grid = document.getElementById('hypixelGameGrid');
             grid.innerHTML = data.games.map(game => `
                 <div class="hypixel-game-card">
-                    <h3>${game.name}</h3>
+                    <h3>
+                        <img class="hypixel-icon" src="https://raw.githubusercontent.com/InventivetalentDev/minecraft-assets/1.20.4/assets/minecraft/textures/item/${game.icon}.png" alt="" onerror="this.style.display='none';">
+                        ${game.name}
+                    </h3>
                     ${game.stats.map(s => `
                         <div class="hypixel-stat-row">
                             <span class="hypixel-stat-label">${s.label}</span>
@@ -316,6 +350,65 @@
                     `).join('')}
                 </div>
             `).join('');
+
+            if (data.skyblock) {
+                renderSkyblock(data.skyblock);
+            }
+        }
+
+        function renderSkyblock(sb) {
+            const panel = document.getElementById('skyblockPanel');
+            panel.innerHTML = `
+                <h3 class="skyblock-panel-title">
+                    <img class="hypixel-icon" src="https://raw.githubusercontent.com/InventivetalentDev/minecraft-assets/1.20.4/assets/minecraft/textures/item/grass_block.png" alt="" onerror="this.style.display='none';">
+                    SkyBlock — ${sb.profile_name} Profile
+                </h3>
+
+                <div class="skyblock-key-stats">
+                    <div class="stat-block"><div class="stat-number">${sb.overall_level}</div><div class="stat-label">Skill Level</div></div>
+                    <div class="stat-block"><div class="stat-number">${sb.networth}</div><div class="stat-label">Networth</div></div>
+                    <div class="stat-block"><div class="stat-number">${sb.purse}</div><div class="stat-label">Purse</div></div>
+                    <div class="stat-block"><div class="stat-number">${sb.bank}</div><div class="stat-label">Bank</div></div>
+                    <div class="stat-block"><div class="stat-number">${sb.fairy_souls}</div><div class="stat-label">Fairy Souls</div></div>
+                    <div class="stat-block"><div class="stat-number" style="font-size:1.1rem;">${sb.first_join}</div><div class="stat-label">First Joined</div></div>
+                    ${sb.coop_members.map(m => `
+                        <div class="stat-block skyblock-coop-stat">
+                            <img src="./assets/images/coop-face.png" alt="${m.name}">
+                            <div class="stat-label">${m.name}</div>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="skyblock-columns">
+                    <div class="skyblock-column">
+                        <h4>Skills</h4>
+                        ${sb.skills.map(s => `
+                            <div class="hypixel-stat-row">
+                                <span class="hypixel-stat-label">${s.name}</span>
+                                <span class="hypixel-stat-value">${s.level}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="skyblock-column">
+                        <h4>Slayers</h4>
+                        ${sb.slayers.map(s => `
+                            <div class="hypixel-stat-row">
+                                <span class="hypixel-stat-label">${s.name}</span>
+                                <span class="hypixel-stat-value">Tier ${s.tier}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="skyblock-column">
+                        <h4>Top Pets</h4>
+                        ${sb.top_pets.map(p => `
+                            <div class="hypixel-stat-row">
+                                <span class="hypixel-stat-label">${p.name}</span>
+                                <span class="hypixel-stat-value">${p.tier}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
         }
 
         loadHypixel();
