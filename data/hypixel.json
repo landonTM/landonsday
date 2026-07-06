@@ -1,0 +1,78 @@
+{
+  "last_updated": "July 5, 2026",
+  "general": {
+    "username": "landay",
+    "first_login": "June 8, 2015",
+    "last_login": "July 3, 2026",
+    "rank": "MVP+",
+    "highest_monthly_rank": "MVP++ (Superstar)",
+    "network_level": 179,
+    "karma": "24,790,400",
+    "achievement_points": 7600
+  },
+  "games": [
+    {
+      "name": "Bedwars",
+      "stats": [
+        { "label": "Level", "value": "77★" },
+        { "label": "Wins", "value": "431" },
+        { "label": "Losses", "value": "478" },
+        { "label": "Final Kills", "value": "1,589" },
+        { "label": "Final Deaths", "value": "464" },
+        { "label": "Beds Broken", "value": "1,086" }
+      ]
+    },
+    {
+      "name": "SkyWars",
+      "stats": [
+        { "label": "Kills", "value": "10,516" },
+        { "label": "Wins", "value": "1,666" },
+        { "label": "Losses", "value": "4,941" },
+        { "label": "Deaths", "value": "4,999" },
+        { "label": "Games Played", "value": "2,521" }
+      ]
+    },
+    {
+      "name": "Duels — Classic",
+      "stats": [
+        { "label": "Wins", "value": "1,415" },
+        { "label": "Losses", "value": "190" },
+        { "label": "Kills", "value": "1,410" },
+        { "label": "Deaths", "value": "195" }
+      ]
+    },
+    {
+      "name": "Duels — UHC (Solo)",
+      "stats": [
+        { "label": "Wins", "value": "1,425" },
+        { "label": "Losses", "value": "160" },
+        { "label": "Kills", "value": "1,485" },
+        { "label": "Deaths", "value": "160" }
+      ]
+    },
+    {
+      "name": "Guess The Build",
+      "stats": [
+        { "label": "Wins", "value": "420" },
+        { "label": "Correct Guesses", "value": "3,620" }
+      ]
+    },
+    {
+      "name": "Murder Mystery",
+      "stats": [
+        { "label": "Wins", "value": "365" },
+        { "label": "Kills", "value": "514" },
+        { "label": "Deaths", "value": "238" },
+        { "label": "Wins as Murderer", "value": "19" },
+        { "label": "Wins as Detective", "value": "37" }
+      ]
+    },
+    {
+      "name": "SkyBlock",
+      "stats": [
+        { "label": "Profiles", "value": "Tomato, Strawberry, Cucumber" },
+        { "label": "Note", "value": "Skill levels & networth need a separate SkyBlock API call" }
+      ]
+    }
+  ]
+}

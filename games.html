@@ -36,22 +36,291 @@
         <h1 class="page-hero-title">Games</h1>
     </div>
 
-    <div class="coming-soon">
-        <div class="coming-soon-card">
-            <span class="coming-soon-badge">In Progress</span>
-            <h2>My Library & Stats</h2>
-            <p>This section is getting a full overhaul — pulling in my actual game library and live stats instead of just a couple of cover images.</p>
-            <ul class="coming-soon-list">
-                <li>My imported Steam library</li>
-                <li>Marvel Rivals stats</li>
-                <li>Overwatch stats</li>
-            </ul>
+    <div class="stats-strip" id="statsStrip">
+        <!-- filled in by JS -->
+    </div>
+    <p id="lastUpdatedCaption" style="text-align: center; color: #666; font-size: 0.8rem; margin: -0.5rem 0 1.5rem;"></p>
+
+    <div class="mcu-row-section" id="mostPlayedSection" style="display:none;">
+        <h2 class="mcu-row-heading">Most Played</h2>
+        <div class="poster-row-wrap">
+            <div class="poster-row" id="mostPlayedRow"></div>
         </div>
+    </div>
+
+    <div class="movies-section">
+        <h2 class="movies-section-heading">Hypixel Stats</h2>
+        <p class="movies-section-subheading" id="hypixelUpdatedCaption"></p>
+        <div class="hypixel-top-row">
+            <canvas id="skinCanvas" class="skin-canvas"></canvas>
+            <div class="hypixel-general-strip" id="hypixelGeneralStrip"></div>
+        </div>
+        <div class="hypixel-game-grid" id="hypixelGameGrid"></div>
+    </div>
+
+    <div class="movies-section">
+        <h2 class="movies-section-heading">Full Library</h2>
+        <p class="movies-section-subheading">Every game in my Steam library. Click a column header to sort, or click a row to open its store page.</p>
+        <input type="text" class="archive-search" id="librarySearch" placeholder="Search my library...">
+        <table class="library-table" id="libraryTable">
+            <thead>
+                <tr>
+                    <th data-sort="name">Game</th>
+                    <th data-sort="hours">Hours Played</th>
+                    <th data-sort="pct">% of Playtime</th>
+                    <th data-sort="recent">Last Played</th>
+                </tr>
+            </thead>
+            <tbody id="libraryTableBody"></tbody>
+        </table>
+        <div class="archive-pagination" id="libraryPagination"></div>
     </div>
 
     <footer>
         <p>&copy; 2026 Landon's Day. All rights reserved.</p>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/skinview3d@3.1.0/bundles/skinview3d.bundle.js"></script>
+    <script>
+        (function () {
+            const skinViewer = new skinview3d.SkinViewer({
+                canvas: document.getElementById("skinCanvas"),
+                width: 200,
+                height: 300,
+                skin: "https://crafatar.com/skins/e934205f-1ca2-49a7-9f42-0baf325d65fe"
+            });
+            skinViewer.controls.enableRotate = true;
+            skinViewer.controls.enableZoom = true;
+            skinViewer.controls.enablePan = false;
+            skinViewer.autoRotate = false;
+            skinViewer.zoom = 0.9;
+        })();
+    </script>
+
+    <script>
+        let allGames = [];
+        let currentPage = 1;
+        let currentSortKey = 'hours';
+        let currentSortDir = 'desc';
+        let currentSearch = '';
+        const PAGE_SIZE = 10;
+
+        function renderMostPlayed(games) {
+            const row = document.getElementById('mostPlayedRow');
+            const top10 = games.slice(0, 10);
+            row.innerHTML = top10.map(g => `
+                <div class="game-card" title="${g.name}">
+                    <img src="${g.header_image}" alt="${g.name}" loading="lazy"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="game-card-fallback">${g.name}</div>
+                    <div class="game-card-badge">${g.hours}h &middot; ${g.pct}%</div>
+                </div>
+            `).join('');
+            document.getElementById('mostPlayedSection').style.display = 'block';
+        }
+
+        function renderStats(gameCount, totalHours, topGame) {
+            document.getElementById('statsStrip').innerHTML = `
+                <div class="stat-block">
+                    <div class="stat-number">${gameCount}</div>
+                    <div class="stat-label">Games Owned</div>
+                </div>
+                <div class="stat-block">
+                    <div class="stat-number">${totalHours.toLocaleString()}</div>
+                    <div class="stat-label">Hours Played</div>
+                </div>
+                <div class="stat-block">
+                    <div class="stat-number" style="font-size: 1.4rem;">${topGame}</div>
+                    <div class="stat-label">Most Played</div>
+                </div>
+            `;
+        }
+
+        function updateSortIndicators() {
+            document.querySelectorAll('#libraryTable th').forEach(th => {
+                const key = th.getAttribute('data-sort');
+                const base = th.textContent.replace(/ [▲▼]$/, '');
+                th.textContent = base;
+                if (key === currentSortKey) {
+                    th.textContent += currentSortDir === 'asc' ? ' ▲' : ' ▼';
+                }
+            });
+        }
+
+        function renderLibrary() {
+            const tbody = document.getElementById('libraryTableBody');
+            const paginationEl = document.getElementById('libraryPagination');
+            tbody.innerHTML = '';
+            paginationEl.innerHTML = '';
+
+            let games = allGames.filter(g => g.name.toLowerCase().includes(currentSearch.toLowerCase()));
+
+            const dir = currentSortDir === 'asc' ? 1 : -1;
+            games.sort((a, b) => {
+                if (currentSortKey === 'name') return a.name.localeCompare(b.name) * dir;
+                if (currentSortKey === 'hours') return (a.minutes - b.minutes) * dir;
+                if (currentSortKey === 'pct') return (a.pct - b.pct) * dir;
+                if (currentSortKey === 'recent') return (a.last_played_ts - b.last_played_ts) * dir;
+                return 0;
+            });
+
+            updateSortIndicators();
+
+            if (games.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; color:#888; font-style:italic;">No games match that search.</td></tr>';
+                return;
+            }
+
+            const totalPages = Math.max(1, Math.ceil(games.length / PAGE_SIZE));
+            currentPage = Math.min(currentPage, totalPages);
+            const start = (currentPage - 1) * PAGE_SIZE;
+            const pageItems = games.slice(start, start + PAGE_SIZE);
+
+            pageItems.forEach(g => {
+                const tr = document.createElement('tr');
+                tr.style.cursor = 'pointer';
+                tr.addEventListener('click', () => {
+                    window.open(`https://store.steampowered.com/app/${g.appid}`, '_blank', 'noopener');
+                });
+                tr.innerHTML = `
+                    <td data-label="Game" style="text-align:left; display:flex; align-items:center; gap:0.6rem;">
+                        <span class="library-thumb-wrap">
+                            <img src="${g.header_image}" alt="" loading="lazy" class="library-thumb-img"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <span class="library-thumb-fallback">🎮</span>
+                        </span>
+                        <span>${g.name}</span>
+                    </td>
+                    <td data-label="Hours Played">${g.hours}</td>
+                    <td data-label="% of Playtime">${g.pct}%</td>
+                    <td data-label="Last Played">${g.last_played || 'Never'}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            if (totalPages > 1) {
+                const prevBtn = document.createElement('button');
+                prevBtn.className = 'archive-page-btn';
+                prevBtn.textContent = '← Prev';
+                prevBtn.disabled = currentPage === 1;
+                prevBtn.addEventListener('click', () => { currentPage--; renderLibrary(); });
+
+                const label = document.createElement('span');
+                label.className = 'archive-page-label';
+                label.textContent = `Page ${currentPage} of ${totalPages}`;
+
+                const nextBtn = document.createElement('button');
+                nextBtn.className = 'archive-page-btn';
+                nextBtn.textContent = 'Next →';
+                nextBtn.disabled = currentPage === totalPages;
+                nextBtn.addEventListener('click', () => { currentPage++; renderLibrary(); });
+
+                paginationEl.appendChild(prevBtn);
+                paginationEl.appendChild(label);
+                paginationEl.appendChild(nextBtn);
+            }
+        }
+
+        document.getElementById('librarySearch').addEventListener('input', (e) => {
+            currentSearch = e.target.value;
+            currentPage = 1;
+            renderLibrary();
+        });
+
+        document.querySelectorAll('#libraryTable th').forEach(th => {
+            th.style.cursor = 'pointer';
+            th.addEventListener('click', () => {
+                const key = th.getAttribute('data-sort');
+                if (currentSortKey === key) {
+                    currentSortDir = currentSortDir === 'asc' ? 'desc' : 'asc';
+                } else {
+                    currentSortKey = key;
+                    currentSortDir = key === 'name' ? 'asc' : 'desc';
+                }
+                currentPage = 1;
+                renderLibrary();
+            });
+        });
+
+        async function loadGames() {
+            let data = { games: [], game_count: 0, total_hours: 0 };
+            try {
+                const res = await fetch('data/games.json');
+                data = await res.json();
+            } catch (e) {
+                console.log('games.json not available yet');
+            }
+
+            allGames = data.games || [];
+            if (allGames.length === 0) return;
+
+            renderStats(data.game_count, data.total_hours, allGames[0].name);
+
+            if (data.last_updated) {
+                document.getElementById('lastUpdatedCaption').textContent = `Library snapshot last updated: ${data.last_updated}`;
+            }
+
+            renderMostPlayed(allGames);
+            renderLibrary();
+        }
+
+        async function loadHypixel() {
+            let data = null;
+            try {
+                const res = await fetch('data/hypixel.json');
+                data = await res.json();
+            } catch (e) {
+                console.log('hypixel.json not available yet');
+                return;
+            }
+
+            document.getElementById('hypixelUpdatedCaption').textContent = `Stats last updated: ${data.last_updated}`;
+
+            const g = data.general;
+            document.getElementById('hypixelGeneralStrip').innerHTML = `
+                <div class="stat-block">
+                    <div class="stat-number" style="font-size:1.4rem;">${g.rank}</div>
+                    <div class="stat-label">Current Rank</div>
+                </div>
+                <div class="stat-block">
+                    <div class="stat-number">${g.network_level}</div>
+                    <div class="stat-label">Network Level</div>
+                </div>
+                <div class="stat-block">
+                    <div class="stat-number" style="font-size:1.4rem;">${g.karma}</div>
+                    <div class="stat-label">Karma</div>
+                </div>
+                <div class="stat-block">
+                    <div class="stat-number">${g.achievement_points}</div>
+                    <div class="stat-label">Achievement Points</div>
+                </div>
+                <div class="stat-block">
+                    <div class="stat-number" style="font-size:1.1rem;">${g.first_login}</div>
+                    <div class="stat-label">First Login</div>
+                </div>
+                <div class="stat-block">
+                    <div class="stat-number" style="font-size:1.1rem;">${g.last_login}</div>
+                    <div class="stat-label">Last Login</div>
+                </div>
+            `;
+
+            const grid = document.getElementById('hypixelGameGrid');
+            grid.innerHTML = data.games.map(game => `
+                <div class="hypixel-game-card">
+                    <h3>${game.name}</h3>
+                    ${game.stats.map(s => `
+                        <div class="hypixel-stat-row">
+                            <span class="hypixel-stat-label">${s.label}</span>
+                            <span class="hypixel-stat-value">${s.value}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            `).join('');
+        }
+
+        loadHypixel();
+        loadGames();
+    </script>
 
 
     <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top" title="Back to top">&uarr;</button>
