@@ -48,6 +48,61 @@
         </div>
     </div>
 
+    <div class="movies-section">
+        <h2 class="movies-section-heading" style="text-align:center; font-size:2.2rem;">Marvel Rivals Stats</h2>
+        <p class="movies-section-subheading" id="rivalsUpdatedCaption" style="text-align:center;"></p>
+
+        <div class="rivals-grid">
+            <div class="rivals-left-col">
+                <div class="rivals-banner">
+                    <img class="rivals-banner-icon" src="" alt="">
+                    <span class="rivals-banner-name"></span>
+                </div>
+
+                <div class="rivals-main-body">
+                    <div class="rivals-hero-select-col" id="rivalsHeroSelect"></div>
+
+                    <div class="rivals-stats-col">
+                        <h3 class="rivals-subheading">Stat Highlights</h3>
+                        <div class="rivals-highlight-row" id="rivalsHighlights"></div>
+
+                        <h3 class="rivals-subheading">Statistics</h3>
+                        <div class="rivals-stat-table-wrap">
+                            <table class="rivals-stat-table">
+                                <thead>
+                                    <tr><th>Statistic</th><th>Total</th><th>Best</th><th>Avg/10 Mins</th></tr>
+                                </thead>
+                                <tbody id="rivalsStatTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rivals-right-col">
+                <div class="rivals-tile rivals-tile-1">
+                    <div class="rivals-tile-header"><span>Roles</span></div>
+                    <div class="rivals-tile-body" id="rivalsRolesBody"></div>
+                </div>
+
+                <div class="rivals-tile rivals-tile-2">
+                    <div class="rivals-tile-header"><span>Top Heroes</span></div>
+                    <div class="rivals-tile-body" id="rivalsTopHeroesBody"></div>
+                </div>
+
+                <div class="rivals-tile rivals-tile-3">
+                    <div class="rivals-tile-body rivals-summary-body" id="rivalsSummaryBody"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="movies-section">
+        <h2 class="movies-section-heading">My Lord Heroes</h2>
+        <p class="movies-section-subheading">The seven I actually main.</p>
+        <div class="rivals-hero-row" id="rivalsHeroRow"></div>
+    </div>
+
     <div class="movies-section" id="hypixelSection">
         <h2 class="movies-section-heading" style="text-align:center;">Hypixel Stats</h2>
         <p class="movies-section-subheading" id="hypixelUpdatedCaption" style="text-align:center;"></p>
@@ -411,8 +466,183 @@
             `;
         }
 
+        async function loadRivals() {
+            let data = null;
+            try {
+                const res = await fetch('data/rivals.json');
+                data = await res.json();
+            } catch (e) {
+                console.log('rivals.json not available yet');
+                return;
+            }
+
+            document.getElementById('rivalsUpdatedCaption').textContent = `Stats last updated: ${data.last_updated}`;
+            document.querySelector('.rivals-banner-icon').src = data.profile.icon;
+            document.querySelector('.rivals-banner-name').textContent = data.profile.username;
+
+            function renderRivalsHighlights(highlights) {
+                document.getElementById('rivalsHighlights').innerHTML = highlights.map(h => `
+                    <div class="rivals-highlight-block">
+                        <div class="stat-number" style="font-size:1.6rem;">${h.value}</div>
+                        <div class="stat-label">${h.label}</div>
+                    </div>
+                `).join('');
+            }
+
+            function renderRivalsStatTable(statistics) {
+                document.getElementById('rivalsStatTableBody').innerHTML = statistics.map(s => `
+                    <tr>
+                        <td>${s.label}</td>
+                        <td>${s.total}</td>
+                        <td>${s.best}</td>
+                        <td>${s.avg}</td>
+                    </tr>
+                `).join('');
+            }
+
+            function selectHero(index) {
+                document.querySelectorAll('.rivals-hero-select-item').forEach((el, i) => {
+                    el.classList.toggle('active', i === index);
+                });
+                const hero = data.heroStats[index];
+                renderRivalsHighlights(hero.highlights);
+                renderRivalsStatTable(hero.statistics);
+            }
+
+            // The stored "hours" field is rounded to 1 decimal, which collapses
+            // several sub-1-hour heroes to identical values (e.g. six heroes all
+            // showing "0.6 HRS") even though their actual minutes differ. Pull the
+            // exact figure from each hero's own "Time Played" statistic instead so
+            // sorting and display are both precise below the 1-hour mark.
+            function getMinutesPlayed(hero) {
+                const tp = hero.statistics.find(s => s.label === 'Time Played');
+                if (!tp) return hero.hours * 60;
+                const str = tp.total;
+                if (str.includes('Hrs')) return parseFloat(str) * 60;
+                if (str.includes('<')) return 0.5;
+                const match = str.match(/(\d+)/);
+                return match ? parseInt(match[1], 10) : hero.hours * 60;
+            }
+
+            function formatPlaytime(hero) {
+                const mins = getMinutesPlayed(hero);
+                if (mins < 60) {
+                    const tp = hero.statistics.find(s => s.label === 'Time Played');
+                    return tp ? tp.total.toUpperCase() : `${Math.round(mins)} MINS`;
+                }
+                return `${hero.hours} HRS`;
+            }
+
+            data.heroStats.sort((a, b) => getMinutesPlayed(b) - getMinutesPlayed(a));
+
+            const maxMinutes = Math.max(...data.heroStats.map(getMinutesPlayed));
+
+            document.getElementById('rivalsHeroSelect').innerHTML = data.heroStats.map((hero, i) => `
+                <div class="rivals-hero-select-item${i === 0 ? ' active' : ''}" data-index="${i}" title="">
+                    <div class="rivals-hero-select-fill" style="width:${(getMinutesPlayed(hero) / maxMinutes * 100).toFixed(1)}%; background: linear-gradient(to right, ${hero.color}, ${hero.color}99);"></div>
+                    <img class="rivals-hero-select-icon" src="${hero.icon}" alt="${hero.name}" onerror="this.style.visibility='hidden';">
+                    <span class="rivals-hero-select-hours">${formatPlaytime(hero)}</span>
+                    <span class="rivals-hero-select-check">&#10003;</span>
+                </div>
+            `).join('');
+
+            document.querySelectorAll('.rivals-hero-select-item').forEach(el => {
+                el.addEventListener('click', () => selectHero(parseInt(el.getAttribute('data-index'), 10)));
+            });
+
+            if (data.heroStats && data.heroStats.length > 0) {
+                renderRivalsHighlights(data.heroStats[0].highlights);
+                renderRivalsStatTable(data.heroStats[0].statistics);
+            }
+
+            document.getElementById('rivalsRolesBody').innerHTML = data.roles.map(r => `
+                <div class="rivals-role-item">
+                    <img class="rivals-role-icon" src="${r.icon}" alt="${r.name}" onerror="this.style.visibility='hidden';">
+                    <div class="rivals-role-info">
+                        <div class="rivals-role-name">${r.name}</div>
+                        <div class="rivals-role-wr">WR ${r.wr} &middot; ${r.record}</div>
+                    </div>
+                    <div class="rivals-role-kda">${r.kda}<br><span style="color:#888;font-size:0.7rem;" title="K / D / A per game">${r.kdaSplit}</span></div>
+                </div>
+            `).join('');
+
+            document.getElementById('rivalsTopHeroesBody').innerHTML = data.topHeroes.map(h => `
+                <div class="rivals-role-item">
+                    <img class="rivals-role-icon" src="${h.icon}" alt="${h.name}" onerror="this.style.visibility='hidden';">
+                    <div class="rivals-role-info">
+                        <div class="rivals-role-name">${h.name}</div>
+                        <div class="rivals-role-wr">WR ${h.wr} &middot; ${h.record}</div>
+                    </div>
+                    <div class="rivals-role-kda">${h.kda}</div>
+                </div>
+            `).join('');
+
+            const s = data.summary;
+            const total = s.kda.k + s.kda.d + s.kda.a;
+            document.getElementById('rivalsSummaryBody').innerHTML = `
+                <div class="rivals-winrate-wrap">
+                    <div class="rivals-winrate-circle" style="--wr:${s.winRate}%;">
+                        <span class="rivals-winrate-pct">${s.winRate}%</span>
+                    </div>
+                    <div class="rivals-winrate-meta">
+                        <div>${s.record}</div>
+                        <div style="color:#888;font-size:0.8rem;">${s.games}</div>
+                    </div>
+                </div>
+                <div class="rivals-kda-summary">
+                    <div class="rivals-kda-bar-row">
+                        <span class="rivals-kda-bar-label" style="color:#6fdc8c;">K</span>
+                        <div class="rivals-kda-bar-track"><div class="rivals-kda-bar-fill" style="width:${(s.kda.k/total*100).toFixed(0)}%; background:#6fdc8c;"></div></div>
+                        <span style="color:#fff;font-size:0.8rem;">${s.kda.k}</span>
+                    </div>
+                    <div class="rivals-kda-bar-row">
+                        <span class="rivals-kda-bar-label" style="color:#e05c5c;">D</span>
+                        <div class="rivals-kda-bar-track"><div class="rivals-kda-bar-fill" style="width:${(s.kda.d/total*100).toFixed(0)}%; background:#e05c5c;"></div></div>
+                        <span style="color:#fff;font-size:0.8rem;">${s.kda.d}</span>
+                    </div>
+                    <div class="rivals-kda-bar-row">
+                        <span class="rivals-kda-bar-label" style="color:#ffd54a;">A</span>
+                        <div class="rivals-kda-bar-track"><div class="rivals-kda-bar-fill" style="width:${(s.kda.a/total*100).toFixed(0)}%; background:#ffd54a;"></div></div>
+                        <span style="color:#fff;font-size:0.8rem;">${s.kda.a}</span>
+                    </div>
+                    <div style="text-align:center;margin-top:0.4rem;color:#00aaff;font-weight:bold;">${s.kda.ratio} KDA Ratio</div>
+                </div>
+            `;
+
+            document.getElementById('rivalsHeroRow').innerHTML = data.heroes.map(h => `
+                <div class="rivals-hero-card">
+                    <img src="${h.image}" alt="${h.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="rivals-hero-card-fallback">${h.name}</div>
+                    <div class="rivals-hero-card-name">${h.name}</div>
+                </div>
+            `).join('');
+
+            syncRivalsColumnHeight();
+        }
+
+        function syncRivalsColumnHeight() {
+            const leftCol = document.querySelector('.rivals-left-col');
+            const rightCol = document.querySelector('.rivals-right-col');
+            const tile1 = document.querySelector('.rivals-tile-1');
+            const tile2 = document.querySelector('.rivals-tile-2');
+            const tile3 = document.querySelector('.rivals-tile-3');
+            if (!leftCol || !rightCol || !tile1 || !tile2 || !tile3) return;
+
+            if (window.innerWidth <= 768) {
+                leftCol.style.height = '';
+                return;
+            }
+
+            const rowGap = parseFloat(getComputedStyle(rightCol).rowGap) || 20;
+            const naturalRightHeight = tile1.offsetHeight + rowGap + tile2.offsetHeight + rowGap + tile3.offsetHeight;
+            leftCol.style.height = naturalRightHeight + 'px';
+        }
+
+        window.addEventListener('resize', syncRivalsColumnHeight);
+
         loadHypixel();
         loadGames();
+        loadRivals();
     </script>
 
 
