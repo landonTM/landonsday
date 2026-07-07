@@ -166,28 +166,6 @@
             }
 
             document.getElementById('reviewModal').classList.add('open');
-
-            // TEMPORARY DEBUG - remove once the mobile modal-width bug is diagnosed
-            requestAnimationFrame(() => {
-                const box = document.querySelector('.modal-box');
-                const overlay = document.getElementById('reviewModal');
-                const boxRect = box.getBoundingClientRect();
-                const overlayRect = overlay.getBoundingClientRect();
-                const debugText = `DEBUG — window.innerWidth: ${window.innerWidth} | ` +
-                    `documentElement.clientWidth: ${document.documentElement.clientWidth} | ` +
-                    `overlay width: ${overlayRect.width.toFixed(1)} | ` +
-                    `box width: ${boxRect.width.toFixed(1)} | ` +
-                    `box left: ${boxRect.left.toFixed(1)} | ` +
-                    `box right: ${boxRect.right.toFixed(1)}`;
-                let debugEl = document.getElementById('tempDebugLine');
-                if (!debugEl) {
-                    debugEl = document.createElement('div');
-                    debugEl.id = 'tempDebugLine';
-                    debugEl.style.cssText = 'background:#ff0055;color:#fff;font-size:11px;padding:6px;margin-bottom:10px;font-family:monospace;word-break:break-all;';
-                    box.insertBefore(debugEl, box.firstChild);
-                }
-                debugEl.textContent = debugText;
-            });
         }
 
         function closeModal() {
