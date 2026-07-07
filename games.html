@@ -400,6 +400,7 @@
         }
 
         const HYPIXEL_WORKER_URL = 'https://gentle-violet-8223.landont2015.workers.dev/hypixel/player';
+        const RIVALS_WORKER_URL = 'https://gentle-violet-8223.landont2015.workers.dev/rivals/player';
 
         function networkLevel(exp) {
             return Math.floor((Math.sqrt((exp || 0) + 15312.5) - (125 / Math.sqrt(2))) / (25 * Math.sqrt(2)));
@@ -640,6 +641,140 @@
             `;
         }
 
+        // Turns a hero display name into the kebab-case filename convention
+        // used by our local icon assets (./assets/images/rivals/{slug}.jpg).
+        // This assumes the live API's hero_name strings match our existing
+        // display names closely enough to slugify the same way - worth a
+        // visual check once this goes live, since the API's exact casing
+        // for newer heroes isn't something I can verify without a real key.
+        function slugifyHeroName(name) {
+            return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+        }
+
+        // v1 (free tier) has no per-role breakdown like v2's roles_played,
+        // so we bucket heroes_ranked into roles ourselves. Verified against
+        // the current 51-hero roster. A couple of notes:
+        //  - "Hulk" is the API's in-game name for the hero we display as
+        //    "Bruce Banner" - both keys map to Vanguard just in case.
+        //  - Deadpool is Multi-Role in-game and the API only tracks one
+        //    Deadpool bucket (it can't tell which role he was played as per
+        //    match), so he's intentionally left out of role aggregation -
+        //    he still counts toward the overall Overview totals.
+        //  - New hero releases won't be in this map until it's updated by
+        //    hand; unmapped heroes are skipped for Roles but still counted
+        //    in the Overview total (a console warning flags this).
+        const HERO_ROLE_MAP = {
+            'thor': 'Vanguard', 'magneto': 'Vanguard', 'doctor strange': 'Vanguard',
+            'devil dinosaur': 'Vanguard', 'captain america': 'Vanguard', 'emma frost': 'Vanguard',
+            'rogue': 'Vanguard', 'peni parker': 'Vanguard', 'groot': 'Vanguard',
+            'venom': 'Vanguard', 'bruce banner': 'Vanguard', 'hulk': 'Vanguard',
+            'the thing': 'Vanguard', 'angela': 'Vanguard',
+            'moon knight': 'Duelist', 'star-lord': 'Duelist', 'cyclops': 'Duelist',
+            'iron fist': 'Duelist', 'mister fantastic': 'Duelist', 'the punisher': 'Duelist',
+            'wolverine': 'Duelist', 'blade': 'Duelist', 'phoenix': 'Duelist',
+            'iron man': 'Duelist', 'hela': 'Duelist', 'psylocke': 'Duelist',
+            'namor': 'Duelist', 'scarlet witch': 'Duelist', 'daredevil': 'Duelist',
+            'winter soldier': 'Duelist', 'squirrel girl': 'Duelist', 'human torch': 'Duelist',
+            'black widow': 'Duelist', 'hawkeye': 'Duelist', 'spider-man': 'Duelist',
+            'storm': 'Duelist', 'magik': 'Duelist', 'elsa bloodstone': 'Duelist',
+            'black panther': 'Duelist', 'black cat': 'Duelist',
+            'rocket raccoon': 'Strategist', 'gambit': 'Strategist',
+            'jeff the land shark': 'Strategist', 'ultron': 'Strategist', 'loki': 'Strategist',
+            'mantis': 'Strategist', 'adam warlock': 'Strategist', 'invisible woman': 'Strategist',
+            'cloak & dagger': 'Strategist', 'cloak and dagger': 'Strategist',
+            'luna snow': 'Strategist', 'white fox': 'Strategist'
+        };
+
+        // Builds { roles, topHeroes, summary } from a live /rivals/player (v1)
+        // response, in the exact shape the render functions below expect.
+        // Everything else (heroStats, heroes, profile) still comes from the
+        // static snapshot - the API has no equivalent of our per-hero
+        // Statistics table (Final Hits, Solo KOs, Accuracy, unique stats, etc).
+        function processRivalsLive(raw) {
+            const os = raw.overall_stats;
+            const heroes = raw.heroes_ranked || [];
+
+            const roleTotals = {
+                Vanguard: { matches: 0, wins: 0, k: 0, d: 0, a: 0 },
+                Duelist: { matches: 0, wins: 0, k: 0, d: 0, a: 0 },
+                Strategist: { matches: 0, wins: 0, k: 0, d: 0, a: 0 }
+            };
+            heroes.forEach(h => {
+                const role = HERO_ROLE_MAP[(h.hero_name || '').toLowerCase()];
+                if (!role) {
+                    if (h.hero_name) console.warn(`Rivals: "${h.hero_name}" isn't in HERO_ROLE_MAP, skipping for Roles tile`);
+                    return;
+                }
+                const t = roleTotals[role];
+                t.matches += Number(h.matches) || 0;
+                t.wins += Number(h.wins) || 0;
+                t.k += Number(h.kills) || 0;
+                t.d += Number(h.deaths) || 0;
+                t.a += Number(h.assists) || 0;
+            });
+
+            const roles = ['Strategist', 'Duelist', 'Vanguard'].map(name => {
+                const t = roleTotals[name];
+                const losses = t.matches - t.wins;
+                const kdaNum = t.d > 0 ? (t.k + t.a) / t.d : 0;
+                const perGame = m => t.matches > 0 ? (m / t.matches).toFixed(1) : '0.0';
+                return {
+                    name,
+                    icon: `./assets/images/rivals/${name.toLowerCase()}.jpg`,
+                    wr: t.matches > 0 ? (t.wins / t.matches * 100).toFixed(1) + '%' : '0.0%',
+                    record: `${t.wins}\u00A0W / ${losses}\u00A0L`,
+                    kda: kdaNum.toFixed(2),
+                    kdaSplit: `${perGame(t.k)} / ${perGame(t.d)} / ${perGame(t.a)}`
+                };
+            });
+
+            const heroList = heroes.slice().sort((x, y) => (y.play_time || 0) - (x.play_time || 0));
+            const topHeroes = heroList.slice(0, 5).map(h => {
+                const matches = Number(h.matches) || 0;
+                const wins = Number(h.wins) || 0;
+                const losses = matches - wins;
+                const k = Number(h.kills) || 0;
+                const d = Number(h.deaths) || 0;
+                const a = Number(h.assists) || 0;
+                const kdaNum = d > 0 ? (k + a) / d : 0;
+                return {
+                    name: h.hero_name,
+                    icon: `./assets/images/rivals/${slugifyHeroName(h.hero_name)}.jpg`,
+                    wr: matches > 0 ? (wins / matches * 100).toFixed(1) + '%' : '0.0%',
+                    record: `${wins}\u00A0W / ${losses}\u00A0L`,
+                    kda: kdaNum.toFixed(2)
+                };
+            });
+
+            // v1's overall_stats splits ranked/unranked; total_matches/total_wins
+            // are already combined at the top level, but kills/deaths/assists
+            // only exist inside the ranked/unranked sub-objects, so sum those.
+            const ranked = os.ranked || {};
+            const unranked = os.unranked || {};
+            const totalMatches = Number(os.total_matches) || 0;
+            const totalWins = Number(os.total_wins) || 0;
+            const totalLosses = totalMatches - totalWins;
+            const totalKills = (Number(ranked.total_kills) || 0) + (Number(unranked.total_kills) || 0);
+            const totalDeaths = (Number(ranked.total_deaths) || 0) + (Number(unranked.total_deaths) || 0);
+            const totalAssists = (Number(ranked.total_assists) || 0) + (Number(unranked.total_assists) || 0);
+            const overallKda = totalDeaths > 0 ? (totalKills + totalAssists) / totalDeaths : 0;
+            const perGameTotal = n => totalMatches > 0 ? (n / totalMatches) : 0;
+
+            const summary = {
+                winRate: totalMatches > 0 ? Math.round(totalWins / totalMatches * 100) : 0,
+                record: `${totalWins}\u00A0W / ${totalLosses}\u00A0L`,
+                games: `${totalMatches.toLocaleString()} games`,
+                kda: {
+                    k: Number(perGameTotal(totalKills).toFixed(1)),
+                    d: Number(perGameTotal(totalDeaths).toFixed(1)),
+                    a: Number(perGameTotal(totalAssists).toFixed(1)),
+                    ratio: overallKda.toFixed(2)
+                }
+            };
+
+            return { roles, topHeroes, summary };
+        }
+
         async function loadRivals() {
             let data = null;
             try {
@@ -650,7 +785,23 @@
                 return;
             }
 
-            document.getElementById('rivalsUpdatedCaption').textContent = `Stats last updated: ${data.last_updated}`;
+            let isLive = false;
+            try {
+                const res = await fetch(RIVALS_WORKER_URL);
+                if (!res.ok) throw new Error('Worker request failed');
+                const raw = await res.json();
+                const live = processRivalsLive(raw);
+                data.roles = live.roles;
+                data.topHeroes = live.topHeroes;
+                data.summary = live.summary;
+                isLive = true;
+            } catch (e) {
+                console.log('Live Rivals fetch failed, using snapshot for Overview/Roles/Top Heroes too:', e);
+            }
+
+            document.getElementById('rivalsUpdatedCaption').textContent = isLive
+                ? 'Overview, Roles & Top Heroes: live · Hero detail: manual snapshot'
+                : `Stats last updated: ${data.last_updated}`;
             document.querySelector('.rivals-banner-icon').src = data.profile.icon;
             document.querySelector('.rivals-banner-name').textContent = data.profile.username;
 
