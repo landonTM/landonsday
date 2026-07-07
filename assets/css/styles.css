@@ -1915,7 +1915,7 @@ footer {
     transform: none;
     gap: 1rem;
     width: 100%;
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .site-nav-link {
@@ -2082,8 +2082,7 @@ footer {
 
   .modal-box {
     padding: 1.1rem;
-    width: calc(100vw - 3rem);
-    max-width: calc(100vw - 3rem);
+    width: 100%;
     box-sizing: border-box;
   }
 
@@ -2733,5 +2732,51 @@ footer {
   .rivals-hero-card {
     width: 110px;
     height: 155px;
+  }
+
+  .rivals-stat-table-wrap {
+    overflow-x: hidden;
+  }
+
+  .rivals-stat-table {
+    table-layout: fixed;
+  }
+
+  .rivals-stat-table th,
+  .rivals-stat-table td {
+    padding: 0.4rem 0.3rem;
+    font-size: 0.72rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .rivals-stat-table th:first-child,
+  .rivals-stat-table td:first-child {
+    width: 38%;
+  }
+
+  .rivals-stat-table th:not(:first-child),
+  .rivals-stat-table td:not(:first-child) {
+    width: 20.67%;
+  }
+
+  .hypixel-layout {
+    justify-content: center;
+  }
+
+  .hypixel-left-col {
+    flex-direction: row;
+    gap: 0.75rem;
+    margin: 0 auto;
+  }
+
+  #skinCanvas,
+  #skinCanvas2 {
+    margin-top: 0;
+  }
+
+  .skin-canvas {
+    width: 130px;
+    height: 190px;
   }
 }
