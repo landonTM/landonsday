@@ -787,7 +787,14 @@
 
             let isLive = false;
             try {
-                const res = await fetch(RIVALS_WORKER_URL);
+                // Plain fetch() has no built-in timeout, and a slow Worker
+                // cold-start or slow upstream API response would otherwise
+                // block every render call below indefinitely. Bound it so a
+                // hung live source always falls back within a few seconds.
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 4000);
+                const res = await fetch(RIVALS_WORKER_URL, { signal: controller.signal });
+                clearTimeout(timeoutId);
                 if (!res.ok) throw new Error('Worker request failed');
                 const raw = await res.json();
                 const live = processRivalsLive(raw);
@@ -796,7 +803,7 @@
                 data.summary = live.summary;
                 isLive = true;
             } catch (e) {
-                console.log('Live Rivals fetch failed, using snapshot for Overview/Roles/Top Heroes too:', e);
+                console.log('Live Rivals fetch failed or timed out, using snapshot for Overview/Roles/Top Heroes too:', e);
             }
 
             document.getElementById('rivalsUpdatedCaption').textContent = isLive
