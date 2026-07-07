@@ -2645,8 +2645,8 @@ footer {
 
 .rivals-hero-card {
   position: relative;
-  width: 150px;
-  height: 210px;
+  width: 130px;
+  height: 182px;
   border-radius: 8px;
   overflow: hidden;
   background: linear-gradient(160deg, #2c2c2c, #141414);
@@ -2691,6 +2691,16 @@ footer {
   font-size: 0.85rem;
   text-align: center;
   letter-spacing: 0.03em;
+}
+
+.rivals-hero-card-date {
+  display: inline-block;
+  margin-top: 0.15rem;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 0.65rem;
+  font-weight: normal;
+  letter-spacing: normal;
+  color: #00aaff;
 }
 
 @media (max-width: 768px) {

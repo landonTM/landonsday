@@ -80,32 +80,39 @@
   },
   "heroes": [
     {
-      "name": "Gambit",
-      "image": "./assets/images/rivals/gambit.jpg"
-    },
-    {
-      "name": "Jeff The Land Shark",
-      "image": "./assets/images/rivals/jeff-the-land-shark.jpg"
-    },
-    {
-      "name": "Magneto",
-      "image": "./assets/images/rivals/magneto.jpg"
-    },
-    {
       "name": "Moon Knight",
-      "image": "./assets/images/rivals/moon-knight.jpg"
-    },
-    {
-      "name": "Rocket Raccoon",
-      "image": "./assets/images/rivals/rocket-raccoon.jpg"
-    },
-    {
-      "name": "Star-Lord",
-      "image": "./assets/images/rivals/star-lord.jpg"
+      "image": "./assets/images/rivals/moon-knight-lord.jpg",
+      "dateObtained": "April 9, 2025"
     },
     {
       "name": "Thor",
-      "image": "./assets/images/rivals/thor.jpg"
+      "image": "./assets/images/rivals/thor-lord.jpg",
+      "dateObtained": "July 21, 2025"
+    },
+    {
+      "name": "Rocket Raccoon",
+      "image": "./assets/images/rivals/rocket-raccoon-lord.jpg",
+      "dateObtained": "October 1, 2025"
+    },
+    {
+      "name": "Star-Lord",
+      "image": "./assets/images/rivals/star-lord-lord.jpg",
+      "dateObtained": "January 24, 2026"
+    },
+    {
+      "name": "Gambit",
+      "image": "./assets/images/rivals/gambit-lord.jpg",
+      "dateObtained": "February 10, 2026"
+    },
+    {
+      "name": "Magneto",
+      "image": "./assets/images/rivals/magneto-lord.jpg",
+      "dateObtained": "February 14, 2026"
+    },
+    {
+      "name": "Jeff The Land Shark",
+      "image": "./assets/images/rivals/jeff-the-land-shark-lord.jpg",
+      "dateObtained": "February 27, 2026"
     }
   ],
   "heroStats": [

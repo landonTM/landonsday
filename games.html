@@ -98,8 +98,8 @@
     </div>
 
     <div class="movies-section">
-        <h2 class="movies-section-heading">My Lord Heroes</h2>
-        <p class="movies-section-subheading">The seven I actually main.</p>
+        <h2 class="movies-section-heading" style="text-align:center; font-size:2.2rem;">My Lord Heroes</h2>
+        <p class="movies-section-subheading" style="text-align:center;">My current lorded heroes and when I got them.</p>
         <div class="rivals-hero-row" id="rivalsHeroRow"></div>
     </div>
 
@@ -945,7 +945,7 @@
                 <div class="rivals-hero-card">
                     <img src="${h.image}" alt="${h.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="rivals-hero-card-fallback">${h.name}</div>
-                    <div class="rivals-hero-card-name">${h.name}</div>
+                    <div class="rivals-hero-card-name">${h.name}<br><span class="rivals-hero-card-date">${h.dateObtained}</span></div>
                 </div>
             `).join('');
 
