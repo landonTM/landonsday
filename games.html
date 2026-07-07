@@ -8,12 +8,12 @@
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Games — Landon's Day">
-    <meta property="og:description" content="My game library and stats, coming soon.">
+    <meta property="og:description" content="Live Marvel Rivals stats, my Steam library, Hypixel stats, and a 360° look at our Minecraft Realm.">
     <meta property="og:url" content="https://www.landonday.com/games">
     <meta property="og:image" content="https://www.landonday.com/assets/images/games.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Games — Landon's Day">
-    <meta name="twitter:description" content="My game library and stats, coming soon.">
+    <meta name="twitter:description" content="Live Marvel Rivals stats, my Steam library, Hypixel stats, and a 360° look at our Minecraft Realm.">
     <meta name="twitter:image" content="https://www.landonday.com/assets/images/games.png">
 
 </head>
@@ -103,6 +103,33 @@
         <div class="rivals-hero-row" id="rivalsHeroRow"></div>
     </div>
 
+    <div class="movies-section">
+        <h2 class="movies-section-heading" style="text-align:center; font-size:2.2rem;">Full Library</h2>
+        <p class="movies-section-subheading" style="text-align:center;">Every game in my Steam library. Click a column header to sort, or click a row to open its store page.</p>
+        <input type="text" class="archive-search" id="librarySearch" placeholder="Search my library...">
+        <table class="library-table" id="libraryTable">
+            <thead>
+                <tr>
+                    <th data-sort="name">Game</th>
+                    <th data-sort="hours">Hours Played</th>
+                    <th data-sort="pct">% of Playtime</th>
+                    <th data-sort="recent">Last Played</th>
+                </tr>
+            </thead>
+            <tbody id="libraryTableBody"></tbody>
+        </table>
+        <div class="archive-pagination" id="libraryPagination"></div>
+    </div>
+
+    <div class="movies-section">
+        <h2 class="movies-section-heading" style="text-align:center; font-size:2.2rem;">Our Realm</h2>
+        <p class="movies-section-subheading" style="text-align:center;">A 360&deg; look around our Realm's main area.</p>
+        <div class="realm-spin-wrap" id="realmSpinWrap" tabindex="0" aria-label="Interactive 360 degree view of our Minecraft Realm - drag or use arrow keys to rotate">
+            <img class="realm-spin-img" id="realmSpinImg" src="./assets/images/realm/realm-1.jpg" alt="Our Realm" draggable="false" onerror="this.style.display='none'; this.nextElementSibling.textContent='Realm images not found';">
+            <div class="realm-spin-hint">&larr; Drag to rotate &rarr;</div>
+        </div>
+    </div>
+
     <div class="movies-section" id="hypixelSection">
         <h2 class="movies-section-heading" style="text-align:center;">Hypixel Stats</h2>
         <p class="movies-section-subheading" id="hypixelUpdatedCaption" style="text-align:center;"></p>
@@ -117,24 +144,6 @@
                 <div class="skyblock-panel" id="skyblockPanel"></div>
             </div>
         </div>
-    </div>
-
-    <div class="movies-section">
-        <h2 class="movies-section-heading">Full Library</h2>
-        <p class="movies-section-subheading">Every game in my Steam library. Click a column header to sort, or click a row to open its store page.</p>
-        <input type="text" class="archive-search" id="librarySearch" placeholder="Search my library...">
-        <table class="library-table" id="libraryTable">
-            <thead>
-                <tr>
-                    <th data-sort="name">Game</th>
-                    <th data-sort="hours">Hours Played</th>
-                    <th data-sort="pct">% of Playtime</th>
-                    <th data-sort="recent">Last Played</th>
-                </tr>
-            </thead>
-            <tbody id="libraryTableBody"></tbody>
-        </table>
-        <div class="archive-pagination" id="libraryPagination"></div>
     </div>
 
     <footer>
@@ -972,9 +981,66 @@
 
         window.addEventListener('resize', syncRivalsColumnHeight);
 
+        // Drag-to-rotate 360 viewer for the Realm section. Not a true 3D
+        // model - just cycles through pre-captured angle screenshots based
+        // on drag distance, wrapping around for a continuous spin feel.
+        function initRealmSpin() {
+            const frameCount = 7;
+            const img = document.getElementById('realmSpinImg');
+            const wrap = document.getElementById('realmSpinWrap');
+            if (!img || !wrap) return;
+
+            let current = 0;
+            let dragging = false;
+            let startX = 0;
+            let startFrame = 0;
+            const sensitivity = 40; // px of drag per frame step
+
+            function setFrame(i) {
+                current = ((i % frameCount) + frameCount) % frameCount;
+                img.src = `./assets/images/realm/realm-${current + 1}.jpg`;
+            }
+
+            function onStart(x) {
+                dragging = true;
+                startX = x;
+                startFrame = current;
+                img.style.cursor = 'grabbing';
+            }
+            function onMove(x) {
+                if (!dragging) return;
+                const steps = Math.round((x - startX) / sensitivity);
+                setFrame(startFrame - steps);
+            }
+            function onEnd() {
+                dragging = false;
+                img.style.cursor = 'grab';
+            }
+
+            img.addEventListener('mousedown', e => { onStart(e.clientX); e.preventDefault(); });
+            window.addEventListener('mousemove', e => onMove(e.clientX));
+            window.addEventListener('mouseup', onEnd);
+
+            img.addEventListener('touchstart', e => onStart(e.touches[0].clientX), { passive: true });
+            img.addEventListener('touchmove', e => onMove(e.touches[0].clientX), { passive: true });
+            img.addEventListener('touchend', onEnd);
+
+            wrap.addEventListener('keydown', e => {
+                if (e.key === 'ArrowLeft') { setFrame(current - 1); e.preventDefault(); }
+                if (e.key === 'ArrowRight') { setFrame(current + 1); e.preventDefault(); }
+            });
+
+            // Preload all frames so dragging feels instant, not laggy
+            for (let i = 1; i <= frameCount; i++) {
+                const preload = new Image();
+                preload.src = `./assets/images/realm/realm-${i}.jpg`;
+            }
+        }
+
         loadHypixel();
         loadGames();
         loadRivals();
+        initRealmSpin();
     </script>
 
 

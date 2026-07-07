@@ -110,6 +110,13 @@
         </div>
     </div>
 
+    <div class="mcu-row-section" id="mostPlayedGamesSection" style="display:none;">
+        <h2 class="mcu-row-heading">Most Played — Steam Library</h2>
+        <div class="poster-row-wrap">
+            <div class="poster-row" id="mostPlayedGamesRow"></div>
+        </div>
+    </div>
+
     <div class="mcu-row-section" id="topRatedWrestlingSection" style="display:none;">
         <h2 class="mcu-row-heading">Top Rated WrestleMania Matches</h2>
         <div class="poster-row-wrap">
@@ -123,10 +130,6 @@
             <a class="coming-grid-card" href="rosie">
                 <h3>Rosie</h3>
                 <p>Still deciding the format — photo calendar, timeline, or a full Rosie blog.</p>
-            </a>
-            <a class="coming-grid-card" href="games">
-                <h3>Games</h3>
-                <p>My Steam library, plus live Marvel Rivals and Overwatch stats.</p>
             </a>
             <a class="coming-grid-card" href="life">
                 <h3>Life</h3>
@@ -163,6 +166,7 @@
             let marvelData = [];
             let matchesData = [];
             let moviesData = [];
+            let gamesData = [];
 
             try {
                 const marvelRes = await fetch('data/marvel.json');
@@ -185,6 +189,14 @@
                 console.log('movies.json not available yet');
             }
 
+            try {
+                const gamesRes = await fetch('data/games.json');
+                const gamesJson = await gamesRes.json();
+                gamesData = gamesJson.games || [];
+            } catch (e) {
+                console.log('games.json not available yet');
+            }
+
             // ---- Stats strip ----
             const statsStrip = document.getElementById('statsStrip');
             const marvelWatchedCount = marvelData.length;
@@ -192,22 +204,29 @@
             if (marvelData.length > 0) {
                 statsHtml += `
                     <div class="stat-block">
-                        <div class="stat-number">${marvelWatchedCount}</div>
+                        <div class="stat-number" style="color:#ffd54a; text-shadow: 0 0 16px rgba(255, 213, 74, 0.4);">${marvelWatchedCount}</div>
                         <div class="stat-label">Marvel Projects Watched</div>
                     </div>`;
             }
             if (matchesData.length > 0) {
                 statsHtml += `
                     <div class="stat-block">
-                        <div class="stat-number">${matchesData.length}</div>
+                        <div class="stat-number" style="color:#ffd54a; text-shadow: 0 0 16px rgba(255, 213, 74, 0.4);">${matchesData.length}</div>
                         <div class="stat-label">WrestleMania Matches Logged</div>
                     </div>`;
             }
             if (moviesData.length > 0) {
                 statsHtml += `
                     <div class="stat-block">
-                        <div class="stat-number">${moviesData.length}</div>
+                        <div class="stat-number" style="color:#ffd54a; text-shadow: 0 0 16px rgba(255, 213, 74, 0.4);">${moviesData.length}</div>
                         <div class="stat-label">Movies & Shows Logged</div>
+                    </div>`;
+            }
+            if (gamesData.length > 0) {
+                statsHtml += `
+                    <div class="stat-block">
+                        <div class="stat-number" style="color:#ffd54a; text-shadow: 0 0 16px rgba(255, 213, 74, 0.4);">${gamesData.length}</div>
+                        <div class="stat-label">Games in Library</div>
                     </div>`;
             }
             statsStrip.innerHTML = statsHtml;
@@ -232,7 +251,42 @@
                 document.getElementById('topRatedMarvelSection').style.display = 'block';
             }
 
+            // ---- Most Played Games ----
+            const topGames = gamesData
+                .slice()
+                .sort((a, b) => b.hours - a.hours)
+                .slice(0, 10);
+
+            if (topGames.length > 0) {
+                const row = document.getElementById('mostPlayedGamesRow');
+                row.innerHTML = topGames.map(g => `
+                    <div class="game-card" title="${g.name}" style="cursor:pointer;" onclick="window.location.href='games'">
+                        <img src="${g.header_image}" alt="${g.name}" loading="lazy"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="game-card-fallback">${g.name}</div>
+                        <div class="game-card-badge" style="color:#ffd54a;">${g.hours}h &middot; ${g.pct}%</div>
+                    </div>
+                `).join('');
+                document.getElementById('mostPlayedGamesSection').style.display = 'block';
+            }
+
             // ---- Top Rated Wrestling Matches ----
+            // These 10 images are curated specifically for this homepage
+            // row and intentionally don't appear anywhere else on the site
+            // (not on wrestling.html or wrestlemania.html's full table).
+            const MATCH_IMAGES = {
+                'Roman Reigns vs. Cody Rhodes|WrestleMania 39': 'roman-cody.jpg',
+                'Drew McIntyre vs. Sheamus vs. GUNTHER|WrestleMania 39': 'drew-sheamus-gunther.jpg',
+                'The Usos vs. Sami Zayn & Kevin Owens|WrestleMania 39': 'usos-sami-kevin.jpg',
+                'Sami Zayn vs. Johnny Knoxville|WrestleMania 38': 'sami-johnny.jpg',
+                'Cody Rhodes vs. Seth Rollins|WrestleMania 38': 'cody-seth.jpg',
+                'Bianca Belair vs. Becky Lynch|WrestleMania 38': 'bianca-becky.jpg',
+                'Bianca Belair vs. Sasha Banks|WrestleMania 37': 'bianca-sasha.jpg',
+                'Randy Orton vs. Daniel Bryan vs. Batista|WrestleMania 30': 'randy-daniel-batista.jpg',
+                'Rhea Ripley vs. Charlotte|WrestleMania 39': 'rhea-charlotte.jpg',
+                'Roman Reigns vs. Daniel Bryan vs. Edge|WrestleMania 37': 'roman-daniel-edge.jpg'
+            };
+
             const topMatches = matchesData
                 .map(m => ({ ...m, _numeric: parseStarRating(m.rating) }))
                 .filter(m => m._numeric !== null)
@@ -241,14 +295,23 @@
 
             if (topMatches.length > 0) {
                 const row = document.getElementById('topRatedWrestlingRow');
-                row.innerHTML = topMatches.map(m => `
+                row.innerHTML = topMatches.map(m => {
+                    const filename = MATCH_IMAGES[`${m.match}|${m.event}`];
+                    const imgHtml = filename
+                        ? `<img src="./assets/images/wrestling/${filename}" alt="${m.match}" loading="lazy"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">`
+                        : '';
+                    return `
                     <div class="match-card" onclick="window.location.href='wrestlemania'">
-                        <div>
+                        ${imgHtml}
+                        <div class="match-card-fallback" style="${filename ? '' : 'display:flex;'}">${m.match}</div>
+                        <div class="match-card-overlay">
                             <div class="match-card-title">${m.match}</div>
+                            <div class="match-card-rating">${m.rating} • ${m.event}</div>
                         </div>
-                        <div class="match-card-rating">${m.rating} • ${m.event}</div>
                     </div>
-                `).join('');
+                `;
+                }).join('');
                 document.getElementById('topRatedWrestlingSection').style.display = 'block';
             }
 

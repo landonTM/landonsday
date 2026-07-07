@@ -334,11 +334,6 @@ header h1 {
   overflow: hidden;
   background: linear-gradient(160deg, #2c2c2c, #141414);
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0.75rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -348,19 +343,47 @@ header h1 {
   z-index: 2;
 }
 
+.match-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.match-card-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #ccc;
+  background: linear-gradient(160deg, #2c2c2c, #141414);
+}
+
+.match-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem 0.6rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+}
+
 .match-card .match-card-title {
   color: #fff;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: bold;
+  line-height: 1.2;
 }
 
 .match-card .match-card-rating {
-  position: absolute;
-  bottom: 0.4rem;
-  left: 0;
-  right: 0;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: #ffd54a;
+  margin-top: 0.15rem;
 }
 
 /* ---- Category tile row (home page) ---- */
@@ -1370,6 +1393,47 @@ header h1 {
   background: #fff;
 }
 
+/* ---- Realm 360 spin viewer ---- */
+.realm-spin-wrap {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #2c2c2c;
+  background: #111;
+}
+
+.realm-spin-wrap:focus-visible {
+  outline: 2px solid #00aaff;
+  outline-offset: 2px;
+}
+
+.realm-spin-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1920 / 1057;
+  object-fit: cover;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.realm-spin-hint {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
 /* ---- Hypixel stats cards ---- */
 .hypixel-layout {
   display: flex;
@@ -2238,6 +2302,84 @@ footer {
     align-items: flex-start;
     gap: 0.2rem;
   }
+
+  /* ---- Rivals & Hypixel (formerly a separate @media block) ---- */
+  .rivals-grid {
+    flex-direction: column;
+  }
+  .rivals-main-body {
+    flex-direction: column;
+  }
+  .rivals-banner {
+    height: auto;
+    min-height: 110px;
+  }
+  .rivals-hero-select-col {
+    flex-direction: row;
+    flex: 0 0 auto;
+    height: auto;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding-right: 0;
+    padding-bottom: 0.4rem;
+  }
+  .rivals-hero-select-item {
+    flex-shrink: 0;
+  }
+  .rivals-hero-select-hours {
+    white-space: nowrap;
+  }
+  .rivals-hero-card {
+    width: 110px;
+    height: 155px;
+  }
+
+  .rivals-stat-table-wrap {
+    overflow-x: hidden;
+  }
+
+  .rivals-stat-table {
+    table-layout: fixed;
+  }
+
+  .rivals-stat-table th,
+  .rivals-stat-table td {
+    padding: 0.4rem 0.3rem;
+    font-size: 0.72rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .rivals-stat-table th:first-child,
+  .rivals-stat-table td:first-child {
+    width: 38%;
+  }
+
+  .rivals-stat-table th:not(:first-child),
+  .rivals-stat-table td:not(:first-child) {
+    width: 20.67%;
+  }
+
+  .hypixel-layout {
+    justify-content: center;
+  }
+
+  .hypixel-left-col {
+    flex-direction: row;
+    gap: 0.75rem;
+    margin: 0 auto;
+  }
+
+  #skinCanvas,
+  #skinCanvas2 {
+    margin-top: 0;
+  }
+
+  .skin-canvas {
+    width: 130px;
+    height: 190px;
+  }
 }
 /* ============================================================
    MARVEL RIVALS SECTIONS — append this whole block to the end
@@ -2715,83 +2857,4 @@ footer {
   font-weight: normal;
   letter-spacing: normal;
   color: #00aaff;
-}
-
-@media (max-width: 768px) {
-  .rivals-grid {
-    flex-direction: column;
-  }
-  .rivals-main-body {
-    flex-direction: column;
-  }
-  .rivals-banner {
-    height: auto;
-    min-height: 110px;
-  }
-  .rivals-hero-select-col {
-    flex-direction: row;
-    flex: 0 0 auto;
-    height: auto;
-    max-width: 100%;
-    overflow-x: auto;
-    overflow-y: visible;
-    padding-right: 0;
-    padding-bottom: 0.4rem;
-  }
-  .rivals-hero-select-item {
-    flex-shrink: 0;
-  }
-  .rivals-hero-select-hours {
-    white-space: nowrap;
-  }
-  .rivals-hero-card {
-    width: 110px;
-    height: 155px;
-  }
-
-  .rivals-stat-table-wrap {
-    overflow-x: hidden;
-  }
-
-  .rivals-stat-table {
-    table-layout: fixed;
-  }
-
-  .rivals-stat-table th,
-  .rivals-stat-table td {
-    padding: 0.4rem 0.3rem;
-    font-size: 0.72rem;
-    overflow-wrap: break-word;
-    word-break: break-word;
-  }
-
-  .rivals-stat-table th:first-child,
-  .rivals-stat-table td:first-child {
-    width: 38%;
-  }
-
-  .rivals-stat-table th:not(:first-child),
-  .rivals-stat-table td:not(:first-child) {
-    width: 20.67%;
-  }
-
-  .hypixel-layout {
-    justify-content: center;
-  }
-
-  .hypixel-left-col {
-    flex-direction: row;
-    gap: 0.75rem;
-    margin: 0 auto;
-  }
-
-  #skinCanvas,
-  #skinCanvas2 {
-    margin-top: 0;
-  }
-
-  .skin-canvas {
-    width: 130px;
-    height: 190px;
-  }
 }
