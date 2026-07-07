@@ -328,13 +328,59 @@
             });
         });
 
+        const STEAM_WORKER_URL = 'https://gentle-violet-8223.landont2015.workers.dev/steam/library';
+
+        function processSteamRaw(raw) {
+            const games = raw.response.games || [];
+            const totalMinutes = games.reduce((sum, g) => sum + g.playtime_forever, 0);
+
+            const processed = games.map(g => {
+                const minutes = g.playtime_forever;
+                const hours = Math.round((minutes / 60) * 10) / 10;
+                const pct = totalMinutes > 0 ? Math.round((minutes / totalMinutes) * 1000) / 10 : 0;
+                const ts = g.rtime_last_played || 0;
+                const lastPlayed = ts
+                    ? new Date(ts * 1000).toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' })
+                    : null;
+                return {
+                    appid: g.appid,
+                    name: g.name,
+                    minutes,
+                    hours,
+                    pct,
+                    last_played: lastPlayed,
+                    last_played_ts: ts,
+                    header_image: `https://cdn.cloudflare.steamstatic.com/steam/apps/${g.appid}/header.jpg`
+                };
+            });
+
+            processed.sort((a, b) => b.minutes - a.minutes);
+
+            return {
+                game_count: raw.response.game_count,
+                total_hours: Math.round(totalMinutes / 60),
+                games: processed
+            };
+        }
+
         async function loadGames() {
             let data = { games: [], game_count: 0, total_hours: 0 };
+            let isLive = false;
+
             try {
-                const res = await fetch('data/games.json');
-                data = await res.json();
+                const res = await fetch(STEAM_WORKER_URL);
+                if (!res.ok) throw new Error('Worker request failed');
+                const raw = await res.json();
+                data = processSteamRaw(raw);
+                isLive = true;
             } catch (e) {
-                console.log('games.json not available yet');
+                console.log('Live Steam fetch failed, falling back to snapshot:', e);
+                try {
+                    const res = await fetch('data/games.json');
+                    data = await res.json();
+                } catch (e2) {
+                    console.log('games.json not available either');
+                }
             }
 
             allGames = data.games || [];
@@ -342,27 +388,155 @@
 
             renderStats(data.game_count, data.total_hours, allGames[0].name);
 
-            if (data.last_updated) {
-                document.getElementById('lastUpdatedCaption').textContent = `Library snapshot last updated: ${data.last_updated}`;
+            const caption = document.getElementById('lastUpdatedCaption');
+            if (isLive) {
+                caption.textContent = 'Library data: live';
+            } else if (data.last_updated) {
+                caption.textContent = `Library snapshot last updated: ${data.last_updated}`;
             }
 
             renderMostPlayed(allGames);
             renderLibrary();
         }
 
+        const HYPIXEL_WORKER_URL = 'https://gentle-violet-8223.landont2015.workers.dev/hypixel/player';
+
+        function networkLevel(exp) {
+            return Math.floor((Math.sqrt((exp || 0) + 15312.5) - (125 / Math.sqrt(2))) / (25 * Math.sqrt(2)));
+        }
+
+        function formatRank(player) {
+            const map = { NONE: 'Default', VIP: 'VIP', VIP_PLUS: 'VIP+', MVP: 'MVP', MVP_PLUS: 'MVP+' };
+            return map[player.newPackageRank] || 'Default';
+        }
+
+        function formatDate(ms) {
+            if (!ms) return 'Unknown';
+            return new Date(ms).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        }
+
+        function fmt(n) {
+            return (n || 0).toLocaleString();
+        }
+
+        function buildGeneralFromPlayer(player) {
+            return {
+                rank: formatRank(player),
+                network_level: networkLevel(player.networkExp),
+                karma: fmt(player.karma),
+                achievement_points: fmt(player.achievementPoints),
+                first_login: formatDate(player.firstLogin),
+                last_login: formatDate(player.lastLogin)
+            };
+        }
+
+        function buildGamesFromPlayer(player) {
+            const s = player.stats || {};
+            const bw = s.Bedwars || {};
+            const sw = s.SkyWars || {};
+            const du = s.Duels || {};
+            const bb = s.BuildBattle || {};
+            const mm = s.MurderMystery || {};
+            const ach = player.achievements || {};
+
+            return [
+                {
+                    name: 'Bedwars', icon: 'red_wool',
+                    stats: [
+                        { label: 'Level', value: `${fmt(ach.bedwars_level)}★` },
+                        { label: 'Wins', value: fmt(bw.wins_bedwars) },
+                        { label: 'Losses', value: fmt(bw.losses_bedwars) },
+                        { label: 'Final Kills', value: fmt(bw.final_kills_bedwars) },
+                        { label: 'Final Deaths', value: fmt(bw.final_deaths_bedwars) },
+                        { label: 'Beds Broken', value: fmt(bw.beds_broken_bedwars) }
+                    ]
+                },
+                {
+                    name: 'SkyWars', icon: 'feather',
+                    stats: [
+                        { label: 'Kills', value: fmt(sw.kills) },
+                        { label: 'Wins', value: fmt(sw.wins) },
+                        { label: 'Losses', value: fmt(sw.losses) },
+                        { label: 'Deaths', value: fmt(sw.deaths) },
+                        { label: 'Games Played', value: fmt(sw.games) }
+                    ]
+                },
+                {
+                    name: 'Duels — Classic', icon: 'fishing_rod',
+                    stats: [
+                        { label: 'Wins', value: fmt(du.classic_duel_wins) },
+                        { label: 'Losses', value: fmt(du.classic_duel_losses) },
+                        { label: 'Kills', value: fmt(du.classic_duel_kills) },
+                        { label: 'Deaths', value: fmt(du.classic_duel_deaths) }
+                    ]
+                },
+                {
+                    name: 'Duels — UHC (Solo)', icon: 'golden_apple',
+                    stats: [
+                        { label: 'Wins', value: fmt(du.uhc_duel_wins) },
+                        { label: 'Losses', value: fmt(du.uhc_duel_losses) },
+                        { label: 'Kills', value: fmt(du.uhc_duel_kills) },
+                        { label: 'Deaths', value: fmt(du.uhc_duel_deaths) }
+                    ]
+                },
+                {
+                    name: 'Guess The Build', icon: 'painting',
+                    stats: [
+                        { label: 'Wins', value: fmt(bb.wins_guess_the_build) },
+                        { label: 'Correct Guesses', value: fmt(bb.correct_guesses) }
+                    ]
+                },
+                {
+                    name: 'Murder Mystery', icon: 'iron_sword',
+                    stats: [
+                        { label: 'Wins', value: fmt(mm.wins) },
+                        { label: 'Kills', value: fmt(mm.kills) },
+                        { label: 'Deaths', value: fmt(mm.deaths) },
+                        { label: 'Wins as Murderer', value: fmt(mm.murderer_wins) },
+                        { label: 'Wins as Detective', value: fmt(mm.detective_wins) }
+                    ]
+                }
+            ];
+        }
+
         async function loadHypixel() {
-            let data = null;
+            let general = null;
+            let games = null;
+            let isLive = false;
+
             try {
-                const res = await fetch('data/hypixel.json');
-                data = await res.json();
+                const res = await fetch(HYPIXEL_WORKER_URL);
+                if (!res.ok) throw new Error('Worker request failed');
+                const raw = await res.json();
+                const player = raw.player;
+                general = buildGeneralFromPlayer(player);
+                games = buildGamesFromPlayer(player);
+                isLive = true;
             } catch (e) {
-                console.log('hypixel.json not available yet');
-                return;
+                console.log('Live Hypixel fetch failed, falling back to snapshot:', e);
             }
 
-            document.getElementById('hypixelUpdatedCaption').textContent = `Stats last updated: ${data.last_updated}`;
+            // SkyBlock always comes from the static snapshot for now
+            let skyblock = null;
+            let snapshotDate = null;
+            try {
+                const res = await fetch('data/hypixel.json');
+                const snapshot = await res.json();
+                skyblock = snapshot.skyblock;
+                snapshotDate = snapshot.last_updated;
+                if (!general) general = snapshot.general;
+                if (!games) games = snapshot.games;
+            } catch (e) {
+                console.log('hypixel.json snapshot not available');
+            }
 
-            const g = data.general;
+            if (!general) return;
+
+            document.getElementById('hypixelUpdatedCaption').textContent = isLive
+                ? 'Player & game stats: live · SkyBlock profile: manual snapshot'
+                : `Stats last updated: ${snapshotDate}`;
+
+            const g = general;
             document.getElementById('hypixelGeneralStrip').innerHTML = `
                 <div class="stat-block">
                     <div class="stat-number" style="font-size:1.4rem;">${g.rank}</div>
@@ -391,7 +565,7 @@
             `;
 
             const grid = document.getElementById('hypixelGameGrid');
-            grid.innerHTML = data.games.map(game => `
+            grid.innerHTML = games.map(game => `
                 <div class="hypixel-game-card">
                     <h3>
                         <img class="hypixel-icon" src="https://raw.githubusercontent.com/InventivetalentDev/minecraft-assets/1.20.4/assets/minecraft/textures/item/${game.icon}.png" alt="" onerror="this.style.display='none';">
@@ -406,8 +580,8 @@
                 </div>
             `).join('');
 
-            if (data.skyblock) {
-                renderSkyblock(data.skyblock);
+            if (skyblock) {
+                renderSkyblock(skyblock);
             }
         }
 
