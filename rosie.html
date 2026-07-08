@@ -21,14 +21,14 @@
 <body>
 
         <nav class="site-nav">
-        <a class="site-nav-logo" href="index">Landon's Day</a>
+        <a class="site-nav-logo" href="index">Rosie's Night</a>
         <div class="site-nav-links">
-            <a class="site-nav-link" href="marvel">Marvel</a>
-            <a class="site-nav-link" href="movies">Movies</a>
-            <a class="site-nav-link active" href="rosie">Rosie</a>
-            <a class="site-nav-link" href="games">Games</a>
-            <a class="site-nav-link" href="life">Life</a>
-            <a class="site-nav-link" href="wrestling">Wrestling</a>
+            <a class="site-nav-link" href="marvel">Meowvel</a>
+            <a class="site-nav-link" href="movies">Meowvies</a>
+            <a class="site-nav-link active" href="rosie">MEEE!!!!</a>
+            <a class="site-nav-link" href="games">Zoomies</a>
+            <a class="site-nav-link" href="life">Lives, 1/9</a>
+            <a class="site-nav-link" href="wrestling">Catfight</a>
         </div>
     </nav>
 
@@ -44,30 +44,53 @@
                     <div class="rosie-sidebar-avatar">
                         <img src="./assets/images/rosie.jpg" alt="Rosie">
                     </div>
-                    <div class="rosie-sidebar-name">queen_rosie</div>
+                    <div class="rosie-sidebar-name">queen_rosie <span class="rosie-verified-badge" title="Verified Good Girl">&#10003;</span></div>
                     <p class="rosie-sidebar-tagline">professional lap-warmer 🐾 full-time house cat</p>
+                    <div class="rosie-profile-actions">
+                        <button class="rosie-profile-action-btn rosie-profile-action-primary" id="rosieFollowBtn" data-requested="false" onclick="toggleFollowRequest(this)">Follow</button>
+                        <button class="rosie-profile-action-btn" onclick="showToast(&quot;Rosie doesn't do DMs with strangers. Or friends, really.&quot;)">Message</button>
+                    </div>
                     <div class="rosie-sidebar-stats" id="rosieSidebarStats"></div>
                 </div>
 
                 <div class="rosie-sidebar-card">
-                    <h3 class="rosie-sidebar-heading">Top Friends</h3>
-                    <div class="rosie-friends-grid" id="rosieFriendsGrid"></div>
+                    <div class="rosie-sidebar-card-header">
+                        <h3 class="rosie-sidebar-heading">Friends</h3>
+                        <button class="rosie-see-all-btn" onclick="showToast('Full friends list coming soon. Allegedly.')">See All &rsaquo;</button>
+                    </div>
+                    <div class="rosie-friends-scroll">
+                        <div class="rosie-friends-row" id="rosieFriendsGrid"></div>
+                        <div class="rosie-friends-fade"></div>
+                    </div>
+                </div>
+
+                <div class="rosie-sidebar-card">
+                    <h3 class="rosie-sidebar-heading">Story Highlights</h3>
+                    <div class="rosie-highlights-row" id="rosieHighlights"></div>
                 </div>
             </aside>
 
             <main class="rosie-main">
                 <div class="rosie-search-bar">
                     <span class="rosie-search-icon">🔍</span>
-                    <input type="text" class="rosie-search-input" placeholder="Search Rosie's Wall...">
-                </div>
-                <div class="rosie-filter-pills" id="rosieFilterPills">
-                    <button class="rosie-filter-pill active">All Posts</button>
-                    <button class="rosie-filter-pill">Most Liked</button>
-                    <button class="rosie-filter-pill">By Mood</button>
+                    <input type="text" class="rosie-search-input" id="rosieSearchInput" placeholder="Search Rosie's Wall...">
                 </div>
 
                 <div class="rosie-post-grid" id="rosiePostGrid"></div>
+                <div class="rosie-pagination" id="rosiePagination"></div>
             </main>
+
+            <aside class="rosie-right-sidebar">
+                <div class="rosie-sidebar-card">
+                    <h3 class="rosie-sidebar-heading">Groups</h3>
+                    <div class="rosie-groups-list" id="rosieGroupsList"></div>
+                </div>
+
+                <div class="rosie-sidebar-card">
+                    <h3 class="rosie-sidebar-heading">Trending</h3>
+                    <div class="rosie-trending-list" id="rosieTrendingList"></div>
+                </div>
+            </aside>
         </div>
     </div>
 
@@ -83,8 +106,17 @@
 
     <div class="rosie-toast" id="rosieToast"></div>
 
+    <button class="rosie-dm-float" id="rosieDmFloat" aria-label="Open messages" onclick="showToast(&quot;you don't have an account to view messages 🐾&quot;)">
+        <span class="rosie-dm-float-avatars">
+            <span class="rosie-dm-float-avatar" style="background:#e0629b;">🐾</span>
+            <span class="rosie-dm-float-avatar" style="background:#4fb894;">🐾</span>
+        </span>
+        <span class="rosie-dm-float-label">Messages</span>
+        <span class="rosie-dm-float-badge">3</span>
+    </button>
+
     <footer>
-        <p>&copy; 2026 Landon's Day. All rights reserved.</p>
+        <p>&copy; 2026 Rosie's Night. All purrs reserved.</p>
     </footer>
 
     <script>
@@ -97,37 +129,46 @@
                 name: 'Daisy',
                 avatarFile: 'daisy.jpg',
                 color: '#e0629b',
-                bio: "rosie's sister. still not over her moving out. sends her love from afar 🥺"
+                bio: "rosie's sister. still not over her moving out. sends her love from afar 🥺",
+                hasStory: true,
+                storyExcuse: "Daisy's story is down for maintenance — she was mid-cry about missing Rosie and didn't want an audience."
             },
             ciccu_bear: {
                 name: 'Ciccu',
                 avatarFile: 'ciccu.jpg',
                 color: '#5b4a63',
-                bio: "does not care for rosie. has never cared for rosie. will not be starting now."
+                bio: "does not care for rosie. has never cared for rosie. will not be starting now.",
+                hasStory: false
             },
             cocoloco: {
                 name: 'Coco',
                 avatarFile: 'coco.jpg',
                 color: '#4fb894',
-                bio: "no clue how i know this cat but i'm a fan i think???"
+                bio: "no clue how i know this cat but i'm a fan i think???",
+                hasStory: true,
+                storyExcuse: "Coco posted a story but forgot what it was about, so it's been quietly taken down."
             },
             dollybiscotti: {
                 name: 'Dolly',
                 avatarFile: 'dolly.jpg',
                 color: '#d99a2b',
-                bio: "don't really know her but she seems cool so 💯"
+                bio: "don't really know her but she seems cool so 💯",
+                hasStory: true,
+                storyExcuse: "Dolly's story is stuck buffering. She's hyping something. We're just not sure what yet."
             },
             graciepoo: {
                 name: 'Gracie',
                 avatarFile: 'gracie.jpg',
                 color: '#9b6fd1',
-                bio: "rosie's #1 fan from a completely different household. we've never met and that's ok"
+                bio: "rosie's #1 fan from a completely different household. we've never met and that's ok",
+                hasStory: false
             },
             ralphlauren: {
                 name: 'Ralphie',
                 avatarFile: 'ralphie.jpg',
                 color: '#e08a4f',
-                bio: "would love to hang out sometime. still waiting on a reply 🐾"
+                bio: "would love to hang out sometime. still waiting on a reply 🐾",
+                hasStory: false
             }
         };
 
@@ -141,30 +182,171 @@
 
         function formatPostDate(iso) {
             const d = new Date(iso);
-            return '📅 ' + d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            const datePart = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            const timePart = d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+            return `📅 ${datePart} · ${timePart}`;
         }
 
         function renderTopFriends() {
             const grid = document.getElementById('rosieFriendsGrid');
             grid.innerHTML = Object.entries(PET_DATA).map(([username, pet]) => `
-                <button class="rosie-friend" onclick="showPetProfile('${username}')">
-                    <div class="rosie-friend-avatar" style="background:${pet.color};">
-                        ${avatarInnerHtml(username, 'rosie-friend-avatar-fallback')}
+                <div class="rosie-friend">
+                    <button class="rosie-friend-avatar-btn" onclick="handleFriendStoryClick('${username}')" aria-label="View ${pet.name}'s story">
+                        <div class="rosie-friend-ring ${pet.hasStory ? '' : 'rosie-friend-ring-none'}">
+                            <div class="rosie-friend-avatar" style="background:${pet.color};">
+                                ${avatarInnerHtml(username, 'rosie-friend-avatar-fallback')}
+                            </div>
+                        </div>
+                    </button>
+                    <button class="rosie-friend-name-btn" onclick="showPetProfile('${username}')">${pet.name}</button>
+                </div>
+            `).join('');
+        }
+
+        function handleFriendStoryClick(username) {
+            const pet = PET_DATA[username];
+            if (!pet) return;
+            if (pet.hasStory) {
+                showToast(pet.storyExcuse);
+            } else {
+                showToast(`${pet.name} doesn't have an active story right now.`);
+            }
+        }
+
+        // Purely decorative made-up data for the highlights / groups /
+        // trending widgets below — none of this is computed from real
+        // posts, it's set dressing to make the page feel like a living
+        // social site, same spirit as the non-functional search bar.
+        const HIGHLIGHTS_DATA = [
+            {
+                emoji: '😴',
+                label: 'Naps',
+                excuse: "Naps highlight reel is still loading. Much like the naps themselves, it may never finish."
+            },
+            {
+                emoji: '🍗',
+                label: 'Snacks',
+                excuse: "Snacks highlights are classified. Legal got involved after the pantry incident."
+            },
+            {
+                emoji: '🙀',
+                label: 'Chaos',
+                excuse: "Chaos highlights are under review by three separate insurance adjusters."
+            },
+            {
+                emoji: '📦',
+                label: 'Boxes',
+                excuse: "Boxes highlight reel failed to load. Rosie is currently inside one of the boxes and unreachable."
+            }
+        ];
+
+        const GROUPS_DATA = [
+            { emoji: '🪟', name: 'Windowsill Real Estate Committee', members: 1243 },
+            { emoji: '🥫', name: 'Wet Food Truthers', members: 892 },
+            { emoji: '☀️', name: 'Sunbeam Relocation Task Force', members: 2310 },
+            { emoji: '🧶', name: 'Yarn Liberation Front', members: 456 },
+            { emoji: '🕒', name: '3AM Zoomies Support Group', members: 3102 },
+            { emoji: '📦', name: 'Amazon Box Preservation Society', members: 674 }
+        ];
+
+        const TRENDING_DATA = [
+            { tag: '#zoomies', posts: '12.4K' },
+            { tag: '#wetfoodgate', posts: '8.9K' },
+            { tag: '#sunbeamszn', posts: '15.1K' },
+            { tag: '#wholesomehiss', posts: '3.2K' }
+        ];
+
+        function renderHighlights() {
+            document.getElementById('rosieHighlights').innerHTML = HIGHLIGHTS_DATA.map(h => `
+                <button class="rosie-highlight" onclick="showToast(&quot;${h.excuse.replace(/&/g, '&amp;').replace(/"/g, '&quot;')}&quot;)">
+                    <div class="rosie-highlight-ring">
+                        <div class="rosie-highlight-circle">${h.emoji}</div>
                     </div>
-                    <span class="rosie-friend-name">${pet.name}</span>
+                    <span class="rosie-highlight-label">${h.label}</span>
                 </button>
             `).join('');
         }
 
+        function renderGroups() {
+            document.getElementById('rosieGroupsList').innerHTML = GROUPS_DATA.map((g, i) => `
+                <div class="rosie-group-item">
+                    <div class="rosie-group-icon">${g.emoji}</div>
+                    <div class="rosie-group-body">
+                        <div class="rosie-group-name">${g.name}</div>
+                        <div class="rosie-group-members" id="rosieGroupMembers-${i}">${g.members.toLocaleString()} members</div>
+                    </div>
+                    <button class="rosie-group-join-btn" data-joined="false" data-base="${g.members}" data-target="rosieGroupMembers-${i}" onclick="toggleGroupJoin(this)">Join</button>
+                </div>
+            `).join('');
+        }
+
+        function toggleGroupJoin(btn) {
+            const joined = btn.dataset.joined === 'true';
+            const base = parseInt(btn.dataset.base, 10);
+            const membersEl = document.getElementById(btn.dataset.target);
+            if (joined) {
+                btn.dataset.joined = 'false';
+                btn.textContent = 'Join';
+                btn.classList.remove('joined');
+                if (membersEl) membersEl.textContent = `${base.toLocaleString()} members`;
+            } else {
+                btn.dataset.joined = 'true';
+                btn.textContent = 'Joined';
+                btn.classList.add('joined');
+                if (membersEl) membersEl.textContent = `${(base + 1).toLocaleString()} members`;
+            }
+        }
+
+        function toggleFollowRequest(btn) {
+            const requested = btn.dataset.requested === 'true';
+            if (requested) {
+                btn.dataset.requested = 'false';
+                btn.textContent = 'Follow';
+                btn.classList.add('rosie-profile-action-primary');
+                showToast('Follow request withdrawn. Rosie was unbothered either way.');
+            } else {
+                btn.dataset.requested = 'true';
+                btn.textContent = 'Requested';
+                btn.classList.remove('rosie-profile-action-primary');
+                showToast('Follow request sent. Rosie will consider it.');
+            }
+        }
+
+        function renderTrending() {
+            document.getElementById('rosieTrendingList').innerHTML = TRENDING_DATA.map(t => `
+                <div class="rosie-trending-item">
+                    <span class="rosie-trending-tag">${t.tag}</span>
+                    <span class="rosie-trending-count">${t.posts} posts</span>
+                </div>
+            `).join('');
+        }
+
+        // Running totals for the sidebar stat card, kept in sync with every
+        // like/repawst toggle click below. Session-only, like the per-post
+        // counters — resets on refresh since nothing here is persisted.
+        let sidebarTotalLikes = 0;
+        let sidebarTotalRepawsts = 0;
+
         function renderSidebarStats(posts) {
-            const totalLikes = posts.reduce((sum, p) => sum + p.likes, 0);
-            const totalRepawsts = posts.reduce((sum, p) => sum + p.repawsts, 0);
+            sidebarTotalLikes = posts.reduce((sum, p) => sum + p.likes, 0);
+            sidebarTotalRepawsts = posts.reduce((sum, p) => sum + p.repawsts, 0);
             document.getElementById('rosieSidebarStats').innerHTML = `
                 <div class="rosie-stat"><strong>${posts.length}</strong><span>Posts</span></div>
-                <div class="rosie-stat"><strong>${totalLikes.toLocaleString()}</strong><span>Likes</span></div>
-                <div class="rosie-stat"><strong>${totalRepawsts.toLocaleString()}</strong><span>Repawsts</span></div>
+                <div class="rosie-stat"><strong id="rosieStatLikes">${sidebarTotalLikes.toLocaleString()}</strong><span>Likes</span></div>
+                <div class="rosie-stat"><strong id="rosieStatRepawsts">${sidebarTotalRepawsts.toLocaleString()}</strong><span>Repawsts</span></div>
             `;
         }
+
+        // Kept around so the search bar can filter/re-render without
+        // re-fetching data/rosie.json on every keystroke.
+        let allRosiePosts = [];
+
+        // Pagination state: currentFilteredPosts is whatever the search bar
+        // (or lack thereof) currently matches; currentPage/POSTS_PER_PAGE
+        // slice that into pages of 10.
+        const POSTS_PER_PAGE = 10;
+        let currentFilteredPosts = [];
+        let currentPage = 1;
 
         async function loadRosiePosts() {
             let posts = [];
@@ -179,15 +361,75 @@
             // Defensive sort (most recent first) even if a future entry gets
             // appended out of order in the JSON file itself.
             posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+            allRosiePosts = posts;
 
             renderTopFriends();
             renderSidebarStats(posts);
+            renderPostGrid(posts);
+        }
 
+        // Entry point whenever the underlying post set changes (initial
+        // load or a new search) — always resets back to page 1.
+        function renderPostGrid(posts) {
+            currentFilteredPosts = posts;
+            currentPage = 1;
+            renderCurrentPage();
+        }
+
+        function renderCurrentPage() {
+            const totalPages = Math.max(1, Math.ceil(currentFilteredPosts.length / POSTS_PER_PAGE));
+            if (currentPage > totalPages) currentPage = totalPages;
+            const start = (currentPage - 1) * POSTS_PER_PAGE;
+            const pagePosts = currentFilteredPosts.slice(start, start + POSTS_PER_PAGE);
+            renderPostCards(pagePosts, start);
+            renderPagination(totalPages);
+        }
+
+        function goToPage(page) {
+            currentPage = page;
+            renderCurrentPage();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderPagination(totalPages) {
+            const el = document.getElementById('rosiePagination');
+            if (totalPages <= 1) {
+                el.innerHTML = '';
+                return;
+            }
+
+            const numberButtons = Array.from({ length: totalPages }, (_, idx) => {
+                const pageNum = idx + 1;
+                const isActive = pageNum === currentPage;
+                return `<button class="rosie-page-num-btn ${isActive ? 'active' : ''}" data-page="${pageNum}" ${isActive ? 'aria-current="page"' : ''}>${pageNum}</button>`;
+            }).join('');
+
+            el.innerHTML = `
+                <button class="rosie-page-btn" id="rosiePrevPageBtn" ${currentPage === 1 ? 'disabled' : ''}>&larr; Previous</button>
+                <div class="rosie-page-numbers">${numberButtons}</div>
+                <button class="rosie-page-btn" id="rosieNextPageBtn" ${currentPage === totalPages ? 'disabled' : ''}>Next Page &rarr;</button>
+            `;
+            const prevBtn = document.getElementById('rosiePrevPageBtn');
+            const nextBtn = document.getElementById('rosieNextPageBtn');
+            if (prevBtn) prevBtn.addEventListener('click', () => goToPage(currentPage - 1));
+            if (nextBtn) nextBtn.addEventListener('click', () => goToPage(currentPage + 1));
+
+            el.querySelectorAll('.rosie-page-num-btn').forEach(btn => {
+                btn.addEventListener('click', () => goToPage(parseInt(btn.dataset.page, 10)));
+            });
+        }
+
+        function renderPostCards(posts, startIndex = 0) {
             const colorClasses = ['rosie-card-grape', 'rosie-card-bubblegum', 'rosie-card-mint', 'rosie-card-butter'];
             const grid = document.getElementById('rosiePostGrid');
 
+            if (posts.length === 0) {
+                grid.innerHTML = `<p class="rosie-search-empty">No posts match that search. Rosie remains unbothered.</p>`;
+                return;
+            }
+
             grid.innerHTML = posts.map((post, i) => {
-                const colorClass = colorClasses[i % colorClasses.length];
+                const colorClass = colorClasses[(startIndex + i) % colorClasses.length];
                 const commentsHtml = post.comments.map(c => {
                     const pet = PET_DATA[c.username];
                     const color = pet ? pet.color : '#8b5fbf';
@@ -210,7 +452,10 @@
                 return `
                     <div class="rosie-post-card ${colorClass}">
                         <div class="rosie-post-header">
-                            <span>🐾 queen_rosie</span>
+                            <div class="rosie-post-author">
+                                <span class="rosie-post-username">🐾 queen_rosie</span>
+                                ${post.tagged && PET_DATA[post.tagged] ? `<button class="rosie-post-tag-btn" onclick="showPetProfile('${post.tagged}')">with ${PET_DATA[post.tagged].name}</button>` : ''}
+                            </div>
                             <span class="rosie-post-date">${formatPostDate(post.date)}</span>
                         </div>
                         <div class="rosie-post-top">
@@ -228,7 +473,7 @@
                         <div class="rosie-post-engagement">
                             <button class="rosie-engagement-btn" data-base="${post.likes}" data-liked="false" data-icon="🐾" data-label="likes" onclick="bumpEngagement(this)">🐾 ${post.likes} likes</button>
                             <button class="rosie-engagement-btn" data-base="${post.repawsts}" data-liked="false" data-icon="🔁" data-label="repawsts" onclick="bumpEngagement(this)">🔁 ${post.repawsts} repawsts</button>
-                            <button class="rosie-engagement-btn" onclick="showNoAccountToast()">💬 ${post.comments.length} comments</button>
+                            <button class="rosie-engagement-btn" onclick="showToast(&quot;you don't have an account to comment 🐾&quot;)">💬 ${post.comments.length} comments</button>
                         </div>
                     </div>
                 `;
@@ -238,6 +483,8 @@
         function bumpEngagement(btn) {
             const base = parseInt(btn.dataset.base, 10);
             const liked = btn.dataset.liked === 'true';
+            const delta = liked ? -1 : 1;
+
             if (liked) {
                 btn.dataset.liked = 'false';
                 btn.classList.remove('active');
@@ -247,11 +494,21 @@
                 btn.classList.add('active');
                 btn.textContent = `${btn.dataset.icon} ${base + 1} ${btn.dataset.label}`;
             }
+
+            if (btn.dataset.label === 'likes') {
+                sidebarTotalLikes += delta;
+                const el = document.getElementById('rosieStatLikes');
+                if (el) el.textContent = sidebarTotalLikes.toLocaleString();
+            } else if (btn.dataset.label === 'repawsts') {
+                sidebarTotalRepawsts += delta;
+                const el = document.getElementById('rosieStatRepawsts');
+                if (el) el.textContent = sidebarTotalRepawsts.toLocaleString();
+            }
         }
 
-        function showNoAccountToast() {
+        function showToast(message) {
             const toast = document.getElementById('rosieToast');
-            toast.textContent = "you don't have an account to comment 🐾";
+            toast.textContent = message;
             toast.classList.add('show');
             clearTimeout(window.__rosieToastTimer);
             window.__rosieToastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
@@ -281,13 +538,26 @@
             if (e.key === 'Escape') closePetProfile();
         });
 
-        document.getElementById('rosieFilterPills').addEventListener('click', (e) => {
-            const pill = e.target.closest('.rosie-filter-pill');
-            if (!pill) return;
-            document.querySelectorAll('.rosie-filter-pill').forEach(p => p.classList.remove('active'));
-            pill.classList.add('active');
+        document.getElementById('rosieSearchInput').addEventListener('input', (e) => {
+            const query = e.target.value.trim().toLowerCase();
+            if (!query) {
+                renderPostGrid(allRosiePosts);
+                return;
+            }
+            const filtered = allRosiePosts.filter(post => {
+                const inCaption = post.caption.toLowerCase().includes(query);
+                const inFeeling = post.feeling.toLowerCase().includes(query);
+                const inComments = post.comments.some(c =>
+                    c.text.toLowerCase().includes(query) || c.name.toLowerCase().includes(query)
+                );
+                return inCaption || inFeeling || inComments;
+            });
+            renderPostGrid(filtered);
         });
 
+        renderHighlights();
+        renderGroups();
+        renderTrending();
         loadRosiePosts();
     </script>
 
