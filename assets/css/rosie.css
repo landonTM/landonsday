@@ -1,0 +1,481 @@
+/* ================================
+   Rosie's Wall — dedicated stylesheet
+   Deliberately its own design language: different fonts, different
+   palette, different shapes from the rest of the site. Loaded only
+   on rosie.html so nothing here leaks elsewhere.
+   ================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap');
+
+.rosie-wall {
+  background: linear-gradient(160deg, #fcf0fb 0%, #f2e3ff 45%, #ffe7f2 100%);
+  padding: 3.5rem 1.5rem 4rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.rosie-wall-header {
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.rosie-wall-title {
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 3rem;
+  color: #5b2e91;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.5rem;
+  text-shadow: 2px 2px 0 rgba(255, 111, 165, 0.25);
+}
+
+.rosie-wall-subtitle {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #7a4fa8;
+}
+
+/* Single column - one notecard at a time, scroll to the next */
+.rosie-post-grid {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.rosie-post-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  border-radius: 32px;
+  padding: 1.6rem 1.8rem;
+  box-shadow: 0 14px 30px rgba(91, 46, 145, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  box-sizing: border-box;
+  transition: transform 0.25s ease;
+}
+
+.rosie-post-card:nth-child(4n+1) { transform: rotate(-1deg); }
+.rosie-post-card:nth-child(4n+2) { transform: rotate(0.7deg); }
+.rosie-post-card:nth-child(4n+3) { transform: rotate(-0.7deg); }
+.rosie-post-card:nth-child(4n+4) { transform: rotate(1deg); }
+
+.rosie-post-card:hover {
+  transform: rotate(0deg) scale(1.015);
+}
+
+.rosie-card-grape {
+  background: linear-gradient(150deg, #d9bdf7, #8b5fbf);
+}
+
+.rosie-card-bubblegum {
+  background: linear-gradient(150deg, #ffc2e0, #ff6fa5);
+}
+
+.rosie-card-mint {
+  background: linear-gradient(150deg, #c3f5e8, #6fe0c4);
+}
+
+.rosie-card-butter {
+  background: linear-gradient(150deg, #fff2c2, #ffd666);
+}
+
+.rosie-post-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #2b1b3d;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px dashed rgba(43, 27, 61, 0.25);
+}
+
+.rosie-post-date {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* Top row: photo (left) + caption/comments (right) */
+.rosie-post-top {
+  flex: 1;
+  display: flex;
+  gap: 1rem;
+  min-height: 0;
+}
+
+.rosie-post-photo {
+  flex: 0 0 42%;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 14px rgba(43, 27, 61, 0.25);
+}
+
+.rosie-post-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rosie-post-photo-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.rosie-post-text {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  padding: 0.85rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.rosie-post-caption {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #2b1b3d;
+  margin: 0;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px dashed rgba(43, 27, 61, 0.2);
+}
+
+.rosie-comment {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.rosie-comment-avatar-btn {
+  flex: 0 0 auto;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.rosie-comment-avatar-btn:focus-visible {
+  outline: 2px solid #2b1b3d;
+  outline-offset: 2px;
+}
+
+.rosie-comment-avatar {
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: #fff;
+  overflow: hidden;
+}
+
+.rosie-comment-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rosie-comment-avatar-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.rosie-comment-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.rosie-comment-name-btn {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: #2b1b3d;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-right: 0.3rem;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.15s ease;
+}
+
+.rosie-comment-name-btn:hover,
+.rosie-comment-name-btn:focus-visible {
+  text-decoration-color: currentColor;
+}
+
+.rosie-comment-name-btn:focus-visible {
+  outline: 2px solid #2b1b3d;
+  outline-offset: 2px;
+}
+
+.rosie-comment-username {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-style: italic;
+  font-size: 0.72rem;
+  color: #2b1b3d;
+  opacity: 0.6;
+}
+
+.rosie-comment-text {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: #2b1b3d;
+  margin: 0.1rem 0 0;
+}
+
+/* Footer rows - full width, fixed height, under the photo/text row */
+.rosie-post-feeling {
+  flex: 0 0 auto;
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: rgba(43, 27, 61, 0.55);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  text-align: center;
+}
+
+.rosie-post-engagement {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 1.1rem;
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: #2b1b3d;
+}
+
+.rosie-engagement-btn {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: #2b1b3d;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.rosie-engagement-btn:hover {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.rosie-engagement-btn:active {
+  transform: scale(1.15);
+}
+
+.rosie-engagement-btn:focus-visible {
+  outline: 2px solid #2b1b3d;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rosie-post-card,
+  .rosie-post-card:nth-child(4n+1),
+  .rosie-post-card:nth-child(4n+2),
+  .rosie-post-card:nth-child(4n+3),
+  .rosie-post-card:nth-child(4n+4) {
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .rosie-wall-title {
+    font-size: 2.2rem;
+  }
+  .rosie-post-card {
+    aspect-ratio: auto;
+    padding: 1.1rem;
+  }
+  .rosie-post-top {
+    flex-direction: column;
+  }
+  .rosie-post-photo {
+    flex: 0 0 auto;
+    aspect-ratio: 4 / 3;
+  }
+  .rosie-post-text {
+    overflow-y: visible;
+  }
+  .rosie-post-card:nth-child(4n+1),
+  .rosie-post-card:nth-child(4n+2),
+  .rosie-post-card:nth-child(4n+3),
+  .rosie-post-card:nth-child(4n+4) {
+    transform: none;
+  }
+}
+
+/* ---- Fake profile card popup ---- */
+.rosie-profile-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(43, 27, 61, 0.55);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.rosie-profile-overlay.open {
+  display: flex;
+}
+
+.rosie-profile-card {
+  position: relative;
+  background: linear-gradient(160deg, #fdf3ff, #f6e6ff);
+  border-radius: 28px;
+  padding: 2.2rem 1.8rem 1.8rem;
+  max-width: 320px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(43, 27, 61, 0.4);
+}
+
+.rosie-profile-close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.8rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(43, 27, 61, 0.1);
+  color: #2b1b3d;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.rosie-profile-close:hover {
+  background: rgba(43, 27, 61, 0.2);
+}
+
+.rosie-profile-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(43, 27, 61, 0.3);
+  overflow: hidden;
+}
+
+.rosie-profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rosie-profile-avatar-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.rosie-profile-name {
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #2b1b3d;
+}
+
+.rosie-profile-username {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: #7a4fa8;
+  margin-bottom: 0.9rem;
+}
+
+.rosie-profile-bio {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #2b1b3d;
+  margin: 0;
+}
+
+/* ---- Toast (comment button click) ---- */
+.rosie-toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #2b1b3d;
+  color: #fff;
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.7rem 1.3rem;
+  border-radius: 999px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 300;
+}
+
+.rosie-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rosie-toast {
+    transition: opacity 0.2s ease;
+    transform: translateX(-50%);
+  }
+}

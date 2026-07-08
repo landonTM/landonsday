@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rosie — Landon's Day</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/rosie.css">
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Rosie — Landon's Day">
-    <meta property="og:description" content="A whole page dedicated to Rosie, format still to be determined.">
+    <meta property="og:description" content="Rosie's Wall — an ongoing, very serious social feed run by a nine-year-old house cat.">
     <meta property="og:url" content="https://www.landonday.com/rosie">
     <meta property="og:image" content="https://www.landonday.com/assets/images/rosie.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Rosie — Landon's Day">
-    <meta name="twitter:description" content="A whole page dedicated to Rosie, format still to be determined.">
+    <meta name="twitter:description" content="Rosie's Wall — an ongoing, very serious social feed run by a nine-year-old house cat.">
     <meta name="twitter:image" content="https://www.landonday.com/assets/images/rosie.jpg">
 
 </head>
@@ -31,23 +32,194 @@
         </div>
     </nav>
 
-    <div class="page-hero">
-        <img src="./assets/images/rosie.jpg" alt="Rosie">
-        <h1 class="page-hero-title">Rosie</h1>
+    <div class="rosie-wall">
+        <div class="rosie-wall-header">
+            <h2 class="rosie-wall-title">Rosie's Wall</h2>
+            <p class="rosie-wall-subtitle">nine years of being a house cat, narrated with full editorial control by the house cat herself.</p>
+        </div>
+
+        <div class="rosie-post-grid" id="rosiePostGrid"></div>
     </div>
 
-    <div class="coming-soon">
-        <div class="coming-soon-card">
-            <span class="coming-soon-badge">Format TBD</span>
-            <h2>A Whole Page for Rosie</h2>
-            <p>Still figuring out exactly what shape this one takes — could end up as a photo calendar, a timeline of her life, or a full running Rosie blog. Whichever way it goes, it's going to be full of her pictures.</p>
+    <div class="rosie-profile-overlay" id="rosieProfileOverlay">
+        <div class="rosie-profile-card">
+            <button class="rosie-profile-close" id="rosieProfileClose" aria-label="Close">&times;</button>
+            <div class="rosie-profile-avatar" id="rosieProfileAvatar"></div>
+            <div class="rosie-profile-name" id="rosieProfileName"></div>
+            <div class="rosie-profile-username" id="rosieProfileUsername"></div>
+            <p class="rosie-profile-bio" id="rosieProfileBio"></p>
         </div>
     </div>
+
+    <div class="rosie-toast" id="rosieToast"></div>
 
     <footer>
         <p>&copy; 2026 Landon's Day. All rights reserved.</p>
     </footer>
 
+    <script>
+        // Single source of truth for each commenting pet: display name,
+        // real photo filename (first-name based, in assets/images/rosie/),
+        // fallback initial-avatar color, and their little bio for the
+        // profile card popup.
+        const PET_DATA = {
+            crazydaisy: {
+                name: 'Daisy',
+                avatarFile: 'daisy.jpg',
+                color: '#e0629b',
+                bio: "rosie's sister. still not over her moving out. sends her love from afar 🥺"
+            },
+            ciccu_bear: {
+                name: 'Ciccu',
+                avatarFile: 'ciccu.jpg',
+                color: '#5b4a63',
+                bio: "does not care for rosie. has never cared for rosie. will not be starting now."
+            },
+            cocoloco: {
+                name: 'Coco',
+                avatarFile: 'coco.jpg',
+                color: '#4fb894',
+                bio: "no clue how i know this cat but i'm a fan i think???"
+            },
+            dollybiscotti: {
+                name: 'Dolly',
+                avatarFile: 'dolly.jpg',
+                color: '#d99a2b',
+                bio: "don't really know her but she seems cool so 💯"
+            },
+            graciepoo: {
+                name: 'Gracie',
+                avatarFile: 'gracie.jpg',
+                color: '#9b6fd1',
+                bio: "rosie's #1 fan from a completely different household. we've never met and that's ok"
+            },
+            ralphlauren: {
+                name: 'Ralphie',
+                avatarFile: 'ralphie.jpg',
+                color: '#e08a4f',
+                bio: "would love to hang out sometime. still waiting on a reply 🐾"
+            }
+        };
+
+        function avatarInnerHtml(username, fallbackClass) {
+            const pet = PET_DATA[username];
+            const initial = (pet ? pet.name : '?').charAt(0).toUpperCase();
+            return pet && pet.avatarFile
+                ? `<img src="./assets/images/rosie/${pet.avatarFile}" alt="${pet.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><span class="${fallbackClass}">${initial}</span>`
+                : `<span class="${fallbackClass}" style="display:flex;">${initial}</span>`;
+        }
+
+        function formatPostDate(iso) {
+            const d = new Date(iso);
+            return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        async function loadRosiePosts() {
+            let posts = [];
+            try {
+                const res = await fetch('data/rosie.json');
+                posts = await res.json();
+            } catch (e) {
+                console.log('rosie.json not available yet');
+                return;
+            }
+
+            // Defensive sort (most recent first) even if a future entry gets
+            // appended out of order in the JSON file itself.
+            posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            const colorClasses = ['rosie-card-grape', 'rosie-card-bubblegum', 'rosie-card-mint', 'rosie-card-butter'];
+            const grid = document.getElementById('rosiePostGrid');
+
+            grid.innerHTML = posts.map((post, i) => {
+                const colorClass = colorClasses[i % colorClasses.length];
+                const commentsHtml = post.comments.map(c => {
+                    const pet = PET_DATA[c.username];
+                    const color = pet ? pet.color : '#8b5fbf';
+                    return `
+                    <div class="rosie-comment">
+                        <button class="rosie-comment-avatar-btn" onclick="showPetProfile('${c.username}')" aria-label="View ${c.name}'s profile">
+                            <div class="rosie-comment-avatar" style="background:${color};">
+                                ${avatarInnerHtml(c.username, 'rosie-comment-avatar-fallback')}
+                            </div>
+                        </button>
+                        <div class="rosie-comment-body">
+                            <button class="rosie-comment-name-btn" onclick="showPetProfile('${c.username}')">${c.name}</button>
+                            <span class="rosie-comment-username">@${c.username}</span>
+                            <p class="rosie-comment-text">${c.text}</p>
+                        </div>
+                    </div>
+                `;
+                }).join('');
+
+                return `
+                    <div class="rosie-post-card ${colorClass}">
+                        <div class="rosie-post-header">
+                            <span>🐾 queen_rosie</span>
+                            <span class="rosie-post-date">${formatPostDate(post.date)}</span>
+                        </div>
+                        <div class="rosie-post-top">
+                            <div class="rosie-post-photo">
+                                <img src="./assets/images/rosie/${post.image}" alt="Rosie" loading="lazy"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="rosie-post-photo-fallback">🐾</div>
+                            </div>
+                            <div class="rosie-post-text">
+                                <p class="rosie-post-caption">${post.caption}</p>
+                                ${commentsHtml}
+                            </div>
+                        </div>
+                        <div class="rosie-post-feeling">FEELING: ${post.feeling} ${post.emoji}</div>
+                        <div class="rosie-post-engagement">
+                            <button class="rosie-engagement-btn" data-count="${post.likes}" data-icon="🐾" data-label="likes" onclick="bumpEngagement(this)">🐾 ${post.likes} likes</button>
+                            <button class="rosie-engagement-btn" data-count="${post.repawsts}" data-icon="🔁" data-label="repawsts" onclick="bumpEngagement(this)">🔁 ${post.repawsts} repawsts</button>
+                            <button class="rosie-engagement-btn" onclick="showNoAccountToast()">💬 ${post.comments.length} comments</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function bumpEngagement(btn) {
+            const newCount = parseInt(btn.dataset.count, 10) + 1;
+            btn.dataset.count = newCount;
+            btn.textContent = `${btn.dataset.icon} ${newCount} ${btn.dataset.label}`;
+        }
+
+        function showNoAccountToast() {
+            const toast = document.getElementById('rosieToast');
+            toast.textContent = "you don't have an account to comment 🐾";
+            toast.classList.add('show');
+            clearTimeout(window.__rosieToastTimer);
+            window.__rosieToastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+        }
+
+        function showPetProfile(username) {
+            const pet = PET_DATA[username];
+            if (!pet) return;
+            const avatarEl = document.getElementById('rosieProfileAvatar');
+            avatarEl.style.background = pet.color;
+            avatarEl.innerHTML = avatarInnerHtml(username, 'rosie-profile-avatar-fallback');
+            document.getElementById('rosieProfileName').textContent = pet.name;
+            document.getElementById('rosieProfileUsername').textContent = '@' + username;
+            document.getElementById('rosieProfileBio').textContent = pet.bio;
+            document.getElementById('rosieProfileOverlay').classList.add('open');
+        }
+
+        function closePetProfile() {
+            document.getElementById('rosieProfileOverlay').classList.remove('open');
+        }
+
+        document.getElementById('rosieProfileClose').addEventListener('click', closePetProfile);
+        document.getElementById('rosieProfileOverlay').addEventListener('click', (e) => {
+            if (e.target.id === 'rosieProfileOverlay') closePetProfile();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closePetProfile();
+        });
+
+        loadRosiePosts();
+    </script>
 
     <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top" title="Back to top">&uarr;</button>
 
