@@ -8,10 +8,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap');
 
 .rosie-wall {
-  background: linear-gradient(160deg, #fcf0fb 0%, #f2e3ff 45%, #ffe7f2 100%);
+  background: linear-gradient(160deg, #f5ddf7 0%, #e6d0fb 45%, #ffd6ec 100%);
   padding: 3.5rem 1.5rem 4rem;
   min-height: 100vh;
   box-sizing: border-box;
+}
+
+/* Page-scoped nav/footer recolor - this stylesheet only loads on
+   rosie.html, so these overrides never touch any other page. */
+.site-nav {
+  background: #f0d9f5;
+  border-bottom: 1px solid rgba(139, 95, 191, 0.25);
+}
+
+.site-nav-logo {
+  color: #5b2e91;
+}
+
+.site-nav-link {
+  color: #7a4fa8;
+}
+
+.site-nav-link.active {
+  color: #ff6fa5;
+  border-bottom-color: #ff6fa5;
+}
+
+footer {
+  background-color: #f0d9f5;
+  color: #7a4fa8;
 }
 
 .rosie-wall-header {
@@ -35,6 +60,254 @@
   font-size: 1.05rem;
   font-weight: 600;
   color: #7a4fa8;
+}
+
+.rosie-layout {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.rosie-sidebar {
+  flex: 0 0 260px;
+  position: sticky;
+  top: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.rosie-sidebar-card {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 24px;
+  padding: 1.5rem 1.3rem;
+  box-shadow: 0 8px 20px rgba(91, 46, 145, 0.15);
+}
+
+.rosie-sidebar-avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 0.9rem;
+  box-shadow: 0 6px 16px rgba(43, 27, 61, 0.25);
+  border: 3px solid #fff;
+}
+
+.rosie-sidebar-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rosie-sidebar-name {
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #5b2e91;
+  text-align: center;
+}
+
+.rosie-sidebar-tagline {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #7a4fa8;
+  text-align: center;
+  margin: 0.3rem 0 1.1rem;
+}
+
+.rosie-sidebar-stats {
+  display: flex;
+  justify-content: space-between;
+  border-top: 2px dashed rgba(91, 46, 145, 0.2);
+  padding-top: 0.9rem;
+}
+
+.rosie-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+}
+
+.rosie-stat strong {
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-size: 1.15rem;
+  color: #2b1b3d;
+}
+
+.rosie-stat span {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #7a4fa8;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.rosie-sidebar-heading {
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #5b2e91;
+  margin: 0 0 1rem;
+  text-align: center;
+}
+
+.rosie-friends-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.9rem;
+}
+
+.rosie-friend {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem;
+  border-radius: 12px;
+}
+
+.rosie-friend:hover {
+  background: rgba(139, 95, 191, 0.12);
+}
+
+.rosie-friend:focus-visible {
+  outline: 2px solid #5b2e91;
+  outline-offset: 2px;
+}
+
+.rosie-friend-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  overflow: hidden;
+}
+
+.rosie-friend-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rosie-friend-avatar-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.rosie-friend-name {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  color: #2b1b3d;
+}
+
+.rosie-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.rosie-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  padding: 0.7rem 1.2rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 6px 16px rgba(91, 46, 145, 0.12);
+}
+
+.rosie-search-icon {
+  font-size: 1rem;
+}
+
+.rosie-search-input {
+  flex: 1;
+  border: none;
+  background: none;
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #2b1b3d;
+  outline: none;
+}
+
+.rosie-search-input::placeholder {
+  color: rgba(43, 27, 61, 0.45);
+}
+
+.rosie-filter-pills {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.rosie-filter-pill {
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #5b2e91;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.rosie-filter-pill:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.rosie-filter-pill.active {
+  background: #5b2e91;
+  color: #fff;
+}
+
+.rosie-filter-pill:focus-visible {
+  outline: 2px solid #5b2e91;
+  outline-offset: 2px;
+}
+
+@media (max-width: 860px) {
+  .rosie-layout {
+    flex-direction: column;
+  }
+  .rosie-sidebar {
+    position: static;
+    flex: 0 0 auto;
+    width: 100%;
+    flex-direction: row;
+  }
+  .rosie-sidebar-card {
+    flex: 1;
+  }
+  .rosie-friends-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .rosie-sidebar {
+    flex-direction: column;
+  }
 }
 
 /* Single column - one notecard at a time, scroll to the next */
@@ -101,10 +374,14 @@
 }
 
 .rosie-post-date {
-  font-family: 'Nunito', 'Segoe UI', sans-serif;
-  font-weight: 700;
-  font-size: 0.8rem;
-  opacity: 0.7;
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: #2b1b3d;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  white-space: nowrap;
 }
 
 /* Top row: photo (left) + caption/comments (right) */
@@ -308,6 +585,11 @@
 .rosie-engagement-btn:focus-visible {
   outline: 2px solid #2b1b3d;
   outline-offset: 2px;
+}
+
+.rosie-engagement-btn.active {
+  background: #2b1b3d;
+  color: #fff;
 }
 
 @media (prefers-reduced-motion: reduce) {

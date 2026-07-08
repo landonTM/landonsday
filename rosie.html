@@ -38,7 +38,37 @@
             <p class="rosie-wall-subtitle">nine years of being a house cat, narrated with full editorial control by the house cat herself.</p>
         </div>
 
-        <div class="rosie-post-grid" id="rosiePostGrid"></div>
+        <div class="rosie-layout">
+            <aside class="rosie-sidebar">
+                <div class="rosie-sidebar-card">
+                    <div class="rosie-sidebar-avatar">
+                        <img src="./assets/images/rosie.jpg" alt="Rosie">
+                    </div>
+                    <div class="rosie-sidebar-name">queen_rosie</div>
+                    <p class="rosie-sidebar-tagline">professional lap-warmer 🐾 full-time house cat</p>
+                    <div class="rosie-sidebar-stats" id="rosieSidebarStats"></div>
+                </div>
+
+                <div class="rosie-sidebar-card">
+                    <h3 class="rosie-sidebar-heading">Top Friends</h3>
+                    <div class="rosie-friends-grid" id="rosieFriendsGrid"></div>
+                </div>
+            </aside>
+
+            <main class="rosie-main">
+                <div class="rosie-search-bar">
+                    <span class="rosie-search-icon">🔍</span>
+                    <input type="text" class="rosie-search-input" placeholder="Search Rosie's Wall...">
+                </div>
+                <div class="rosie-filter-pills" id="rosieFilterPills">
+                    <button class="rosie-filter-pill active">All Posts</button>
+                    <button class="rosie-filter-pill">Most Liked</button>
+                    <button class="rosie-filter-pill">By Mood</button>
+                </div>
+
+                <div class="rosie-post-grid" id="rosiePostGrid"></div>
+            </main>
+        </div>
     </div>
 
     <div class="rosie-profile-overlay" id="rosieProfileOverlay">
@@ -111,7 +141,29 @@
 
         function formatPostDate(iso) {
             const d = new Date(iso);
-            return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            return '📅 ' + d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        function renderTopFriends() {
+            const grid = document.getElementById('rosieFriendsGrid');
+            grid.innerHTML = Object.entries(PET_DATA).map(([username, pet]) => `
+                <button class="rosie-friend" onclick="showPetProfile('${username}')">
+                    <div class="rosie-friend-avatar" style="background:${pet.color};">
+                        ${avatarInnerHtml(username, 'rosie-friend-avatar-fallback')}
+                    </div>
+                    <span class="rosie-friend-name">${pet.name}</span>
+                </button>
+            `).join('');
+        }
+
+        function renderSidebarStats(posts) {
+            const totalLikes = posts.reduce((sum, p) => sum + p.likes, 0);
+            const totalRepawsts = posts.reduce((sum, p) => sum + p.repawsts, 0);
+            document.getElementById('rosieSidebarStats').innerHTML = `
+                <div class="rosie-stat"><strong>${posts.length}</strong><span>Posts</span></div>
+                <div class="rosie-stat"><strong>${totalLikes.toLocaleString()}</strong><span>Likes</span></div>
+                <div class="rosie-stat"><strong>${totalRepawsts.toLocaleString()}</strong><span>Repawsts</span></div>
+            `;
         }
 
         async function loadRosiePosts() {
@@ -127,6 +179,9 @@
             // Defensive sort (most recent first) even if a future entry gets
             // appended out of order in the JSON file itself.
             posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            renderTopFriends();
+            renderSidebarStats(posts);
 
             const colorClasses = ['rosie-card-grape', 'rosie-card-bubblegum', 'rosie-card-mint', 'rosie-card-butter'];
             const grid = document.getElementById('rosiePostGrid');
@@ -171,8 +226,8 @@
                         </div>
                         <div class="rosie-post-feeling">FEELING: ${post.feeling} ${post.emoji}</div>
                         <div class="rosie-post-engagement">
-                            <button class="rosie-engagement-btn" data-count="${post.likes}" data-icon="🐾" data-label="likes" onclick="bumpEngagement(this)">🐾 ${post.likes} likes</button>
-                            <button class="rosie-engagement-btn" data-count="${post.repawsts}" data-icon="🔁" data-label="repawsts" onclick="bumpEngagement(this)">🔁 ${post.repawsts} repawsts</button>
+                            <button class="rosie-engagement-btn" data-base="${post.likes}" data-liked="false" data-icon="🐾" data-label="likes" onclick="bumpEngagement(this)">🐾 ${post.likes} likes</button>
+                            <button class="rosie-engagement-btn" data-base="${post.repawsts}" data-liked="false" data-icon="🔁" data-label="repawsts" onclick="bumpEngagement(this)">🔁 ${post.repawsts} repawsts</button>
                             <button class="rosie-engagement-btn" onclick="showNoAccountToast()">💬 ${post.comments.length} comments</button>
                         </div>
                     </div>
@@ -181,9 +236,17 @@
         }
 
         function bumpEngagement(btn) {
-            const newCount = parseInt(btn.dataset.count, 10) + 1;
-            btn.dataset.count = newCount;
-            btn.textContent = `${btn.dataset.icon} ${newCount} ${btn.dataset.label}`;
+            const base = parseInt(btn.dataset.base, 10);
+            const liked = btn.dataset.liked === 'true';
+            if (liked) {
+                btn.dataset.liked = 'false';
+                btn.classList.remove('active');
+                btn.textContent = `${btn.dataset.icon} ${base} ${btn.dataset.label}`;
+            } else {
+                btn.dataset.liked = 'true';
+                btn.classList.add('active');
+                btn.textContent = `${btn.dataset.icon} ${base + 1} ${btn.dataset.label}`;
+            }
         }
 
         function showNoAccountToast() {
@@ -216,6 +279,13 @@
         });
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closePetProfile();
+        });
+
+        document.getElementById('rosieFilterPills').addEventListener('click', (e) => {
+            const pill = e.target.closest('.rosie-filter-pill');
+            if (!pill) return;
+            document.querySelectorAll('.rosie-filter-pill').forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
         });
 
         loadRosiePosts();
