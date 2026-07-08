@@ -94,6 +94,81 @@
         </div>
     </div>
 
+    <!-- ============================================================
+         MOBILE APP SHELL — only rendered visually below the mobile
+         breakpoint (see rosie.css). Entirely separate markup from the
+         desktop .rosie-wall above; both exist in the DOM at all times
+         and share the same underlying data/JS functions, but only one
+         is ever visible via CSS display toggling.
+         ============================================================ -->
+    <div class="rosie-mobile-app" id="rosieMobileApp">
+
+        <!-- Screen: Home -->
+        <div class="rosie-mobile-screen" id="rosieScreenHome">
+            <div class="rosie-mobile-stories" id="rosieMobileStoriesHome"></div>
+            <div class="rosie-post-grid rosie-mobile-post-grid" id="rosieMobilePostGrid"></div>
+            <div class="rosie-pagination" id="rosieMobilePagination"></div>
+        </div>
+
+        <!-- Screen: Friends -->
+        <div class="rosie-mobile-screen" id="rosieScreenFriends" hidden>
+            <h2 class="rosie-mobile-section-heading">Stories</h2>
+            <div class="rosie-mobile-stories" id="rosieMobileStoriesFriends"></div>
+            <h2 class="rosie-mobile-section-heading">Suggested for You</h2>
+            <div class="rosie-msuggest-list" id="rosieMobileFriendsList"></div>
+            <button class="rosie-mobile-showmore-btn" id="rosieMobileFriendsShowMore" onclick="toggleMobileFriendsExpanded()">Show more</button>
+        </div>
+
+        <!-- Screen: Search -->
+        <div class="rosie-mobile-screen" id="rosieScreenSearch" hidden>
+            <div class="rosie-search-bar rosie-mobile-search-bar">
+                <span class="rosie-search-icon">🔍</span>
+                <input type="text" class="rosie-search-input" id="rosieMobileSearchInput" placeholder="Search Rosie's Wall...">
+            </div>
+            <p class="rosie-mobile-search-count" id="rosieMobileSearchCount"></p>
+            <div id="rosieMobileSearchResults"></div>
+        </div>
+
+        <!-- Screen: Trending -->
+        <div class="rosie-mobile-screen" id="rosieScreenTrending" hidden>
+            <h2 class="rosie-mobile-section-heading">Today's News</h2>
+            <div id="rosieMobileNews"></div>
+            <h2 class="rosie-mobile-section-heading">Trending</h2>
+            <div id="rosieMobileTrendingList"></div>
+        </div>
+
+        <!-- Screen: Groups -->
+        <div class="rosie-mobile-screen" id="rosieScreenGroups" hidden>
+            <h2 class="rosie-mobile-section-heading">Rosie's Groups</h2>
+            <div class="rosie-mgroup-pinned-list" id="rosieMobileGroupsPinned"></div>
+            <h2 class="rosie-mobile-section-heading">Group Posts</h2>
+            <div id="rosieMobileGroupPosts"></div>
+        </div>
+    </div>
+
+    <nav class="rosie-mobile-tabbar" id="rosieMobileTabbar">
+        <button class="rosie-mobile-tab active" data-tab="home" aria-label="Home">
+            <span class="rosie-mobile-tab-icon">🏠</span>
+            <span class="rosie-mobile-tab-label">Home</span>
+        </button>
+        <button class="rosie-mobile-tab" data-tab="friends" aria-label="Friends">
+            <span class="rosie-mobile-tab-icon">🐾</span>
+            <span class="rosie-mobile-tab-label">Friends</span>
+        </button>
+        <button class="rosie-mobile-tab" data-tab="search" aria-label="Search">
+            <span class="rosie-mobile-tab-icon">🔍</span>
+            <span class="rosie-mobile-tab-label">Search</span>
+        </button>
+        <button class="rosie-mobile-tab" data-tab="trending" aria-label="Trending">
+            <span class="rosie-mobile-tab-icon">📈</span>
+            <span class="rosie-mobile-tab-label">Trending</span>
+        </button>
+        <button class="rosie-mobile-tab" data-tab="groups" aria-label="Groups">
+            <span class="rosie-mobile-tab-icon">👥</span>
+            <span class="rosie-mobile-tab-label">Groups</span>
+        </button>
+    </nav>
+
     <div class="rosie-profile-overlay" id="rosieProfileOverlay">
         <div class="rosie-profile-card">
             <button class="rosie-profile-close" id="rosieProfileClose" aria-label="Close">&times;</button>
@@ -392,9 +467,12 @@
         }
 
         function renderPagination(totalPages) {
-            const el = document.getElementById('rosiePagination');
+            const containers = ['rosiePagination', 'rosieMobilePagination']
+                .map(id => document.getElementById(id))
+                .filter(Boolean);
+
             if (totalPages <= 1) {
-                el.innerHTML = '';
+                containers.forEach(el => { el.innerHTML = ''; });
                 return;
             }
 
@@ -404,31 +482,38 @@
                 return `<button class="rosie-page-num-btn ${isActive ? 'active' : ''}" data-page="${pageNum}" ${isActive ? 'aria-current="page"' : ''}>${pageNum}</button>`;
             }).join('');
 
-            el.innerHTML = `
-                <button class="rosie-page-btn" id="rosiePrevPageBtn" ${currentPage === 1 ? 'disabled' : ''}>&larr; Previous</button>
+            const html = `
+                <button class="rosie-page-btn rosie-page-prev" ${currentPage === 1 ? 'disabled' : ''}>&larr; Previous</button>
                 <div class="rosie-page-numbers">${numberButtons}</div>
-                <button class="rosie-page-btn" id="rosieNextPageBtn" ${currentPage === totalPages ? 'disabled' : ''}>Next Page &rarr;</button>
+                <button class="rosie-page-btn rosie-page-next" ${currentPage === totalPages ? 'disabled' : ''}>Next Page &rarr;</button>
             `;
-            const prevBtn = document.getElementById('rosiePrevPageBtn');
-            const nextBtn = document.getElementById('rosieNextPageBtn');
-            if (prevBtn) prevBtn.addEventListener('click', () => goToPage(currentPage - 1));
-            if (nextBtn) nextBtn.addEventListener('click', () => goToPage(currentPage + 1));
 
-            el.querySelectorAll('.rosie-page-num-btn').forEach(btn => {
-                btn.addEventListener('click', () => goToPage(parseInt(btn.dataset.page, 10)));
+            containers.forEach(el => {
+                el.innerHTML = html;
+                const prevBtn = el.querySelector('.rosie-page-prev');
+                const nextBtn = el.querySelector('.rosie-page-next');
+                if (prevBtn) prevBtn.addEventListener('click', () => goToPage(currentPage - 1));
+                if (nextBtn) nextBtn.addEventListener('click', () => goToPage(currentPage + 1));
+                el.querySelectorAll('.rosie-page-num-btn').forEach(btn => {
+                    btn.addEventListener('click', () => goToPage(parseInt(btn.dataset.page, 10)));
+                });
             });
         }
 
         function renderPostCards(posts, startIndex = 0) {
             const colorClasses = ['rosie-card-grape', 'rosie-card-bubblegum', 'rosie-card-mint', 'rosie-card-butter'];
-            const grid = document.getElementById('rosiePostGrid');
+            const grids = ['rosiePostGrid', 'rosieMobilePostGrid']
+                .map(id => document.getElementById(id))
+                .filter(Boolean);
+            if (grids.length === 0) return;
 
             if (posts.length === 0) {
-                grid.innerHTML = `<p class="rosie-search-empty">No posts match that search. Rosie remains unbothered.</p>`;
+                const emptyHtml = `<p class="rosie-search-empty">No posts match that search. Rosie remains unbothered.</p>`;
+                grids.forEach(el => { el.innerHTML = emptyHtml; });
                 return;
             }
 
-            grid.innerHTML = posts.map((post, i) => {
+            const html = posts.map((post, i) => {
                 const colorClass = colorClasses[(startIndex + i) % colorClasses.length];
                 const commentsHtml = post.comments.map(c => {
                     const pet = PET_DATA[c.username];
@@ -478,6 +563,8 @@
                     </div>
                 `;
             }).join('');
+
+            grids.forEach(el => { el.innerHTML = html; });
         }
 
         function bumpEngagement(btn) {
@@ -544,16 +631,256 @@
                 renderPostGrid(allRosiePosts);
                 return;
             }
-            const filtered = allRosiePosts.filter(post => {
-                const inCaption = post.caption.toLowerCase().includes(query);
-                const inFeeling = post.feeling.toLowerCase().includes(query);
-                const inComments = post.comments.some(c =>
-                    c.text.toLowerCase().includes(query) || c.name.toLowerCase().includes(query)
-                );
-                return inCaption || inFeeling || inComments;
-            });
+            const filtered = allRosiePosts.filter(post => matchesSearch(post, query));
             renderPostGrid(filtered);
         });
+
+        // Shared by both the desktop search bar and the mobile Search tab.
+        function matchesSearch(post, query) {
+            const inCaption = post.caption.toLowerCase().includes(query);
+            const inFeeling = post.feeling.toLowerCase().includes(query);
+            const inComments = post.comments.some(c =>
+                c.text.toLowerCase().includes(query) || c.name.toLowerCase().includes(query)
+            );
+            return inCaption || inFeeling || inComments;
+        }
+
+        /* ============================================================
+           MOBILE APP SHELL
+           ============================================================ */
+
+        function renderMobileStoriesInto(containerId) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.innerHTML = Object.entries(PET_DATA).map(([username, pet]) => `
+                <button class="rosie-mstory" onclick="handleFriendStoryClick('${username}')">
+                    <div class="rosie-mstory-ring ${pet.hasStory ? '' : 'rosie-mstory-ring-none'}">
+                        <div class="rosie-mstory-avatar" style="background:${pet.color};">
+                            ${avatarInnerHtml(username, 'rosie-mstory-avatar-fallback')}
+                        </div>
+                    </div>
+                    <span class="rosie-mstory-label">${pet.name}</span>
+                </button>
+            `).join('');
+        }
+
+        // --- Friends tab: suggested accounts with a show-more cutoff ---
+        let mobileFriendsExpanded = false;
+
+        function renderMobileFriendsList() {
+            const container = document.getElementById('rosieMobileFriendsList');
+            const showMoreBtn = document.getElementById('rosieMobileFriendsShowMore');
+            if (!container) return;
+
+            const entries = Object.entries(PET_DATA);
+            const visible = mobileFriendsExpanded ? entries : entries.slice(0, 4);
+
+            container.innerHTML = visible.map(([username, pet]) => `
+                <div class="rosie-msuggest-item">
+                    <button class="rosie-msuggest-avatar-btn" style="background:${pet.color};" onclick="showPetProfile('${username}')" aria-label="View ${pet.name}'s profile">
+                        ${avatarInnerHtml(username, 'rosie-msuggest-avatar-fallback')}
+                    </button>
+                    <div class="rosie-msuggest-body">
+                        <button class="rosie-msuggest-name-btn" onclick="showPetProfile('${username}')">${pet.name}</button>
+                        <p class="rosie-msuggest-bio">${pet.bio}</p>
+                    </div>
+                    <button class="rosie-msuggest-follow-btn" onclick="showToast('Follow request sent. ${pet.name} will consider it.')">Follow</button>
+                </div>
+            `).join('');
+
+            if (showMoreBtn) {
+                showMoreBtn.style.display = (!mobileFriendsExpanded && entries.length > 4) ? 'block' : 'none';
+            }
+        }
+
+        function toggleMobileFriendsExpanded() {
+            mobileFriendsExpanded = true;
+            renderMobileFriendsList();
+        }
+
+        // --- Search tab: shows every match with a result count ---
+        function renderMobileSearchResults(query) {
+            const countEl = document.getElementById('rosieMobileSearchCount');
+            const listEl = document.getElementById('rosieMobileSearchResults');
+            if (!countEl || !listEl) return;
+
+            if (!query) {
+                countEl.textContent = '';
+                listEl.innerHTML = '';
+                return;
+            }
+
+            const results = allRosiePosts.filter(post => matchesSearch(post, query));
+            countEl.textContent = `${results.length} result${results.length === 1 ? '' : 's'} found`;
+
+            if (results.length === 0) {
+                listEl.innerHTML = `<p class="rosie-search-empty">No posts match that search. Rosie remains unbothered.</p>`;
+                return;
+            }
+
+            listEl.innerHTML = results.map(post => `
+                <div class="rosie-msearch-item">
+                    <div class="rosie-msearch-thumb">
+                        <img src="./assets/images/rosie/${post.image}" alt="Rosie" loading="lazy"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="rosie-msearch-thumb-fallback">🐾</div>
+                    </div>
+                    <div class="rosie-msearch-body">
+                        <p class="rosie-msearch-caption">${post.caption}</p>
+                        <span class="rosie-msearch-date">${formatPostDate(post.date)}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.getElementById('rosieMobileSearchInput').addEventListener('input', (e) => {
+            renderMobileSearchResults(e.target.value.trim().toLowerCase());
+        });
+
+        // --- Trending tab: made-up cat news + the same trending tags as desktop ---
+        const MOBILE_NEWS_DATA = [
+            { headline: "Local Cat Successfully Convinces Household She Has Not Been Fed Once This Week", category: "Pets", time: "2 hours ago", posts: "8.4K" },
+            { headline: "Scientists Confirm Cats Can Hear Snacks Opening From Three Rooms Away", category: "Science", time: "5 hours ago", posts: "22K" },
+            { headline: "Study Finds 100% of Cardboard Boxes Are Legally Owned By Nearest Cat", category: "Science", time: "1 day ago", posts: "14K" },
+            { headline: "Area Cat Declares Sunbeam Ownership, Neighborhood Quietly Agrees", category: "Local", time: "9 hours ago", posts: "3.1K" },
+            { headline: "Experts Warn 3AM Zoomies Season Approaching Early This Year", category: "Health", time: "16 hours ago", posts: "11K" }
+        ];
+
+        function renderMobileNews() {
+            const el = document.getElementById('rosieMobileNews');
+            if (!el) return;
+            const shuffled = [...MOBILE_NEWS_DATA].sort(() => Math.random() - 0.5).slice(0, 3);
+            el.innerHTML = shuffled.map(n => `
+                <div class="rosie-mnews-item">
+                    <p class="rosie-mnews-headline">${n.headline}</p>
+                    <p class="rosie-mnews-meta">${n.time} · ${n.category} · ${n.posts} posts</p>
+                </div>
+            `).join('');
+        }
+
+        function renderMobileTrending() {
+            const el = document.getElementById('rosieMobileTrendingList');
+            if (!el) return;
+            el.innerHTML = TRENDING_DATA.map(t => `
+                <div class="rosie-mnews-item">
+                    <p class="rosie-mnews-category">Cats · Trending</p>
+                    <p class="rosie-mnews-headline">${t.tag}</p>
+                    <p class="rosie-mnews-meta">${t.posts} posts</p>
+                </div>
+            `).join('');
+        }
+
+        // --- Groups tab: pinned groups + a few in-theme group posts ---
+        const MOBILE_GROUP_POSTS = [
+            {
+                groupIndex: 0, // Windowsill Real Estate Committee
+                posterUsername: 'ciccu_bear',
+                time: '2h',
+                text: "PSA: the 2pm windowsill sunbeam has shifted three inches west. adjust accordingly.",
+                likes: 214, comments: 18, shares: 4
+            },
+            {
+                groupIndex: 1, // Wet Food Truthers
+                posterUsername: 'dollybiscotti',
+                time: '5h',
+                text: "day 47 of demanding pate over shreds. they still don't listen. stay strong everyone.",
+                likes: 189, comments: 32, shares: 2
+            },
+            {
+                groupIndex: 4, // 3AM Zoomies Support Group
+                posterUsername: 'graciepoo',
+                time: '9h',
+                text: "relapsed last night. did four laps of the living room at 3:14am. no regrets.",
+                likes: 302, comments: 41, shares: 7
+            }
+        ];
+
+        function renderMobileGroups() {
+            const pinnedEl = document.getElementById('rosieMobileGroupsPinned');
+            const postsEl = document.getElementById('rosieMobileGroupPosts');
+
+            if (pinnedEl) {
+                pinnedEl.innerHTML = GROUPS_DATA.slice(0, 2).map((g, i) => `
+                    <div class="rosie-mgroup-pinned-item">
+                        <div class="rosie-mgroup-icon">${g.emoji}</div>
+                        <div class="rosie-mgroup-body">
+                            <div class="rosie-mgroup-name">${g.name}</div>
+                            <div class="rosie-mgroup-members">${g.members.toLocaleString()} members</div>
+                        </div>
+                        <button class="rosie-group-join-btn" data-joined="false" data-base="${g.members}" data-target="rosieMobileGroupMembers-${i}" onclick="toggleGroupJoin(this)">Join</button>
+                    </div>
+                `).join('');
+            }
+
+            if (postsEl) {
+                postsEl.innerHTML = MOBILE_GROUP_POSTS.map((gp, idx) => {
+                    const group = GROUPS_DATA[gp.groupIndex];
+                    const pet = PET_DATA[gp.posterUsername];
+                    return `
+                        <div class="rosie-mgrouppost">
+                            <div class="rosie-mgrouppost-header">
+                                <div class="rosie-mgroup-icon">${group.emoji}</div>
+                                <div class="rosie-mgrouppost-headerbody">
+                                    <div class="rosie-mgrouppost-groupname">${group.name}</div>
+                                    <div class="rosie-mgrouppost-meta">${pet.name} · ${gp.time}</div>
+                                </div>
+                            </div>
+                            <p class="rosie-mgrouppost-text">${gp.text}</p>
+                            <div class="rosie-mgrouppost-stats">🐾 <span id="rosieMgroupLikes-${idx}">${gp.likes}</span> &nbsp;·&nbsp; 💬 ${gp.comments} comments &nbsp;·&nbsp; ↗ ${gp.shares} shares</div>
+                            <div class="rosie-mgrouppost-actions">
+                                <button class="rosie-mgrouppost-action-btn" data-base="${gp.likes}" data-liked="false" data-target="rosieMgroupLikes-${idx}" onclick="toggleGroupPostLike(this)">🐾 Like</button>
+                                <button class="rosie-mgrouppost-action-btn" onclick="showToast(&quot;you don't have an account to comment 🐾&quot;)">💬 Comment</button>
+                                <button class="rosie-mgrouppost-action-btn" onclick="showToast(&quot;you don't have an account to share 🐾&quot;)">↗ Share</button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        function toggleGroupPostLike(btn) {
+            const base = parseInt(btn.dataset.base, 10);
+            const liked = btn.dataset.liked === 'true';
+            const target = document.getElementById(btn.dataset.target);
+            if (liked) {
+                btn.dataset.liked = 'false';
+                btn.classList.remove('active');
+                if (target) target.textContent = base;
+            } else {
+                btn.dataset.liked = 'true';
+                btn.classList.add('active');
+                if (target) target.textContent = base + 1;
+            }
+        }
+
+        // --- Bottom tab bar ---
+        const MOBILE_TABS = ['home', 'friends', 'search', 'trending', 'groups'];
+
+        function capitalizeTab(s) {
+            return s.charAt(0).toUpperCase() + s.slice(1);
+        }
+
+        function switchMobileTab(tab) {
+            MOBILE_TABS.forEach(t => {
+                const screen = document.getElementById('rosieScreen' + capitalizeTab(t));
+                if (screen) screen.hidden = (t !== tab);
+            });
+            document.querySelectorAll('.rosie-mobile-tab').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.tab === tab);
+            });
+            window.scrollTo({ top: 0, behavior: 'auto' });
+
+            if (tab === 'friends') renderMobileFriendsList();
+            if (tab === 'trending') { renderMobileNews(); renderMobileTrending(); }
+            if (tab === 'groups') renderMobileGroups();
+        }
+
+        document.querySelectorAll('.rosie-mobile-tab').forEach(btn => {
+            btn.addEventListener('click', () => switchMobileTab(btn.dataset.tab));
+        });
+
+        renderMobileStoriesInto('rosieMobileStoriesHome');
+        renderMobileStoriesInto('rosieMobileStoriesFriends');
 
         renderHighlights();
         renderGroups();

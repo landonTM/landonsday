@@ -1257,3 +1257,547 @@ footer {
     bottom: 5rem;
   }
 }
+
+/* ================================================================
+   MOBILE APP SHELL — an entirely separate Instagram-style layout,
+   shown only below 760px. The desktop .rosie-wall is hidden at that
+   same breakpoint so only one version is ever visible. Both share
+   the same JS data/functions; this is purely presentational.
+   ================================================================ */
+
+.rosie-mobile-app,
+.rosie-mobile-tabbar {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .rosie-wall {
+    display: none;
+  }
+
+  .rosie-mobile-app {
+    display: block;
+    background: linear-gradient(160deg, #f5ddf7 0%, #e6d0fb 45%, #ffd6ec 100%);
+    min-height: 100vh;
+    padding: 1.2rem 1rem 5.5rem;
+    box-sizing: border-box;
+  }
+
+  .rosie-mobile-tabbar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 250;
+    background: #fdf3ff;
+    border-top: 1px solid rgba(139, 95, 191, 0.25);
+    padding: 0.5rem 0.3rem calc(0.5rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+.rosie-mobile-section-heading {
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #5b2e91;
+  margin: 1.6rem 0 0.9rem;
+}
+
+.rosie-mobile-section-heading:first-child {
+  margin-top: 0;
+}
+
+/* ---- Stories row ---- */
+.rosie-mobile-stories {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 0.3rem 0.1rem 1rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.rosie-mobile-stories::-webkit-scrollbar {
+  display: none;
+}
+
+.rosie-mstory {
+  flex: 0 0 64px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0;
+}
+
+.rosie-mstory:focus-visible {
+  outline: 2px solid #5b2e91;
+  outline-offset: 2px;
+}
+
+.rosie-mstory-ring {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  padding: 3px;
+  background: conic-gradient(from 210deg, #ff6fa5, #ffb347, #8b5fbf, #6fe0c4, #ff6fa5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rosie-mstory-ring-none {
+  background: rgba(91, 46, 145, 0.18);
+}
+
+.rosie-mstory-avatar {
+  width: 57px;
+  height: 57px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #fdf3ff;
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  color: #fff;
+}
+
+.rosie-mstory-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rosie-mstory-avatar-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.rosie-mstory-label {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 0.68rem;
+  color: #2b1b3d;
+  max-width: 64px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---- Mobile post grid (Home tab) ---- */
+.rosie-mobile-post-grid {
+  max-width: 100%;
+  gap: 2rem;
+}
+
+/* ---- Suggested accounts (Friends tab) ---- */
+.rosie-msuggest-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.rosie-msuggest-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.rosie-msuggest-avatar-btn {
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  color: #fff;
+}
+
+.rosie-msuggest-avatar-btn:focus-visible {
+  outline: 2px solid #5b2e91;
+  outline-offset: 2px;
+}
+
+.rosie-msuggest-avatar-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rosie-msuggest-avatar-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.rosie-msuggest-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.rosie-msuggest-name-btn {
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #2b1b3d;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.rosie-msuggest-name-btn:focus-visible {
+  outline: 2px solid #5b2e91;
+  outline-offset: 2px;
+}
+
+.rosie-msuggest-bio {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: #7a4fa8;
+  margin: 0.15rem 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.rosie-msuggest-follow-btn {
+  flex: 0 0 auto;
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: #fff;
+  background: #5b2e91;
+  border: none;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+}
+
+.rosie-msuggest-follow-btn:focus-visible {
+  outline: 2px solid #2b1b3d;
+  outline-offset: 2px;
+}
+
+.rosie-mobile-showmore-btn {
+  display: none;
+  width: 100%;
+  margin-top: 1.2rem;
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #5b2e91;
+  background: rgba(255, 255, 255, 0.6);
+  border: none;
+  border-radius: 999px;
+  padding: 0.65rem;
+  cursor: pointer;
+}
+
+.rosie-mobile-showmore-btn:focus-visible {
+  outline: 2px solid #5b2e91;
+  outline-offset: 2px;
+}
+
+/* ---- Search tab ---- */
+.rosie-mobile-search-bar {
+  margin-bottom: 0.4rem;
+}
+
+.rosie-mobile-search-count {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: #7a4fa8;
+  margin: 0 0 1rem;
+}
+
+.rosie-msearch-item {
+  display: flex;
+  gap: 0.8rem;
+  padding: 0.8rem 0;
+  border-bottom: 2px dashed rgba(91, 46, 145, 0.15);
+}
+
+.rosie-msearch-thumb {
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.rosie-msearch-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rosie-msearch-thumb-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+.rosie-msearch-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.rosie-msearch-caption {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  line-height: 1.3;
+  color: #2b1b3d;
+  margin: 0 0 0.3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.rosie-msearch-date {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 0.68rem;
+  color: #7a4fa8;
+}
+
+/* ---- Trending tab (Today's News + hashtags) ---- */
+.rosie-mnews-item {
+  padding: 0.9rem 0;
+  border-bottom: 2px dashed rgba(91, 46, 145, 0.15);
+}
+
+.rosie-mnews-item:last-child {
+  border-bottom: none;
+}
+
+.rosie-mnews-category {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #7a4fa8;
+  margin: 0 0 0.2rem;
+}
+
+.rosie-mnews-headline {
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  color: #2b1b3d;
+  margin: 0 0 0.3rem;
+}
+
+.rosie-mnews-meta {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 0.7rem;
+  color: #7a4fa8;
+  margin: 0;
+}
+
+/* ---- Groups tab ---- */
+.rosie-mgroup-pinned-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.rosie-mgroup-pinned-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 18px;
+  padding: 0.9rem 1rem;
+  box-shadow: 0 6px 16px rgba(91, 46, 145, 0.12);
+}
+
+.rosie-mgroup-icon {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(139, 95, 191, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.rosie-mgroup-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.rosie-mgroup-name {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: #2b1b3d;
+  line-height: 1.25;
+}
+
+.rosie-mgroup-members {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 0.72rem;
+  color: #7a4fa8;
+  margin-top: 0.1rem;
+}
+
+.rosie-mgrouppost {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 18px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 6px 16px rgba(91, 46, 145, 0.12);
+  margin-bottom: 1.1rem;
+}
+
+.rosie-mgrouppost-header {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.7rem;
+}
+
+.rosie-mgrouppost-headerbody {
+  flex: 1;
+  min-width: 0;
+}
+
+.rosie-mgrouppost-groupname {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: #2b1b3d;
+}
+
+.rosie-mgrouppost-meta {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 0.68rem;
+  color: #7a4fa8;
+}
+
+.rosie-mgrouppost-text {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #2b1b3d;
+  margin: 0 0 0.8rem;
+}
+
+.rosie-mgrouppost-stats {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  color: #7a4fa8;
+  padding-bottom: 0.7rem;
+  border-bottom: 2px dashed rgba(91, 46, 145, 0.15);
+  margin-bottom: 0.5rem;
+}
+
+.rosie-mgrouppost-actions {
+  display: flex;
+}
+
+.rosie-mgrouppost-action-btn {
+  flex: 1;
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: #5b2e91;
+  background: none;
+  border: none;
+  padding: 0.4rem 0;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.rosie-mgrouppost-action-btn:hover {
+  background: rgba(91, 46, 145, 0.1);
+}
+
+.rosie-mgrouppost-action-btn.active {
+  color: #ff6fa5;
+}
+
+.rosie-mgrouppost-action-btn:focus-visible {
+  outline: 2px solid #5b2e91;
+  outline-offset: 2px;
+}
+
+/* ---- Bottom tab bar buttons ---- */
+.rosie-mobile-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem 0;
+  color: #9b7ab8;
+}
+
+.rosie-mobile-tab-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.rosie-mobile-tab-label {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 0.62rem;
+}
+
+.rosie-mobile-tab.active {
+  color: #5b2e91;
+}
+
+.rosie-mobile-tab:focus-visible {
+  outline: 2px solid #5b2e91;
+  outline-offset: 2px;
+}
+
+/* The floating Messages pill and back-to-top button were designed for
+   the desktop layout's scroll behavior; on the new mobile app shell the
+   fixed tab bar already occupies that space, so hide both to avoid
+   overlap. */
+@media (max-width: 760px) {
+  .rosie-dm-float,
+  .back-to-top-btn {
+    display: none;
+  }
+}
