@@ -21,29 +21,35 @@
   border-bottom: 1px solid rgba(139, 95, 191, 0.25);
 }
 
-/* The cat-themed nav labels ("Meowvies", "Lives, 1/9", "Catfight", etc.)
-   run longer than the originals and wrap onto a second line on phones.
-   Page-scoped fix: shrink slightly and allow a quiet horizontal scroll
-   instead of an obvious wrap. Deliberately minimal — earlier attempts to
-   force display/flex-grow here caused the whole link row to disappear,
-   so this only touches wrapping, scrolling, and text size. */
+/* .site-nav-links (in the shared stylesheet) is absolutely positioned
+   and centered via left:50%/transform:translateX(-50%). That pattern
+   has a known quirk: the browser computes its shrink-to-fit width
+   *before* the transform is applied, using only the space from the 50%
+   mark to the container's edge — so it wraps to a second line much
+   earlier than it visually needs to, on any screen (including landscape
+   phones, which are often wider than a typical mobile breakpoint).
+   Capping max-width forces the overflow-x:auto that's already on this
+   element in the base stylesheet to create a real internal scrollbar
+   instead of wrapping. Applied unconditionally — not gated behind a
+   media query — since the underlying quirk isn't width-specific. */
+.site-nav-links {
+  flex-wrap: nowrap;
+  max-width: 92vw;
+}
+
+.site-nav-link {
+  white-space: nowrap;
+}
+
 @media (max-width: 760px) {
   .site-nav-links {
-    flex-wrap: nowrap;
-    white-space: nowrap;
-    overflow-x: auto;
-    gap: 0.5rem;
-    scrollbar-width: none;
-  }
-  .site-nav-links::-webkit-scrollbar {
-    display: none;
+    gap: 0.9rem;
   }
   .site-nav-link {
-    font-size: 0.72rem;
-    white-space: nowrap;
+    font-size: 0.82rem;
   }
   .site-nav-logo {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     white-space: nowrap;
   }
 }
