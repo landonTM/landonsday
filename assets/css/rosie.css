@@ -21,6 +21,33 @@
   border-bottom: 1px solid rgba(139, 95, 191, 0.25);
 }
 
+/* The cat-themed nav labels ("Meowvies", "Lives, 1/9", "Catfight", etc.)
+   run longer than the originals and wrap onto a second line on phones.
+   Page-scoped fix: shrink slightly and allow a quiet horizontal scroll
+   instead of an obvious wrap. */
+@media (max-width: 760px) {
+  .site-nav {
+    flex-wrap: nowrap;
+  }
+  .site-nav-links {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.85rem;
+    scrollbar-width: none;
+  }
+  .site-nav-links::-webkit-scrollbar {
+    display: none;
+  }
+  .site-nav-link {
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+  .site-nav-logo {
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+}
+
 .site-nav-logo {
   color: #5b2e91;
 }
@@ -708,6 +735,30 @@ footer {
 
 .rosie-card-butter {
   background: linear-gradient(150deg, #fff2c2, #ffd666);
+}
+
+.rosie-card-lavender {
+  background: linear-gradient(150deg, #e6dcfb, #a78bda);
+}
+
+.rosie-card-peach {
+  background: linear-gradient(150deg, #ffe3c9, #ffab73);
+}
+
+.rosie-card-sky {
+  background: linear-gradient(150deg, #cfeafc, #7ec8ec);
+}
+
+.rosie-card-blush {
+  background: linear-gradient(150deg, #ffd9e3, #ff9ab3);
+}
+
+.rosie-card-sage {
+  background: linear-gradient(150deg, #e2f2ce, #a8d08d);
+}
+
+.rosie-card-periwinkle {
+  background: linear-gradient(150deg, #dadffb, #97a3e8);
 }
 
 .rosie-post-header {
@@ -1421,6 +1472,46 @@ footer {
 .rosie-mprofile-stats strong {
   color: #2b1b3d;
   font-weight: 800;
+}
+
+.rosie-mprofile-messages-btn {
+  position: relative;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(91, 46, 145, 0.12);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rosie-mprofile-messages-icon {
+  font-size: 1.1rem;
+}
+
+.rosie-mprofile-messages-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: #ff6fa5;
+  color: #fff;
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 800;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rosie-mprofile-messages-btn:focus-visible {
+  outline: 2px solid #5b2e91;
+  outline-offset: 2px;
 }
 
 /* ---- Stories row ---- */

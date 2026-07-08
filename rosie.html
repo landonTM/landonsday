@@ -9,12 +9,12 @@
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Rosie — Landon's Day">
-    <meta property="og:description" content="Rosie's Wall — an ongoing, very serious social feed run by a nine-year-old house cat.">
+    <meta property="og:description" content="Rosie's Scratchboard — an ongoing, very serious social feed run by a nine-year-old house cat.">
     <meta property="og:url" content="https://www.landonday.com/rosie">
     <meta property="og:image" content="https://www.landonday.com/assets/images/rosie.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Rosie — Landon's Day">
-    <meta name="twitter:description" content="Rosie's Wall — an ongoing, very serious social feed run by a nine-year-old house cat.">
+    <meta name="twitter:description" content="Rosie's Scratchboard — an ongoing, very serious social feed run by a nine-year-old house cat.">
     <meta name="twitter:image" content="https://www.landonday.com/assets/images/rosie.jpg">
 
 </head>
@@ -73,7 +73,7 @@
             <main class="rosie-main">
                 <div class="rosie-search-bar">
                     <span class="rosie-search-icon">🔍</span>
-                    <input type="text" class="rosie-search-input" id="rosieSearchInput" placeholder="Search Rosie's Wall...">
+                    <input type="text" class="rosie-search-input" id="rosieSearchInput" placeholder="Search Rosie's Scratchboard...">
                 </div>
 
                 <div class="rosie-post-grid" id="rosiePostGrid"></div>
@@ -113,6 +113,10 @@
                     <div class="rosie-mprofile-name">queen_rosie <span class="rosie-verified-badge" title="Verified Good Girl">&#10003;</span></div>
                     <div class="rosie-mprofile-stats" id="rosieMobileSidebarStats"></div>
                 </div>
+                <button class="rosie-mprofile-messages-btn" aria-label="Messages" onclick="showToast(&quot;you don't have an account to view messages 🐾&quot;)">
+                    <span class="rosie-mprofile-messages-icon">💬</span>
+                    <span class="rosie-mprofile-messages-badge">3</span>
+                </button>
             </div>
             <div class="rosie-mobile-stories" id="rosieMobileStoriesHome"></div>
             <div class="rosie-post-grid rosie-mobile-post-grid" id="rosieMobilePostGrid"></div>
@@ -132,7 +136,7 @@
         <div class="rosie-mobile-screen" id="rosieScreenSearch" hidden>
             <div class="rosie-search-bar rosie-mobile-search-bar">
                 <span class="rosie-search-icon">🔍</span>
-                <input type="text" class="rosie-search-input" id="rosieMobileSearchInput" placeholder="Search Rosie's Wall...">
+                <input type="text" class="rosie-search-input" id="rosieMobileSearchInput" placeholder="Search Rosie's Scratchboard...">
             </div>
             <p class="rosie-mobile-search-count" id="rosieMobileSearchCount"></p>
             <div id="rosieMobileSearchResults"></div>
@@ -595,8 +599,26 @@
             `;
         }
 
+        // A wide pastel palette so it doesn't feel repetitive as the post
+        // count grows. Shuffled fresh every time posts render, so the
+        // order is different each page rather than a fixed repeating cycle.
+        const POST_CARD_COLOR_CLASSES = [
+            'rosie-card-grape', 'rosie-card-bubblegum', 'rosie-card-mint', 'rosie-card-butter',
+            'rosie-card-lavender', 'rosie-card-peach', 'rosie-card-sky', 'rosie-card-blush',
+            'rosie-card-sage', 'rosie-card-periwinkle'
+        ];
+
+        function shuffleArray(arr) {
+            const a = [...arr];
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+
         function renderPostCards(posts, startIndex = 0) {
-            const colorClasses = ['rosie-card-grape', 'rosie-card-bubblegum', 'rosie-card-mint', 'rosie-card-butter'];
+            const colorClasses = shuffleArray(POST_CARD_COLOR_CLASSES);
             const grids = ['rosiePostGrid', 'rosieMobilePostGrid']
                 .map(id => document.getElementById(id))
                 .filter(Boolean);
@@ -609,7 +631,7 @@
             }
 
             const html = posts.map((post, i) => {
-                const colorClass = colorClasses[(startIndex + i) % colorClasses.length];
+                const colorClass = colorClasses[i % colorClasses.length];
                 return buildPostCardHtml(post, colorClass);
             }).join('');
 
@@ -617,13 +639,10 @@
         }
 
         // --- Post detail overlay (mobile search results open the full card) ---
-        const POST_DETAIL_COLOR_CLASSES = ['rosie-card-grape', 'rosie-card-bubblegum', 'rosie-card-mint', 'rosie-card-butter'];
-
         function openPostDetail(imageName) {
             const post = allRosiePosts.find(p => p.image === imageName);
             if (!post) return;
-            const globalIndex = allRosiePosts.indexOf(post);
-            const colorClass = POST_DETAIL_COLOR_CLASSES[globalIndex % POST_DETAIL_COLOR_CLASSES.length];
+            const colorClass = POST_CARD_COLOR_CLASSES[Math.floor(Math.random() * POST_CARD_COLOR_CLASSES.length)];
             document.getElementById('rosiePostDetailCard').innerHTML = buildPostCardHtml(post, colorClass);
             document.getElementById('rosiePostDetailOverlay').classList.add('open');
         }
