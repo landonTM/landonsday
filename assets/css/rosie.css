@@ -1078,6 +1078,65 @@ footer {
   background: rgba(43, 27, 61, 0.2);
 }
 
+/* ---- Post detail overlay (opened from mobile search results) ---- */
+.rosie-post-detail-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(43, 27, 61, 0.55);
+  z-index: 220;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3rem 1.2rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.rosie-post-detail-overlay.open {
+  display: flex;
+}
+
+.rosie-post-detail-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+}
+
+.rosie-post-detail-close {
+  position: absolute;
+  top: -0.9rem;
+  right: -0.9rem;
+  z-index: 5;
+  box-shadow: 0 6px 16px rgba(43, 27, 61, 0.3);
+}
+
+.rosie-post-detail-wrap .rosie-post-card {
+  aspect-ratio: auto;
+  width: 100%;
+}
+
+.rosie-post-detail-wrap .rosie-post-top {
+  flex-direction: column;
+}
+
+.rosie-post-detail-wrap .rosie-post-photo {
+  flex: 0 0 auto;
+  aspect-ratio: 4 / 3;
+}
+
+.rosie-post-detail-wrap .rosie-post-text {
+  overflow-y: visible;
+}
+
+.rosie-post-detail-wrap .rosie-post-card,
+.rosie-post-detail-wrap .rosie-post-card:nth-child(4n+1),
+.rosie-post-detail-wrap .rosie-post-card:nth-child(4n+2),
+.rosie-post-detail-wrap .rosie-post-card:nth-child(4n+3),
+.rosie-post-detail-wrap .rosie-post-card:nth-child(4n+4) {
+  transform: none;
+}
+
 .rosie-profile-avatar {
   width: 88px;
   height: 88px;
@@ -1531,9 +1590,21 @@ footer {
 
 .rosie-msearch-item {
   display: flex;
+  align-items: center;
   gap: 0.8rem;
   padding: 0.8rem 0;
+  width: 100%;
+  border: none;
   border-bottom: 2px dashed rgba(91, 46, 145, 0.15);
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+}
+
+.rosie-msearch-item:focus-visible {
+  outline: 2px solid #5b2e91;
+  outline-offset: 2px;
 }
 
 .rosie-msearch-thumb {
@@ -1589,12 +1660,24 @@ footer {
 
 /* ---- Trending tab (Today's News + hashtags) ---- */
 .rosie-mnews-item {
+  display: block;
+  width: 100%;
   padding: 0.9rem 0;
+  border: none;
   border-bottom: 2px dashed rgba(91, 46, 145, 0.15);
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
 }
 
 .rosie-mnews-item:last-child {
   border-bottom: none;
+}
+
+.rosie-mnews-item:focus-visible {
+  outline: 2px solid #5b2e91;
+  outline-offset: 2px;
 }
 
 .rosie-mnews-category {
