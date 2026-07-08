@@ -40,9 +40,9 @@
         <h2>The Big 4</h2>
         <div class="big4-row">
             <a class="big4-card" data-title="WrestleMania" href="wrestlemania"><img src="./assets/images/wrestling/wrestlemania.jpg" alt="WrestleMania"></a>
-            <div class="big4-card" data-title="SummerSlam" onclick="showDeadModal('SummerSlam')"><img src="./assets/images/wrestling/summerslam.jpg" alt="SummerSlam"></div>
-            <div class="big4-card" data-title="Royal Rumble" onclick="showDeadModal('Royal Rumble')"><img src="./assets/images/wrestling/royalrumble.jpg" alt="Royal Rumble"></div>
-            <div class="big4-card" data-title="Money in the Bank" onclick="showDeadModal('Money in the Bank')"><img src="./assets/images/wrestling/mitb.jpg" alt="Money in the Bank"></div>
+            <div class="big4-card" data-title="SummerSlam" tabindex="0" role="button" aria-label="SummerSlam" onclick="showDeadModal('SummerSlam')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showDeadModal('SummerSlam');}"><img src="./assets/images/wrestling/summerslam.jpg" alt="SummerSlam"></div>
+            <div class="big4-card" data-title="Royal Rumble" tabindex="0" role="button" aria-label="Royal Rumble" onclick="showDeadModal('Royal Rumble')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showDeadModal('Royal Rumble');}"><img src="./assets/images/wrestling/royalrumble.jpg" alt="Royal Rumble"></div>
+            <div class="big4-card" data-title="Money in the Bank" tabindex="0" role="button" aria-label="Money in the Bank" onclick="showDeadModal('Money in the Bank')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showDeadModal('Money in the Bank');}"><img src="./assets/images/wrestling/mitb.jpg" alt="Money in the Bank"></div>
         </div>
 
         <div class="saga">

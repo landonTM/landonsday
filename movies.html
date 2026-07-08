@@ -102,7 +102,7 @@
             <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
             <div class="modal-poster-row">
                 <div class="modal-poster-thumb" id="modalPosterThumb">
-                    <img id="modalPosterImg" src="" alt=""
+                    <img id="modalPosterImg" src="" alt="" loading="lazy"
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="modal-poster-thumb-fallback">🎬</div>
                 </div>
@@ -115,6 +115,7 @@
             <div class="modal-episodes" id="modalSeasons" style="display:none;"></div>
             <div class="modal-season-label" id="modalOverallLabel" style="display:none;">Series Overall</div>
             <div class="modal-review" id="modalReview"></div>
+            <div class="modal-last-watched" id="modalLastWatched" style="display:none;"></div>
         </div>
     </div>
 
@@ -123,6 +124,44 @@
     </footer>
 
     <script>
+        function renderStarDisplay(ratingText) {
+            if (!ratingText || ratingText.includes('-')) return ratingText || '';
+            const full = (ratingText.match(/⭐/g) || []).length;
+            const hasFraction = /[¾½¼]/.test(ratingText);
+            const used = full + (hasFraction ? 1 : 0);
+            const empty = Math.max(0, 5 - used);
+            return empty > 0
+                ? `${ratingText}<span class="modal-rating-empty">${'☆'.repeat(empty)}</span>`
+                : ratingText;
+        }
+
+        function applyRatingAccent(ratingText) {
+            const box = document.querySelector('.modal-box');
+            if (!ratingText) {
+                box.style.setProperty('--modal-accent', '#2c2c2c');
+                box.style.setProperty('--modal-accent-glow', 'transparent');
+                return;
+            }
+            let value;
+            if (ratingText.includes('-')) {
+                value = -1;
+            } else {
+                const full = (ratingText.match(/⭐/g) || []).length;
+                const fraction = ratingText.includes('¾') ? 0.75 : ratingText.includes('½') ? 0.5 : ratingText.includes('¼') ? 0.25 : 0;
+                value = full + fraction;
+            }
+            let color, glow;
+            if (value < 0 || value < 2.5) {
+                color = '#e05c5c'; glow = 'rgba(224, 92, 92, 0.15)';
+            } else if (value < 4) {
+                color = '#ffd54a'; glow = 'rgba(255, 213, 74, 0.15)';
+            } else {
+                color = '#6fdc8c'; glow = 'rgba(111, 220, 140, 0.15)';
+            }
+            box.style.setProperty('--modal-accent', color);
+            box.style.setProperty('--modal-accent-glow', glow);
+        }
+
         function openModal(item) {
             document.getElementById('modalTitle').textContent = item.title;
             document.getElementById('modalMeta').textContent = `${item.year} • ${item.type}`;
@@ -135,7 +174,9 @@
             posterImg.alt = item.title;
 
             const ratingEl = document.getElementById('modalRating');
-            ratingEl.textContent = getEffectiveRating(item);
+            const effectiveRating = getEffectiveRating(item);
+            ratingEl.innerHTML = renderStarDisplay(effectiveRating);
+            applyRatingAccent(effectiveRating);
 
             const seasonsEl = document.getElementById('modalSeasons');
             const overallLabelEl = document.getElementById('modalOverallLabel');
@@ -152,17 +193,28 @@
             }
 
             const reviewEl = document.getElementById('modalReview');
+            const lastWatchedEl = document.getElementById('modalLastWatched');
             if (item.review) {
-                reviewEl.textContent = item.review;
+                const match = item.review.match(/^([\s\S]*?)\n\n(Last Watched:.+)$/);
+                if (match) {
+                    reviewEl.textContent = match[1];
+                    lastWatchedEl.textContent = match[2];
+                    lastWatchedEl.style.display = 'block';
+                } else {
+                    reviewEl.textContent = item.review;
+                    lastWatchedEl.style.display = 'none';
+                }
                 reviewEl.classList.remove('pending');
                 reviewEl.style.display = 'block';
             } else if (item.seasons && item.seasons.length > 0) {
                 // Shows with only season ratings and no series-level review don't need a placeholder line
                 reviewEl.style.display = 'none';
+                lastWatchedEl.style.display = 'none';
             } else {
                 reviewEl.textContent = "Review coming soon!";
                 reviewEl.classList.add('pending');
                 reviewEl.style.display = 'block';
+                lastWatchedEl.style.display = 'none';
             }
 
             document.getElementById('reviewModal').classList.add('open');
@@ -184,22 +236,34 @@
             const div = document.createElement('div');
             div.className = 'favorite-card';
             div.setAttribute('data-title', item.title);
+            div.setAttribute('tabindex', '0');
+            div.setAttribute('role', 'button');
+            div.setAttribute('aria-label', item.title);
             div.innerHTML = `
                 <span class="fav-ribbon">FAVORITE</span>
-                <img src="./assets/images/movies/${item.poster}" alt="${item.title}"
+                <img src="./assets/images/movies/${item.poster}" alt="${item.title}" loading="lazy"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <div class="fav-fallback">${item.title}</div>
             `;
             div.addEventListener('click', () => openModal(item));
+            div.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openModal(item);
+                }
+            });
             return div;
         }
 
         function renderReviewListItem(item) {
             const div = document.createElement('div');
             div.className = 'review-list-item';
+            div.setAttribute('tabindex', '0');
+            div.setAttribute('role', 'button');
+            div.setAttribute('aria-label', item.title);
             div.innerHTML = `
                 <div class="review-list-thumb">
-                    <img src="./assets/images/movies/${item.poster}" alt="${item.title}"
+                    <img src="./assets/images/movies/${item.poster}" alt="${item.title}" loading="lazy"
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="review-list-thumb-fallback">🎬</div>
                 </div>
@@ -209,6 +273,12 @@
                 </div>
             `;
             div.addEventListener('click', () => openModal(item));
+            div.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openModal(item);
+                }
+            });
             return div;
         }
 
@@ -352,7 +422,7 @@
             row.innerHTML = `
                 <div class="perfect-ep-thumb">
                     <span class="perfect-ep-badge">E${epNum}</span>
-                    <img src="./assets/images/movies/${ep.poster}" alt="${ep.show}"
+                    <img src="./assets/images/movies/${ep.poster}" alt="${ep.show}" loading="lazy"
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="perfect-ep-thumb-fallback">🎬</div>
                 </div>

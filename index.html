@@ -76,6 +76,35 @@
             <img class="slide-bg" src="./assets/images/slider/aj.jpg" alt="">
             <img class="slide-fg" src="./assets/images/slider/aj.jpg" alt="AJ">
         </div>
+        <div class="slide">
+            <img class="slide-bg" src="./assets/images/slider/riverview.jpg" alt="">
+            <img class="slide-fg" src="./assets/images/slider/riverview.jpg" alt="River view">
+        </div>
+        <div class="slide">
+            <img class="slide-bg" src="./assets/images/slider/atlutd.jpg" alt="">
+            <img class="slide-fg" src="./assets/images/slider/atlutd.jpg" alt="Atlanta United match">
+        </div>
+        <div class="slide">
+            <img class="slide-bg" src="./assets/images/slider/sunset.jpg" alt="">
+            <img class="slide-fg" src="./assets/images/slider/sunset.jpg" alt="Ocean sunset">
+        </div>
+        <div class="slide">
+            <img class="slide-bg" src="./assets/images/slider/titlebelt.jpg" alt="">
+            <img class="slide-fg" src="./assets/images/slider/titlebelt.jpg" alt="Title belt">
+        </div>
+        <div class="slide">
+            <img class="slide-bg" src="./assets/images/slider/monument.jpg" alt="">
+            <img class="slide-fg" src="./assets/images/slider/monument.jpg" alt="Washington Monument">
+        </div>
+        <div class="slide">
+            <img class="slide-bg" src="./assets/images/slider/oaktrees.jpg" alt="">
+            <img class="slide-fg" src="./assets/images/slider/oaktrees.jpg" alt="Oak tree canopy road">
+        </div>
+        <div class="slide">
+            <img class="slide-bg" src="./assets/images/slider/redshoe.jpg" alt="">
+            <img class="slide-fg" src="./assets/images/slider/redshoe.jpg" alt="Red shoe">
+        </div>
+        <div class="slider-dots" id="sliderDots"></div>
     </div>
 
     <div class="category-bar">
@@ -144,14 +173,89 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            const sliderEl = document.querySelector('.slider');
             const slides = document.querySelectorAll('.slider .slide');
+            const dotsContainer = document.getElementById('sliderDots');
             let current = 0;
-            setInterval(() => {
+            let paused = false;
+
+            function goTo(index) {
                 slides[current].classList.remove('active');
-                current = (current + 1) % slides.length;
+                dotsContainer.children[current].classList.remove('active');
+                current = index;
                 slides[current].classList.add('active');
+                dotsContainer.children[current].classList.add('active');
+            }
+
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                dot.addEventListener('click', () => goTo(i));
+                dotsContainer.appendChild(dot);
+            });
+
+            sliderEl.addEventListener('mouseenter', () => { paused = true; });
+            sliderEl.addEventListener('mouseleave', () => { paused = false; });
+
+            setInterval(() => {
+                if (paused) return;
+                goTo((current + 1) % slides.length);
             }, 4000);
         });
+
+        // Animates .stat-number elements counting up from 0 when they scroll
+        // into view. Only applies to values that are cleanly numeric.
+        function initCountUpAnimations(container) {
+            if (!container) return;
+            const elements = container.querySelectorAll('.stat-number');
+
+            function animateElement(el) {
+                const finalText = el.textContent.trim();
+                const match = finalText.match(/^(-?[\d,]*\.?\d+)(.*)$/);
+                if (!match) return;
+                const numPart = match[1];
+                const suffix = match[2];
+                const targetValue = parseFloat(numPart.replace(/,/g, ''));
+                if (isNaN(targetValue)) return;
+                const hasCommas = numPart.includes(',');
+                const decimalMatch = numPart.match(/\.(\d+)$/);
+                const decimals = decimalMatch ? decimalMatch[1].length : 0;
+                const duration = 1000;
+                const startTime = performance.now();
+
+                function frame(now) {
+                    const progress = Math.min((now - startTime) / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = targetValue * eased;
+                    let display = decimals > 0 ? current.toFixed(decimals) : Math.round(current).toString();
+                    if (hasCommas) {
+                        display = Number(display).toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+                    }
+                    el.textContent = display + suffix;
+                    if (progress < 1) {
+                        requestAnimationFrame(frame);
+                    } else {
+                        el.textContent = finalText;
+                    }
+                }
+                requestAnimationFrame(frame);
+            }
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateElement(entry.target);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.3 });
+                elements.forEach(el => observer.observe(el));
+            } else {
+                elements.forEach(animateElement);
+            }
+        }
 
         function parseStarRating(text) {
             if (!text || !/[⭐¾½¼]/.test(text)) return null;
@@ -230,6 +334,7 @@
                     </div>`;
             }
             statsStrip.innerHTML = statsHtml;
+            initCountUpAnimations(statsStrip);
 
             // ---- Top Rated Marvel ----
             const topMarvel = marvelData
@@ -241,7 +346,7 @@
             if (topMarvel.length > 0) {
                 const row = document.getElementById('topRatedMarvelRow');
                 row.innerHTML = topMarvel.map(item => `
-                    <div class="poster-card" data-title="${item.title}" onclick="window.location.href='marvel'">
+                    <div class="poster-card" data-title="${item.title}" tabindex="0" role="link" aria-label="${item.title}" onclick="window.location.href='marvel'" onkeydown="if(event.key==='Enter'){window.location.href='marvel'}">
                         <img src="./assets/images/marvel/${item.poster}" alt="${item.title}"
                              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div class="poster-fallback">${item.title}</div>
@@ -260,7 +365,7 @@
             if (topGames.length > 0) {
                 const row = document.getElementById('mostPlayedGamesRow');
                 row.innerHTML = topGames.map(g => `
-                    <div class="game-card" title="${g.name}" style="cursor:pointer;" onclick="window.location.href='games'">
+                    <div class="game-card" title="${g.name}" style="cursor:pointer;" tabindex="0" role="link" aria-label="${g.name}" onclick="window.location.href='games'" onkeydown="if(event.key==='Enter'){window.location.href='games'}">
                         <img src="${g.header_image}" alt="${g.name}" loading="lazy"
                              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div class="game-card-fallback">${g.name}</div>
@@ -302,7 +407,7 @@
                              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">`
                         : '';
                     return `
-                    <div class="match-card" onclick="window.location.href='wrestlemania'">
+                    <div class="match-card" tabindex="0" role="link" aria-label="${m.match}" onclick="window.location.href='wrestlemania'" onkeydown="if(event.key==='Enter'){window.location.href='wrestlemania'}">
                         ${imgHtml}
                         <div class="match-card-fallback" style="${filename ? '' : 'display:flex;'}">${m.match}</div>
                         <div class="match-card-overlay">
@@ -350,7 +455,7 @@
             if (topMovies.length > 0) {
                 const row = document.getElementById('topRatedMoviesRow');
                 row.innerHTML = topMovies.map(item => `
-                    <div class="poster-card" data-title="${item.title}" onclick="window.location.href='movies'">
+                    <div class="poster-card" data-title="${item.title}" tabindex="0" role="link" aria-label="${item.title}" onclick="window.location.href='movies'" onkeydown="if(event.key==='Enter'){window.location.href='movies'}">
                         <img src="./assets/images/movies/${item.poster}" alt="${item.title}"
                              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div class="poster-fallback">${item.title}</div>

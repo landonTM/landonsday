@@ -106,7 +106,7 @@
     <div class="movies-section">
         <h2 class="movies-section-heading" style="text-align:center; font-size:2.2rem;">Full Library</h2>
         <p class="movies-section-subheading" style="text-align:center;">Every game in my Steam library. Click a column header to sort, or click a row to open its store page.</p>
-        <input type="text" class="archive-search" id="librarySearch" placeholder="Search my library...">
+        <input type="text" class="archive-search" id="librarySearch" placeholder="Search my library..." style="margin-left:auto; margin-right:auto;">
         <table class="library-table" id="libraryTable">
             <thead>
                 <tr>
@@ -214,6 +214,62 @@
             document.getElementById('mostPlayedSection').style.display = 'block';
         }
 
+        // Animates .stat-number elements counting up from 0 when they scroll
+        // into view. Only applies to values that are cleanly numeric (plain
+        // integers, comma-formatted numbers, decimals with a letter suffix
+        // like "4.78B") - ranks, dates, and other non-numeric strings are
+        // left untouched since they don't match the leading-digit pattern.
+        function initCountUpAnimations(container) {
+            if (!container) return;
+            const elements = container.querySelectorAll('.stat-number');
+
+            function animateElement(el) {
+                const finalText = el.textContent.trim();
+                const match = finalText.match(/^(-?[\d,]*\.?\d+)(.*)$/);
+                if (!match) return;
+                const numPart = match[1];
+                const suffix = match[2];
+                const targetValue = parseFloat(numPart.replace(/,/g, ''));
+                if (isNaN(targetValue)) return;
+                const hasCommas = numPart.includes(',');
+                const decimalMatch = numPart.match(/\.(\d+)$/);
+                const decimals = decimalMatch ? decimalMatch[1].length : 0;
+                const duration = 1000;
+                const startTime = performance.now();
+
+                function frame(now) {
+                    const progress = Math.min((now - startTime) / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = targetValue * eased;
+                    let display = decimals > 0 ? current.toFixed(decimals) : Math.round(current).toString();
+                    if (hasCommas) {
+                        display = Number(display).toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+                    }
+                    el.textContent = display + suffix;
+                    if (progress < 1) {
+                        requestAnimationFrame(frame);
+                    } else {
+                        el.textContent = finalText;
+                    }
+                }
+                requestAnimationFrame(frame);
+            }
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateElement(entry.target);
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.3 });
+                elements.forEach(el => observer.observe(el));
+            } else {
+                elements.forEach(animateElement);
+            }
+        }
+
         function renderStats(gameCount, totalHours, topGame) {
             document.getElementById('statsStrip').innerHTML = `
                 <div class="stat-block">
@@ -229,6 +285,7 @@
                     <div class="stat-label">Most Played</div>
                 </div>
             `;
+            initCountUpAnimations(document.getElementById('statsStrip'));
         }
 
         function updateSortIndicators() {
@@ -573,6 +630,7 @@
                     <div class="stat-label">Last Login</div>
                 </div>
             `;
+            initCountUpAnimations(document.getElementById('hypixelGeneralStrip'));
 
             const grid = document.getElementById('hypixelGameGrid');
             grid.innerHTML = games.map(game => `
@@ -648,6 +706,7 @@
                     </div>
                 </div>
             `;
+            initCountUpAnimations(panel.querySelector('.skyblock-key-stats'));
         }
 
         // Turns a hero display name into the kebab-case filename convention

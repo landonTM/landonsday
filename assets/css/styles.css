@@ -215,6 +215,36 @@ header h1 {
   pointer-events: none;
 }
 
+.slider-dots {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 3;
+}
+
+.slider-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.slider-dot:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.slider-dot.active {
+  background: #fff;
+  transform: scale(1.25);
+}
+
 /* ---- Category-page hero banner (single image, per-page) ---- */
 .page-hero {
   position: relative;
@@ -274,7 +304,7 @@ header h1 {
 
 .about-section h2 {
   font-family: 'Bebas Neue', 'Segoe UI', sans-serif;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   letter-spacing: 0.05em;
   color: #fff;
   margin-bottom: 0.75rem;
@@ -461,9 +491,10 @@ header h1 {
 .content-section h2 {
   margin-bottom: 1rem;
   font-family: 'Bebas Neue', 'Segoe UI', sans-serif;
-  font-size: 1.6rem;
+  font-size: 2.2rem;
   letter-spacing: 0.06em;
   color: #fff;
+  text-align: center;
 }
 
 .content-row {
@@ -807,6 +838,8 @@ header h1 {
   border-radius: 6px;
   overflow: hidden;
   background-color: #222;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
 }
 
 .modal-poster-thumb img {
@@ -832,9 +865,13 @@ header h1 {
 }
 
 .modal-box {
-  background-color: #161616;
-  border: 1px solid #2c2c2c;
+  background: linear-gradient(160deg, rgba(36, 36, 36, 0.6), rgba(13, 13, 13, 0.6));
+  backdrop-filter: blur(20px) saturate(130%);
+  -webkit-backdrop-filter: blur(20px) saturate(130%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid var(--modal-accent, #2c2c2c);
   border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 30px var(--modal-accent-glow, transparent);
   max-width: 560px;
   width: 100%;
   max-height: 85vh;
@@ -849,22 +886,32 @@ header h1 {
   position: absolute;
   top: 0.75rem;
   right: 1rem;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
+  border-radius: 50%;
   color: #ccc;
   font-size: 1.5rem;
   cursor: pointer;
   line-height: 1;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 .modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
 
 .modal-title {
   margin: 0 0 0.25rem;
   color: #fff;
-  font-size: 1.3rem;
+  font-family: 'Bebas Neue', 'Segoe UI', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.03em;
   padding-right: 1.5rem;
 }
 
@@ -917,6 +964,10 @@ header h1 {
   margin-bottom: 1rem;
 }
 
+.modal-rating-empty {
+  color: #444;
+}
+
 .modal-review {
   color: #ddd;
   line-height: 1.55;
@@ -927,6 +978,15 @@ header h1 {
 .modal-review.pending {
   color: #888;
   font-style: italic;
+}
+
+.modal-last-watched {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #2c2c2c;
+  color: #888;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
 }
 
 /* ================================
@@ -1172,7 +1232,7 @@ header h1 {
 .archive-toggle {
   display: flex;
   max-width: 400px;
-  margin: 0 0 1.25rem;
+  margin: 0 auto 1.25rem;
   border: 1px solid rgba(245, 166, 35, 0.35);
   border-radius: 999px;
   overflow: hidden;
@@ -1815,6 +1875,7 @@ header h1 {
   background: linear-gradient(160deg, #181818, #101010);
   border: 1px solid #2c2c2c;
   border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
   padding: 2rem 1.75rem;
   text-align: center;
 }
@@ -1880,7 +1941,7 @@ header h1 {
 
 .coming-grid-section > h2 {
   font-family: 'Bebas Neue', 'Segoe UI', sans-serif;
-  font-size: 1.5rem;
+  font-size: 2.2rem;
   letter-spacing: 0.05em;
   color: #fff;
   text-align: center;
@@ -1971,6 +2032,40 @@ footer {
   padding: 2rem;
   background-color: #000;
   color: #888;
+}
+
+/* ---- Keyboard focus states (site-wide) ----
+   :focus-visible only shows for keyboard navigation, not mouse clicks,
+   so this doesn't add a ring every time someone clicks with a mouse. */
+.site-nav-link:focus-visible,
+.site-nav-logo:focus-visible,
+.modal-close:focus-visible,
+.archive-toggle-btn:focus-visible,
+.pick-for-me-btn:focus-visible,
+.back-to-top-btn:focus-visible,
+.slider-dot:focus-visible,
+.category-tile:focus-visible,
+.coming-grid-card:focus-visible,
+.poster-card:focus-visible,
+.favorite-card:focus-visible,
+.review-list-item:focus-visible,
+.game-card:focus-visible,
+.match-card:focus-visible,
+.big4-card:focus-visible {
+  outline: 2px solid #00aaff;
+  outline-offset: 2px;
+}
+
+/* Cards are dark-on-dark, so a plain outline can be hard to see against
+   their own background - add a subtle glow to make it pop regardless of
+   the card's own image/color underneath. */
+.poster-card:focus-visible,
+.favorite-card:focus-visible,
+.review-list-item:focus-visible,
+.game-card:focus-visible,
+.match-card:focus-visible,
+.big4-card:focus-visible {
+  box-shadow: 0 0 0 2px #00aaff, 0 0 14px rgba(0, 170, 255, 0.6);
 }
 
 /* === Mobile Styles === */
@@ -2652,6 +2747,7 @@ footer {
   background: linear-gradient(160deg, #181818, #101010);
   border: 1px solid #2c2c2c;
   border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
   padding: 1rem 1.1rem;
   display: flex;
   flex-direction: column;
