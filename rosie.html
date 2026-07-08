@@ -599,13 +599,19 @@
             `;
         }
 
-        // A wide pastel palette so it doesn't feel repetitive as the post
-        // count grows. Shuffled fresh every time posts render, so the
-        // order is different each page rather than a fixed repeating cycle.
-        const POST_CARD_COLOR_CLASSES = [
+        // Two pastel palettes of 10 — pages alternate between them (odd
+        // pages use palette A, even pages use palette B), each shuffled
+        // fresh on every render, so neither the color order nor the
+        // palette itself repeats from one page to the next.
+        const POST_CARD_PALETTE_A = [
             'rosie-card-grape', 'rosie-card-bubblegum', 'rosie-card-mint', 'rosie-card-butter',
             'rosie-card-lavender', 'rosie-card-peach', 'rosie-card-sky', 'rosie-card-blush',
             'rosie-card-sage', 'rosie-card-periwinkle'
+        ];
+        const POST_CARD_PALETTE_B = [
+            'rosie-card-coral', 'rosie-card-seafoam', 'rosie-card-lilac', 'rosie-card-honey',
+            'rosie-card-rosewater', 'rosie-card-aqua', 'rosie-card-plum', 'rosie-card-tangerine',
+            'rosie-card-pistachio', 'rosie-card-cornflower'
         ];
 
         function shuffleArray(arr) {
@@ -618,7 +624,8 @@
         }
 
         function renderPostCards(posts, startIndex = 0) {
-            const colorClasses = shuffleArray(POST_CARD_COLOR_CLASSES);
+            const basePalette = (currentPage % 2 === 1) ? POST_CARD_PALETTE_A : POST_CARD_PALETTE_B;
+            const colorClasses = shuffleArray(basePalette);
             const grids = ['rosiePostGrid', 'rosieMobilePostGrid']
                 .map(id => document.getElementById(id))
                 .filter(Boolean);
@@ -642,7 +649,8 @@
         function openPostDetail(imageName) {
             const post = allRosiePosts.find(p => p.image === imageName);
             if (!post) return;
-            const colorClass = POST_CARD_COLOR_CLASSES[Math.floor(Math.random() * POST_CARD_COLOR_CLASSES.length)];
+            const allColors = [...POST_CARD_PALETTE_A, ...POST_CARD_PALETTE_B];
+            const colorClass = allColors[Math.floor(Math.random() * allColors.length)];
             document.getElementById('rosiePostDetailCard').innerHTML = buildPostCardHtml(post, colorClass);
             document.getElementById('rosiePostDetailOverlay').classList.add('open');
         }

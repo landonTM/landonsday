@@ -24,27 +24,34 @@
 /* The cat-themed nav labels ("Meowvies", "Lives, 1/9", "Catfight", etc.)
    run longer than the originals and wrap onto a second line on phones.
    Page-scoped fix: shrink slightly and allow a quiet horizontal scroll
-   instead of an obvious wrap. */
+   instead of an obvious wrap. !important is used deliberately here since
+   this must override the shared site-wide nav rules from styles.css. */
 @media (max-width: 760px) {
   .site-nav {
-    flex-wrap: nowrap;
+    flex-wrap: nowrap !important;
+    overflow-x: hidden;
   }
   .site-nav-links {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 0.85rem;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    gap: 0.6rem !important;
     scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
   .site-nav-links::-webkit-scrollbar {
     display: none;
+    height: 0;
   }
   .site-nav-link {
-    font-size: 0.82rem;
-    white-space: nowrap;
+    font-size: 0.75rem !important;
+    white-space: nowrap !important;
+    flex: 0 0 auto;
   }
   .site-nav-logo {
-    font-size: 0.95rem;
-    white-space: nowrap;
+    font-size: 0.9rem !important;
+    white-space: nowrap !important;
+    flex: 0 0 auto;
   }
 }
 
@@ -759,6 +766,48 @@ footer {
 
 .rosie-card-periwinkle {
   background: linear-gradient(150deg, #dadffb, #97a3e8);
+}
+
+/* Second palette — pages alternate between this set and the one above so
+   consecutive pages don't share the same 10 colors. */
+.rosie-card-coral {
+  background: linear-gradient(150deg, #ffd8c9, #ff8b6b);
+}
+
+.rosie-card-seafoam {
+  background: linear-gradient(150deg, #c9f2e6, #4fb99e);
+}
+
+.rosie-card-lilac {
+  background: linear-gradient(150deg, #edd7f8, #c48ce0);
+}
+
+.rosie-card-honey {
+  background: linear-gradient(150deg, #ffecb8, #f0b429);
+}
+
+.rosie-card-rosewater {
+  background: linear-gradient(150deg, #ffe1e7, #f2a6bb);
+}
+
+.rosie-card-aqua {
+  background: linear-gradient(150deg, #c9f1f7, #4fb8cf);
+}
+
+.rosie-card-plum {
+  background: linear-gradient(150deg, #ecd7f2, #a86cc4);
+}
+
+.rosie-card-tangerine {
+  background: linear-gradient(150deg, #ffddc0, #ff9640);
+}
+
+.rosie-card-pistachio {
+  background: linear-gradient(150deg, #e6f2c9, #a8cc5e);
+}
+
+.rosie-card-cornflower {
+  background: linear-gradient(150deg, #d8e1fb, #7590e8);
 }
 
 .rosie-post-header {
