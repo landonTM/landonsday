@@ -34,8 +34,8 @@
 
     <div class="rosie-wall">
         <div class="rosie-wall-header">
-            <h2 class="rosie-wall-title">Rosie's Wall</h2>
-            <p class="rosie-wall-subtitle">nine years of being a house cat, narrated with full editorial control by the house cat herself.</p>
+            <h2 class="rosie-wall-title">Rosie's Scratchboard</h2>
+            <p class="rosie-wall-subtitle">nine, ten, maybe 11 years of being a house cat, narrated with full editorial control by the house cat herself. beating the stinky and fat allegations one post at a time.</p>
         </div>
 
         <div class="rosie-layout">
@@ -105,6 +105,15 @@
 
         <!-- Screen: Home -->
         <div class="rosie-mobile-screen" id="rosieScreenHome">
+            <div class="rosie-mprofile-strip">
+                <div class="rosie-mprofile-avatar">
+                    <img src="./assets/images/rosie.jpg" alt="Rosie">
+                </div>
+                <div class="rosie-mprofile-body">
+                    <div class="rosie-mprofile-name">queen_rosie <span class="rosie-verified-badge" title="Verified Good Girl">&#10003;</span></div>
+                    <div class="rosie-mprofile-stats" id="rosieMobileSidebarStats"></div>
+                </div>
+            </div>
             <div class="rosie-mobile-stories" id="rosieMobileStoriesHome"></div>
             <div class="rosie-post-grid rosie-mobile-post-grid" id="rosieMobilePostGrid"></div>
             <div class="rosie-pagination" id="rosieMobilePagination"></div>
@@ -176,6 +185,10 @@
             <div class="rosie-profile-name" id="rosieProfileName"></div>
             <div class="rosie-profile-username" id="rosieProfileUsername"></div>
             <p class="rosie-profile-bio" id="rosieProfileBio"></p>
+            <div class="rosie-profile-actions">
+                <button class="rosie-profile-action-btn rosie-profile-action-primary" id="rosiePetFollowBtn" data-requested="false">Follow</button>
+                <button class="rosie-profile-action-btn" id="rosiePetMessageBtn">Message</button>
+            </div>
         </div>
     </div>
 
@@ -213,14 +226,18 @@
                 color: '#e0629b',
                 bio: "rosie's sister. still not over her moving out. sends her love from afar 🥺",
                 hasStory: true,
-                storyExcuse: "Daisy's story is down for maintenance — she was mid-cry about missing Rosie and didn't want an audience."
+                storyExcuse: "Daisy's story is down for maintenance — she was mid-cry about missing Rosie and didn't want an audience.",
+                followJoke: "Follow request sent. Daisy already followed back before you even asked.",
+                messageJoke: "Daisy actually answers her DMs. Unfortunately this isn't a real one."
             },
             ciccu_bear: {
                 name: 'Ciccu',
                 avatarFile: 'ciccu.jpg',
                 color: '#5b4a63',
                 bio: "does not care for rosie. has never cared for rosie. will not be starting now.",
-                hasStory: false
+                hasStory: false,
+                followJoke: "Follow request sent. Ciccu is reviewing it out of obligation, not interest.",
+                messageJoke: "Ciccu already knows what you're going to say and doesn't care."
             },
             cocoloco: {
                 name: 'Coco',
@@ -228,7 +245,9 @@
                 color: '#4fb894',
                 bio: "no clue how i know this cat but i'm a fan i think???",
                 hasStory: true,
-                storyExcuse: "Coco posted a story but forgot what it was about, so it's been quietly taken down."
+                storyExcuse: "Coco posted a story but forgot what it was about, so it's been quietly taken down.",
+                followJoke: "Follow request sent. Coco will probably forget she got it by tomorrow.",
+                messageJoke: "Coco would reply, but she's already forgotten you messaged."
             },
             dollybiscotti: {
                 name: 'Dolly',
@@ -236,21 +255,27 @@
                 color: '#d99a2b',
                 bio: "don't really know her but she seems cool so 💯",
                 hasStory: true,
-                storyExcuse: "Dolly's story is stuck buffering. She's hyping something. We're just not sure what yet."
+                storyExcuse: "Dolly's story is stuck buffering. She's hyping something. We're just not sure what yet.",
+                followJoke: "Follow request sent. Dolly already told everyone you're following now.",
+                messageJoke: "Dolly would hype your DM before she even finished reading it."
             },
             graciepoo: {
                 name: 'Gracie',
                 avatarFile: 'gracie.jpg',
                 color: '#9b6fd1',
                 bio: "rosie's #1 fan from a completely different household. we've never met and that's ok",
-                hasStory: false
+                hasStory: false,
+                followJoke: "Follow request sent. Gracie is combusting with excitement somewhere far away.",
+                messageJoke: "Gracie would scream with joy reading this. Sadly, no actual messages here."
             },
             ralphlauren: {
                 name: 'Ralphie',
                 avatarFile: 'ralphie.jpg',
                 color: '#e08a4f',
                 bio: "would love to hang out sometime. still waiting on a reply 🐾",
-                hasStory: false
+                hasStory: false,
+                followJoke: "Follow request sent. Ralphie has been refreshing his notifications all day for this.",
+                messageJoke: "Ralphie has been waiting for this message his whole life. Still waiting."
             }
         };
 
@@ -412,11 +437,24 @@
         function renderSidebarStats(posts) {
             sidebarTotalLikes = posts.reduce((sum, p) => sum + p.likes, 0);
             sidebarTotalRepawsts = posts.reduce((sum, p) => sum + p.repawsts, 0);
-            document.getElementById('rosieSidebarStats').innerHTML = `
-                <div class="rosie-stat"><strong>${posts.length}</strong><span>Posts</span></div>
-                <div class="rosie-stat"><strong id="rosieStatLikes">${sidebarTotalLikes.toLocaleString()}</strong><span>Likes</span></div>
-                <div class="rosie-stat"><strong id="rosieStatRepawsts">${sidebarTotalRepawsts.toLocaleString()}</strong><span>Repawsts</span></div>
-            `;
+
+            const desktopEl = document.getElementById('rosieSidebarStats');
+            if (desktopEl) {
+                desktopEl.innerHTML = `
+                    <div class="rosie-stat"><strong>${posts.length}</strong><span>Posts</span></div>
+                    <div class="rosie-stat"><strong id="rosieStatLikes">${sidebarTotalLikes.toLocaleString()}</strong><span>Likes</span></div>
+                    <div class="rosie-stat"><strong id="rosieStatRepawsts">${sidebarTotalRepawsts.toLocaleString()}</strong><span>Repawsts</span></div>
+                `;
+            }
+
+            const mobileEl = document.getElementById('rosieMobileSidebarStats');
+            if (mobileEl) {
+                mobileEl.innerHTML = `
+                    <span><strong>${posts.length}</strong> posts</span>
+                    <span><strong id="rosieMobileStatLikes">${sidebarTotalLikes.toLocaleString()}</strong> likes</span>
+                    <span><strong id="rosieMobileStatRepawsts">${sidebarTotalRepawsts.toLocaleString()}</strong> repawsts</span>
+                `;
+            }
         }
 
         // Kept around so the search bar can filter/re-render without
@@ -611,12 +649,16 @@
 
             if (btn.dataset.label === 'likes') {
                 sidebarTotalLikes += delta;
-                const el = document.getElementById('rosieStatLikes');
-                if (el) el.textContent = sidebarTotalLikes.toLocaleString();
+                ['rosieStatLikes', 'rosieMobileStatLikes'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = sidebarTotalLikes.toLocaleString();
+                });
             } else if (btn.dataset.label === 'repawsts') {
                 sidebarTotalRepawsts += delta;
-                const el = document.getElementById('rosieStatRepawsts');
-                if (el) el.textContent = sidebarTotalRepawsts.toLocaleString();
+                ['rosieStatRepawsts', 'rosieMobileStatRepawsts'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = sidebarTotalRepawsts.toLocaleString();
+                });
             }
         }
 
@@ -637,7 +679,32 @@
             document.getElementById('rosieProfileName').textContent = pet.name;
             document.getElementById('rosieProfileUsername').textContent = '@' + username;
             document.getElementById('rosieProfileBio').textContent = pet.bio;
+
+            const followBtn = document.getElementById('rosiePetFollowBtn');
+            followBtn.dataset.requested = 'false';
+            followBtn.textContent = 'Follow';
+            followBtn.classList.add('rosie-profile-action-primary');
+            followBtn.onclick = () => togglePetFollowRequest(followBtn, pet);
+
+            const messageBtn = document.getElementById('rosiePetMessageBtn');
+            messageBtn.onclick = () => showToast(pet.messageJoke);
+
             document.getElementById('rosieProfileOverlay').classList.add('open');
+        }
+
+        function togglePetFollowRequest(btn, pet) {
+            const requested = btn.dataset.requested === 'true';
+            if (requested) {
+                btn.dataset.requested = 'false';
+                btn.textContent = 'Follow';
+                btn.classList.add('rosie-profile-action-primary');
+                showToast(`Follow request withdrawn. ${pet.name} won't take it personally.`);
+            } else {
+                btn.dataset.requested = 'true';
+                btn.textContent = 'Requested';
+                btn.classList.remove('rosie-profile-action-primary');
+                showToast(pet.followJoke);
+            }
         }
 
         function closePetProfile() {
