@@ -203,6 +203,30 @@
         </div>
     </div>
 
+    <div class="rosie-story-viewer" id="rosieStoryViewer">
+        <div class="rosie-story-inner">
+            <div class="rosie-story-progress" id="rosieStoryProgress"></div>
+            <div class="rosie-story-header">
+                <div class="rosie-story-header-left">
+                    <div class="rosie-story-avatar"><img src="./assets/images/rosie.jpg" alt="Rosie"></div>
+                    <span class="rosie-story-username">queen_rosie</span>
+                    <span class="rosie-story-date" id="rosieStoryDate"></span>
+                    <span class="rosie-story-timeleft" id="rosieStoryTimeLeft"></span>
+                </div>
+                <button class="rosie-story-close" id="rosieStoryClose" aria-label="Close">&times;</button>
+            </div>
+            <div class="rosie-story-media" id="rosieStoryMedia"></div>
+            <button class="rosie-story-tap-zone rosie-story-tap-left" id="rosieStoryTapLeft" aria-label="Previous story"></button>
+            <button class="rosie-story-tap-zone rosie-story-tap-right" id="rosieStoryTapRight" aria-label="Next story"></button>
+            <div class="rosie-story-footer">
+                <button class="rosie-story-message-box" onclick="showToast(&quot;you don't have an account to message 🐾&quot;)">Send message...</button>
+                <button class="rosie-story-icon-btn" aria-label="Like" onclick="showToast(&quot;you don't have an account to like this 🐾&quot;)">🐾</button>
+                <button class="rosie-story-icon-btn" aria-label="Comment" onclick="showToast(&quot;you don't have an account to comment 🐾&quot;)">💬</button>
+                <button class="rosie-story-icon-btn" aria-label="Repawst" onclick="showToast(&quot;you don't have an account to repawst 🐾&quot;)">🔁</button>
+            </div>
+        </div>
+    </div>
+
     <div class="rosie-toast" id="rosieToast"></div>
 
     <button class="rosie-dm-float" id="rosieDmFloat" aria-label="Open messages" onclick="showToast(&quot;you don't have an account to view messages 🐾&quot;)">
@@ -490,6 +514,7 @@
             renderTopFriends();
             renderSidebarStats(posts);
             renderPostGrid(posts);
+            renderOnThisDayEntries();
         }
 
         // Entry point whenever the underlying post set changes (initial
@@ -746,10 +771,14 @@
         document.getElementById('rosiePostDetailOverlay').addEventListener('click', (e) => {
             if (e.target.id === 'rosiePostDetailOverlay') closePostDetail();
         });
+        document.getElementById('rosieStoryClose').addEventListener('click', closeStoryViewer);
+        document.getElementById('rosieStoryTapLeft').addEventListener('click', goToPrevStory);
+        document.getElementById('rosieStoryTapRight').addEventListener('click', goToNextStory);
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closePetProfile();
                 closePostDetail();
+                closeStoryViewer();
             }
         });
 
@@ -790,6 +819,180 @@
                     <span class="rosie-mstory-label">${pet.name}</span>
                 </button>
             `).join('');
+        }
+
+        /* ============================================================
+           ON THIS DAY — an Instagram-Stories-style viewer for any post
+           whose month/day matches today's date (any past year). The
+           "day" boundary is Eastern time specifically, per spec, not
+           the visitor's local timezone. Which posts qualify changes
+           automatically at midnight ET, so this naturally refreshes
+           and "expires" every day without needing separate persistence.
+           ============================================================ */
+
+        const STORY_DURATION_MS = 5000;
+        let onThisDayMatches = [];
+        let storyIndex = 0;
+        let storyAdvanceTimeout = null;
+        let storyTimeLeftInterval = null;
+
+        function getEasternNow() {
+            const fmt = new Intl.DateTimeFormat('en-US', {
+                timeZone: 'America/New_York',
+                year: 'numeric', month: '2-digit', day: '2-digit',
+                hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+            });
+            const map = {};
+            fmt.formatToParts(new Date()).forEach(p => { map[p.type] = p.value; });
+            return {
+                year: parseInt(map.year, 10),
+                month: parseInt(map.month, 10),
+                day: parseInt(map.day, 10),
+                // hour12:false can report "24" for midnight in some browsers/ICU versions
+                hour: parseInt(map.hour, 10) % 24,
+                minute: parseInt(map.minute, 10),
+                second: parseInt(map.second, 10)
+            };
+        }
+
+        function computeOnThisDayMatches() {
+            const now = getEasternNow();
+            onThisDayMatches = allRosiePosts
+                .filter(post => {
+                    const d = new Date(post.date);
+                    return (d.getMonth() + 1) === now.month && d.getDate() === now.day && d.getFullYear() !== now.year;
+                })
+                .sort((a, b) => new Date(a.date) - new Date(b.date)); // oldest memory first
+        }
+
+        function storyHoursLeftLabel() {
+            const now = getEasternNow();
+            const secondsSinceMidnight = now.hour * 3600 + now.minute * 60 + now.second;
+            const secondsLeft = 24 * 3600 - secondsSinceMidnight;
+            const hoursLeft = Math.max(1, Math.ceil(secondsLeft / 3600));
+            return hoursLeft + 'h';
+        }
+
+        function buildOnThisDayBubbleHtml(variant) {
+            if (variant === 'mobile') {
+                return `
+                    <button class="rosie-mstory rosie-onthisday-entry" onclick="openStoryViewer()">
+                        <div class="rosie-mstory-ring rosie-onthisday-ring">
+                            <div class="rosie-mstory-avatar">
+                                <img src="./assets/images/rosie.jpg" alt="Rosie">
+                            </div>
+                        </div>
+                        <span class="rosie-mstory-label">On This Day</span>
+                    </button>
+                `;
+            }
+            return `
+                <div class="rosie-friend rosie-onthisday-entry">
+                    <button class="rosie-friend-avatar-btn" onclick="openStoryViewer()" aria-label="View On This Day">
+                        <div class="rosie-friend-ring rosie-onthisday-ring">
+                            <div class="rosie-friend-avatar">
+                                <img src="./assets/images/rosie.jpg" alt="Rosie">
+                            </div>
+                        </div>
+                    </button>
+                    <button class="rosie-friend-name-btn" onclick="openStoryViewer()">On This Day</button>
+                </div>
+            `;
+        }
+
+        function renderOnThisDayEntries() {
+            computeOnThisDayMatches();
+            if (onThisDayMatches.length === 0) return;
+
+            const desktopEl = document.getElementById('rosieFriendsGrid');
+            if (desktopEl) desktopEl.insertAdjacentHTML('afterbegin', buildOnThisDayBubbleHtml('desktop'));
+
+            ['rosieMobileStoriesHome', 'rosieMobileStoriesFriends'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.insertAdjacentHTML('afterbegin', buildOnThisDayBubbleHtml('mobile'));
+            });
+        }
+
+        function renderStoryProgressBar() {
+            document.getElementById('rosieStoryProgress').innerHTML = onThisDayMatches.map((_, i) => `
+                <div class="rosie-story-progress-seg">
+                    <div class="rosie-story-progress-fill" id="rosieStoryFill-${i}"></div>
+                </div>
+            `).join('');
+        }
+
+        function updateStoryProgressUI() {
+            onThisDayMatches.forEach((_, i) => {
+                const fill = document.getElementById('rosieStoryFill-' + i);
+                if (!fill) return;
+                fill.style.transition = 'none';
+                if (i < storyIndex) {
+                    fill.style.width = '100%';
+                } else if (i === storyIndex) {
+                    fill.style.width = '0%';
+                    void fill.offsetWidth; // force reflow so the transition below actually animates
+                    fill.style.transition = `width ${STORY_DURATION_MS}ms linear`;
+                    fill.style.width = '100%';
+                } else {
+                    fill.style.width = '0%';
+                }
+            });
+        }
+
+        function renderStorySlide() {
+            const post = onThisDayMatches[storyIndex];
+            document.getElementById('rosieStoryMedia').innerHTML = `
+                <img src="./assets/images/rosie/${post.image}" alt="Rosie" class="rosie-story-img"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="rosie-story-img-fallback">🐾</div>
+                <div class="rosie-story-caption">${post.caption}</div>
+            `;
+            document.getElementById('rosieStoryDate').textContent = formatPostDate(post.date);
+            updateStoryProgressUI();
+        }
+
+        function startStoryTimer() {
+            clearTimeout(storyAdvanceTimeout);
+            storyAdvanceTimeout = setTimeout(goToNextStory, STORY_DURATION_MS);
+        }
+
+        function goToNextStory() {
+            if (storyIndex < onThisDayMatches.length - 1) {
+                storyIndex++;
+                renderStorySlide();
+                startStoryTimer();
+            } else {
+                closeStoryViewer();
+            }
+        }
+
+        function goToPrevStory() {
+            storyIndex = Math.max(0, storyIndex - 1);
+            renderStorySlide();
+            startStoryTimer();
+        }
+
+        function updateStoryTimeLeftLabel() {
+            const el = document.getElementById('rosieStoryTimeLeft');
+            if (el) el.textContent = storyHoursLeftLabel();
+        }
+
+        function openStoryViewer() {
+            if (onThisDayMatches.length === 0) return;
+            storyIndex = 0;
+            renderStoryProgressBar();
+            renderStorySlide();
+            startStoryTimer();
+            updateStoryTimeLeftLabel();
+            clearInterval(storyTimeLeftInterval);
+            storyTimeLeftInterval = setInterval(updateStoryTimeLeftLabel, 60000);
+            document.getElementById('rosieStoryViewer').classList.add('open');
+        }
+
+        function closeStoryViewer() {
+            clearTimeout(storyAdvanceTimeout);
+            clearInterval(storyTimeLeftInterval);
+            document.getElementById('rosieStoryViewer').classList.remove('open');
         }
 
         // --- Friends tab: suggested accounts with a show-more cutoff.

@@ -1236,6 +1236,264 @@ footer {
   transform: none;
 }
 
+/* ---- On This Day story ring (distinct from regular friend rings) ---- */
+.rosie-onthisday-ring {
+  background: conic-gradient(from 180deg, #ffd54a, #ff9a4d, #ff6fa5, #ffd54a) !important;
+}
+
+.rosie-onthisday-ring .rosie-friend-avatar,
+.rosie-onthisday-ring .rosie-mstory-avatar {
+  background: #fff;
+}
+
+.rosie-onthisday-ring img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+
+/* ---- Story viewer (Instagram-style, opened from "On This Day") ---- */
+.rosie-story-viewer {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #000;
+  z-index: 300;
+  align-items: center;
+  justify-content: center;
+}
+
+.rosie-story-viewer.open {
+  display: flex;
+}
+
+.rosie-story-inner {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  height: 100%;
+  max-height: 860px;
+  background: #1a1220;
+  overflow: hidden;
+}
+
+@media (min-width: 421px) {
+  .rosie-story-inner {
+    border-radius: 20px;
+    height: 90vh;
+  }
+}
+
+.rosie-story-progress {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  right: 0.7rem;
+  display: flex;
+  gap: 4px;
+  z-index: 10;
+}
+
+.rosie-story-progress-seg {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.35);
+  overflow: hidden;
+}
+
+.rosie-story-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #fff;
+}
+
+.rosie-story-header {
+  position: absolute;
+  top: 1.3rem;
+  left: 0.9rem;
+  right: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.rosie-story-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.rosie-story-avatar {
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+}
+
+.rosie-story-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rosie-story-username {
+  font-family: 'Fredoka', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.rosie-story-date {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.75);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rosie-story-timeleft {
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.75);
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+.rosie-story-close {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.rosie-story-close:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.rosie-story-close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.rosie-story-media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.rosie-story-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rosie-story-img-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.rosie-story-caption {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 5.2rem;
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.7rem 0.9rem;
+  border-radius: 14px;
+}
+
+.rosie-story-tap-zone {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 35%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.rosie-story-tap-left {
+  left: 0;
+}
+
+.rosie-story-tap-right {
+  right: 0;
+}
+
+.rosie-story-footer {
+  position: absolute;
+  bottom: 1rem;
+  left: 0.9rem;
+  right: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  z-index: 10;
+}
+
+.rosie-story-message-box {
+  flex: 1;
+  font-family: 'Nunito', 'Segoe UI', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  padding: 0.6rem 1rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.rosie-story-icon-btn {
+  flex: 0 0 auto;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.rosie-story-icon-btn:focus-visible,
+.rosie-story-message-box:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
 .rosie-profile-avatar {
   width: 88px;
   height: 88px;
