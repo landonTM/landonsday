@@ -66,7 +66,11 @@
 
                 <div class="rosie-sidebar-card">
                     <h3 class="rosie-sidebar-heading">Story Highlights</h3>
-                    <div class="rosie-highlights-row" id="rosieHighlights"></div>
+                    <div class="rosie-highlights-scroll">
+                        <div class="rosie-highlights-row" id="rosieHighlights"></div>
+                        <button class="rosie-highlights-arrow rosie-highlights-arrow-left" onclick="scrollHighlightsRow(-1)" aria-label="Show previous highlights">&lsaquo;</button>
+                        <button class="rosie-highlights-arrow rosie-highlights-arrow-right" onclick="scrollHighlightsRow(1)" aria-label="Show more highlights">&rsaquo;</button>
+                    </div>
                 </div>
             </aside>
 
@@ -118,7 +122,7 @@
                     <span class="rosie-mprofile-messages-badge">3</span>
                 </button>
             </div>
-            <div class="rosie-mobile-stories" id="rosieMobileStoriesHome"></div>
+            <div class="rosie-mobile-stories" id="rosieMobileHighlightsHome"></div>
             <div class="rosie-post-grid rosie-mobile-post-grid" id="rosieMobilePostGrid"></div>
             <div class="rosie-pagination" id="rosieMobilePagination"></div>
         </div>
@@ -356,28 +360,28 @@
             {
                 emoji: '😴',
                 label: 'Naps',
-                excuse: "Naps highlight reel is still loading. Much like the naps themselves, it may never finish."
+                images: ['dadleg.jpg', 'dadnap.jpg', 'deepnap.jpg', 'hand.jpg', 'rotund.jpg', 'sunbathe.jpg', 'cuddlebug.jpg']
             },
             {
                 emoji: '🍗',
                 label: 'Snacks',
-                excuse: "Snacks highlights are classified. Legal got involved after the pantry incident."
+                images: []
             },
             {
                 emoji: '🙀',
                 label: 'Chaos',
-                excuse: "Chaos highlights are under review by three separate insurance adjusters."
+                images: ['attack.jpg', 'confetti.jpg', 'zoomie1.jpg', 'phonetoy.jpg', 'scream2.jpg', 'scream1.jpg', 'pantry.jpg']
             },
             {
                 emoji: '📦',
                 label: 'Boxes',
-                excuse: "Boxes highlight reel failed to load. Rosie is currently inside one of the boxes and unreachable."
+                images: ['box1.jpg', 'box2.jpg']
             }
         ];
 
         const GROUPS_DATA = [
             { emoji: '🪟', name: 'Windowsill Real Estate Committee', members: 1243 },
-            { emoji: '🥫', name: 'Wet Food Truthers', members: 892 },
+            { emoji: '🥫', name: 'Wet Food Deniers', members: 892 },
             { emoji: '☀️', name: 'Sunbeam Relocation Task Force', members: 2310 },
             { emoji: '🧶', name: 'Yarn Liberation Front', members: 456 },
             { emoji: '🕒', name: '3AM Zoomies Support Group', members: 3102 },
@@ -392,14 +396,24 @@
         ];
 
         function renderHighlights() {
-            document.getElementById('rosieHighlights').innerHTML = HIGHLIGHTS_DATA.map(h => `
-                <button class="rosie-highlight" onclick="showToast(&quot;${h.excuse.replace(/&/g, '&amp;').replace(/"/g, '&quot;')}&quot;)">
+            const html = HIGHLIGHTS_DATA.map((h, i) => `
+                <button class="rosie-highlight" onclick="openHighlightViewer(${i})">
                     <div class="rosie-highlight-ring">
                         <div class="rosie-highlight-circle">${h.emoji}</div>
                     </div>
                     <span class="rosie-highlight-label">${h.label}</span>
                 </button>
             `).join('');
+
+            ['rosieHighlights', 'rosieMobileHighlightsHome'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.innerHTML = html;
+            });
+        }
+
+        function scrollHighlightsRow(direction) {
+            const row = document.getElementById('rosieHighlights');
+            if (row) row.scrollBy({ left: 130 * direction, behavior: 'smooth' });
         }
 
         function renderGroups() {
@@ -822,16 +836,19 @@
         }
 
         /* ============================================================
-           ON THIS DAY — an Instagram-Stories-style viewer for any post
-           whose month/day matches today's date (any past year). The
-           "day" boundary is Eastern time specifically, per spec, not
-           the visitor's local timezone. Which posts qualify changes
-           automatically at midnight ET, so this naturally refreshes
-           and "expires" every day without needing separate persistence.
+           ON THIS DAY & HIGHLIGHTS — a shared Instagram-Stories-style
+           viewer. "On This Day" surfaces posts whose month/day matches
+           today (any past year, Eastern time) and shows a countdown to
+           midnight ET. Highlights are curated, non-expiring reels that
+           show the post's actual date instead of a countdown. Both
+           modes share the same progress bar / tap-to-navigate / auto-
+           advance mechanics — only what's playing and the header label
+           differ.
            ============================================================ */
 
         const STORY_DURATION_MS = 5000;
-        let onThisDayMatches = [];
+        let activeStorySlides = [];
+        let currentStoryMode = 'onthisday'; // 'onthisday' | 'highlight'
         let storyIndex = 0;
         let storyAdvanceTimeout = null;
         let storyTimeLeftInterval = null;
@@ -857,7 +874,7 @@
 
         function computeOnThisDayMatches() {
             const now = getEasternNow();
-            onThisDayMatches = allRosiePosts
+            return allRosiePosts
                 .filter(post => {
                     const d = new Date(post.date);
                     return (d.getMonth() + 1) === now.month && d.getDate() === now.day && d.getFullYear() !== now.year;
@@ -873,48 +890,32 @@
             return hoursLeft + 'h';
         }
 
-        function buildOnThisDayBubbleHtml(variant) {
-            if (variant === 'mobile') {
-                return `
-                    <button class="rosie-mstory rosie-onthisday-entry" onclick="openStoryViewer()">
-                        <div class="rosie-mstory-ring rosie-onthisday-ring">
-                            <div class="rosie-mstory-avatar">
-                                <img src="./assets/images/rosie.jpg" alt="Rosie">
-                            </div>
-                        </div>
-                        <span class="rosie-mstory-label">On This Day</span>
-                    </button>
-                `;
-            }
+        function buildOnThisDayBubbleHtml() {
             return `
-                <div class="rosie-friend rosie-onthisday-entry">
-                    <button class="rosie-friend-avatar-btn" onclick="openStoryViewer()" aria-label="View On This Day">
-                        <div class="rosie-friend-ring rosie-onthisday-ring">
-                            <div class="rosie-friend-avatar">
-                                <img src="./assets/images/rosie.jpg" alt="Rosie">
-                            </div>
+                <button class="rosie-highlight rosie-onthisday-entry" onclick="openOnThisDayViewer()" aria-label="View On This Day">
+                    <div class="rosie-highlight-ring rosie-onthisday-ring">
+                        <div class="rosie-highlight-circle rosie-onthisday-circle">
+                            <img src="./assets/images/rosie.jpg" alt="Rosie">
                         </div>
-                    </button>
-                    <button class="rosie-friend-name-btn" onclick="openStoryViewer()">On This Day</button>
-                </div>
+                    </div>
+                    <span class="rosie-highlight-label">On This Day</span>
+                </button>
             `;
         }
 
         function renderOnThisDayEntries() {
-            computeOnThisDayMatches();
-            if (onThisDayMatches.length === 0) return;
+            const matches = computeOnThisDayMatches();
+            if (matches.length === 0) return;
 
-            const desktopEl = document.getElementById('rosieFriendsGrid');
-            if (desktopEl) desktopEl.insertAdjacentHTML('afterbegin', buildOnThisDayBubbleHtml('desktop'));
-
-            ['rosieMobileStoriesHome', 'rosieMobileStoriesFriends'].forEach(id => {
+            const bubbleHtml = buildOnThisDayBubbleHtml();
+            ['rosieHighlights', 'rosieMobileHighlightsHome'].forEach(id => {
                 const el = document.getElementById(id);
-                if (el) el.insertAdjacentHTML('afterbegin', buildOnThisDayBubbleHtml('mobile'));
+                if (el) el.insertAdjacentHTML('afterbegin', bubbleHtml);
             });
         }
 
         function renderStoryProgressBar() {
-            document.getElementById('rosieStoryProgress').innerHTML = onThisDayMatches.map((_, i) => `
+            document.getElementById('rosieStoryProgress').innerHTML = activeStorySlides.map((_, i) => `
                 <div class="rosie-story-progress-seg">
                     <div class="rosie-story-progress-fill" id="rosieStoryFill-${i}"></div>
                 </div>
@@ -922,7 +923,7 @@
         }
 
         function updateStoryProgressUI() {
-            onThisDayMatches.forEach((_, i) => {
+            activeStorySlides.forEach((_, i) => {
                 const fill = document.getElementById('rosieStoryFill-' + i);
                 if (!fill) return;
                 fill.style.transition = 'none';
@@ -940,7 +941,7 @@
         }
 
         function renderStorySlide() {
-            const post = onThisDayMatches[storyIndex];
+            const post = activeStorySlides[storyIndex];
             document.getElementById('rosieStoryMedia').innerHTML = `
                 <img src="./assets/images/rosie/${post.image}" alt="Rosie" class="rosie-story-img"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -957,7 +958,7 @@
         }
 
         function goToNextStory() {
-            if (storyIndex < onThisDayMatches.length - 1) {
+            if (storyIndex < activeStorySlides.length - 1) {
                 storyIndex++;
                 renderStorySlide();
                 startStoryTimer();
@@ -977,16 +978,46 @@
             if (el) el.textContent = storyHoursLeftLabel();
         }
 
-        function openStoryViewer() {
-            if (onThisDayMatches.length === 0) return;
+        function openStoryViewer(posts, mode) {
+            if (!posts || posts.length === 0) return;
+            activeStorySlides = posts;
+            currentStoryMode = mode;
             storyIndex = 0;
             renderStoryProgressBar();
             renderStorySlide();
             startStoryTimer();
-            updateStoryTimeLeftLabel();
+
+            const timeLeftEl = document.getElementById('rosieStoryTimeLeft');
             clearInterval(storyTimeLeftInterval);
-            storyTimeLeftInterval = setInterval(updateStoryTimeLeftLabel, 60000);
+            if (mode === 'onthisday') {
+                timeLeftEl.style.display = '';
+                updateStoryTimeLeftLabel();
+                storyTimeLeftInterval = setInterval(updateStoryTimeLeftLabel, 60000);
+            } else {
+                // Highlights don't expire, so there's nothing to count down —
+                // the post date shown next to it (rosieStoryDate) is enough.
+                timeLeftEl.style.display = 'none';
+            }
+
             document.getElementById('rosieStoryViewer').classList.add('open');
+        }
+
+        function openOnThisDayViewer() {
+            openStoryViewer(computeOnThisDayMatches(), 'onthisday');
+        }
+
+        function openHighlightViewer(categoryIndex) {
+            const category = HIGHLIGHTS_DATA[categoryIndex];
+            if (!category) return;
+            const posts = category.images
+                .map(img => allRosiePosts.find(p => p.image === img))
+                .filter(Boolean)
+                .sort((a, b) => new Date(b.date) - new Date(a.date)); // most recent first, oldest last
+            if (posts.length === 0) {
+                showToast(`No ${category.label} highlights yet. Check back soon.`);
+                return;
+            }
+            openStoryViewer(posts, 'highlight');
         }
 
         function closeStoryViewer() {
@@ -1119,10 +1150,10 @@
                 likes: 214, comments: 18, repawsts: 4
             },
             {
-                groupIndex: 1, // Wet Food Truthers
+                groupIndex: 1, // Wet Food Deniers
                 posterUsername: 'dollybiscotti',
                 time: '5h',
-                text: "day 47 of demanding pate over shreds. they still don't listen. stay strong everyone.",
+                text: "day 47 of refusing every wet food they put in front of me. solidarity to everyone still holding the line.",
                 likes: 189, comments: 32, repawsts: 2
             },
             {
@@ -1239,7 +1270,6 @@
             btn.addEventListener('click', () => switchMobileTab(btn.dataset.tab));
         });
 
-        renderMobileStoriesInto('rosieMobileStoriesHome');
         renderMobileStoriesInto('rosieMobileStoriesFriends');
 
         renderHighlights();

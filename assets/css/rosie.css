@@ -388,10 +388,53 @@ footer {
 }
 
 /* Story Highlights row */
+.rosie-highlights-scroll {
+  position: relative;
+}
+
 .rosie-highlights-row {
   display: flex;
   gap: 1rem;
-  overflow: hidden;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.rosie-highlights-row::-webkit-scrollbar {
+  display: none;
+}
+
+.rosie-highlights-arrow {
+  position: absolute;
+  top: 26px;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: #5b2e91;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(43, 27, 61, 0.35);
+}
+
+.rosie-highlights-arrow-left {
+  left: -0.5rem;
+}
+
+.rosie-highlights-arrow-right {
+  right: -0.5rem;
+}
+
+.rosie-highlights-arrow:hover {
+  background: #47256f;
+}
+
+.rosie-highlights-arrow:focus-visible {
+  outline: 2px solid #2b1b3d;
+  outline-offset: 2px;
 }
 
 .rosie-highlight {
@@ -1241,9 +1284,9 @@ footer {
   background: conic-gradient(from 180deg, #ffd54a, #ff9a4d, #ff6fa5, #ffd54a) !important;
 }
 
-.rosie-onthisday-ring .rosie-friend-avatar,
-.rosie-onthisday-ring .rosie-mstory-avatar {
+.rosie-onthisday-circle {
   background: #fff;
+  overflow: hidden;
 }
 
 .rosie-onthisday-ring img {
