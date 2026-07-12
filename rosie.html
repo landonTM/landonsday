@@ -529,6 +529,7 @@
             renderSidebarStats(posts);
             renderPostGrid(posts);
             renderOnThisDayEntries();
+            openPostFromUrl();
         }
 
         // Entry point whenever the underlying post set changes (initial
@@ -633,6 +634,7 @@
                         <button class="rosie-engagement-btn" data-base="${post.likes}" data-liked="false" data-icon="🐾" data-label="likes" onclick="bumpEngagement(this)">🐾 ${post.likes} likes</button>
                         <button class="rosie-engagement-btn" data-base="${post.repawsts}" data-liked="false" data-icon="🔁" data-label="repawsts" onclick="bumpEngagement(this)">🔁 ${post.repawsts} repawsts</button>
                         <button class="rosie-engagement-btn" onclick="showToast(&quot;you don't have an account to comment 🐾&quot;)">💬 ${post.comments.length} comments</button>
+                        <button class="rosie-engagement-btn" onclick="sharePost('${post.image}')" aria-label="Share this post">↗ Share</button>
                     </div>
                 </div>
             `;
@@ -682,6 +684,36 @@
             }).join('');
 
             grids.forEach(el => { el.innerHTML = html; });
+        }
+
+        function sharePost(imageName) {
+            const slug = imageName.replace(/\.[^/.]+$/, '');
+            const url = `https://www.landonday.com/share/${slug}.html`;
+            const post = allRosiePosts.find(p => p.image === imageName);
+            const shareData = {
+                title: 'queen_rosie',
+                text: post ? post.caption : "Check out this post on Rosie's Scratchboard",
+                url
+            };
+            if (navigator.share) {
+                navigator.share(shareData).catch(() => {}); // cancelled or unsupported — no error needed
+            } else if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url)
+                    .then(() => showToast('Link copied! 🐾'))
+                    .catch(() => showToast('Could not copy the link. Try again?'));
+            } else {
+                showToast('Sharing is not supported in this browser.');
+            }
+        }
+
+        // Opens the post named in ?post=<slug> directly, so links generated
+        // by sharePost() / the static share/ pages land on the right post.
+        function openPostFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            const slug = params.get('post');
+            if (!slug) return;
+            const post = allRosiePosts.find(p => p.image.replace(/\.[^/.]+$/, '') === slug);
+            if (post) openPostDetail(post.image);
         }
 
         // --- Post detail overlay (mobile search results open the full card) ---
