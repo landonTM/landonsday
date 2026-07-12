@@ -1,5 +1,89 @@
 [
   {
+    "image": "fatlay.jpg",
+    "caption": "belly out, judgment free zone. yes it's bigger than it used to be. no i will not be discussing it further.",
+    "feeling": "Exposed",
+    "emoji": "\ud83d\ude43",
+    "likes": 118,
+    "repawsts": 6,
+    "date": "2026-07-11T14:05:00",
+    "comments": [
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "we see it. we're not going to pretend we don't"
+      },
+      {
+        "username": "dollybiscotti",
+        "name": "Dolly",
+        "text": "the confidence to just display it like that, love that for her"
+      }
+    ]
+  },
+  {
+    "image": "shesits.jpg",
+    "caption": "sitting here patiently. this is not a hint. this is a demand wearing a patient face.",
+    "feeling": "Expectant",
+    "emoji": "\ud83c\udf7d\ufe0f",
+    "likes": 92,
+    "repawsts": 5,
+    "date": "2026-07-08T21:12:00",
+    "comments": [
+      {
+        "username": "graciepoo",
+        "name": "Gracie",
+        "text": "the patience! the strategy! a masterclass in manipulation"
+      },
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "she's been fed twice today. this is theater"
+      }
+    ]
+  },
+  {
+    "image": "feedereats.jpg",
+    "caption": "found a workaround to the automatic feeder within minutes of the refill. engineers hate this one trick.",
+    "feeling": "Resourceful",
+    "emoji": "\ud83d\ude3c",
+    "likes": 137,
+    "repawsts": 9,
+    "date": "2026-07-08T20:52:00",
+    "comments": [
+      {
+        "username": "cocoloco",
+        "name": "Coco",
+        "text": "wait she found a loophole already? impressive honestly"
+      },
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the ingenuity, truly ahead of her time"
+      }
+    ]
+  },
+  {
+    "image": "cozydontmove.jpg",
+    "caption": "dad's dressed up to leave for something called 'anniversary dinner.' if i don't move he legally cannot go. that's how it works.",
+    "feeling": "Strategic",
+    "emoji": "\ud83e\udd79",
+    "likes": 164,
+    "repawsts": 11,
+    "date": "2026-07-08T17:54:00",
+    "comments": [
+      {
+        "username": "crazydaisy",
+        "name": "Daisy",
+        "text": "the tactical sit, a family classic, proud of her"
+      },
+      {
+        "username": "dollybiscotti",
+        "name": "Dolly",
+        "text": "dad's not going anywhere and she knows it"
+      }
+    ]
+  },
+  {
     "image": "attack.jpg",
     "caption": "executed a flawless sneak attack on dad. he did not see it coming. i have been planning this since tuesday.",
     "feeling": "Tactical",
@@ -45,6 +129,27 @@
       }
     ],
     "date": "2026-07-07T15:27:00"
+  },
+  {
+    "image": "couchtime.jpg",
+    "caption": "napping on the back of the couch with one paw hanging off for dramatic effect. the pose is intentional.",
+    "feeling": "Cozy",
+    "emoji": "\ud83d\ude3b",
+    "likes": 139,
+    "repawsts": 8,
+    "date": "2026-07-06T23:21:00",
+    "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the dramatic paw placement, a true artist"
+      },
+      {
+        "username": "dollybiscotti",
+        "name": "Dolly",
+        "text": "the intentional pose! she really said this is content"
+      }
+    ]
   },
   {
     "image": "pantry.jpg",
@@ -95,7 +200,7 @@
   },
   {
     "image": "blankey.jpg",
-    "caption": "wrapped myself in dad's blanket like a little burrito. i am now 90% blanket, 10% attitude.",
+    "caption": "wrapped myself in dad's blanket like a little purrito. i am now 90% blanket, 10% attitude.",
     "feeling": "Snug",
     "emoji": "\ud83d\ude0c",
     "likes": 167,
@@ -376,6 +481,27 @@
     ]
   },
   {
+    "image": "momarm.jpg",
+    "caption": "mom's arm has been taken hostage. negotiations are not happening. she is staying right here.",
+    "feeling": "Clingy",
+    "emoji": "\ud83e\udd70",
+    "likes": 152,
+    "repawsts": 10,
+    "date": "2026-05-05T19:23:00",
+    "comments": [
+      {
+        "username": "crazydaisy",
+        "name": "Daisy",
+        "text": "mom's arm was never getting away, honestly expected"
+      },
+      {
+        "username": "dollybiscotti",
+        "name": "Dolly",
+        "text": "hostage situation but make it cozy, love that"
+      }
+    ]
+  },
+  {
     "image": "laptop.jpg",
     "caption": "in a very important zoom call. camera on, camera off, doesn't matter, i am the CEO of this laptop now.",
     "feeling": "Executive",
@@ -398,6 +524,27 @@
         "username": "crazydaisy",
         "name": "Daisy",
         "text": "she's been like this since she got wifi access, honestly proud"
+      }
+    ]
+  },
+  {
+    "image": "ketchup.jpg",
+    "caption": "attempted to eat an entire bottle of ketchup. no regrets, minimal success, will try again.",
+    "feeling": "Determined",
+    "emoji": "\ud83c\udf45",
+    "likes": 143,
+    "repawsts": 8,
+    "date": "2026-04-10T12:48:00",
+    "comments": [
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "an entire bottle of ketchup. you are so fat.'"
+      },
+      {
+        "username": "graciepoo",
+        "name": "Gracie",
+        "text": "the ambition! the audacity! we stan"
       }
     ]
   },
@@ -512,6 +659,27 @@
     ]
   },
   {
+    "image": "momhead.jpg",
+    "caption": "found mom's face and decided it needed a full-body blanket. she is welcome.",
+    "feeling": "Affectionate",
+    "emoji": "\ud83e\udd70",
+    "likes": 171,
+    "repawsts": 12,
+    "date": "2026-01-25T22:07:00",
+    "comments": [
+      {
+        "username": "crazydaisy",
+        "name": "Daisy",
+        "text": "the full face smother, a bold move, respect it"
+      },
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "mom's face is well loved around here, good taste"
+      }
+    ]
+  },
+  {
     "image": "explore.jpg",
     "caption": "new carrier just dropped and i have concerns. examining it thoroughly before committing to anything.",
     "feeling": "Nervous",
@@ -571,6 +739,27 @@
         "username": "ciccu_bear",
         "name": "Ciccu",
         "text": "disgustingly wholesome. hard pass"
+      }
+    ]
+  },
+  {
+    "image": "armstretch.jpg",
+    "caption": "claimed dad as a pillow and stretched one leg out for maximum coverage. efficient use of space.",
+    "feeling": "Relaxed",
+    "emoji": "\ud83d\ude0c",
+    "likes": 109,
+    "repawsts": 6,
+    "date": "2026-01-12T15:14:00",
+    "comments": [
+      {
+        "username": "dollybiscotti",
+        "name": "Dolly",
+        "text": "the leg stretch is doing SO much work in this photo"
+      },
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "efficient use of space is generous phrasing considering how much you take up"
       }
     ]
   },
@@ -659,23 +848,296 @@
     ]
   },
   {
-    "image": "fattytest.jpg",
-    "caption": "running a diagnostic on the memories feature. also i have gained weight during this process, unrelated but noted.",
-    "feeling": "Diagnostic",
-    "emoji": "\ud83e\uddea",
-    "likes": 88,
-    "repawsts": 5,
-    "date": "2025-07-11T20:04:00",
+    "image": "dadtime.jpg",
+    "caption": "dad's trying to play his game. i am now part of the equipment. adjust accordingly.",
+    "feeling": "Territorial",
+    "emoji": "\ud83d\ude3c",
+    "likes": 124,
+    "repawsts": 7,
+    "date": "2025-12-25T12:00:00",
     "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "becoming part of the equipment, bold strategy, respect it"
+      },
       {
         "username": "ciccu_bear",
         "name": "Ciccu",
-        "text": "a test post. groundbreaking content as always"
+        "text": "i'm surprised the chair is holding up"
+      }
+    ]
+  },
+  {
+    "image": "closeup.jpg",
+    "caption": "this is the face right before the zoomies start. you have three seconds to get out of the way.",
+    "feeling": "Feral",
+    "emoji": "\ud83d\ude40",
+    "likes": 128,
+    "repawsts": 8,
+    "date": "2025-12-25T11:50:00",
+    "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the calm before the storm, truly terrifying honestly"
+      },
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "we've all seen this face. we've all learned to run"
+      }
+    ]
+  },
+  {
+    "image": "momlaptop.jpg",
+    "caption": "mom's trying to work. i have repositioned myself directly on the keyboard as a productivity measure.",
+    "feeling": "Unbothered",
+    "emoji": "\ud83d\ude0c",
+    "likes": 145,
+    "repawsts": 9,
+    "date": "2025-12-18T19:32:00",
+    "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the productivity measure of the century, truly essential"
       },
       {
         "username": "dollybiscotti",
         "name": "Dolly",
-        "text": "it's testing! it's fat! she's really doing it all today"
+        "text": "mom's emails can wait, this is more important"
+      }
+    ]
+  },
+  {
+    "image": "santarosie.jpg",
+    "caption": "was assigned mrs claus duties this year. did not consent. staring at the lights until someone explains why.",
+    "feeling": "Unimpressed",
+    "emoji": "\ud83c\udf84",
+    "likes": 189,
+    "repawsts": 13,
+    "date": "2025-12-08T22:44:00",
+    "comments": [
+      {
+        "username": "graciepoo",
+        "name": "Gracie",
+        "text": "mrs claus has never looked so unbothered, iconic"
+      },
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "the outfit is cute. doesnt change the fact you made the naughty list."
+      }
+    ]
+  },
+  {
+    "image": "cement.jpg",
+    "caption": "the one cement block that hits different in the sun. do not relocate it. i have plans for this spot.",
+    "feeling": "Content",
+    "emoji": "\ud83d\ude0c",
+    "likes": 103,
+    "repawsts": 5,
+    "date": "2025-11-27T12:58:00",
+    "comments": [
+      {
+        "username": "graciepoo",
+        "name": "Gracie",
+        "text": "the specificity of 'this exact block' is so real"
+      },
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the sun knows exactly what it's doing here, iconic spot"
+      }
+    ]
+  },
+  {
+    "image": "staring.jpg",
+    "caption": "just looking at dad. no reason. no agenda. okay maybe a small agenda.",
+    "feeling": "Smitten",
+    "emoji": "\ud83e\udd70",
+    "likes": 149,
+    "repawsts": 10,
+    "date": "2025-11-15T12:46:00",
+    "comments": [
+      {
+        "username": "crazydaisy",
+        "name": "Daisy",
+        "text": "the eyes! the love! no notes, purely wholesome"
+      },
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "there's always an agenda. always."
+      }
+    ]
+  },
+  {
+    "image": "tweaking.jpg",
+    "caption": "security footage of me hearing voices and launching a full investigation. results inconclusive. investigation ongoing.",
+    "feeling": "Suspicious",
+    "emoji": "\ud83d\udd75\ufe0f",
+    "likes": 101,
+    "repawsts": 6,
+    "date": "2025-11-07T10:40:00",
+    "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the investigation has my full support, keep us updated"
+      },
+      {
+        "username": "cocoloco",
+        "name": "Coco",
+        "text": "wait what did she hear. i need to know too"
+      }
+    ]
+  },
+  {
+    "image": "curious.jpg",
+    "caption": "leaning in to supervise mom's work. she has not asked for my opinion. i am giving it anyway.",
+    "feeling": "Nosy",
+    "emoji": "\ud83e\uddd0",
+    "likes": 96,
+    "repawsts": 5,
+    "date": "2025-11-03T19:06:00",
+    "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the unsolicited supervision, a public service really"
+      },
+      {
+        "username": "crazydaisy",
+        "name": "Daisy",
+        "text": "she just wants to be included, i understand this deeply"
+      }
+    ]
+  },
+  {
+    "image": "hide.jpg",
+    "caption": "hiding under mom's desk because someone mentioned nail clippers within a ten foot radius of me. i will not be found.",
+    "feeling": "Betrayed",
+    "emoji": "\ud83d\ude3e",
+    "likes": 117,
+    "repawsts": 7,
+    "date": "2025-10-29T16:14:00",
+    "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the betrayal runs deep, nail clippers are a war crime"
+      },
+      {
+        "username": "dollybiscotti",
+        "name": "Dolly",
+        "text": "hiding under the desk is a valid response honestly"
+      }
+    ]
+  },
+  {
+    "image": "bandana.jpg",
+    "caption": "asleep on dad, good side to the camera, halloween bandana on. exhausted but still delivering content.",
+    "feeling": "Exhausted",
+    "emoji": "\ud83d\ude2e\u200d\ud83d\udca8",
+    "likes": 131,
+    "repawsts": 8,
+    "date": "2025-10-07T20:40:00",
+    "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the bandana! the good side! professional to the very end"
+      },
+      {
+        "username": "graciepoo",
+        "name": "Gracie",
+        "text": "delivering content even half asleep, true dedication"
+      }
+    ]
+  },
+  {
+    "image": "ottoman.jpg",
+    "caption": "loafed on the ottoman, perfectly still, pretending to be a statue. the illusion only works if you don't look directly at me.",
+    "feeling": "Sneaky",
+    "emoji": "\ud83d\ude3c",
+    "likes": 98,
+    "repawsts": 5,
+    "date": "2025-09-01T18:22:00",
+    "comments": [
+      {
+        "username": "cocoloco",
+        "name": "Coco",
+        "text": "wait is she actually a statue now. i can't tell"
+      },
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the stillness is genuinely impressive, a true art form"
+      }
+    ]
+  },
+  {
+    "image": "whatwasthat.jpg",
+    "caption": "heard a noise. immediately assumed protector duties. dad's safety is my full responsibility now, whether he asked for it or not.",
+    "feeling": "Protective",
+    "emoji": "\ud83d\udee1\ufe0f",
+    "likes": 121,
+    "repawsts": 7,
+    "date": "2025-08-22T15:30:00",
+    "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the protector instincts are strong, dad is in good hands"
+      },
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "what are you going to do. you are scared of ants."
+      }
+    ]
+  },
+  {
+    "image": "cowgirl.jpg",
+    "caption": "meowdy. cutest kitty in the wild west, no further discussion needed.",
+    "feeling": "Iconic",
+    "emoji": "\ud83d\udc85",
+    "likes": 176,
+    "repawsts": 13,
+    "date": "2025-08-20T23:20:00",
+    "comments": [
+      {
+        "username": "dollybiscotti",
+        "name": "Dolly",
+        "text": "meowdy?? MEOWDY?? she said what she said and i'm obsessed"
+      },
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "i can't believe it fit your big head"
+      }
+    ]
+  },
+  {
+    "image": "socuddly.jpg",
+    "caption": "laid on my side for maximum cuddle access. long day. dad's the reward at the end of it.",
+    "feeling": "Affectionate",
+    "emoji": "\ud83e\udd70",
+    "likes": 142,
+    "repawsts": 9,
+    "date": "2025-06-04T21:40:00",
+    "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "dad as the reward system, healthy and valid honestly"
+      },
+      {
+        "username": "crazydaisy",
+        "name": "Daisy",
+        "text": "the long day cuddle is sacred, protect this tradition"
       }
     ]
   },
@@ -709,6 +1171,474 @@
       }
     ],
     "date": "2025-05-08T02:50:00"
+  },
+  {
+    "image": "investigating.jpg",
+    "caption": "conducted a full investigation on top of the mini fridge. findings: one box of kleenex. case closed, for now.",
+    "feeling": "Investigative",
+    "emoji": "\ud83d\udd75\ufe0f",
+    "likes": 91,
+    "repawsts": 4,
+    "date": "2025-04-08T16:52:00",
+    "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the investigation never stops, dedicated as always"
+      },
+      {
+        "username": "cocoloco",
+        "name": "Coco",
+        "text": "wait a kleenex box. is that it. is that the whole case"
+      }
+    ]
+  },
+  {
+    "image": "sharklick.jpg",
+    "caption": "grooming session taking place halfway off the shark tree. multitasking at its finest.",
+    "feeling": "Efficient",
+    "emoji": "\ud83e\udd88",
+    "likes": 111,
+    "repawsts": 6,
+    "date": "2025-04-03T00:46:00",
+    "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the multitasking skills are unmatched, impressive stuff"
+      },
+      {
+        "username": "cocoloco",
+        "name": "Coco",
+        "text": "wait is she stuck or is this on purpose"
+      }
+    ]
+  },
+  {
+    "image": "knockedout.jpg",
+    "caption": "fully knocked out on dad's lap. no thoughts, no dreams, no concept of a bedtime. this is just tuesday now.",
+    "feeling": "Unconscious",
+    "emoji": "\ud83d\ude34",
+    "likes": 133,
+    "repawsts": 7,
+    "date": "2025-03-08T02:06:00",
+    "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the peace she's found is honestly inspiring"
+      },
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "'no concept of a bedtime' explains a lot actually"
+      }
+    ]
+  },
+  {
+    "image": "stunting.jpg",
+    "caption": "in dad's bed, stunting on everyone. this spot was earned, not given.",
+    "feeling": "Smug",
+    "emoji": "\ud83d\ude0f",
+    "likes": 119,
+    "repawsts": 6,
+    "date": "2025-02-07T01:54:00",
+    "comments": [
+      {
+        "username": "dollybiscotti",
+        "name": "Dolly",
+        "text": "the confidence in this photo is unreal, she knows"
+      },
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "taking up the whole bed i see"
+      }
+    ]
+  },
+  {
+    "image": "bigloaf.jpg",
+    "caption": "loafed on dad's gaming chair, supervising his gameplay. just moved in and already running quality control.",
+    "feeling": "Settled",
+    "emoji": "\ud83c\udfe0",
+    "likes": 128,
+    "repawsts": 7,
+    "date": "2025-02-06T14:01:00",
+    "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "moving in and immediately taking over, iconic first week"
+      },
+      {
+        "username": "graciepoo",
+        "name": "Gracie",
+        "text": "quality control duties starting strong, love that"
+      }
+    ]
+  },
+  {
+    "image": "scaredbuthappy.jpg",
+    "caption": "just arrived at dad's. i missed him so much since he moved out of grandma and grandpa's. scared, but this is exactly where i'm supposed to be.",
+    "feeling": "Hopeful",
+    "emoji": "\ud83e\udd79",
+    "likes": 187,
+    "repawsts": 14,
+    "date": "2025-02-04T19:08:00",
+    "comments": [
+      {
+        "username": "crazydaisy",
+        "name": "Daisy",
+        "text": "the reunion we all needed, i will miss you but enjoy yourself"
+      },
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "this made me a little emotional not gonna lie"
+      }
+    ]
+  },
+  {
+    "image": "antlers.jpg",
+    "caption": "reindeer antlers on. santa's sleigh team could never compete with this energy.",
+    "feeling": "Festive",
+    "emoji": "\ud83c\udf81",
+    "likes": 121,
+    "repawsts": 7,
+    "date": "2024-12-25T21:31:00",
+    "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the antlers suit her more than they should, festive queen"
+      },
+      {
+        "username": "graciepoo",
+        "name": "Gracie",
+        "text": "rudolph who, we only know rosie now"
+      }
+    ]
+  },
+  {
+    "image": "dinonuggets.jpg",
+    "caption": "snapchat filter placed a dino nugget under my eye and honestly? elevated my whole look.",
+    "feeling": "Amused",
+    "emoji": "\ud83d\ude39",
+    "likes": 108,
+    "repawsts": 5,
+    "date": "2024-12-25T15:18:00",
+    "comments": [
+      {
+        "username": "dollybiscotti",
+        "name": "Dolly",
+        "text": "the dino nugget is doing more for her than it has any right to"
+      },
+      {
+        "username": "cocoloco",
+        "name": "Coco",
+        "text": "wait why does this actually work on her"
+      }
+    ]
+  },
+  {
+    "image": "present.jpg",
+    "caption": "apparently i'm the present this year. filter said it, not me, but i agree.",
+    "feeling": "Festive",
+    "emoji": "\ud83c\udf81",
+    "likes": 142,
+    "repawsts": 9,
+    "date": "2024-12-25T15:17:00",
+    "comments": [
+      {
+        "username": "graciepoo",
+        "name": "Gracie",
+        "text": "she IS the present, filter said what we were all thinking"
+      },
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the candy canes really complete this look"
+      }
+    ]
+  },
+  {
+    "image": "oldlady.jpg",
+    "caption": "the filter aged me sixty years and somehow i still look incredible.",
+    "feeling": "Dignified",
+    "emoji": "\ud83e\udde3",
+    "likes": 114,
+    "repawsts": 6,
+    "date": "2024-12-24T21:32:00",
+    "comments": [
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "looking as judgemental as ever"
+      },
+      {
+        "username": "dollybiscotti",
+        "name": "Dolly",
+        "text": "she's giving wise grandmother and i respect it"
+      }
+    ]
+  },
+  {
+    "image": "justagirl.jpg",
+    "caption": "the filter said i'm just a girl and honestly, for once, i'll allow the simplification.",
+    "feeling": "Whimsical",
+    "emoji": "\ud83c\udf80",
+    "likes": 137,
+    "repawsts": 8,
+    "date": "2024-12-24T21:30:00",
+    "comments": [
+      {
+        "username": "dollybiscotti",
+        "name": "Dolly",
+        "text": "'just a girl' is doing a lot of lying but i love it for her"
+      },
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "just FAT is what you are"
+      }
+    ]
+  },
+  {
+    "image": "tacklebox.jpg",
+    "caption": "screaming on top of the tackle box because daisy won't let me have all of it. this is a hostile takeover in progress.",
+    "feeling": "Outraged",
+    "emoji": "\ud83d\ude3e",
+    "likes": 105,
+    "repawsts": 5,
+    "date": "2024-07-19T10:11:00",
+    "tagged": "crazydaisy",
+    "comments": [
+      {
+        "username": "crazydaisy",
+        "name": "Daisy",
+        "text": "it's my box. i called it first. she knows this"
+      },
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "can you PLEASE keep it down some of us are trying to rest"
+      }
+    ]
+  },
+  {
+    "image": "sistersleepday.jpg",
+    "caption": "lazy day on the cat tree with daisy. both fully checked out. this is peak sisterhood.",
+    "feeling": "Cozy",
+    "emoji": "\ud83d\ude3b",
+    "likes": 141,
+    "repawsts": 8,
+    "date": "2024-05-03T12:22:00",
+    "tagged": "crazydaisy",
+    "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the sister nap game has always been unmatched"
+      },
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "at least she's quiet when she's asleep"
+      }
+    ]
+  },
+  {
+    "image": "decoration.jpg",
+    "caption": "sitting on the nightstand like a tasteful decorative piece. i complete this room.",
+    "feeling": "Decorative",
+    "emoji": "\ud83c\udffa",
+    "likes": 102,
+    "repawsts": 5,
+    "date": "2024-04-29T17:49:00",
+    "comments": [
+      {
+        "username": "dollybiscotti",
+        "name": "Dolly",
+        "text": "she really said 'home decor' and committed"
+      },
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "you're not decor, you're just in the way"
+      }
+    ]
+  },
+  {
+    "image": "sisterbed.jpg",
+    "caption": "loafed next to daisy in grandma and grandpa's bed. just two sisters taking up the whole thing.",
+    "feeling": "Content",
+    "emoji": "\ud83d\ude0c",
+    "likes": 124,
+    "repawsts": 6,
+    "date": "2024-04-26T20:47:00",
+    "tagged": "crazydaisy",
+    "comments": [
+      {
+        "username": "graciepoo",
+        "name": "Gracie",
+        "text": "the whole bed, no room for anyone else, iconic"
+      },
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "sisters really do share everything including all the space"
+      }
+    ]
+  },
+  {
+    "image": "doorguard.jpg",
+    "caption": "daisy and i are guarding the door while miley waits to be let back in. security is a family business.",
+    "feeling": "Vigilant",
+    "emoji": "\ud83d\udee1\ufe0f",
+    "likes": 96,
+    "repawsts": 5,
+    "date": "2024-03-29T01:59:00",
+    "tagged": "crazydaisy",
+    "comments": [
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "my sister is out there waiting and you two are just watching. HELP HER."
+      },
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the door guard duo, truly dedicated to the job"
+      }
+    ]
+  },
+  {
+    "image": "pretty.jpg",
+    "caption": "just being pretty. off to the side. on purpose. it's a whole mood.",
+    "feeling": "Elegant",
+    "emoji": "\ud83d\udc51",
+    "likes": 158,
+    "repawsts": 10,
+    "date": "2024-03-22T22:33:00",
+    "comments": [
+      {
+        "username": "dollybiscotti",
+        "name": "Dolly",
+        "text": "the eyes! the angle! she knew exactly what she was doing"
+      },
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "the angle is doing a lot of favors here"
+      }
+    ]
+  },
+  {
+    "image": "daisylick.jpg",
+    "caption": "checking daisy's grooming standards personally. quality control is a full time job around here.",
+    "feeling": "Proud",
+    "emoji": "\ud83d\ude0c",
+    "likes": 112,
+    "repawsts": 6,
+    "date": "2024-03-06T21:59:00",
+    "tagged": "crazydaisy",
+    "comments": [
+      {
+        "username": "graciepoo",
+        "name": "Gracie",
+        "text": "the big sister energy in this photo, so sweet"
+      },
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "she didn't ask for the inspection but here we are"
+      }
+    ]
+  },
+  {
+    "image": "grandmaloaf.jpg",
+    "caption": "loafed directly on grandma's chest. she did not move for two hours. respect the process.",
+    "feeling": "Content",
+    "emoji": "\ud83d\ude0c",
+    "likes": 119,
+    "repawsts": 6,
+    "date": "2024-03-05T19:34:00",
+    "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "grandma's chest is so real, wish i could lay on someone"
+      },
+      {
+        "username": "dollybiscotti",
+        "name": "Dolly",
+        "text": "two hours without moving, dedication to the loaf"
+      }
+    ]
+  },
+  {
+    "image": "biggestsleep.jpg",
+    "caption": "sleeping like i put in a full shift today. i did not. i slept most of it. this is the reward anyway.",
+    "feeling": "Unconscious",
+    "emoji": "\ud83d\ude34",
+    "likes": 127,
+    "repawsts": 7,
+    "date": "2024-02-18T16:37:00",
+    "comments": [
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "'you are so lazy"
+      },
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "she's earned this deep sleep regardless honestly"
+      }
+    ]
+  },
+  {
+    "image": "glasses.jpg",
+    "caption": "trying on glasses. genuinely asking: do they work? be honest.",
+    "feeling": "Curious",
+    "emoji": "\ud83e\udd14",
+    "likes": 103,
+    "repawsts": 5,
+    "date": "2024-02-18T15:47:00",
+    "comments": [
+      {
+        "username": "dollybiscotti",
+        "name": "Dolly",
+        "text": "the glasses are ELEVATING her whole look, yes"
+      },
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "whatever"
+      }
+    ]
+  },
+  {
+    "image": "sisternaptime.jpg",
+    "caption": "two balls, one couch, zero thoughts. daisy and i are both fully offline.",
+    "feeling": "Cozy",
+    "emoji": "\ud83d\ude3b",
+    "likes": 135,
+    "repawsts": 8,
+    "date": "2024-02-13T20:33:00",
+    "tagged": "crazydaisy",
+    "comments": [
+      {
+        "username": "graciepoo",
+        "name": "Gracie",
+        "text": "the synchronized napping, truly a sisterly bond"
+      },
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "two balls of chaos finally at peace, love to see it"
+      }
+    ]
   },
   {
     "image": "hand.jpg",
@@ -957,6 +1887,49 @@
     ]
   },
   {
+    "image": "spa2.jpg",
+    "caption": "fresh from the spa, flower on my neck, absolutely thriving. dad said i looked 'fancy.' correct assessment.",
+    "feeling": "Pampered",
+    "emoji": "\ud83c\udf38",
+    "likes": 133,
+    "repawsts": 7,
+    "date": "2021-01-16T07:32:00",
+    "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the flower is a whole look, she's serving spa royalty"
+      },
+      {
+        "username": "dollybiscotti",
+        "name": "Dolly",
+        "text": "thriving is an understatement, she's glowing"
+      }
+    ]
+  },
+  {
+    "image": "army.jpg",
+    "caption": "a rare formal portrait: me, ciccu, bella, and miley, all dressed for war. no one asked why. no one will ever know why.",
+    "feeling": "Distinguished",
+    "emoji": "\ud83c\udf96\ufe0f",
+    "likes": 201,
+    "repawsts": 17,
+    "date": "2020-12-28T12:46:00",
+    "tagged": "ciccu_bear",
+    "comments": [
+      {
+        "username": "ciccu_bear",
+        "name": "Ciccu",
+        "text": "i look incredible in this. you look fat in this."
+      },
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "wish i could've been drafted for this one, looks incredible"
+      }
+    ]
+  },
+  {
     "image": "box1.jpg",
     "caption": "found a box. it is now my house. the old house is available for anyone who wants it.",
     "feeling": "Content",
@@ -1020,6 +1993,27 @@
     "date": "2020-04-20T18:04:00"
   },
   {
+    "image": "spa3.jpg",
+    "caption": "another spa day, another flower to stare at intensely. i don't make the rules of my own photoshoots.",
+    "feeling": "Serene",
+    "emoji": "\u2600\ufe0f",
+    "likes": 107,
+    "repawsts": 5,
+    "date": "2019-11-30T11:34:00",
+    "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the flower photoshoots are always a good time, quality content"
+      },
+      {
+        "username": "cocoloco",
+        "name": "Coco",
+        "text": "wait how many spa days does she get. i want in"
+      }
+    ]
+  },
+  {
     "image": "devil.jpg",
     "caption": "dressed as the devil for halloween. honestly? typecasting.",
     "feeling": "Menacing",
@@ -1062,6 +2056,27 @@
     ]
   },
   {
+    "image": "grandma.jpg",
+    "caption": "asleep on grandma's lap. jury's still out on how i feel about this arrangement. currently allowing it.",
+    "feeling": "Undecided",
+    "emoji": "\ud83e\udd28",
+    "likes": 118,
+    "repawsts": 6,
+    "date": "2019-07-16T15:25:00",
+    "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "'currently allowing it' is such a mood, respect the honesty"
+      },
+      {
+        "username": "crazydaisy",
+        "name": "Daisy",
+        "text": "grandma's lap is prime real estate, i sleep there nightly"
+      }
+    ]
+  },
+  {
     "image": "dadleg.jpg",
     "caption": "good morning to dad's leg specifically. everyone else can wait.",
     "feeling": "Affectionate",
@@ -1100,6 +2115,27 @@
         "username": "ciccu_bear",
         "name": "Ciccu",
         "text": "the audacity to be this comfortable while the rest of us suffer"
+      }
+    ]
+  },
+  {
+    "image": "patricks.jpg",
+    "caption": "st patrick's day spa day. found a pot of gold. did not find any actual gold. deeply disappointed but still cute.",
+    "feeling": "Lucky",
+    "emoji": "\ud83c\udf40",
+    "likes": 122,
+    "repawsts": 7,
+    "date": "2019-02-26T10:19:00",
+    "comments": [
+      {
+        "username": "ralphlauren",
+        "name": "Ralphie",
+        "text": "the holiday content is unmatched, festive queen"
+      },
+      {
+        "username": "graciepoo",
+        "name": "Gracie",
+        "text": "no gold but she's the real treasure honestly"
       }
     ]
   },
