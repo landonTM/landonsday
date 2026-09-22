@@ -1,616 +1,733 @@
 /* ================================
-   Marvel Page — dedicated stylesheet
-   Deliberately its own design language: comic-book panels, halftone
-   texture, ink borders, Bangers lettering. Loaded only on marvel.html
-   so nothing here leaks elsewhere, same approach as rosie.css.
+   Marvel Page — "comic book" edition.
+   Idea: an actual printed comic, not comic-themed decoration.
+   Straight panels, even gutters, black ink, one red, one yellow.
+   The loud stuff (SFX lettering, tilt) is saved for a few moments
+   so it still means something: headings and 5-star picks.
    ================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap');
 
 :root {
-  --comic-ink: #0a0a0a;
-  --comic-paper: #f2ede0;
-  --comic-red: #ed1d24;
-  --comic-red-dark: #a3080c;
-  --comic-yellow: #ffe066;
+  --ink: #111;
+  --paper: #f4eedf;
+  --panel-paper: #fffaf0;
+  --red: #e0261d;
+  --yellow: #ffd83a;
+  --cyan: #2fa6d9;
+  --muted: #6b645a;
+  --dots: rgba(17, 17, 17, 0.06);
 }
 
-/* Calm cream "paper" base instead of a single saturated color
-   covering the whole page — easier on the eyes, and gives the
-   colored panels below something neutral to sit on, the way an
-   actual comic page has white gutters between colored panels. */
+body.dark-mode {
+  --ink: #000;
+  --paper: #1a1713;
+  --panel-paper: #26221c;
+  --red: #c42a22;
+  --yellow: #e0bd3a;
+  --muted: #a39a8c;
+  --dots: rgba(255, 255, 255, 0.04);
+  color: #eee6d6;
+}
+
 body {
-  background-color: #f2ecdd;
-  background-image: radial-gradient(circle, rgba(10, 10, 10, 0.07) 1px, transparent 1.4px);
-  background-size: 14px 14px;
+  background: var(--paper);
+  background-image: radial-gradient(circle, var(--dots) 1px, transparent 1.3px);
+  background-size: 8px 8px;
+  background-attachment: scroll;
+  color: var(--ink);
 }
 
-/* ---- Page-scoped nav/footer recolor ---- */
+body.dark-mode { color: #eee6d6; }
+
+/* ---- Nav ---- */
 .site-nav {
-  background: var(--comic-red-dark);
-  border-bottom: 3px solid var(--comic-ink);
-  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.35);
+  background: var(--red);
+  border-bottom: 4px solid var(--ink);
 }
 
-.site-nav-logo {
-  font-family: 'Bangers', cursive;
-  font-size: 1.4rem;
-  letter-spacing: 0.03em;
-  color: var(--comic-paper);
-  -webkit-text-stroke: 1px var(--comic-ink);
-}
-
+.site-nav-logo,
 .site-nav-link {
   font-family: 'Bangers', cursive;
-  font-size: 1.05rem;
-  letter-spacing: 0.02em;
-  color: var(--comic-paper);
-}
-
-.site-nav-link:hover {
+  letter-spacing: 0.04em;
   color: #fff;
 }
 
-.site-nav-link.active {
-  color: var(--comic-yellow);
-  border-bottom-color: var(--comic-ink);
-}
+.site-nav-logo { font-size: 1.5rem; }
+.site-nav-link { font-size: 1.2rem; }
+.site-nav-link:hover { color: var(--yellow); }
+.site-nav-link.active { color: var(--yellow); border-bottom-color: var(--yellow); }
 
 .theme-toggle {
   margin-left: auto;
-  flex-shrink: 0;
   font-family: 'Bangers', cursive;
-  font-size: 0.85rem;
-  letter-spacing: 0.03em;
-  color: var(--comic-ink);
-  background: var(--comic-yellow);
-  border: 2px solid var(--comic-ink);
-  border-radius: 4px;
-  padding: 0.3rem 0.7rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  background: var(--yellow);
+  border: 3px solid var(--ink);
+  padding: 0.25rem 0.7rem;
   cursor: pointer;
-  transition: background-color 0.15s ease, transform 0.15s ease;
+  box-shadow: 3px 3px 0 var(--ink);
 }
 
-.theme-toggle:hover {
-  background: #fff;
-  transform: scale(1.05);
-}
+.theme-toggle:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
 
 footer {
-  background-color: var(--comic-ink);
+  background: var(--ink);
   color: #999;
-  border-top: 3px solid var(--comic-red);
+  border-top: 4px solid var(--red);
+  text-align: center;
+  padding: 1rem;
 }
 
-/* ---- Hero banner ---- */
-.page-hero {
-  border-bottom: 4px solid var(--comic-ink);
+.comic-page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
 }
 
-.page-hero::after {
-  background-image:
-    radial-gradient(circle, rgba(0, 0, 0, 0.5) 1.5px, transparent 1.8px),
-    linear-gradient(to top, rgba(0, 0, 0, 0.9) 5%, transparent 65%);
-  background-size: 10px 10px, auto;
+/* ---- Cover ---- */
+.cover {
+  border: 5px solid var(--ink);
+  background: var(--panel-paper);
+  box-shadow: 8px 8px 0 var(--ink);
+  margin-bottom: 3rem;
 }
 
-.page-hero .page-hero-title {
+.cover-masthead {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 5px solid var(--ink);
+}
+
+.cover-corner {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0.9rem;
+  border-right: 5px solid var(--ink);
+  background: var(--yellow);
+  color: #111;
   font-family: 'Bangers', cursive;
-  font-size: 3rem;
-  letter-spacing: 0.04em;
-  color: var(--comic-paper);
-  -webkit-text-stroke: 2px var(--comic-ink);
-  text-shadow: none;
-  background: var(--comic-red);
-  padding: 0.3rem 1.3rem 0.4rem;
-  transform: rotate(-2deg);
-  box-shadow: 6px 6px 0 var(--comic-ink);
+  line-height: 1;
+  text-align: center;
 }
 
-/* ---- Row sections — each one its own colored comic panel,
-   cycling through a small palette instead of one color everywhere,
-   the way a real comic page mixes panel colors across a spread. ---- */
-.mcu-row-section:nth-of-type(4n+1) { --panel-color: #6b3fa0; }
-.mcu-row-section:nth-of-type(4n+2) { --panel-color: #0f766e; }
-.mcu-row-section:nth-of-type(4n+3) { --panel-color: #b91c1c; }
-.mcu-row-section:nth-of-type(4n)   { --panel-color: #c2540b; }
+.cover-corner .price { font-size: 1.9rem; }
+.cover-corner .issue { font-size: 0.95rem; letter-spacing: 0.05em; margin-top: 0.2rem; }
 
-/* Three torn-corner silhouettes, cycled independently of the color
-   above (3 shapes x 4 colors = 12 combinations before anything
-   repeats). Corners are cut by a fixed pixel amount rather than a
-   percentage, so the cut always lands inside the panel's own padding
-   and never risks clipping a poster card near the edge, no matter
-   how tall or short the row is. */
-.mcu-row-section:nth-of-type(3n+1) {
-  transform: rotate(-1.3deg);
-  clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px);
-  box-shadow: 7px 7px 0 var(--comic-ink);
-}
-
-.mcu-row-section:nth-of-type(3n+1):hover {
-  transform: rotate(-1.3deg) translateY(-3px);
-}
-
-.mcu-row-section:nth-of-type(3n+2) {
-  transform: rotate(1.1deg);
-  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
-  box-shadow: -7px 7px 0 var(--comic-ink);
-}
-
-.mcu-row-section:nth-of-type(3n+2):hover {
-  transform: rotate(1.1deg) translateY(-3px);
-}
-
-.mcu-row-section:nth-of-type(3n) {
-  transform: rotate(-0.6deg);
-  clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 14px, 100% calc(100% - 14px), calc(100% - 14px) 100%, 14px 100%, 0 calc(100% - 14px), 0 14px);
-  box-shadow: 8px 8px 0 var(--comic-ink);
-}
-
-.mcu-row-section:nth-of-type(3n):hover {
-  transform: rotate(-0.6deg) translateY(-3px);
-}
-
-.mcu-row-section {
-  margin: 0 auto 2.5rem;
-  padding: 1.4rem 1.5rem 1.2rem;
-  background-color: var(--panel-color);
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.16) 1px, transparent 1.6px);
-  background-size: 12px 12px;
-  border: 3px solid var(--comic-ink);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* ---- Row headings — torn banner, with a faint radiating burst
-   behind it for depth ---- */
-.mcu-row-heading {
-  position: relative;
-  display: inline-block;
+.cover-title {
+  flex: 1;
+  margin: 0;
+  padding: 0.4rem 1rem 0.2rem;
   font-family: 'Bangers', cursive;
-  font-size: 1.6rem;
+  font-weight: 400;
+  font-size: clamp(2.6rem, 8vw, 6rem);
+  line-height: 0.95;
   letter-spacing: 0.03em;
-  color: var(--comic-ink);
-  background: var(--comic-yellow);
-  padding: 0.3rem 1.1rem;
-  transform: rotate(-1deg);
-  clip-path: polygon(0% 8%, 3% 0%, 97% 4%, 100% 15%, 98% 92%, 95% 100%, 2% 96%, 0% 85%);
-  box-shadow: 4px 4px 0 var(--comic-ink);
+  color: var(--red);
+  -webkit-text-stroke: 2px var(--ink);
+  text-shadow: 4px 4px 0 var(--ink);
 }
 
-.mcu-row-heading::before {
+.cover-title small {
+  display: block;
+  font-size: 0.32em;
+  color: var(--ink);
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+  letter-spacing: 0.08em;
+}
+
+body.dark-mode .cover-title small { color: #eee6d6; }
+
+.cover-art {
+  position: relative;
+  aspect-ratio: 21 / 8;
+  overflow: hidden;
+  background: #000;
+}
+
+.cover-art video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Ben-Day dots printed over the art — lighter than before so the
+   footage still reads instead of going muddy. */
+.cover-art::after {
   content: "";
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 160px;
-  height: 160px;
-  transform: translate(-50%, -50%);
-  background-image: repeating-conic-gradient(rgba(255, 255, 255, 0.35) 0deg 4deg, transparent 4deg 16deg);
-  border-radius: 50%;
-  opacity: 0.4;
-  z-index: -1;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.28) 1.2px, transparent 1.5px);
+  background-size: 6px 6px;
   pointer-events: none;
 }
 
-/* The base stylesheet's right-edge scroll fade hardcodes #000. It
-   now fades into whichever panel color the row belongs to, via the
-   inherited --panel-color custom property set above. Hidden by
-   default; marvel.html adds .has-overflow only to rows that actually
-   scroll, so short rows show no fade. */
-.poster-row-wrap::after {
-  background: linear-gradient(to right, transparent, var(--panel-color, #6b3fa0) 88%);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.poster-row-wrap.has-overflow::after {
-  opacity: 0.85;
-}
-
-/* .poster-row sets overflow-x:auto in the base stylesheet, which
-   forces the browser to also clip the y-axis (a CSS quirk: setting
-   only one overflow axis makes the other compute to 'auto' too).
-   The hover pop needs room to rise above the row and, for the first
-   and last cards in a row, to grow sideways too — both need padding
-   inside the scrollable box, since anything past the padding edge
-   gets clipped by that same overflow-x. */
-.poster-row {
-  padding-top: 4rem;
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-/* ---- Poster cards — inked comic panels ---- */
-.poster-card {
-  border: 3px solid var(--comic-ink);
-  outline: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 0;
-  background-color: #1a1a1a;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.2s ease;
-}
-
-.poster-card:nth-child(3n+1) {
-  transform: rotate(-1.6deg);
-}
-
-.poster-card:nth-child(3n+2) {
-  transform: rotate(1.2deg);
-}
-
-.poster-card:nth-child(3n) {
-  transform: rotate(-0.4deg);
-}
-
-/* Keeping each card's own tilt on hover instead of snapping flat to
-   0deg reads livelier — it looks like the card is leaning toward the
-   viewer, not just growing in place. The brightness/saturation bump
-   makes the art itself feel like it's lighting up, and the glow
-   pulses gently while hovered rather than sitting static. */
-.poster-card:nth-child(3n+1):hover {
-  transform: scale(1.32) translateY(-16px) rotate(-3deg);
-}
-
-.poster-card:nth-child(3n+2):hover {
-  transform: scale(1.32) translateY(-16px) rotate(2.5deg);
-}
-
-.poster-card:nth-child(3n):hover {
-  transform: scale(1.32) translateY(-16px) rotate(-1.5deg);
-}
-
-.poster-card:hover {
-  filter: brightness(1.1) saturate(1.25);
-  animation: posterPopGlow 1.1s ease-in-out infinite;
-}
-
-@keyframes posterPopGlow {
-  0%, 100% {
-    box-shadow:
-      0 0 0 4px var(--comic-yellow),
-      0 0 0 7px var(--comic-ink),
-      0 20px 32px rgba(0, 0, 0, 0.55);
-  }
-  50% {
-    box-shadow:
-      0 0 0 5px var(--comic-yellow),
-      0 0 0 8px var(--comic-ink),
-      0 24px 38px rgba(0, 0, 0, 0.6);
-  }
-}
-
-/* Full-card dot overlay replaced with a caption strip that only
-   covers the bottom of the poster, so the art stays fully visible.
-   Solid ink background behind the title keeps it legible instead of
-   fighting a busy poster image underneath. */
-.poster-card::before {
-  top: auto;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: block;
-  font-family: 'Bangers', cursive;
-  font-size: 1rem;
-  letter-spacing: 0.02em;
-  color: var(--comic-yellow);
-  padding: 0.5rem 60px 0.4rem 0.5rem;
-  text-align: left;
-  background-color: var(--comic-ink);
-  background-image: none;
-  border-top: 3px solid var(--comic-red);
-  opacity: 0;
-  transform: translateY(100%);
-  transition: opacity 0.18s ease, transform 0.18s ease;
-}
-
-.poster-card:hover::before {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.poster-fallback {
-  font-family: 'Bangers', cursive;
-  letter-spacing: 0.02em;
-  border-radius: 0;
-}
-
-/* Signature element: starburst rating stamp, replaces the flat
-   gradient rating bar. */
-.poster-rating-badge {
+.cover-caption {
   position: absolute;
-  bottom: -20px;
-  right: -20px;
-  left: auto;
-  z-index: 3;
-  width: 84px;
-  height: 84px;
-  padding: 0;
-  background: var(--comic-yellow);
-  background-image: none;
-  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-  border: 3px solid var(--comic-ink);
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 1;
+  max-width: min(440px, 70%);
+}
+
+.cover-seal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  border: 3px solid var(--ink);
+  background: #fff;
+  color: #111;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: rotate(-8deg);
-  font-family: 'Bangers', cursive;
-  font-size: 1.05rem;
-  color: var(--comic-ink);
   text-align: center;
-  line-height: 1.1;
+  font-family: 'Bangers', cursive;
+  font-size: 0.85rem;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  transform: rotate(10deg);
+  box-shadow: 3px 3px 0 var(--ink);
 }
 
-/* ---- Review modal — two comic panels side by side: info panel on
-   the left, review "speech bubble" filling the right. Built entirely
-   with CSS grid-area on the existing elements — modal-poster-row,
-   modal-rating, etc. are already separate children of modal-box, so
-   nothing in marvel.html or the render script needs to change. */
-.modal-overlay {
-  background: rgba(0, 0, 0, 0.85);
+.cover-stats {
+  display: flex;
+  border-top: 5px solid var(--ink);
 }
+
+.cover-stat {
+  flex: 1;
+  padding: 0.6rem 0.8rem;
+  text-align: center;
+  font-family: 'Bangers', cursive;
+  letter-spacing: 0.04em;
+}
+
+.cover-stat + .cover-stat { border-left: 3px solid var(--ink); }
+.cover-stat b { display: block; font-size: 2rem; font-weight: 400; color: var(--red); line-height: 1; }
+.cover-stat span { font-size: 0.95rem; }
+
+/* ---- Narration caption box: the most "comic" thing there is ---- */
+.narration {
+  display: inline-block;
+  background: var(--yellow);
+  color: #111;
+  border: 3px solid var(--ink);
+  padding: 0.45rem 0.8rem;
+  font-family: 'Comic Neue', cursive;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.35;
+  text-transform: uppercase;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+/* ---- Issue (section) header ---- */
+.issue {
+  margin-bottom: 3rem;
+}
+
+.issue-header {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.6rem;
+}
+
+.issue-number {
+  background: var(--ink);
+  color: var(--yellow);
+  font-family: 'Bangers', cursive;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.6rem;
+  align-self: center;
+}
+
+.issue-title {
+  margin: 0;
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+  line-height: 1;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  transform: rotate(-1deg);
+}
+
+body.dark-mode .issue-title { color: #eee6d6; }
+
+.issue-years {
+  margin-left: auto;
+  font-family: 'Bangers', cursive;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.issue > .narration { margin-bottom: 1rem; }
+
+/* ---- The page: panels in a grid with even gutters ---- */
+.comic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-auto-flow: dense;
+  gap: 12px;
+  padding: 12px;
+  background: var(--ink);
+  border: 5px solid var(--ink);
+}
+
+.panel {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  background: var(--panel-paper);
+  overflow: hidden;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.15s ease;
+}
+
+.panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: filter 0.15s ease;
+}
+
+.panel-fallback {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem;
+  text-align: center;
+  font-family: 'Bangers', cursive;
+  font-size: 1.2rem;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  background: var(--panel-paper);
+}
+
+body.dark-mode .panel-fallback { color: #eee6d6; }
+
+/* Title slides up as a caption strip on hover/focus */
+.panel-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.45rem 0.55rem;
+  background: var(--panel-paper);
+  border-top: 3px solid var(--ink);
+  color: var(--ink);
+  font-family: 'Bangers', cursive;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  transform: translateY(100%);
+  transition: transform 0.15s ease;
+}
+
+body.dark-mode .panel-title { color: #eee6d6; }
+
+.panel:hover .panel-title,
+.panel:focus-visible .panel-title { transform: translateY(0); }
+
+.panel:hover img,
+.panel:focus-visible img { filter: brightness(1.08) saturate(1.15); }
+
+.panel:focus-visible { box-shadow: inset 0 0 0 4px var(--yellow); }
+
+/* Small rating caption in the top-left corner, like a caption box */
+.panel-rating {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: var(--yellow);
+  color: #111;
+  border-right: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+  padding: 0.15rem 0.45rem 0.1rem;
+  font-family: 'Bangers', cursive;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+}
+
+.panel-rating.low { background: var(--red); color: #fff; }
+
+/* ---- Splash panel: 5-star picks get double size + SFX lettering ---- */
+.panel.splash {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.sfx {
+  position: absolute;
+  right: 0.6rem;
+  top: 0.8rem;
+  z-index: 2;
+  font-family: 'Bangers', cursive;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: 0.04em;
+  color: var(--yellow);
+  -webkit-text-stroke: 2px var(--ink);
+  text-shadow: 3px 3px 0 var(--ink);
+  transform: rotate(-10deg);
+  pointer-events: none;
+}
+
+.panel.splash .panel-rating { font-size: 1.4rem; }
+.panel.splash .panel-title { font-size: 1.4rem; }
+
+/* ---- "Next issue" teaser for the watchlist ---- */
+.next-issue .comic-grid {
+  background: var(--red);
+  border-color: var(--ink);
+}
+
+.next-issue .panel img { filter: grayscale(0.5) contrast(1.05); }
+.next-issue .panel:hover img { filter: none; }
+
+/* ---- Review modal: one clean panel + speech bubble ---- */
+.modal-overlay { background: rgba(0, 0, 0, 0.8); }
 
 .modal-box {
   display: grid;
-  grid-template-columns: 200px 1fr;
-  grid-template-areas:
-    "info review"
-    "seasonlabel review"
-    "episodes review"
-    "rating review"
-    "lastwatched review";
-  column-gap: 2rem;
-  row-gap: 0.85rem;
-  align-items: start;
-  max-width: 820px;
-  background-color: #170505;
-  background-image:
-    radial-gradient(circle, rgba(255, 224, 102, 0.3) 1px, transparent 1.6px),
-    linear-gradient(100deg, #170505 0%, #170505 26%, var(--poster-accent, #7a1e22) 30%, var(--poster-accent, #7a1e22) 100%);
-  background-size: 12px 12px, auto;
+  grid-template-columns: 170px 1fr;
+  gap: 1.5rem;
+  max-width: 780px;
+  background: var(--panel-paper);
+  background-image: radial-gradient(circle, var(--dots) 1px, transparent 1.3px);
+  background-size: 8px 8px;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  border: 4px solid var(--comic-ink);
-  outline: 3px solid var(--poster-accent, #7a1e22);
-  outline-offset: -11px;
+  border: 5px solid var(--ink);
   border-radius: 0;
-  box-shadow: 10px 10px 0 color-mix(in srgb, var(--poster-accent, #7a1e22) 55%, transparent);
+  box-shadow: 10px 10px 0 var(--ink);
+  color: var(--ink);
 }
 
-/* Kept inside the box bounds — modal-box has overflow-y:auto and
-   overflow-x:hidden in the base stylesheet (so long reviews scroll
-   instead of overflowing the screen), which clips anything hanging
-   outside via a negative offset. */
+body.dark-mode .modal-box { color: #eee6d6; }
+
+.modal-side { display: flex; flex-direction: column; gap: 0.7rem; }
+
+.modal-poster-thumb {
+  flex: none;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  border: 4px solid var(--ink);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--ink);
+  overflow: hidden;
+  position: relative;
+}
+
+.modal-poster-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
 .modal-close {
   top: 0.6rem;
   right: 0.6rem;
-  width: 32px;
-  height: 32px;
-  background: var(--comic-yellow);
-  border: 2px solid var(--comic-ink);
-  border-radius: 50%;
-  color: var(--comic-ink);
-  font-family: 'Bangers', cursive;
-  z-index: 1;
-}
-
-.modal-close:hover {
-  background: #fff;
-  color: var(--comic-ink);
-}
-
-/* ---- Left panel: poster, title, meta, rating, last watched ---- */
-.modal-poster-row {
-  grid-area: info;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 0;
-}
-
-.modal-poster-thumb {
-  flex: 0 0 auto;
-  width: 100%;
-  max-width: 160px;
-  height: auto;
-  aspect-ratio: 2 / 3;
-  border: 3px solid var(--comic-ink);
+  width: 34px;
+  height: 34px;
+  background: var(--yellow);
+  border: 3px solid var(--ink);
   border-radius: 0;
-  box-shadow: 4px 4px 0 var(--comic-ink);
-}
-
-.modal-header-info {
-  width: 100%;
+  color: #111;
+  font-family: 'Bangers', cursive;
+  font-size: 1.3rem;
+  line-height: 1;
+  z-index: 2;
 }
 
 .modal-title {
+  margin: 0 2.5rem 0.3rem 0;
   font-family: 'Bangers', cursive;
-  font-size: 1.6rem;
-  line-height: 1.15;
-  letter-spacing: 0.02em;
-  color: var(--comic-paper);
+  font-weight: 400;
+  font-size: 2.1rem;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  color: var(--red);
+  -webkit-text-stroke: 1px var(--ink);
 }
 
 .modal-meta {
-  color: #999;
-}
-
-.modal-season-label {
-  grid-area: seasonlabel;
-  color: var(--comic-yellow);
-}
-
-.modal-episodes {
-  grid-area: episodes;
-  border-top: 2px solid var(--comic-yellow);
-  border-bottom: 2px solid var(--comic-yellow);
-}
-
-.modal-episode-row .ep-rating {
-  color: var(--comic-yellow);
+  font-family: 'Bangers', cursive;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  font-size: 1rem;
+  margin-bottom: 0.9rem;
 }
 
 .modal-rating {
-  grid-area: rating;
-  font-family: 'Bangers', cursive;
-  font-size: 1.3rem;
-  letter-spacing: 0.02em;
-  color: var(--comic-yellow);
-  margin-bottom: 0;
+  font-size: 1.1rem;
+  margin: 0;
 }
 
-.modal-rating-empty {
-  color: #555;
+.modal-rating-empty { color: var(--muted); }
+
+.modal-episodes {
+  border-top: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+  margin: 0;
 }
 
-.modal-last-watched {
-  grid-area: lastwatched;
-  border-top: 2px dashed #555;
-  color: #999;
-  margin-top: 0;
-}
+.modal-episode-row { color: inherit; }
+.modal-season-label { color: var(--red); font-family: 'Bangers', cursive; letter-spacing: 0.05em; }
 
-/* ---- Right panel: review, styled as a real comic speech bubble —
-   generous rounding, a thick ink outline, and a bold pointed tail
-   instead of a subtle sliver. ---- */
 .modal-review {
-  grid-area: review;
   position: relative;
-  align-self: start;
-  margin-top: 0.5rem;
-  background-color: #ece3cf;
-  background-image:
-    radial-gradient(circle, rgba(120, 100, 70, 0.07) 0.6px, transparent 1px),
-    radial-gradient(ellipse at 30% 15%, #f8f3e6 0%, #ece3cf 70%);
-  background-size: 5px 5px, auto;
-  box-shadow: inset 0 0 32px rgba(60, 40, 20, 0.1);
-  color: #1a1a1a;
+  margin: 0.4rem 0 0 1rem;
+  padding: 1.1rem 1.3rem;
+  background: #fff;
+  color: #111;
+  border: 4px solid var(--ink);
+  border-radius: 28px;
   font-family: 'Comic Neue', cursive;
-  font-size: 1.05rem;
   font-weight: 700;
+  font-size: 1.05rem;
   line-height: 1.5;
-  padding: 1.4rem 1.6rem;
-  border: 4px solid var(--comic-ink);
-  border-radius: 32px;
+  white-space: pre-line;
 }
 
 .modal-review::before,
 .modal-review::after {
   content: "";
   position: absolute;
-  top: 32px;
-  width: 0;
-  height: 0;
+  top: 28px;
   border-style: solid;
 }
 
-/* Ink-outlined wedge behind... */
 .modal-review::before {
-  left: -26px;
-  border-width: 16px 26px 16px 0;
-  border-color: transparent var(--comic-ink) transparent transparent;
+  left: -24px;
+  border-width: 14px 24px 14px 0;
+  border-color: transparent var(--ink) transparent transparent;
 }
 
-/* ...paper-colored wedge on top, inset so the outline shows through
-   as a consistent border around the tail. */
 .modal-review::after {
-  left: -19px;
-  top: 36px;
-  border-width: 12px 20px 12px 0;
-  border-color: transparent #f6f0e2 transparent transparent;
+  left: -16px;
+  top: 33px;
+  border-width: 9px 16px 9px 0;
+  border-color: transparent #fff transparent transparent;
 }
 
-.modal-review.pending {
-  background: #2c2c2c;
-  color: #999;
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
+.modal-review.pending { color: #777; font-weight: 400; }
+
+.modal-last-watched {
+  display: inline-block;
+  margin: 0.9rem 0 0 1rem;
+  border: none;
 }
 
-.modal-review.pending::after {
-  border-color: transparent #2c2c2c transparent transparent;
+/* ---- Scroll animations ----
+   Only active once the script adds .animate-panels to body, so if JS
+   fails (or the user prefers reduced motion) every panel just shows. */
+body.animate-panels .panel {
+  opacity: 0;
+  transform: scale(0.8) rotate(-4deg);
 }
 
-/* ---- Dark mode — toggled via .theme-toggle in the nav, persisted
-   in localStorage. The nav, footer, and hero ribbon just get dimmed
-   with a filter since they're plain color blocks with no photos
-   inside. The row panels and modal box are handled differently on
-   purpose: filter cascades to every descendant, and both of those
-   contain actual poster art (poster-card images / the modal's poster
-   thumbnail) — filtering them would dim the posters too. So instead,
-   the panel colors are redefined directly via --panel-color, which
-   only touches the section's own background, leaving the posters
-   inside completely untouched. */
-body.dark-mode {
-  background-color: #14100a;
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1.4px);
+body.animate-panels .panel.printed {
+  animation: panelPrint 0.45s cubic-bezier(0.34, 1.6, 0.64, 1) var(--delay, 0ms) both;
 }
 
-body.dark-mode .site-nav {
-  background: #2a2a2a;
+/* Ink stamp: slam in slightly too big, settle flat */
+@keyframes panelPrint {
+  0%   { opacity: 0; transform: scale(0.8) rotate(-4deg); }
+  60%  { opacity: 1; transform: scale(1.05) rotate(1deg); }
+  100% { opacity: 1; transform: none; }
 }
 
-body.dark-mode footer,
-body.dark-mode .page-hero .page-hero-title,
-body.dark-mode .mcu-row-heading {
-  filter: grayscale(0.55) brightness(0.55);
+body.animate-panels .panel .sfx { transform: scale(0) rotate(-40deg); }
+
+body.animate-panels .panel.printed .sfx {
+  animation: sfxBurst 0.7s ease-out calc(var(--delay, 0ms) + 0.35s) both;
 }
 
-/* Muted, darker equivalents of the same four panel colors — posters
-   sitting on top are unaffected since this only changes the section's
-   own background-color. */
-body.dark-mode .mcu-row-section:nth-of-type(4n+1) { --panel-color: #34204a; }
-body.dark-mode .mcu-row-section:nth-of-type(4n+2) { --panel-color: #0b3a35; }
-body.dark-mode .mcu-row-section:nth-of-type(4n+3) { --panel-color: #5c1414; }
-body.dark-mode .mcu-row-section:nth-of-type(4n)   { --panel-color: #5c2a0a; }
-
-body.dark-mode .poster-rating-badge {
-  filter: grayscale(0.4) brightness(0.75);
+/* Explodes out, shakes, lands at its resting -10deg tilt */
+@keyframes sfxBurst {
+  0%   { transform: scale(0) rotate(-40deg); }
+  45%  { transform: scale(1.35) rotate(-4deg); }
+  60%  { transform: scale(1.15) rotate(-14deg); }
+  75%  { transform: scale(1.1) rotate(-7deg); }
+  100% { transform: scale(1) rotate(-10deg); }
 }
 
-body.dark-mode .theme-toggle {
-  background: #444;
-  color: #eee;
-  border-color: #888;
+/* ---- Cover blurb: the shouty headline that changes every visit ---- */
+.cover-blurb {
+  position: absolute;
+  /* The tilt lifts the right end of the text, so it sits low enough
+     (and narrow enough, wrapping long headlines to two lines) that
+     the raised end never pokes past the top of the clipped cover art. */
+  top: 2.2rem;
+  left: 1rem;
+  z-index: 1;
+  max-width: min(55%, 560px);
+  font-family: 'Bangers', cursive;
+  font-size: clamp(1.6rem, 4.2vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+  color: var(--yellow);
+  -webkit-text-stroke: 2px var(--ink);
+  text-shadow: 4px 4px 0 var(--ink);
+  transform: rotate(-3deg);
+  transform-origin: left bottom;
+  animation: blurbIn 0.6s cubic-bezier(0.34, 1.6, 0.64, 1) 0.2s both;
 }
 
-body.dark-mode .theme-toggle:hover {
-  background: #666;
+@keyframes blurbIn {
+  from { opacity: 0; transform: rotate(-3deg) scale(0.4); }
+  to   { opacity: 1; transform: rotate(-3deg) scale(1); }
 }
 
+/* ---- Flop stamp: slams onto 2★-and-under panels on hover ---- */
+.flop-stamp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  padding: 0.2rem 0.5rem;
+  border: 4px solid var(--red);
+  background: rgba(255, 250, 240, 0.9);
+  color: var(--red);
+  font-family: 'Bangers', cursive;
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(-14deg) scale(2);
+  transition: opacity 0.12s ease, transform 0.18s cubic-bezier(0.5, 0, 0.75, 0);
+  pointer-events: none;
+}
+
+.panel:hover .flop-stamp,
+.panel:focus-visible .flop-stamp {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(-14deg) scale(1);
+}
+
+.panel:has(.flop-stamp):hover img { filter: grayscale(0.8) brightness(0.8); }
+
+/* ---- "?" random block ---- */
+.random-block {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 60;
+  width: 58px;
+  height: 58px;
+  background: var(--yellow);
+  background-image: radial-gradient(circle at 7px 7px, var(--ink) 2px, transparent 2.5px),
+    radial-gradient(circle at calc(100% - 7px) 7px, var(--ink) 2px, transparent 2.5px),
+    radial-gradient(circle at 7px calc(100% - 7px), var(--ink) 2px, transparent 2.5px),
+    radial-gradient(circle at calc(100% - 7px) calc(100% - 7px), var(--ink) 2px, transparent 2.5px);
+  border: 4px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  color: #111;
+  font-family: 'Bangers', cursive;
+  font-size: 2.2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+
+.random-block:hover { transform: translateY(-3px); }
+.random-block.bump { animation: blockBump 0.3s ease; }
+
+@keyframes blockBump {
+  0%, 100% { transform: translateY(0); }
+  40%      { transform: translateY(-14px); }
+}
+
+/* Flash on the panel the "?" block landed on. Lives on an overlay so
+   it doesn't replace the panel's own print-in animation. */
+.panel.picked::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  animation: pickedFlash 0.9s ease both;
+}
+
+@keyframes pickedFlash {
+  0%, 50%, 100% { box-shadow: inset 0 0 0 0 var(--yellow); }
+  25%, 75%      { box-shadow: inset 0 0 0 7px var(--yellow); }
+}
+
+/* ---- Balloon-pop review opening ---- */
+.modal-box.popping {
+  animation: balloonOpen 0.38s cubic-bezier(0.34, 1.5, 0.64, 1) both;
+}
+
+@keyframes balloonOpen {
+  from { opacity: 0; transform: scale(0.15); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Speech bubble inflates from its tail after the box lands */
+.modal-box.popping .modal-review {
+  transform-origin: 0 40px;
+  animation: bubbleInflate 0.4s cubic-bezier(0.34, 1.7, 0.64, 1) 0.22s both;
+}
+
+@keyframes bubbleInflate {
+  from { opacity: 0; transform: scale(0.3); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cover-blurb, .random-block.bump, .panel.picked { animation: none; }
+}
+
+/* ---- Phones ---- */
 @media (max-width: 700px) {
-  .page-hero .page-hero-title {
-    font-size: 2.1rem;
-  }
-  .poster-rating-badge {
-    width: 64px;
-    height: 64px;
-    font-size: 0.85rem;
-    bottom: -14px;
-    right: -14px;
-  }
-  .modal-box {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "info"
-      "seasonlabel"
-      "episodes"
-      "rating"
-      "review"
-      "lastwatched";
-    max-width: 92vw;
-    background-image: radial-gradient(circle, rgba(255, 224, 102, 0.3) 1px, transparent 1.6px);
-    background-size: 12px 12px;
-  }
-  .modal-poster-row {
-    flex-direction: row;
-    align-items: center;
-  }
-  .modal-poster-thumb {
-    max-width: 90px;
-  }
-  .modal-title {
-    font-size: 1.6rem;
-  }
-  .modal-review::before,
-  .modal-review::after {
-    display: none;
-  }
+  /* Compact nav: logo + toggle share the top row, links wrap below.
+     (Overrides this sheet's own bigger desktop link size, which was
+     beating the base stylesheet's phone size.) */
+  .site-nav { padding: 0.55rem 16px 0.45rem; gap: 0.3rem 0.8rem; }
+  .site-nav-logo { width: auto; text-align: left; font-size: 1.3rem; }
+  .theme-toggle { font-size: 0.8rem; padding: 0.15rem 0.5rem; box-shadow: 2px 2px 0 var(--ink); }
+  .site-nav-links { order: 3; gap: 0.3rem 0.85rem; }
+  .site-nav-link { font-size: 1rem; padding: 0.1rem 0; }
+
+  .comic-page { padding: 1rem 16px 2rem; }
+  .cover { box-shadow: 5px 5px 0 var(--ink); }
+  .cover-art { aspect-ratio: 4 / 3; }
+  /* The intro video has black letterbox bars baked into the file; the
+     wide desktop crop hides them, but this taller crop needs a zoom. */
+  .cover-art video { transform: scale(1.45); }
+  .cover-seal { width: 70px; height: 70px; font-size: 0.7rem; }
+  .cover-blurb { top: 1.2rem; left: 0.7rem; max-width: 62%; font-size: 1.4rem; }
+  .random-block { width: 50px; height: 50px; font-size: 1.9rem; right: 16px; bottom: 16px; }
+  .flop-stamp { font-size: 1.1rem; border-width: 3px; }
+  .cover-caption { max-width: 80%; }
+  .cover-caption .narration { font-size: 0.8rem; }
+  .cover-stat b { font-size: 1.5rem; }
+  .cover-stat span { font-size: 0.8rem; }
+  .comic-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; padding: 8px; border-width: 4px; }
+  .panel-rating { font-size: 0.9rem; }
+  .sfx { font-size: 1.8rem; }
+  .issue-years { margin-left: 0; width: 100%; }
+  .modal-box { grid-template-columns: 1fr; max-width: 94vw; }
+  .modal-side { flex-direction: row; align-items: center; }
+  .modal-poster-thumb { width: 90px; flex: 0 0 90px; }
+  .modal-review { margin-left: 0; }
+  .modal-review::before, .modal-review::after { display: none; }
+  .modal-last-watched { margin-left: 0; }
 }

@@ -6,21 +6,20 @@
     <title>Marvel — Landon's Day</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
     <link rel="stylesheet" href="./assets/css/marvel.css">
-    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Marvel — Landon's Day">
     <meta property="og:description" content="Every MCU movie and show, rated and reviewed one by one, from Blade to Phase Five.">
     <meta property="og:url" content="https://www.landonday.com/marvel">
-    <meta property="og:image" content="https://www.landonday.com/assets/images/infinitywar.jpg">
+    <meta property="og:image" content="https://www.landonday.com/assets/images/marvel.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Marvel — Landon's Day">
     <meta name="twitter:description" content="Every MCU movie and show, rated and reviewed one by one, from Blade to Phase Five.">
-    <meta name="twitter:image" content="https://www.landonday.com/assets/images/infinitywar.jpg">
-
+    <meta name="twitter:image" content="https://www.landonday.com/assets/images/marvel.jpg">
 </head>
 <body>
 
-        <nav class="site-nav">
+    <nav class="site-nav">
         <a class="site-nav-logo" href="index">Landon's Day</a>
         <div class="site-nav-links">
             <a class="site-nav-link active" href="marvel">Marvel</a>
@@ -33,39 +32,56 @@
         <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">DARK MODE</button>
     </nav>
 
-    <svg width="0" height="0" style="position:absolute;">
-        <filter id="heroSharpen">
-            <feConvolveMatrix order="3" preserveAlpha="true"
-                kernelMatrix="0 -1 0 -1 5 -1 0 -1 0" />
-        </filter>
-    </svg>
+    <main class="comic-page">
+        <section class="cover">
+            <div class="cover-masthead">
+                <div class="cover-corner">
+                    <span class="price">25¢</span>
+                    <span class="issue" id="coverIssue">NO. 1</span>
+                </div>
+                <h1 class="cover-title">Landon's Marvel<small id="coverTagline">Every movie &amp; show, rated one by one</small></h1>
+            </div>
+            <div class="cover-art">
+                <video src="./assets/images/marvel-intro.mp4" autoplay muted loop playsinline></video>
+                <div class="cover-blurb" id="coverBlurb"></div>
+                <div class="cover-seal">Approved<br>by<br>Rosie</div>
+                <div class="cover-caption">
+                    <div class="narration" id="coverNarration">From Blade to Phase Five, one fan watches it all… and has opinions.</div>
+                </div>
+            </div>
+            <div class="cover-stats">
+                <div class="cover-stat"><b id="statReviewed">0</b><span>Reviewed</span></div>
+                <div class="cover-stat"><b id="statFive">0</b><span>Perfect 5s</span></div>
+                <div class="cover-stat"><b id="statNext">0</b><span>Up Next</span></div>
+            </div>
+        </section>
 
-    <div class="page-hero">
-        <video src="./assets/images/marvel-intro.mp4" autoplay muted loop playsinline></video>
-        <h1 class="page-hero-title">Marvel</h1>
-    </div>
+        <div id="issues"></div>
+    </main>
 
-    <div id="rows-container"></div>
+    <button class="random-block" id="randomIssue" type="button" aria-label="Open a random review" title="Random issue!">?</button>
 
     <div class="modal-overlay" id="reviewModal">
         <div class="modal-box">
             <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
-            <div class="modal-poster-row">
-                <div class="modal-poster-thumb" id="modalPosterThumb">
-                    <img id="modalPosterImg" src="" alt="" loading="lazy"
+            <div class="modal-side">
+                <div class="modal-poster-thumb">
+                    <img id="modalPosterImg" src="" alt=""
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="modal-poster-thumb-fallback">🎬</div>
                 </div>
-                <div class="modal-header-info">
-                    <h2 class="modal-title" id="modalTitle"></h2>
-                    <div class="modal-meta" id="modalMeta"></div>
+                <div>
+                    <div class="modal-rating" id="modalRating"></div>
+                    <div class="modal-season-label" id="modalSeasonLabel" style="display:none;">Season Overall</div>
                 </div>
             </div>
-            <div class="modal-episodes" id="modalEpisodes" style="display:none;"></div>
-            <div class="modal-season-label" id="modalSeasonLabel" style="display:none;">Season Overall</div>
-            <div class="modal-rating" id="modalRating"></div>
-            <div class="modal-review" id="modalReview"></div>
-            <div class="modal-last-watched" id="modalLastWatched" style="display:none;"></div>
+            <div class="modal-main">
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <div class="modal-meta" id="modalMeta"></div>
+                <div class="modal-episodes" id="modalEpisodes" style="display:none;"></div>
+                <div class="modal-review" id="modalReview"></div>
+                <div class="narration modal-last-watched" id="modalLastWatched" style="display:none;"></div>
+            </div>
         </div>
     </div>
 
@@ -74,277 +90,283 @@
     </footer>
 
     <script>
-        const CATEGORY_ORDER = [
-            { key: "watching", label: "Up Next" },
-            { key: "blade", label: "Blade Trilogy" },
-            { key: "xmen", label: "X-Men Universe" },
-            { key: "raimi", label: "Sony's Spider-Man (Raimi & Webb)" },
-            { key: "otherpre", label: "Other Pre-MCU Marvel Films" },
-            { key: "p1", label: "MCU — Phase One" },
-            { key: "p2", label: "MCU — Phase Two" },
-            { key: "tv", label: "Marvel Television (Netflix & ABC)" },
-            { key: "p3", label: "MCU — Phase Three" },
-            { key: "sony", label: "Sony's Spider-Man Universe" },
-            { key: "p4", label: "MCU — Phase Four" },
-            { key: "p5", label: "MCU — Phase Five" }
+        // "Up Next" moves to the end as a "Next Issue" teaser, like the
+        // last page of a real comic.
+        const ISSUES = [
+            { key: "blade", label: "Blade Trilogy", narration: "Before the shared universe, there was a Daywalker…" },
+            { key: "xmen", label: "X-Men Universe", narration: "Meanwhile, at a school for gifted youngsters…" },
+            { key: "raimi", label: "Sony's Spider-Man", narration: "With great power comes great responsibility…" },
+            { key: "otherpre", label: "Other Pre-MCU Films", narration: "The weird years. We don't talk about some of these." },
+            { key: "p1", label: "Phase One", narration: "It all began in a cave, with a box of scraps…" },
+            { key: "p2", label: "Phase Two", narration: "The Avengers assembled. Now what?" },
+            { key: "tv", label: "Marvel Television", narration: "Elsewhere, on the small screen…" },
+            { key: "p3", label: "Phase Three", narration: "Half of all life hangs in the balance…" },
+            { key: "sony", label: "Sony's Spider-Man Universe", narration: "In a universe with, somehow, no Spider-Man…" },
+            { key: "p4", label: "Phase Four", narration: "After the snap, the multiverse cracks wide open…" },
+            { key: "p5", label: "Phase Five", narration: "And the story continues…" },
+            { key: "watching", label: "Next Issue", narration: "Coming soon to a couch near you!", next: true }
         ];
 
-        function ratingToBadgeNumber(ratingText) {
-            if (!ratingText) return '';
-            if (ratingText.includes('-')) return ratingText;
-            const full = (ratingText.match(/⭐/g) || []).length;
-            const value = full + (ratingText.includes('½') ? 0.5 : 0);
-            return Number.isInteger(value) ? String(value) : value.toFixed(1);
+        // Sound effects matched to the hero in the title (first match wins,
+        // arrays cycle so repeat heroes don't all say the same thing).
+        // Anything unmatched falls back to the generic list.
+        const HERO_SFX = [
+            [/spider/i, ["THWIP!", "THWIP-THWIP!", "WHAP!"]],
+            [/daredevil/i, ["KRAK!", "WHAP!"]],
+            [/logan|wolverine/i, ["SNIKT!"]],
+            [/infinity war|endgame/i, ["*SNAP*"]],
+            [/captain america/i, ["KLANG!"]],
+            [/guardians/i, ["I AM GROOT!"]],
+            [/thor/i, ["KRAKOOM!"]],
+            [/hulk/i, ["SMASH!"]],
+            [/iron man/i, ["FWOOSH!"]],
+            [/x2|nightcrawler/i, ["BAMF!"]],
+            [/blade/i, ["SHINK!"]],
+            [/deadpool/i, ["CHIMICHANGA!"]]
+        ];
+        const GENERIC_SFX = ["POW!", "BAM!", "WHAM!", "BOOM!", "ZAP!"];
+        const sfxUses = new Map();
+
+        function sfxFor(title) {
+            const hit = HERO_SFX.find(([re]) => re.test(title));
+            const list = hit ? hit[1] : GENERIC_SFX;
+            const n = sfxUses.get(list) || 0;
+            sfxUses.set(list, n + 1);
+            return list[n % list.length];
+        }
+
+        // Hover stamps for the flops (2★ and under), cycled in order.
+        const FLOP_STAMPS = ["DEFEATED!", "CANCELLED!", "OOF.", "RETCONNED!", "NOPE!"];
+        let flopNo = 0;
+
+        // The cover rolls a new headline each visit, like a new issue.
+        // {n} = titles reviewed, {five} = perfect 5s.
+        const COVER_BLURBS = ["THE SNAP!", "WHO IS THE BEST AVENGER?!", "NOW WITH {n} REVIEWS!", "{five} PERFECT 5s INSIDE!", "SPOILERS AHEAD!", "NOT ALL HEROES GET 5 STARS!"];
+        const COVER_TAGLINES = ["Every movie & show, rated one by one", "The multiverse, reviewed", "Earth's mightiest opinions", "Collector's edition!"];
+        const COVER_NARRATIONS = [
+            "From Blade to Phase Five, one fan watches it all… and has opinions.",
+            "One man. Every Marvel movie. No skipping the bad ones.",
+            "In this issue: triumphs, tragedies, and at least one Morbius.",
+            "Reviews so honest, Nick Fury classified them."
+        ];
+
+        function pick(list) {
+            return list[Math.floor(Math.random() * list.length)];
+        }
+
+        // Every panel that has a real review, for the "?" random button.
+        const reviewedPanels = [];
+
+        function ratingValue(text) {
+            if (!text || text.includes('-')) return null;
+            const full = (text.match(/⭐/g) || []).length;
+            const frac = text.includes('¾') ? 0.75 : text.includes('½') ? 0.5 : text.includes('¼') ? 0.25 : 0;
+            return full + frac;
+        }
+
+        function esc(s) {
+            return String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
         }
 
         async function loadMarvel() {
-            const res = await fetch('data/marvel.json');
-            const data = await res.json();
-            const container = document.getElementById('rows-container');
+            const data = await (await fetch('data/marvel.json')).json();
+            const container = document.getElementById('issues');
 
-            CATEGORY_ORDER.forEach(cat => {
-                const items = data.filter(item => item.category === cat.key);
-                if (items.length === 0) return;
+            const rated = data.filter(i => ratingValue(i.rating) !== null);
+            document.getElementById('statReviewed').textContent = rated.length;
+            document.getElementById('statFive').textContent = rated.filter(i => ratingValue(i.rating) === 5).length;
+            document.getElementById('statNext').textContent = data.filter(i => i.category === 'watching').length;
+            document.getElementById('coverIssue').textContent = `NO. ${rated.length}`;
 
-                const section = document.createElement('div');
-                section.className = 'mcu-row-section';
+            const fiveCount = rated.filter(i => ratingValue(i.rating) === 5).length;
+            document.getElementById('coverBlurb').textContent =
+                pick(COVER_BLURBS).replace('{n}', rated.length).replace('{five}', fiveCount);
+            document.getElementById('coverTagline').textContent = pick(COVER_TAGLINES);
+            document.getElementById('coverNarration').textContent = pick(COVER_NARRATIONS);
 
-                const heading = document.createElement('h2');
-                heading.className = 'mcu-row-heading';
-                heading.textContent = cat.label;
-                section.appendChild(heading);
+            let issueNo = 0;
+            ISSUES.forEach(cat => {
+                const items = data.filter(i => i.category === cat.key);
+                if (!items.length) return;
 
-                const rowWrap = document.createElement('div');
-                rowWrap.className = 'poster-row-wrap';
+                const years = items.map(i => i.year).filter(Boolean);
+                const lo = Math.min(...years), hi = Math.max(...years);
+                const yearText = lo === hi ? String(lo) : `${lo}–${hi}`;
 
-                const row = document.createElement('div');
-                row.className = 'poster-row';
+                const section = document.createElement('section');
+                section.className = 'issue' + (cat.next ? ' next-issue' : '');
+                section.innerHTML = `
+                    <div class="issue-header">
+                        <span class="issue-number">${cat.next ? 'COMING SOON' : `ISSUE #${++issueNo}`}</span>
+                        <h2 class="issue-title">${esc(cat.label)}</h2>
+                        <span class="issue-years">${yearText}</span>
+                    </div>
+                    <div class="narration">${esc(cat.narration)}</div>
+                    <div class="comic-grid"></div>`;
+                const grid = section.querySelector('.comic-grid');
 
                 items.forEach(item => {
-                    const card = document.createElement('div');
-                    card.className = 'poster-card';
-                    card.setAttribute('data-title', item.title);
-                    card.setAttribute('tabindex', '0');
-                    card.setAttribute('role', 'button');
-                    card.setAttribute('aria-label', item.title);
-                    card.innerHTML = `
-                        <img src="./assets/images/marvel/${item.poster}" alt="${item.title}" loading="lazy"
+                    const v = ratingValue(item.rating);
+                    const splash = v === 5;
+                    const panel = document.createElement('div');
+                    panel.className = 'panel' + (splash ? ' splash' : '');
+                    panel.tabIndex = 0;
+                    panel.setAttribute('role', 'button');
+                    panel.setAttribute('aria-label', item.title);
+                    panel.innerHTML = `
+                        <img src="./assets/images/marvel/${esc(item.poster)}" alt="" loading="lazy"
                              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="poster-fallback">${item.title}</div>
-                        ${item.rating ? `<div class="poster-rating-badge">${ratingToBadgeNumber(item.rating)}</div>` : ''}
-                    `;
-                    card.addEventListener('click', () => openModal(item));
-                    card.addEventListener('keydown', (e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            openModal(item);
-                        }
+                        <div class="panel-fallback">${esc(item.title)}</div>
+                        ${v !== null ? `<div class="panel-rating${v <= 2 ? ' low' : ''}">${v}★</div>` : ''}
+                        ${splash ? `<div class="sfx">${sfxFor(item.title)}</div>` : ''}
+                        ${v !== null && v <= 2 ? `<div class="flop-stamp">${FLOP_STAMPS[flopNo++ % FLOP_STAMPS.length]}</div>` : ''}
+                        <div class="panel-title">${esc(item.title)}</div>`;
+                    panel.addEventListener('click', () => openModal(item, panel));
+                    panel.addEventListener('keydown', e => {
+                        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(item, panel); }
                     });
-                    row.appendChild(card);
+                    grid.appendChild(panel);
+                    if (item.review) reviewedPanels.push({ item, panel });
                 });
 
-                rowWrap.appendChild(row);
-                section.appendChild(rowWrap);
                 container.appendChild(section);
             });
 
-            updateRowOverflow();
+            printPanelsOnScroll();
         }
 
-        function updateRowOverflow() {
-            document.querySelectorAll('.poster-row-wrap').forEach(wrap => {
-                const row = wrap.querySelector('.poster-row');
-                if (!row) return;
-                const overflowing = row.scrollWidth > row.clientWidth + 2;
-                wrap.classList.toggle('has-overflow', overflowing);
-            });
+        // Panels "print" onto the page as they scroll into view. Panels
+        // that arrive in the same batch get staggered so they stamp in
+        // one after another. Skipped entirely for reduced-motion users.
+        function printPanelsOnScroll() {
+            if (!('IntersectionObserver' in window)) return;
+            if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            document.body.classList.add('animate-panels');
+            const observer = new IntersectionObserver(entries => {
+                let order = 0;
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.style.setProperty('--delay', `${Math.min(order++, 12) * 60}ms`);
+                    entry.target.classList.add('printed');
+                    observer.unobserve(entry.target);
+                });
+            }, { threshold: 0.15 });
+
+            document.querySelectorAll('.panel').forEach(p => observer.observe(p));
         }
 
-        window.addEventListener('resize', updateRowOverflow);
-
-        function renderStarDisplay(ratingText) {
-            if (!ratingText || ratingText.includes('-')) return ratingText || '';
-            const full = (ratingText.match(/⭐/g) || []).length;
-            const hasFraction = /[¾½¼]/.test(ratingText);
-            const used = full + (hasFraction ? 1 : 0);
-            const empty = Math.max(0, 5 - used);
-            return empty > 0
-                ? `${ratingText}<span class="modal-rating-empty">${'☆'.repeat(empty)}</span>`
-                : ratingText;
+        function renderStars(text) {
+            const v = ratingValue(text);
+            if (v === null) return text || '';
+            const used = Math.ceil(v);
+            return text + `<span class="modal-rating-empty">${'☆'.repeat(Math.max(0, 5 - used))}</span>`;
         }
 
-        function applyRatingAccent(ratingText) {
-            const box = document.querySelector('.modal-box');
-            if (!ratingText) {
-                box.style.setProperty('--modal-accent', '#2c2c2c');
-                box.style.setProperty('--modal-accent-glow', 'transparent');
-                return;
-            }
-            let value;
-            if (ratingText.includes('-')) {
-                value = -1;
-            } else {
-                const full = (ratingText.match(/⭐/g) || []).length;
-                const fraction = ratingText.includes('¾') ? 0.75 : ratingText.includes('½') ? 0.5 : ratingText.includes('¼') ? 0.25 : 0;
-                value = full + fraction;
-            }
-            let color, glow;
-            if (value < 0 || value < 2.5) {
-                color = '#e05c5c'; glow = 'rgba(224, 92, 92, 0.15)';
-            } else if (value < 4) {
-                color = '#ffd54a'; glow = 'rgba(255, 213, 74, 0.15)';
-            } else {
-                color = '#6fdc8c'; glow = 'rgba(111, 220, 140, 0.15)';
-            }
-            box.style.setProperty('--modal-accent', color);
-            box.style.setProperty('--modal-accent-glow', glow);
-        }
-
-        function extractAccentColor(img, callback) {
-            try {
-                const w = 24, h = 24;
-                const canvas = document.createElement('canvas');
-                canvas.width = w;
-                canvas.height = h;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(img, 0, 0, w, h);
-                const data = ctx.getImageData(0, 0, w, h).data;
-
-                let r = 0, g = 0, b = 0, count = 0;
-                for (let i = 0; i < data.length; i += 4) {
-                    const rr = data[i], gg = data[i + 1], bb = data[i + 2], aa = data[i + 3];
-                    if (aa < 200) continue;
-                    const lightness = (Math.max(rr, gg, bb) + Math.min(rr, gg, bb)) / 2;
-                    if (lightness < 25 || lightness > 225) continue;
-                    r += rr; g += gg; b += bb; count++;
-                }
-                if (count === 0) { callback(null); return; }
-
-                r /= count; g /= count; b /= count;
-                const avg = (r + g + b) / 3;
-                const boost = 1.3;
-                r = Math.min(255, Math.max(0, avg + (r - avg) * boost));
-                g = Math.min(255, Math.max(0, avg + (g - avg) * boost));
-                b = Math.min(255, Math.max(0, avg + (b - avg) * boost));
-                const darken = 0.82;
-                r = Math.round(r * darken); g = Math.round(g * darken); b = Math.round(b * darken);
-                callback(`rgb(${r}, ${g}, ${b})`);
-            } catch (e) {
-                callback(null);
-            }
-        }
-
-        function openModal(item) {
+        function openModal(item, sourcePanel) {
             document.getElementById('modalTitle').textContent = item.title;
             document.getElementById('modalMeta').textContent = `${item.year} • ${item.type}`;
 
-            const posterImg = document.getElementById('modalPosterImg');
-            const posterFallback = document.querySelector('.modal-poster-thumb-fallback');
-            const modalBox = document.querySelector('.modal-box');
-            posterImg.style.display = 'block';
-            posterFallback.style.display = 'none';
-            modalBox.style.removeProperty('--poster-accent');
-            posterImg.onload = () => {
-                extractAccentColor(posterImg, (color) => {
-                    if (color) {
-                        modalBox.style.setProperty('--poster-accent', color);
-                    }
-                });
-            };
-            posterImg.src = `./assets/images/marvel/${item.poster}`;
-            posterImg.alt = item.title;
+            const img = document.getElementById('modalPosterImg');
+            img.style.display = 'block';
+            img.nextElementSibling.style.display = 'none';
+            img.src = `./assets/images/marvel/${item.poster}`;
+            img.alt = item.title;
 
-            const episodesEl = document.getElementById('modalEpisodes');
-            if (item.episodes && item.episodes.length > 0) {
-                episodesEl.innerHTML = item.episodes.map(ep =>
-                    `<div class="modal-episode-row"><span class="ep-name">${ep.title}</span><span class="ep-rating">${ep.rating || ''}</span></div>`
-                ).join('');
-                episodesEl.style.display = 'block';
-                document.getElementById('modalSeasonLabel').style.display = 'block';
-            } else {
-                episodesEl.style.display = 'none';
-                episodesEl.innerHTML = '';
-                document.getElementById('modalSeasonLabel').style.display = 'none';
-            }
+            const eps = document.getElementById('modalEpisodes');
+            const hasEps = item.episodes && item.episodes.length > 0;
+            eps.innerHTML = hasEps ? item.episodes.map(ep =>
+                `<div class="modal-episode-row"><span class="ep-name">${esc(ep.title)}</span><span class="ep-rating">${ep.rating || ''}</span></div>`
+            ).join('') : '';
+            eps.style.display = hasEps ? 'block' : 'none';
+            document.getElementById('modalSeasonLabel').style.display = hasEps ? 'block' : 'none';
 
-            const ratingEl = document.getElementById('modalRating');
-            ratingEl.innerHTML = item.rating ? renderStarDisplay(item.rating) : '';
-            applyRatingAccent(item.rating);
+            document.getElementById('modalRating').innerHTML = item.rating ? renderStars(item.rating) : '';
 
-            const reviewEl = document.getElementById('modalReview');
-            const lastWatchedEl = document.getElementById('modalLastWatched');
+            const review = document.getElementById('modalReview');
+            const last = document.getElementById('modalLastWatched');
+            last.style.display = 'none';
+            review.classList.remove('pending');
             if (item.review) {
-                const match = item.review.match(/^([\s\S]*?)\n\n(Last Watched:.+)$/);
-                if (match) {
-                    reviewEl.textContent = match[1];
-                    lastWatchedEl.textContent = match[2];
-                    lastWatchedEl.style.display = 'block';
-                } else {
-                    reviewEl.textContent = item.review;
-                    lastWatchedEl.style.display = 'none';
-                }
-                reviewEl.classList.remove('pending');
+                const m = item.review.match(/^([\s\S]*?)\n\n(Last Watched:.+)$/);
+                review.textContent = m ? m[1] : item.review;
+                if (m) { last.textContent = m[2]; last.style.display = 'inline-block'; }
             } else {
-                reviewEl.textContent = "Review coming soon!";
-                reviewEl.classList.add('pending');
-                lastWatchedEl.style.display = 'none';
+                review.textContent = "Review coming soon!";
+                review.classList.add('pending');
             }
 
             document.getElementById('reviewModal').classList.add('open');
+            popFrom(sourcePanel);
         }
+
+        // Balloon-pop: the modal grows out of the poster that was
+        // clicked (its transform-origin is aimed at that panel's
+        // center), then the speech bubble inflates a beat later.
+        function popFrom(panel) {
+            const box = document.querySelector('.modal-box');
+            box.classList.remove('popping');
+            if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            const p = panel && panel.getBoundingClientRect();
+            const onScreen = p && p.bottom > 0 && p.top < innerHeight;
+            if (onScreen) {
+                const b = box.getBoundingClientRect();
+                box.style.transformOrigin =
+                    `${p.left + p.width / 2 - b.left}px ${p.top + p.height / 2 - b.top}px`;
+            } else {
+                box.style.transformOrigin = 'center';
+            }
+            void box.offsetWidth; // restart the animation on every open
+            box.classList.add('popping');
+        }
+
+        // "?" block: bump, scroll to a random reviewed title, flash it,
+        // then open its review.
+        document.getElementById('randomIssue').addEventListener('click', e => {
+            if (!reviewedPanels.length) return;
+            const btn = e.currentTarget;
+            btn.classList.remove('bump');
+            void btn.offsetWidth;
+            btn.classList.add('bump');
+
+            const { item, panel } = pick(reviewedPanels);
+            closeModal();
+            panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            panel.classList.remove('picked');
+            void panel.offsetWidth;
+            panel.classList.add('picked');
+            setTimeout(() => openModal(item, panel), 900);
+        });
 
         function closeModal() {
             document.getElementById('reviewModal').classList.remove('open');
         }
 
         document.getElementById('modalClose').addEventListener('click', closeModal);
-        document.getElementById('reviewModal').addEventListener('click', (e) => {
+        document.getElementById('reviewModal').addEventListener('click', e => {
             if (e.target.id === 'reviewModal') closeModal();
         });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-        loadMarvel();
-    </script>
-
-
-    <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top" title="Back to top">&uarr;</button>
-
-    <script>
-        (function () {
-            const btn = document.getElementById('backToTopBtn');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 400) {
-                    btn.classList.add('visible');
-                } else {
-                    btn.classList.remove('visible');
-                }
-            });
-            btn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        })();
-    </script>
-
-    <script>
         (function () {
             const btn = document.getElementById('themeToggle');
-            const STORAGE_KEY = 'marvelDarkMode';
-
-            function applyTheme(isDark) {
-                document.body.classList.toggle('dark-mode', isDark);
-                btn.textContent = isDark ? 'LIGHT MODE' : 'DARK MODE';
+            const KEY = 'marvelDarkMode';
+            function apply(dark) {
+                document.body.classList.toggle('dark-mode', dark);
+                btn.textContent = dark ? 'LIGHT MODE' : 'DARK MODE';
             }
-
-            applyTheme(localStorage.getItem(STORAGE_KEY) === 'true');
-
+            let saved = false;
+            try { saved = localStorage.getItem(KEY) === 'true'; } catch (e) {}
+            apply(saved);
             btn.addEventListener('click', () => {
-                const isDark = !document.body.classList.contains('dark-mode');
-                applyTheme(isDark);
-                localStorage.setItem(STORAGE_KEY, isDark);
+                const dark = !document.body.classList.contains('dark-mode');
+                apply(dark);
+                try { localStorage.setItem(KEY, dark); } catch (e) {}
             });
         })();
+
+        loadMarvel();
     </script>
 </body>
 </html>
