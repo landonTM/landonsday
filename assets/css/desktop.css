@@ -6,6 +6,10 @@
    for fields/lists.
    ================================ */
 
+/* Comic Sans stand-in for the sticky note (iPhones don't ship Comic
+   Sans and would otherwise fall back to a fancy script font). */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
 :root {
   --face: #c0c0c0;
   --face-light: #dfdfdf;
@@ -222,7 +226,7 @@ a { color: #0000ee; }
   background: linear-gradient(#fff59d, #ffec6e);
   box-shadow: 3px 4px 0 rgba(0, 0, 0, 0.25);
   transform: rotate(-2deg);
-  font-family: 'Comic Sans MS', 'Comic Neue', 'Segoe Print', cursive;
+  font-family: 'Comic Sans MS', 'Comic Neue', sans-serif;
   font-size: 14px;
   line-height: 1.5;
   color: #333;
@@ -771,10 +775,10 @@ a { color: #0000ee; }
   left: 0;
   top: 0;
   z-index: 90000;
-  width: 64px;
-  height: 44px;
+  width: 72px;
+  height: 52px;
   cursor: pointer;
-  filter: drop-shadow(1px 0 0 #000) drop-shadow(-1px 0 0 #000) drop-shadow(0 1px 0 #000) drop-shadow(0 -1px 0 #000);
+  will-change: transform;
 }
 
 .pet svg { position: absolute; inset: 0; display: block; }
