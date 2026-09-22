@@ -24,8 +24,8 @@ import os
 import html
 
 DOMAIN = "https://www.landonday.com"
-SITE_DIR = os.path.dirname(os.path.abspath(__file__))
-ROSIE_JSON = os.path.join(SITE_DIR, "rosie.json")
+SITE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROSIE_JSON = os.path.join(SITE_DIR, "data", "rosie.json")
 OUTPUT_DIR = os.path.join(SITE_DIR, "share")
 
 TEMPLATE = """<!DOCTYPE html>
