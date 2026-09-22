@@ -2084,10 +2084,12 @@ footer {
     text-align: center;
   }
 
+  /* 10px gaps keep all six links on one row on a 375px phone
+     (16px gaps pushed "Wrestling" onto a second line). */
   .site-nav-links {
     position: static;
     transform: none;
-    gap: 1rem;
+    gap: 0.4rem 0.65rem;
     width: 100%;
     justify-content: center;
   }

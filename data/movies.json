@@ -99,11 +99,27 @@
     "watchlist": false
   },
   {
+    "title": "Coyote vs. Acme",
+    "year": 2026,
+    "type": "Movie",
+    "poster": "coyote-vs-acme.jpg",
+    "rating": "⭐⭐⭐⭐",
+    "review": "extremely surprising how emotional this was, i CANNOT believe they canned this whatsoever for not being funny enough. not only was it funny enough, it was out of this world in the story and moments that actually made you laugh at the insanity of it. this is probably the best live action and animated mixed film i have ever watched. genuinely remarkable how they were able to pull off such a touching story whilst keeping it light hearted and feeling entirely in place for the looney tunes franchise. its great that this film made it to light, the story behind the movie being cancelled then brought back whilst the story in the movie being going against evil mega corporations is some of the best ironic work you couldnt plan better.\n\nLast Watched: September 2nd, 2026"
+  },
+  {
+    "title": "Hoppers",
+    "year": 2026,
+    "type": "Movie",
+    "poster": "hoppers.jpg",
+    "rating": "⭐⭐⭐⭐",
+    "review": ""
+  },
+  {
     "title": "The Truman Show",
     "year": 1998,
     "type": "Movie",
     "poster": "the-truman-show.jpg",
-    "rating": "",
+    "rating": "⭐⭐⭐⭐⭐",
     "review": "",
     "favorite_movie": true,
     "favorite_show": false,
@@ -114,8 +130,8 @@
     "year": 2023,
     "type": "Movie",
     "poster": "guardians-of-the-galaxy-vol-3.jpg",
-    "rating": "",
-    "review": "",
+    "rating": "⭐⭐⭐⭐⭐",
+    "review": "this, in my opinion, is the best movie marvel has ever made. their magnum opus. not only did they have an arc for EVERY single character, but they single handedly represented depression and loneliness in one of the best ways i’ve seen on a screen. the genuine tonal shift from the comedy movies the first and second are to starting off this film in the most depressing way possible is such a great way to convey what we’re in store for. the comedy did land every single time and felt perfectly placed and wasn’t overdone to outweigh the actual emotional scenes. it’s just so beautifully done, and choosing animals to display abuse is a great way to draw investment and emotional support, since those tiny little raccoons are so damn cute. the high evolutionary is so unlikable, genuinely unredeemable and not worth living, but they spared him anyways. he might be one of marvels best villains entirely, his motivation, ambition, and personality are just pure evil with no real light to shine. they did everything right in this movie, it was a perfect end to their trilogy.\n\nLast Watched: August 13th, 2026",
     "favorite_movie": true,
     "favorite_show": false,
     "watchlist": false
@@ -154,7 +170,7 @@
     "year": 2016,
     "type": "Show",
     "poster": "lucifer.jpg",
-    "rating": "",
+    "rating": "⭐⭐⭐⭐½",
     "review": "",
     "favorite_movie": false,
     "favorite_show": true,
@@ -633,5 +649,39 @@
     "favorite_movie": false,
     "favorite_show": false,
     "watchlist": false
+  },
+  {
+    "title": "Gen V",
+    "year": 2023,
+    "type": "Show",
+    "poster": "gen-v.jpg",
+    "rating": "",
+    "review": "",
+    "seasons": [
+      {
+        "title": "Season 1",
+        "rating": "⭐⭐⭐⭐"
+      },
+      {
+        "title": "Season 2",
+        "rating": "⭐⭐⭐⭐½"
+      }
+    ]
+  },
+  {
+    "title": "Wednesday",
+    "year": 2022,
+    "type": "Show",
+    "poster": "wednesday.jpg",
+    "rating": "⭐⭐⭐",
+    "review": ""
+  },
+  {
+    "title": "Superstore",
+    "year": 2015,
+    "type": "Show",
+    "poster": "superstore.jpg",
+    "rating": "⭐⭐⭐⭐",
+    "review": ""
   }
 ]

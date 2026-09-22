@@ -5,7 +5,7 @@
     "episode": 3,
     "episodeTitle": "Connor's Wedding",
     "poster": "succession.jpg",
-    "watchedDate": ""
+    "watchedDate": "November 13th, 2025"
   },
   {
     "show": "Severance",
@@ -13,7 +13,23 @@
     "episode": 9,
     "episodeTitle": "The We We Are",
     "poster": "severance.jpg",
-    "watchedDate": ""
+    "watchedDate": "March 3rd, 2026"
+  },
+  {
+    "show": "Severance",
+    "season": 2,
+    "episode": 7,
+    "episodeTitle": "Chikhai Bardo",
+    "poster": "severance.jpg",
+    "watchedDate": "September 10th, 2026"
+  },
+  {
+    "show": "Severance",
+    "season": 2,
+    "episode": 10,
+    "episodeTitle": "Cold Harbor",
+    "poster": "severance.jpg",
+    "watchedDate": "September 10th, 2026"
   },
   {
     "show": "Invincible",
@@ -21,7 +37,7 @@
     "episode": 7,
     "episodeTitle": "WHAT HAVE I DONE?",
     "poster": "invincible.jpg",
-    "watchedDate": ""
+    "watchedDate": "April 3rd, 2026"
   },
   {
     "show": "Invincible",
@@ -29,7 +45,7 @@
     "episode": 8,
     "episodeTitle": "I THOUGHT YOU'D NEVER SHUT UP",
     "poster": "invincible.jpg",
-    "watchedDate": ""
+    "watchedDate": "April 4th, 2026"
   },
   {
     "show": "Invincible",
@@ -37,7 +53,7 @@
     "episode": 5,
     "episodeTitle": "GIVE US A MOMENT",
     "poster": "invincible.jpg",
-    "watchedDate": ""
+    "watchedDate": "April 8th, 2026"
   },
   {
     "show": "Invincible",
@@ -45,7 +61,7 @@
     "episode": 7,
     "episodeTitle": "DON'T DO ANYTHING RASH",
     "poster": "invincible.jpg",
-    "watchedDate": ""
+    "watchedDate": "April 17th, 2026"
   },
   {
     "show": "Psych",
@@ -53,7 +69,15 @@
     "episode": 8,
     "episodeTitle": "Right Turn or Left for Dead",
     "poster": "psych.jpg",
-    "watchedDate": ""
+    "watchedDate": "May 8th, 2026"
+  },
+  {
+    "show": "The Bear",
+    "season": 1,
+    "episode": 7,
+    "episodeTitle": "Review",
+    "poster": "the-bear.jpg",
+    "watchedDate": "May 25th, 2026"
   },
   {
     "show": "The Bear",
@@ -61,7 +85,7 @@
     "episode": 8,
     "episodeTitle": "Braciole",
     "poster": "the-bear.jpg",
-    "watchedDate": ""
+    "watchedDate": "May 25th, 2026"
   },
   {
     "show": "The Bear",
@@ -69,7 +93,7 @@
     "episode": 6,
     "episodeTitle": "Fishes",
     "poster": "the-bear.jpg",
-    "watchedDate": ""
+    "watchedDate": "May 29th, 2026"
   },
   {
     "show": "The Bear",
@@ -77,7 +101,7 @@
     "episode": 7,
     "episodeTitle": "Forks",
     "poster": "the-bear.jpg",
-    "watchedDate": ""
+    "watchedDate": "May 29th, 2026"
   },
   {
     "show": "The Bear",
@@ -85,7 +109,15 @@
     "episode": 10,
     "episodeTitle": "The Bear",
     "poster": "the-bear.jpg",
-    "watchedDate": ""
+    "watchedDate": "June 4th, 2026"
+  },
+  {
+    "show": "The Bear",
+    "season": 4,
+    "episode": 7,
+    "episodeTitle": "Bears",
+    "poster": "the-bear.jpg",
+    "watchedDate": "September 18th, 2026"
   },
   {
     "show": "Heated Rivalry",
@@ -93,7 +125,7 @@
     "episode": 5,
     "episodeTitle": "I'll Believe in Anything",
     "poster": "heated-rivalry.jpg",
-    "watchedDate": ""
+    "watchedDate": "June 10th, 2026"
   },
   {
     "show": "Heated Rivalry",
@@ -101,6 +133,6 @@
     "episode": 6,
     "episodeTitle": "The Cottage",
     "poster": "heated-rivalry.jpg",
-    "watchedDate": ""
+    "watchedDate": "June 11th, 2026"
   }
 ]

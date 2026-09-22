@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movies & Shows — Landon's Day</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
-    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <link rel="stylesheet" href="./assets/css/video-store.css">
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Movies & Shows — Landon's Day">
     <meta property="og:description" content="My favorite movies and shows, a full rated archive, a watchlist, and the perfect episodes I consider flawless.">
@@ -15,11 +16,10 @@
     <meta name="twitter:title" content="Movies & Shows — Landon's Day">
     <meta name="twitter:description" content="My favorite movies and shows, a full rated archive, a watchlist, and the perfect episodes I consider flawless.">
     <meta name="twitter:image" content="https://www.landonday.com/assets/images/movies.png">
-
 </head>
-<body class="movies-page">
+<body>
 
-        <nav class="site-nav">
+    <nav class="site-nav">
         <a class="site-nav-logo" href="index">Landon's Day</a>
         <div class="site-nav-links">
             <a class="site-nav-link" href="marvel">Marvel</a>
@@ -31,91 +31,143 @@
         </div>
     </nav>
 
-    <div class="page-hero">
-        <img src="./assets/images/movies.png" alt="Movies & Shows">
-        <h1 class="page-hero-title">Movies & Shows</h1>
-    </div>
+    <header class="storefront">
+        <div class="open-sign">Open</div>
+        <h1 class="sign">
+            <span class="sign-neon">Landon's</span>
+            <span class="sign-box">Video</span>
+        </h1>
+        <div class="tagline">Movies · Shows · Staff Picks · No Late Fees<small>*there are late fees</small></div>
+    </header>
 
-    <div class="movies-section">
-        <h2 class="movies-section-heading">My Favorite Movies</h2>
-        <p class="movies-section-subheading">Not necessarily the highest rated — just the ones I'd watch again anytime.</p>
-        <div class="favorites-grid" id="favMoviesGrid"></div>
-    </div>
-
-    <div class="movies-section">
-        <h2 class="movies-section-heading">My Favorite Shows</h2>
-        <p class="movies-section-subheading">The ones I'd recommend to anyone, no questions asked.</p>
-        <div class="favorites-grid" id="favShowsGrid"></div>
-    </div>
-
-    <div class="movies-section">
-        <h2 class="movies-section-heading">The Perfect Episode</h2>
-        <p class="movies-section-subheading">Individual episodes I consider flawless enough to earn a 5-star rating all on their own.</p>
-        <div class="perfect-ep-grid" id="perfectEpGrid"></div>
-    </div>
-
-    <div class="movies-section">
-        <h2 class="movies-section-heading">Watchlist</h2>
-        <p class="movies-section-subheading">What's up next, in no particular order of urgency.</p>
-        <div class="watchlist-columns">
-            <div class="watchlist-column">
-                <h3>Movies to Watch</h3>
-                <ul class="watchlist-list" id="watchlistMovies"></ul>
-            </div>
-            <div class="watchlist-column">
-                <h3>Shows to Watch</h3>
-                <ul class="watchlist-list" id="watchlistShows"></ul>
-            </div>
-        </div>
-        <div class="pick-for-me">
-            <button class="pick-for-me-btn" id="pickForMeBtn">🎲 Pick Something For Me</button>
-            <div class="pick-result" id="pickResult" style="display:none;"></div>
-        </div>
-    </div>
-
-    <div class="movies-section">
-        <h2 class="movies-section-heading">Currently Watching</h2>
-        <p class="movies-section-subheading">Whatever's actively in progress right now.</p>
-        <ul class="watchlist-list currently-watching-list" id="currentlyWatchingList"></ul>
-    </div>
-
-    <div class="movies-section">
-        <h2 class="movies-section-heading">Rated Archive</h2>
-        <p class="movies-section-subheading">Everything else I've watched and rated. Click one to read the full review.</p>
-        <div class="archive-toggle">
-            <button class="archive-toggle-btn active" id="toggleMoviesBtn" data-type="Movie">Movies</button>
-            <button class="archive-toggle-btn" id="toggleShowsBtn" data-type="Show">Shows</button>
-        </div>
-        <input type="text" class="archive-search" id="archiveSearch" placeholder="Search titles...">
-        <div class="review-list" id="ratedArchiveList"></div>
-        <div class="archive-pagination" id="archivePagination"></div>
-    </div>
-
-    <div class="recommend-section">
-        <h2 class="movies-section-heading">Recommend Something</h2>
-        <p class="movies-section-subheading">Think I'd like it? Send it my way.</p>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdi-j6kxgpSdGo6D8gWJRIThHm3ioHbOOGPcX87A55__kr8jQ/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-    </div>
-
-    <div class="modal-overlay" id="reviewModal">
-        <div class="modal-box">
-            <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
-            <div class="modal-poster-row">
-                <div class="modal-poster-thumb" id="modalPosterThumb">
-                    <img id="modalPosterImg" src="" alt="" loading="lazy"
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="modal-poster-thumb-fallback">🎬</div>
+    <main class="store">
+        <div class="member-row">
+            <div class="member-card" aria-label="Membership card">
+                <div class="member-top"><b>Landon's Video</b><span>Member Card</span></div>
+                <div class="member-stripe"></div>
+                <div class="member-name">Landon Day<small>Member since the snap · Card #<span id="cardNo">0000</span></small></div>
+                <div class="member-stats">
+                    <div><b id="statRented">0</b><span>Rented</span></div>
+                    <div><b id="statMovies">0</b><span>Movies</span></div>
+                    <div><b id="statShows">0</b><span>Shows</span></div>
+                    <div><b id="statAvg">0</b><span>Avg ★</span></div>
+                    <div><b id="statHolds">0</b><span>On Hold</span></div>
                 </div>
-                <div class="modal-header-info">
-                    <h2 class="modal-title" id="modalTitle"></h2>
-                    <div class="modal-meta" id="modalMeta"></div>
-                    <div class="modal-rating" id="modalRating"></div>
+                <div class="member-bottom">
+                    <div class="barcode"></div>
+                    <div class="late-fees">Late fees owed<br><b>$0.00</b></div>
                 </div>
             </div>
-            <div class="modal-episodes" id="modalSeasons" style="display:none;"></div>
-            <div class="modal-season-label" id="modalOverallLabel" style="display:none;">Series Overall</div>
-            <div class="modal-review" id="modalReview"></div>
-            <div class="modal-last-watched" id="modalLastWatched" style="display:none;"></div>
+        </div>
+
+        <section class="aisle" id="staffPicks">
+            <div class="aisle-sign"><span class="num">Aisle 1</span><h2>Staff Picks</h2></div>
+            <p class="aisle-note">not always the highest rated — just the ones I'd rewatch anytime</p>
+            <div class="picks-label">Movies</div>
+            <div class="picks" id="picksMovies"></div>
+            <div class="picks-label">Shows</div>
+            <div class="picks" id="picksShows"></div>
+        </section>
+
+        <section class="aisle">
+            <div class="aisle-sign"><span class="num">Aisle 2</span><h2>Taped Off TV</h2></div>
+            <p class="aisle-note">perfect episodes, recorded at home. do NOT tape over these.</p>
+            <div class="tapes" id="homeTapes"></div>
+            <div class="vcr" id="vcr" aria-label="VCR: flip through the perfect episodes">
+                <div class="vcr-window" id="vcrWindow"></div>
+                <div class="vcr-body">
+                    <div class="vcr-slot"></div>
+                    <div class="vcr-panel">
+                        <div class="vcr-display" id="vcrDisplay" aria-live="polite">TAPE 01/01</div>
+                        <div class="vcr-buttons">
+                            <button class="vcr-btn" id="vcrPrev" aria-label="Previous tape">⏮</button>
+                            <button class="vcr-btn play" id="vcrPlay" aria-label="Play this tape">▶</button>
+                            <button class="vcr-btn" id="vcrNext" aria-label="Next tape">⏭</button>
+                        </div>
+                    </div>
+                    <div class="vcr-brand"><span>LANDON-VISION</span><span>VHS · HQ · 4 HEAD</span></div>
+                </div>
+                <p class="tapes-hint">⏮ ⏭ to swap tapes · ▶ or tap the tape to watch</p>
+            </div>
+        </section>
+
+        <section class="aisle">
+            <div class="aisle-sign"><span class="num">Aisle 3</span><h2>The Shelves</h2></div>
+            <p class="aisle-note">everything I've watched and rated, best first. pull a tape to read the back.</p>
+            <div class="aisle-controls">
+                <button class="aisle-tab active" data-type="Movie">Movies</button>
+                <button class="aisle-tab" data-type="Show">Shows</button>
+                <input class="search-clerk" id="shelfSearch" type="search" placeholder="Ask the clerk…" aria-label="Search titles">
+                <div class="shelf-count" id="shelfCount"></div>
+            </div>
+            <div class="shelves" id="shelves"></div>
+        </section>
+
+        <section class="aisle">
+            <div class="aisle-sign"><span class="num">Front</span><h2>The Counter</h2></div>
+            <p class="aisle-note">holds waiting to be picked up, and what's in the VCR right now</p>
+            <div class="rack" id="rackMovies"></div>
+            <div class="rack" id="rackShows"></div>
+            <div class="counter-row">
+                <div class="bargain">
+                    <h3>Mystery Tape Bin</h3>
+                    <p>can't decide? grab one from the bin.</p>
+                    <div class="mystery" id="mystery"><span class="q">?</span></div>
+                    <button class="store-btn" id="mysteryBtn">Grab a Mystery Tape</button>
+                </div>
+                <div class="tv">
+                    <div class="tv-screen">
+                        <div class="osd-top"><span class="osd-play">PLAY ▶</span><span>CH 03</span></div>
+                        <h3>CURRENTLY RENTED:</h3>
+                        <ul id="nowPlaying"></ul>
+                        <div class="osd-bottom"><span>SP</span><span id="vcrClock">0:00:00</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="aisle">
+            <div class="aisle-sign"><span class="num">Outside</span><h2>Night Drop</h2></div>
+            <p class="aisle-note">think I'd like something? slide it through the slot.</p>
+            <div class="drop-box">
+                <div class="drop-plate">Returns &amp; Recommendations</div>
+                <div class="drop-slot"></div>
+                <form class="slip" id="slip">
+                    <div class="slip-head"><b>LANDON'S VIDEO</b><span>SUGGESTION SLIP · No. <span id="slipNo">0000</span></span></div>
+                    <label for="slipTitle">What should Landon watch?</label>
+                    <input id="slipTitle" name="title" type="text" required maxlength="200" autocomplete="off" placeholder="movie or show title…">
+                    <button class="store-btn" type="submit">Drop It In The Slot</button>
+                </form>
+                <p class="slip-status" id="slipStatus" role="status" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <p class="rewind">★ Be Kind, Rewind ★</p>
+    </main>
+
+    <div class="rental-overlay" id="rental" role="dialog" aria-modal="true" aria-labelledby="boxTitle">
+        <div class="clamshell">
+            <button class="rental-close" id="rentalClose" aria-label="Close">&times;</button>
+            <div class="clamshell-cover"><img id="boxCover" alt=""></div>
+            <div class="box-back">
+                <div class="box-band"><span>Landon's Video</span><span id="boxType">Rental</span></div>
+                <div class="box-scroll">
+                    <img class="box-thumb" id="boxThumb" alt="">
+                    <h2 class="box-title" id="boxTitle"></h2>
+                    <div class="box-meta" id="boxMeta"></div>
+                    <div class="box-rating" id="boxRating"></div>
+                    <div class="box-seasons" id="boxSeasons" hidden></div>
+                    <div class="box-review" id="boxReview"></div>
+                    <div class="also" id="also">
+                        <div class="also-head">Customers who rented this also rented:</div>
+                        <div class="also-row" id="alsoRow"></div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <div class="barcode"></div>
+                    <div class="returned-stamp" id="boxReturned" hidden></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -124,507 +176,466 @@
     </footer>
 
     <script>
-        function renderStarDisplay(ratingText) {
-            if (!ratingText || ratingText.includes('-')) return ratingText || '';
-            const full = (ratingText.match(/⭐/g) || []).length;
-            const hasFraction = /[¾½¼]/.test(ratingText);
-            const used = full + (hasFraction ? 1 : 0);
-            const empty = Math.max(0, 5 - used);
-            return empty > 0
-                ? `${ratingText}<span class="modal-rating-empty">${'☆'.repeat(empty)}</span>`
-                : ratingText;
-        }
-
-        function applyRatingAccent(ratingText) {
-            const box = document.querySelector('.modal-box');
-            if (!ratingText) {
-                box.style.setProperty('--modal-accent', '#2c2c2c');
-                box.style.setProperty('--modal-accent-glow', 'transparent');
-                return;
-            }
-            let value;
-            if (ratingText.includes('-')) {
-                value = -1;
-            } else {
-                const full = (ratingText.match(/⭐/g) || []).length;
-                const fraction = ratingText.includes('¾') ? 0.75 : ratingText.includes('½') ? 0.5 : ratingText.includes('¼') ? 0.25 : 0;
-                value = full + fraction;
-            }
-            let color, glow;
-            if (value < 0 || value < 2.5) {
-                color = '#e05c5c'; glow = 'rgba(224, 92, 92, 0.15)';
-            } else if (value < 4) {
-                color = '#ffd54a'; glow = 'rgba(255, 213, 74, 0.15)';
-            } else {
-                color = '#6fdc8c'; glow = 'rgba(111, 220, 140, 0.15)';
-            }
-            box.style.setProperty('--modal-accent', color);
-            box.style.setProperty('--modal-accent-glow', glow);
-        }
-
-        function openModal(item) {
-            document.getElementById('modalTitle').textContent = item.title;
-            document.getElementById('modalMeta').textContent = `${item.year} • ${item.type}`;
-
-            const posterImg = document.getElementById('modalPosterImg');
-            const posterFallback = document.querySelector('.modal-poster-thumb-fallback');
-            posterImg.style.display = 'block';
-            posterFallback.style.display = 'none';
-            posterImg.src = `./assets/images/movies/${item.poster}`;
-            posterImg.alt = item.title;
-
-            const ratingEl = document.getElementById('modalRating');
-            const effectiveRating = getEffectiveRating(item);
-            ratingEl.innerHTML = renderStarDisplay(effectiveRating);
-            applyRatingAccent(effectiveRating);
-
-            const seasonsEl = document.getElementById('modalSeasons');
-            const overallLabelEl = document.getElementById('modalOverallLabel');
-            if (item.seasons && item.seasons.length > 0) {
-                seasonsEl.innerHTML = item.seasons.map(s =>
-                    `<div class="modal-episode-row"><span class="ep-name">${s.title}</span><span class="ep-rating">${s.rating || ''}</span></div>`
-                ).join('');
-                seasonsEl.style.display = 'block';
-                overallLabelEl.style.display = item.review ? 'block' : 'none';
-            } else {
-                seasonsEl.style.display = 'none';
-                seasonsEl.innerHTML = '';
-                overallLabelEl.style.display = 'none';
-            }
-
-            const reviewEl = document.getElementById('modalReview');
-            const lastWatchedEl = document.getElementById('modalLastWatched');
-            if (item.review) {
-                const match = item.review.match(/^([\s\S]*?)\n\n(Last Watched:.+)$/);
-                if (match) {
-                    reviewEl.textContent = match[1];
-                    lastWatchedEl.textContent = match[2];
-                    lastWatchedEl.style.display = 'block';
-                } else {
-                    reviewEl.textContent = item.review;
-                    lastWatchedEl.style.display = 'none';
-                }
-                reviewEl.classList.remove('pending');
-                reviewEl.style.display = 'block';
-            } else if (item.seasons && item.seasons.length > 0) {
-                // Shows with only season ratings and no series-level review don't need a placeholder line
-                reviewEl.style.display = 'none';
-                lastWatchedEl.style.display = 'none';
-            } else {
-                reviewEl.textContent = "Review coming soon!";
-                reviewEl.classList.add('pending');
-                reviewEl.style.display = 'block';
-                lastWatchedEl.style.display = 'none';
-            }
-
-            document.getElementById('reviewModal').classList.add('open');
-        }
-
-        function closeModal() {
-            document.getElementById('reviewModal').classList.remove('open');
-        }
-
-        document.getElementById('modalClose').addEventListener('click', closeModal);
-        document.getElementById('reviewModal').addEventListener('click', (e) => {
-            if (e.target.id === 'reviewModal') closeModal();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
-
-        function renderFavoriteCard(item) {
-            const div = document.createElement('div');
-            div.className = 'favorite-card';
-            div.setAttribute('data-title', item.title);
-            div.setAttribute('tabindex', '0');
-            div.setAttribute('role', 'button');
-            div.setAttribute('aria-label', item.title);
-            div.innerHTML = `
-                <span class="fav-ribbon">FAVORITE</span>
-                <img src="./assets/images/movies/${item.poster}" alt="${item.title}" loading="lazy"
-                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="fav-fallback">${item.title}</div>
-            `;
-            div.addEventListener('click', () => openModal(item));
-            div.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    openModal(item);
-                }
-            });
-            return div;
-        }
-
-        function renderReviewListItem(item) {
-            const div = document.createElement('div');
-            div.className = 'review-list-item';
-            div.setAttribute('tabindex', '0');
-            div.setAttribute('role', 'button');
-            div.setAttribute('aria-label', item.title);
-            div.innerHTML = `
-                <div class="review-list-thumb">
-                    <img src="./assets/images/movies/${item.poster}" alt="${item.title}" loading="lazy"
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="review-list-thumb-fallback">🎬</div>
-                </div>
-                <div class="review-list-info">
-                    <div class="review-list-title">${item.title} <span class="review-list-meta">(${item.year} • ${item.type})</span></div>
-                    <div class="review-list-rating">${getEffectiveRating(item) || 'Not yet rated'}</div>
-                </div>
-            `;
-            div.addEventListener('click', () => openModal(item));
-            div.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    openModal(item);
-                }
-            });
-            return div;
-        }
-
-        let allRatedItems = [];
-        let currentArchiveType = 'Movie';
-        let currentArchivePage = 1;
-        let currentArchiveSearch = '';
-        const ARCHIVE_PAGE_SIZE = 25;
-
-        function parseStarRating(text) {
-            if (!text || !/[⭐¾½¼]/.test(text)) return -1;
-            const full = (text.match(/⭐/g) || []).length;
-            const fraction = text.includes('¾') ? 0.75 : text.includes('½') ? 0.5 : text.includes('¼') ? 0.25 : 0;
-            return full + fraction;
-        }
-
-        function numberToStars(num) {
-            const full = Math.floor(num);
-            const remainder = num - full;
-            let s = '⭐'.repeat(full);
-            if (remainder >= 0.625) { s = '⭐'.repeat(full + 1); }
-            else if (remainder >= 0.375) { s += '½'; }
-            else if (remainder >= 0.125) { s += '¼'; }
-            return s || '';
-        }
-
-        function getEffectiveRating(item) {
-            if (item.rating) return item.rating;
-            if (item.seasons && item.seasons.length > 0) {
-                const values = item.seasons.map(s => parseStarRating(s.rating)).filter(v => v >= 0);
-                if (values.length > 0) {
-                    const avg = values.reduce((a, b) => a + b, 0) / values.length;
-                    return numberToStars(avg);
-                }
-            }
-            return '';
-        }
-
-        function renderArchive() {
-            const archiveList = document.getElementById('ratedArchiveList');
-            const paginationEl = document.getElementById('archivePagination');
-            archiveList.innerHTML = '';
-            paginationEl.innerHTML = '';
-
-            const filtered = allRatedItems
-                .filter(item => item.type === currentArchiveType)
-                .filter(item => item.title.toLowerCase().includes(currentArchiveSearch.toLowerCase()))
-                .sort((a, b) => parseStarRating(getEffectiveRating(b)) - parseStarRating(getEffectiveRating(a)));
-
-            if (filtered.length === 0) {
-                archiveList.innerHTML = currentArchiveSearch
-                    ? '<p class="watchlist-empty">No titles match that search.</p>'
-                    : '<p class="watchlist-empty">Nothing logged here yet — check back soon.</p>';
-                return;
-            }
-
-            const totalPages = Math.max(1, Math.ceil(filtered.length / ARCHIVE_PAGE_SIZE));
-            currentArchivePage = Math.min(currentArchivePage, totalPages);
-
-            const start = (currentArchivePage - 1) * ARCHIVE_PAGE_SIZE;
-            const pageItems = filtered.slice(start, start + ARCHIVE_PAGE_SIZE);
-
-            pageItems.forEach(item => archiveList.appendChild(renderReviewListItem(item)));
-
-            if (totalPages > 1) {
-                const prevBtn = document.createElement('button');
-                prevBtn.className = 'archive-page-btn';
-                prevBtn.textContent = '← Prev';
-                prevBtn.disabled = currentArchivePage === 1;
-                prevBtn.addEventListener('click', () => {
-                    currentArchivePage--;
-                    renderArchive();
-                });
-
-                const label = document.createElement('span');
-                label.className = 'archive-page-label';
-                label.textContent = `Page ${currentArchivePage} of ${totalPages}`;
-
-                const nextBtn = document.createElement('button');
-                nextBtn.className = 'archive-page-btn';
-                nextBtn.textContent = 'Next →';
-                nextBtn.disabled = currentArchivePage === totalPages;
-                nextBtn.addEventListener('click', () => {
-                    currentArchivePage++;
-                    renderArchive();
-                });
-
-                paginationEl.appendChild(prevBtn);
-                paginationEl.appendChild(label);
-                paginationEl.appendChild(nextBtn);
-            }
-        }
-
-        function setArchiveType(type) {
-            currentArchiveType = type;
-            currentArchivePage = 1;
-            document.getElementById('toggleMoviesBtn').classList.toggle('active', type === 'Movie');
-            document.getElementById('toggleShowsBtn').classList.toggle('active', type === 'Show');
-            renderArchive();
-        }
-
-        document.getElementById('toggleMoviesBtn').addEventListener('click', () => setArchiveType('Movie'));
-        document.getElementById('toggleShowsBtn').addEventListener('click', () => setArchiveType('Show'));
-        document.getElementById('archiveSearch').addEventListener('input', (e) => {
-            currentArchiveSearch = e.target.value;
-            currentArchivePage = 1;
-            renderArchive();
-        });
-
-        async function loadMovies() {
-            let data = [];
-            try {
-                const res = await fetch('data/movies.json');
-                data = await res.json();
-            } catch (e) {
-                console.log('movies.json not available yet');
-            }
-
-            const favMovies = data.filter(d => d.favorite_movie);
-            const favShows = data.filter(d => d.favorite_show);
-            const rated = data.filter(d => !d.favorite_movie && !d.favorite_show);
-
-            const favMoviesGrid = document.getElementById('favMoviesGrid');
-            favMovies.forEach(item => favMoviesGrid.appendChild(renderFavoriteCard(item)));
-
-            const favShowsGrid = document.getElementById('favShowsGrid');
-            favShows.forEach(item => favShowsGrid.appendChild(renderFavoriteCard(item)));
-
-            // Favorites also get shown as full cards up top, but still belong in the rated archive if they have reviews
-            data.filter(d => (d.favorite_movie || d.favorite_show) && d.review).forEach(item => rated.push(item));
-
-            allRatedItems = rated;
-            renderArchive();
-        }
-
-        function renderPerfectEpisodeCard(ep) {
-            const row = document.createElement('div');
-            row.className = 'perfect-ep-row';
-            const seasonNum = String(ep.season).padStart(2, '0');
-            const epNum = String(ep.episode).padStart(2, '0');
-            row.innerHTML = `
-                <div class="perfect-ep-thumb">
-                    <span class="perfect-ep-badge">E${epNum}</span>
-                    <img src="./assets/images/movies/${ep.poster}" alt="${ep.show}" loading="lazy"
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="perfect-ep-thumb-fallback">🎬</div>
-                </div>
-                <div class="perfect-ep-info">
-                    <div class="perfect-ep-showtitle">${ep.show}</div>
-                    <div class="perfect-ep-subline">S${seasonNum} E${epNum}${ep.episodeTitle ? ' · ' + ep.episodeTitle : ''}</div>
-                    <div class="perfect-ep-stars">⭐⭐⭐⭐⭐</div>
-                    ${ep.watchedDate ? `<div class="perfect-ep-date">${ep.watchedDate}</div>` : ''}
-                </div>
-            `;
-            return row;
-        }
-
-        async function loadPerfectEpisodes() {
-            let episodes = [];
-            try {
-                const res = await fetch('data/perfect_episodes.json');
-                episodes = await res.json();
-            } catch (e) {
-                console.log('perfect_episodes.json not available yet');
-            }
-
-            const grid = document.getElementById('perfectEpGrid');
-            if (episodes.length === 0) {
-                grid.innerHTML = '<p class="watchlist-empty">Nothing added here yet — check back soon.</p>';
-            } else {
-                episodes.forEach(ep => grid.appendChild(renderPerfectEpisodeCard(ep)));
-            }
-        }
-
-        loadPerfectEpisodes();
-
-        // ---- Watchlist with localStorage persistence ----
+        // ================================================================
+        // Lists that live here rather than in movies.json (same as before).
+        // ================================================================
         const WATCHLIST_MOVIES = [
-            "The Godfather",
-            "The Godfather Part 2",
-            "The Godfather Part 3",
-            "Pulp Fiction",
-            "Eternal Sunshine of the Spotless Mind",
-            "Oppenheimer",
-            "The Suicide Squad (2021)",
-            "The Social Network",
-            "Call Me By Your Name",
-            "The Perks of Being a Wallflower",
-            "12 Angry Men",
-            "Marty Supreme",
-            "Little Miss Sunshine",
-            "Inception",
-            "Sonic the Hedgehog (2020)",
-            "Sonic the Hedgehog 2 (2022)",
-            "Sonic the Hedgehog 3 (2024)",
-            "Blade Runner",
-            "Blade Runner 2049",
-            "Glass Onion",
-            "The Shawshank Redemption",
-            "Schindler's List",
-            "Fight Club",
-            "The Matrix",
-            "Back to the Future",
-            "Back to the Future 2",
-            "Back to the Future 3",
-            "Peaky Blinders: The Immortal Man",
-            "The Dark Knight",
-            "Spirited Away",
-            "Grave of the Fireflies",
-            "Requiem for a Dream",
-            "Rocky 1",
-            "Rocky 2",
-            "Rocky 3",
-            "Rocky 4",
-            "Rocky 5",
-            "Rocky Balboa",
-            "Creed",
-            "Creed 2",
-            "Creed 3",
-            "K-Pop Demon Hunters",
-            "Goodfellas",
-            "Bad Boys 1",
-            "Bad Boys 2",
-            "Bad Boys 3",
-            "Ted 1",
-            "Ted 2",
-            "One Battle After Another",
-            "Frankenstein",
-            "Brokeback Mountain",
-            "Dune 1",
-            "Dune 2",
-            "Dune 3",
-            "Project Hail Mary",
-            "F1",
-            "Good Luck, Have Fun, Don't Die",
-            "Parasite",
-            "Knives Out",
-            "Game Night",
-            "57 Seconds",
-            "Avatar 1",
-            "Avatar 2",
-            "Avatar 3",
-            "Dallas Buyers Club",
-            "The Apprentice",
-            "What Dreams May Come",
-            "Good Will Hunting"
+            "The Godfather", "The Godfather Part 2", "The Godfather Part 3", "Pulp Fiction",
+            "Eternal Sunshine of the Spotless Mind", "Oppenheimer", "The Suicide Squad (2021)", "The Social Network",
+            "Call Me By Your Name", "The Perks of Being a Wallflower", "12 Angry Men", "Marty Supreme",
+            "Little Miss Sunshine", "Inception", "Sonic the Hedgehog (2020)", "Sonic the Hedgehog 2 (2022)",
+            "Sonic the Hedgehog 3 (2024)", "Blade Runner", "Blade Runner 2049", "Glass Onion",
+            "The Shawshank Redemption", "Schindler's List", "Fight Club", "The Matrix",
+            "Back to the Future", "Back to the Future 2", "Back to the Future 3", "Peaky Blinders: The Immortal Man",
+            "The Dark Knight", "Spirited Away", "Grave of the Fireflies", "Requiem for a Dream",
+            "Rocky 1", "Rocky 2", "Rocky 3", "Rocky 4", "Rocky 5", "Rocky Balboa",
+            "Creed", "Creed 2", "Creed 3", "K-Pop Demon Hunters", "Goodfellas",
+            "Bad Boys 1", "Bad Boys 2", "Bad Boys 3", "Ted 1", "Ted 2",
+            "One Battle After Another", "Frankenstein", "Brokeback Mountain", "Dune 1", "Dune 2", "Dune 3",
+            "Project Hail Mary", "F1", "Good Luck, Have Fun, Don't Die", "Parasite", "Knives Out",
+            "Game Night", "57 Seconds", "Avatar 1", "Avatar 2", "Avatar 3",
+            "Dallas Buyers Club", "The Apprentice", "What Dreams May Come", "Good Will Hunting"
         ];
         const WATCHLIST_SHOWS = [
+            "The Bear Season 5", "Chernobyl Season 1", "Breaking Bad (All Seasons)", "Better Call Saul (All Seasons)",
+            "The Beauty Season 1", "Peacemaker (Seasons 1-2)", "The Sopranos (Seasons 1-6)", "Mad Men (Seasons 1-7)",
+            "Peaky Blinders (Seasons 1-6)", "The Lincoln Lawyer (Seasons 1-3)", "Ted Lasso (Seasons 1-3)",
+            "Pluribus (Seasons 1-2)", "Arcane (Seasons 1-2)", "The Last of Us (Seasons 1-2)", "Squid Game (Seasons 1-3)",
+            "Bridgerton (Seasons 1-4)", "Ted (Seasons 1-2)", "The Pitt (Seasons 1-2)", "The White Lotus (Seasons 1-4)",
+            "Black Mirror (Seasons 1-7)", "True Detective Season 1"
+        ];
+        const CURRENTLY_WATCHING = [
+            "How I Met Your Mother Season 1",
             "The Bear Season 5",
-            "Chernobyl Season 1",
-            "Breaking Bad (All Seasons)",
-            "Better Call Saul (All Seasons)",
-            "The Beauty Season 1",
-            "Peacemaker (Seasons 1-2)",
-            "The Sopranos (Seasons 1-6)",
-            "Mad Men (Seasons 1-7)",
-            "Peaky Blinders (Seasons 1-6)",
-            "The Lincoln Lawyer (Seasons 1-3)",
-            "Ted Lasso (Seasons 1-3)",
-            "Pluribus (Seasons 1-2)",
-            "Arcane (Seasons 1-2)",
-            "The Last of Us (Seasons 1-2)",
-            "Squid Game (Seasons 1-3)",
-            "Bridgerton (Seasons 1-4)",
-            "Ted (Seasons 1-2)",
-            "The Pitt (Seasons 1-2)",
-            "The White Lotus (Seasons 1-4)",
-            "Black Mirror (Seasons 1-7)",
-            "True Detective Season 1"
+            "The Good Place"
         ];
 
-        function renderWatchlist(containerId, items) {
-            const container = document.getElementById(containerId);
-            if (items.length === 0) {
-                container.innerHTML = '<li class="watchlist-empty">Nothing on here yet — check back soon!</li>';
-                return;
-            }
+        // The suggestion slip posts straight to the same Google Form the
+        // page used to embed ("WHAT SHALL IT BE?"), so responses still
+        // land in the form's response sheet.
+        const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdi-j6kxgpSdGo6D8gWJRIThHm3ioHbOOGPcX87A55__kr8jQ/formResponse';
+        const FORM_FIELD = 'entry.236354225';
 
-            items.forEach((title, index) => {
-                const li = document.createElement('li');
+        // Shelf-talker lines for staff picks without a written review.
+        const TALKERS = ["10/10, no notes", "trust me on this one", "rewatched it way too many times", "an all-timer", "watch this tonight", "I will not be taking criticism"];
 
-                const num = document.createElement('span');
-                num.className = 'watchlist-number';
-                num.textContent = index + 1;
+        // ================================================================
+        // Helpers
+        // ================================================================
+        const $ = s => document.querySelector(s);
+        const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        const poster = file => `./assets/images/movies/${encodeURI(file)}`;
 
-                const span = document.createElement('span');
-                span.textContent = title;
+        function stars(text) {
+            if (!text || !/[⭐¾½¼]/.test(text)) return null;
+            const full = (text.match(/⭐/g) || []).length;
+            const frac = text.includes('¾') ? 0.75 : text.includes('½') ? 0.5 : text.includes('¼') ? 0.25 : 0;
+            return full + frac;
+        }
 
-                li.appendChild(num);
-                li.appendChild(span);
-                container.appendChild(li);
+        // Shows without an overall rating use the average of their seasons,
+        // rounded to the nearest half star like every other rating.
+        function rating(item) {
+            const own = stars(item.rating);
+            if (own !== null) return own;
+            const vals = (item.seasons || []).map(s => stars(s.rating)).filter(v => v !== null);
+            return vals.length ? Math.round(vals.reduce((a, b) => a + b, 0) / vals.length * 2) / 2 : null;
+        }
+
+        const fmt = v => (v === null ? 'NEW' : `${v}★`);
+
+        function splitReview(review) {
+            const m = /^([\s\S]*?)\n\n(Last Watched:.+)$/.exec(review || '');
+            return m ? { text: m[1], watched: m[2].replace('Last Watched:', '').trim() } : { text: review || '', watched: '' };
+        }
+
+        function starRow(v) {
+            if (v === null) return '<span class="empty">☆☆☆☆☆</span> not rated yet';
+            const full = Math.floor(v), part = v - full;
+            return '⭐'.repeat(full) + (part >= 0.5 ? '½' : '') + `<span class="empty">${'⭐'.repeat(Math.max(0, 5 - full - (part > 0 ? 1 : 0)))}</span> <b>${v}/5</b>`;
+        }
+
+        // ================================================================
+        // Rental modal (the open VHS case)
+        // ================================================================
+        let lastFocus = null;
+        let catalog = [];       // every title in movies.json, for "also rented"
+        let busy = false;
+        const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // "The Hunger Games: Catching Fire" -> "the hunger games", so sequels
+        // and franchise entries recommend each other first.
+        const franchise = t => t.toLowerCase().split(/[:–—]/)[0].replace(/\b(vol\.?|part|season)\b.*$/, '').replace(/\s*\(?\d+\)?\s*$/, '').trim();
+
+        // Same franchise beats everything, then same type, then closest
+        // rating, then closest year.
+        function alsoRented(item, n = 3) {
+            const v = rating(item) ?? 3, f = franchise(item.title);
+            return catalog
+                .filter(o => o.title !== item.title)
+                .map(o => ({
+                    o,
+                    score: (franchise(o.title) === f ? 100 : 0)
+                        + (o.type === item.type ? 10 : 0)
+                        - Math.abs((rating(o) ?? 3) - v) * 4
+                        - Math.abs((o.year || 0) - (item.year || 0)) / 10
+                }))
+                .sort((a, b) => b.score - a.score)
+                .slice(0, n)
+                .map(x => x.o);
+        }
+
+        function openRental(item) {
+            lastFocus = document.activeElement;
+            fillRental(item);
+            $('#rental').classList.add('open');
+            $('#rentalClose').focus();
+        }
+
+        // Adds a short CSS animation class to `el`, waits it out, then runs
+        // `then`. `busy` stops double-clicks from stacking animations.
+        function animate(el, cls, ms, then) {
+            if (reducedMotion()) { then(); return; }
+            busy = true;
+            el.classList.add(cls);
+            setTimeout(() => { el.classList.remove(cls); busy = false; then(); }, ms);
+        }
+
+        function fillRental(item) {
+            const v = rating(item);
+            $('#boxCover').src = poster(item.poster);
+            $('#boxThumb').src = poster(item.poster);
+            $('#boxCover').alt = item.title;
+            $('#boxTitle').textContent = item.title;
+            $('#boxMeta').textContent = `${item.year} · ${item.type.toUpperCase()}`;
+            $('#boxType').textContent = item.type === 'Show' ? 'TV Series' : 'Feature Film';
+            $('#boxRating').innerHTML = starRow(v);
+
+            const seasons = $('#boxSeasons');
+            seasons.hidden = !(item.seasons && item.seasons.length);
+            seasons.innerHTML = (item.seasons || []).map(s =>
+                `<div><span>${esc(s.title)}</span><span>${esc(s.rating || '—')}</span></div>`).join('');
+
+            const { text, watched } = splitReview(item.review);
+            const review = $('#boxReview');
+            review.textContent = text || (item.seasons && item.seasons.length ? '' : 'Review coming soon!');
+            review.classList.toggle('pending', !text);
+
+            const stamp = $('#boxReturned');
+            stamp.hidden = !watched;
+            stamp.textContent = watched ? `Returned ${watched}` : '';
+
+            const row = $('#alsoRow');
+            row.innerHTML = '';
+            alsoRented(item).forEach(o => {
+                const b = document.createElement('button');
+                b.className = 'also-item';
+                b.setAttribute('aria-label', `Rent ${o.title} instead`);
+                b.innerHTML = `<img src="${poster(o.poster)}" alt="" loading="lazy"><span>${esc(o.title)}</span>`;
+                // Fade the case contents out, swap in the new title, fade back.
+                b.addEventListener('click', () => {
+                    if (busy) return;
+                    animate($('.clamshell'), 'swapping', 160, () => {
+                        fillRental(o);
+                        $('.box-scroll').scrollTop = 0;
+                        $('.clamshell').scrollTop = 0;
+                    });
+                });
+                row.appendChild(b);
             });
         }
 
-        renderWatchlist('watchlistMovies', WATCHLIST_MOVIES);
-        renderWatchlist('watchlistShows', WATCHLIST_SHOWS);
+        // The case folds shut (the opening animation in reverse).
+        function closeRental() {
+            if (!$('#rental').classList.contains('open') || busy) return;
+            animate($('.clamshell'), 'closing', 220, () => {
+                $('#rental').classList.remove('open');
+                lastFocus?.focus();
+            });
+        }
 
-        // ---- Currently Watching ----
-        const CURRENTLY_WATCHING = [
-            "Psych Season 8",
-            "The Bear Season 4",
-            "House of the Dragon Season 3",
-            "X-Men '97 Season 2"
-        ];
-        renderWatchlist('currentlyWatchingList', CURRENTLY_WATCHING);
+        $('#rentalClose').addEventListener('click', closeRental);
+        $('#rental').addEventListener('click', e => { if (e.target.id === 'rental') closeRental(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('#rental').classList.contains('open')) closeRental(); });
 
-        // ---- Pick Something For Me ----
-        document.getElementById('pickForMeBtn').addEventListener('click', () => {
-            const pool = [
-                ...WATCHLIST_MOVIES.map(title => ({ title, type: 'Movie' })),
-                ...WATCHLIST_SHOWS.map(title => ({ title, type: 'Show' }))
-            ];
+        function clickable(el, item) {
+            el.addEventListener('click', () => openRental(item));
+            el.addEventListener('keydown', e => {
+                if ((e.key === 'Enter' || e.key === ' ') && el.tagName !== 'BUTTON') { e.preventDefault(); openRental(item); }
+            });
+        }
 
-            const resultEl = document.getElementById('pickResult');
+        // ================================================================
+        // Sections
+        // ================================================================
+        function renderPicks(list, id) {
+            const wrap = $(id);
+            list.forEach((item, i) => {
+                const { text } = splitReview(item.review);
+                const first = text.split(/(?<=[.!?])\s/)[0];
+                const line = text ? (first.length > 70 ? first.slice(0, 69).trimEnd() + '…' : first) : TALKERS[(i + id.length) % TALKERS.length];
+                const el = document.createElement('div');
+                el.className = 'pick';
+                el.tabIndex = 0;
+                el.setAttribute('role', 'button');
+                el.setAttribute('aria-label', `${item.title}, staff pick`);
+                el.innerHTML = `
+                    <div class="case-face"><img src="${poster(item.poster)}" alt="" loading="lazy"></div>
+                    <div class="talker"><b>Landon says:</b>${esc(line)}</div>`;
+                clickable(el, item);
+                wrap.appendChild(el);
+            });
+        }
 
-            if (pool.length === 0) {
-                resultEl.textContent = "Your watchlist is empty — nothing to pick from!";
-                resultEl.style.display = 'block';
-                return;
+        // "September 10th, 2026" -> "taped 9/10/26", scribbled on the label
+        // the way you'd date a home recording.
+        function tapedOn(date) {
+            const d = new Date(String(date || '').replace(/(\d+)(st|nd|rd|th)/, '$1'));
+            if (!date || isNaN(d)) return '';
+            return `<div class="taped">taped ${d.getMonth() + 1}/${d.getDate()}/${String(d.getFullYear()).slice(2)}</div>`;
+        }
+
+        function buildTape(ep, byTitle) {
+            const show = byTitle.get(ep.show);
+            const el = document.createElement('button');
+            el.className = 'home-tape';
+            el.setAttribute('aria-label', `${ep.show}, season ${ep.season} episode ${ep.episode}${ep.episodeTitle ? ', ' + ep.episodeTitle : ''}`);
+            el.innerHTML = `
+                <div class="tape-label">
+                    <div class="show">${esc(ep.show)}</div>
+                    <div class="ep">S${ep.season} E${ep.episode}${ep.episodeTitle ? ' · ' + esc(ep.episodeTitle) : ''}</div>
+                    ${tapedOn(ep.watchedDate)}
+                    <div class="dont">★★★★★ keep!!</div>
+                </div>
+                <div class="reels"><i></i><i></i></div>`;
+            if (show) clickable(el, show);
+            return el;
+        }
+
+        function renderHomeTapes(episodes, byTitle) {
+            const wrap = $('#homeTapes');
+            if (!episodes.length) { wrap.innerHTML = '<p class="aisle-note">nothing recorded yet.</p>'; $('#vcr').hidden = true; return; }
+            episodes.forEach(ep => wrap.appendChild(buildTape(ep, byTitle)));
+            initVcr(episodes, byTitle);
+        }
+
+        // Phones get a VCR instead of the grid: one tape sticks out of the
+        // slot, ⏮ ⏭ (or a swipe) ejects it and loads the next, ▶ plays it.
+        function initVcr(episodes, byTitle) {
+            const win = $('#vcrWindow'), display = $('#vcrDisplay'), n = episodes.length;
+            const pad = x => String(x).padStart(2, '0');
+            let i = 0, busy = false;
+
+            function load() {
+                const tape = buildTape(episodes[i], byTitle);
+                tape.classList.add('in');
+                win.replaceChildren(tape);
+                display.textContent = `TAPE ${pad(i + 1)}/${pad(n)}`;
             }
 
-            const pick = pool[Math.floor(Math.random() * pool.length)];
-            resultEl.innerHTML = `🎬 Tonight's pick: <strong>${pick.title}</strong> <span class="pick-result-type">(${pick.type})</span>`;
-            resultEl.style.display = 'block';
+            function go(step) {
+                if (busy) return;
+                const old = win.firstElementChild;
+                const next = () => { i = (i + step + n) % n; load(); };
+                if (!old || reducedMotion()) { next(); return; }
+                busy = true;
+                old.classList.add('out');
+                setTimeout(() => { busy = false; next(); }, 220);
+            }
+
+            $('#vcrPrev').addEventListener('click', () => go(-1));
+            $('#vcrNext').addEventListener('click', () => go(1));
+            $('#vcrPlay').addEventListener('click', () => {
+                const show = byTitle.get(episodes[i].show);
+                if (show) openRental(show);
+            });
+
+            let startX = null;
+            win.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+            win.addEventListener('touchend', e => {
+                if (startX === null) return;
+                const dx = e.changedTouches[0].clientX - startX;
+                startX = null;
+                if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+            });
+
+            load();
+        }
+
+        let shelfItems = [], shelfType = 'Movie', shelfQuery = '';
+
+        function renderShelves() {
+            const wrap = $('#shelves');
+            const q = shelfQuery.trim().toLowerCase();
+            const list = shelfItems
+                .filter(i => i.type === shelfType && i.title.toLowerCase().includes(q))
+                .sort((a, b) => (rating(b) ?? -1) - (rating(a) ?? -1) || a.title.localeCompare(b.title));
+            $('#shelfCount').textContent = `${list.length} ${list.length === 1 ? 'tape' : 'tapes'} on the shelf`;
+            if (!list.length) {
+                wrap.innerHTML = `<p class="empty-shelf">${q ? "clerk says: we don't carry that one." : 'nothing on this shelf yet.'}</p>`;
+                return;
+            }
+            wrap.innerHTML = '';
+            list.forEach(item => {
+                const v = rating(item);
+                const el = document.createElement('button');
+                el.className = 'tape';
+                el.title = item.title;
+                el.setAttribute('aria-label', `${item.title}, ${v === null ? 'not rated' : v + ' stars'}`);
+                el.innerHTML = `
+                    <img src="${poster(item.poster)}" alt="" loading="lazy">
+                    <span class="tape-rating${v !== null && v <= 2 ? ' low' : ''}">${fmt(v)}</span>
+                    <span class="tape-title">${esc(item.title)}</span>
+                    <span class="tape-year">${esc(item.year)}</span>`;
+                clickable(el, item);
+                wrap.appendChild(el);
+            });
+        }
+
+        document.querySelectorAll('.aisle-tab').forEach(tab => tab.addEventListener('click', () => {
+            shelfType = tab.dataset.type;
+            document.querySelectorAll('.aisle-tab').forEach(t => t.classList.toggle('active', t === tab));
+            renderShelves();
+        }));
+        $('#shelfSearch').addEventListener('input', e => { shelfQuery = e.target.value; renderShelves(); });
+
+        // Hold posters live in assets/images/holds/<slug>.jpg, named from the
+        // watchlist text ("Rocky 2" -> rocky-2.jpg). A hold with no poster
+        // yet falls back to a plain black case with the title in marker.
+        const holdSlug = t => t.toLowerCase().replace(/&/g, 'and').replace(/'/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+        function renderRack(id, label, items) {
+            const rack = $(id);
+            rack.innerHTML = `
+                <div class="rack-head">
+                    <div class="rack-title"><b>On Hold · ${label}</b><span>${items.length} reserved for Landon</span></div>
+                    <div class="rack-nav">
+                        <button class="rack-btn" data-dir="-1" aria-label="Scroll ${label} holds left">◀</button>
+                        <button class="rack-btn" data-dir="1" aria-label="Scroll ${label} holds right">▶</button>
+                    </div>
+                </div>
+                <div class="rack-track"></div>`;
+            const track = rack.querySelector('.rack-track');
+            items.forEach((title, i) => {
+                const el = document.createElement('div');
+                el.className = 'hold-case';
+                el.dataset.title = title;
+                el.innerHTML = `
+                    <div class="hold-cover">
+                        <img src="./assets/images/holds/${holdSlug(title)}.jpg" alt="" loading="lazy">
+                        <span class="hold-fallback">${esc(title)}</span>
+                        <span class="hold-tag">#${String(i + 1).padStart(2, '0')}</span>
+                        <span class="hold-band">On hold · Landon</span>
+                    </div>
+                    <span class="hold-name">${esc(title)}</span>`;
+                el.querySelector('img').addEventListener('error', () => el.classList.add('no-poster'));
+                track.appendChild(el);
+            });
+            rack.querySelectorAll('.rack-btn').forEach(b => b.addEventListener('click', () => {
+                track.scrollBy({ left: +b.dataset.dir * track.clientWidth * 0.8, behavior: reducedMotion() ? 'auto' : 'smooth' });
+            }));
+        }
+
+        // Slide the rack so a case is centered, and make it glow for a bit.
+        function spotlightHold(title) {
+            const el = [...document.querySelectorAll('.hold-case')].find(c => c.dataset.title === title);
+            if (!el) return;
+            const track = el.parentElement;
+            track.scrollTo({ left: el.offsetLeft - (track.clientWidth - el.offsetWidth) / 2, behavior: reducedMotion() ? 'auto' : 'smooth' });
+            document.querySelectorAll('.hold-case.picked').forEach(c => c.classList.remove('picked'));
+            el.classList.add('picked');
+            clearTimeout(spotlightHold.t);
+            spotlightHold.t = setTimeout(() => el.classList.remove('picked'), 4000);
+        }
+
+        $('#mysteryBtn').addEventListener('click', () => {
+            const pool = [...WATCHLIST_MOVIES.map(t => [t, 'Movie']), ...WATCHLIST_SHOWS.map(t => [t, 'Show'])];
+            const box = $('#mystery');
+            const [title, type] = pool[Math.floor(Math.random() * pool.length)];
+            box.classList.remove('shake');
+            void box.offsetWidth;
+            box.classList.add('shake');
+            setTimeout(() => {
+                box.classList.add('revealed');
+                box.innerHTML = `
+                    <img class="mystery-poster" src="./assets/images/holds/${holdSlug(title)}.jpg" alt="" onerror="this.remove()">
+                    <span>tonight: ${esc(title)}<br><small>(${type})</small></span>`;
+                spotlightHold(title);
+            }, 250);
         });
 
-        loadMovies();
-    </script>
+        // Google Forms doesn't allow reading the response cross-origin
+        // (no-cors), so a resolved fetch is treated as sent; only a
+        // network failure counts as jammed.
+        $('#slipNo').textContent = String(Math.floor(Math.random() * 9000) + 1000);
+        $('#slip').addEventListener('submit', async e => {
+            e.preventDefault();
+            const form = e.currentTarget;
+            const input = $('#slipTitle');
+            const status = $('#slipStatus');
+            const title = input.value.trim();
+            if (!title) { input.focus(); return; }
+            form.querySelector('button').disabled = true;
+            try {
+                await fetch(FORM_URL, { method: 'POST', mode: 'no-cors', body: new URLSearchParams({ [FORM_FIELD]: title }) });
+                form.classList.add('dropped');
+                status.textContent = `Got it — "${title}" is in the box. Thanks!`;
+                setTimeout(() => {
+                    input.value = '';
+                    $('#slipNo').textContent = String(Number($('#slipNo').textContent) + 1);
+                    form.classList.remove('dropped');
+                    form.querySelector('button').disabled = false;
+                }, 1600);
+            } catch (err) {
+                status.textContent = "The slot's jammed — check your connection and try again.";
+                form.querySelector('button').disabled = false;
+            }
+        });
 
+        function startVcrClock() {
+            const el = $('#vcrClock');
+            let secs = 1800 + Math.floor(Math.random() * 3600);
+            const draw = () => {
+                const h = Math.floor(secs / 3600), m = Math.floor(secs / 60) % 60, s = secs % 60;
+                el.textContent = `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+            };
+            draw();
+            setInterval(() => { secs++; draw(); }, 1000);
+        }
 
-    <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top" title="Back to top">&uarr;</button>
+        // ================================================================
+        // Load
+        // ================================================================
+        async function load() {
+            const [movies, episodes] = await Promise.all([
+                fetch('data/movies.json').then(r => r.json()).catch(() => []),
+                fetch('data/perfect_episodes.json').then(r => r.json()).catch(() => [])
+            ]);
 
-    <script>
-        (function () {
-            const btn = document.getElementById('backToTopBtn');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 400) {
-                    btn.classList.add('visible');
-                } else {
-                    btn.classList.remove('visible');
-                }
-            });
-            btn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        })();
+            catalog = movies;
+            const byTitle = new Map(movies.map(m => [m.title, m]));
+            renderPicks(movies.filter(m => m.favorite_movie), '#picksMovies');
+            renderPicks(movies.filter(m => m.favorite_show), '#picksShows');
+            renderHomeTapes(episodes, byTitle);
+
+            // Same rule as before: favorites also go on the shelves once reviewed.
+            shelfItems = movies.filter(m => (!m.favorite_movie && !m.favorite_show) || m.review);
+            renderShelves();
+
+            const rated = movies.map(rating).filter(v => v !== null);
+            $('#statRented').textContent = movies.length;
+            $('#statMovies').textContent = movies.filter(m => m.type === 'Movie').length;
+            $('#statShows').textContent = movies.filter(m => m.type === 'Show').length;
+            $('#statAvg').textContent = rated.length ? (rated.reduce((a, b) => a + b, 0) / rated.length).toFixed(1) : '—';
+            $('#statHolds').textContent = WATCHLIST_MOVIES.length + WATCHLIST_SHOWS.length;
+            $('#cardNo').textContent = String(movies.length).padStart(4, '0');
+        }
+
+        renderRack('#rackMovies', 'Movies', WATCHLIST_MOVIES);
+        renderRack('#rackShows', 'Shows', WATCHLIST_SHOWS);
+        $('#nowPlaying').innerHTML = CURRENTLY_WATCHING.map(t => `<li>${esc(t.toUpperCase())}</li>`).join('');
+        startVcrClock();
+        load();
     </script>
 </body>
 </html>

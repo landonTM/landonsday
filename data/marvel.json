@@ -14,7 +14,7 @@
     "type": "Movie",
     "category": "xmen",
     "poster": "x-men.jpg",
-    "rating": "⭐⭐⭐⭐",
+    "rating": "⭐⭐⭐⭐½",
     "review": "honestly super good, i thought every character on the surface level was shown what their motivations were and how’ll they’ll be. the rogue and wolverine dynamic was incredibly well done i thought, and very sweet. i feel like charles xavier’s casting and performance was downright perfect, and same with magneto. very very good movie to introduce you into some of the x-men (first watch)\n\nLast Watched: March 25th, 2025"
   },
   {
@@ -149,7 +149,7 @@
     "type": "Movie",
     "category": "xmen",
     "poster": "x-men-origins-wolverine.jpg",
-    "rating": "⭐⭐⭐½",
+    "rating": "⭐⭐½",
     "review": "as a stand alone movie it’s actually quite nice, but knowing the story going in and what will happen just doesn’t leave any suspense or doubt. the twists it had did genuinely shock me. i do like the overall concept though, it’s really interesting to learn just how old logan is and how he got to where he is at. i’m not sure if this deadpool is the same deadpool we see in those movies, but if it is i’m really interested to see how we get there. emma frost cameo was super cool. if i had a nickel for every movie that had a version of deadpool, wolverine, and gambit…\n\nLast Watched: April 28th, 2025"
   },
   {
@@ -545,7 +545,7 @@
     "type": "Show",
     "category": "tv",
     "poster": "iron-fist-season-2.jpg",
-    "rating": "⭐⭐⭐½",
+    "rating": "⭐⭐⭐",
     "review": "i will say story wise it’s significantly better than season 1, but it’s still incredibly boring. it’s never a good sign when the mantle needs to be passed to someone else because your main character is so incredibly unlikable and annoying in all aspects. i am not a writer but how can you make danny rand incredibly likable and figured out in luke cage but not this season. every character that wasn’t danny was fun, but one of my favorites was ward again. his arc this season was very enjoyable, and his acting was very good and made you connect. knowing that this is the end of iron fist that we see, the ending is a bit weird, and i don’t really know how you follow that up at all."
   },
   {
@@ -1120,10 +1120,136 @@
     "title": "Secret Invasion",
     "year": 2023,
     "type": "Show",
-    "category": "watching",
+    "category": "p5",
     "poster": "secret-invasion.jpg",
-    "rating": "",
-    "review": ""
+    "rating": "⭐",
+    "review": "dreadful watch. boring episodes, boring plotline that really doesnt make a lot of sense. apparently he has a wife. apparently she is a skrull. apparently they have been here the entire time. will they show how that has really happened, the consequences, and have a good explanation why the avengers or literally ANYONE will fight back? no. the president in this show is one of the dumbest people on earth, does nothing for episodes on end, gets attacked, told who the attacker is and says ok i wont trust him, to trust him again next episode and not trust the person who saved you, to then declare war afterwards when you did not need to. hooooooooly. miserable show, deaths meant nothing episodes meant nothing show will never matter again\n\nLast Watched: August 30th, 2026",
+    "episodes": [
+      {
+        "title": "Episode 1: Resurrection",
+        "rating": "⭐⭐½"
+      },
+      {
+        "title": "Episode 2: Promises",
+        "rating": "⭐⭐½"
+      },
+      {
+        "title": "Episode 3: Betrayed",
+        "rating": "⭐⭐½"
+      },
+      {
+        "title": "Episode 4: Beloved",
+        "rating": "⭐⭐⭐"
+      },
+      {
+        "title": "Episode 5: Harvest",
+        "rating": "⭐⭐"
+      },
+      {
+        "title": "Episode 6: Home",
+        "rating": "⭐½"
+      }
+    ]
+  },
+  {
+    "title": "Loki Season 2",
+    "year": 2023,
+    "type": "Show",
+    "category": "p5",
+    "poster": "loki-season-2.jpg",
+    "rating": "⭐⭐⭐⭐⭐",
+    "review": "loki season 2 plays with time travel and universes in a perfect way and really makes the entire season full so fun. replaying every single moment over and over gives the finale so much weight when loki makes his choices. everyone played a perfect part, and having casey around more with the addition of OB made the entire cast feel way more fleshed out and balanced. falling out of the relationship aspect of sylvie is smart, not that it’s a bad relationship but that it wouldn’t make sense for loki to have that love interest in this life. owen wilson as mobius is one of the best castings the mcu has provided this far. it’s such a beautifully crafted story\n\nLast Watched: August 23rd, 2026",
+    "episodes": [
+      {
+        "title": "Episode 1: Ouroboros",
+        "rating": "⭐⭐⭐⭐½"
+      },
+      {
+        "title": "Episode 2: Breaking Brad",
+        "rating": "⭐⭐⭐⭐"
+      },
+      {
+        "title": "Episode 3: 1893",
+        "rating": "⭐⭐⭐⭐"
+      },
+      {
+        "title": "Episode 4: Heart of the TVA",
+        "rating": "⭐⭐⭐⭐⭐"
+      },
+      {
+        "title": "Episode 5: Science/Fiction",
+        "rating": "⭐⭐⭐⭐⭐"
+      },
+      {
+        "title": "Episode 6: Glorious Purpose",
+        "rating": "⭐⭐⭐⭐⭐"
+      }
+    ]
+  },
+  {
+    "title": "The Marvels",
+    "year": 2023,
+    "type": "Movie",
+    "category": "p5",
+    "poster": "the-marvels.jpg",
+    "rating": "⭐⭐⭐",
+    "review": "i think its a bit over hated if i am honest, like, dont get me wrong there is a bit of issues with it for sure but overall there are a lot of fun moments. starting with the good, the chemistry between the three is obviously really well done, i think a major complaint people had with carol in captain marvel is her being too serious and stoic, i feel like this movie humanizes her a lot and gives her a fun personality to make her far more likable. it also helps that we have two very likable characters next to her with monica and kamala. speaking of, monica i am glad gets time to shine for her character a BIT and how she feels towards captain marvel and her mom, we have gotten to see some glimpses of it and i would have preferred to see more, but i am happy we got at least some. but oh my god kamala is remarkable, it felt like she was picked right out of her movie and put into this show in the best way possible, even having her entirely family on screen for most of it. it made sense for the film and the character and her parents are one of my favorite parts of the movie. the scene with the \"cat\" takeover and the random singing planet were very funny gags too. the bad is that whilst it had really high highs, it had some pretty high lows. im not sure i missed it but i cant really fathom how all 3 specifically are connected, and how all 3 specifically were disconnected. i could have missed it and thats on me but the explanations felt weak. the villain was the weakest part, she was never really fleshed out, nor was she ever once considered a real threat or believable in the slightest. it just didnt feel threatening enough for me to care about the final fight, which was ultimately rushed because the movie did run shorter than most (not that i am complaining). i hope to see the 3 of them together again one day because they do share great chemistry\n\nLast Watched: September 10th, 2026"
+  },
+  {
+    "title": "What-If? Season 2",
+    "year": 2023,
+    "type": "Show",
+    "category": "p5",
+    "poster": "what-if-season-2.jpg",
+    "rating": "⭐⭐",
+    "review": "i definitely hated this more than most, which is such a shame considering how much i loved season one. it’s just not for me i don’t think, the premise of the show being unique and cool concepts but i get episodes of “what if nebula joins the nova corps” and “what if happy hogan saved christmas” i wouldn’t care. i don’t care. it’s hard to care. these aren’t interesting enough concepts and doesn’t change enough for me to be like oh, that’s fun. the first season definitely had some of that, this unfortunately didn’t. i am not a fan of 30% of this season being dedicated to one entire hero, it’s a waste of infinite universes and possibilities. the animation is nice, it’s smooth, and the episodes despite being boring are serviceable at best.\n\nLast Watched: September 9th, 2026",
+    "episodes": [
+      {
+        "title": "Episode 1: What If... Nebula Joined the Nova Corps?",
+        "rating": "⭐⭐"
+      },
+      {
+        "title": "Episode 2: What If... Peter Quill Attacked Earth's Mightiest Heroes?",
+        "rating": "⭐⭐⭐"
+      },
+      {
+        "title": "Episode 3: What If... Happy Hogan Saved Christmas?",
+        "rating": "⭐⭐"
+      },
+      {
+        "title": "Episode 4: What If... Iron Man Crashed Into the Grandmaster?",
+        "rating": "⭐⭐½"
+      },
+      {
+        "title": "Episode 5: What If... Captain Carter Fought the Hydra Stomper?",
+        "rating": "⭐½"
+      },
+      {
+        "title": "Episode 6: What If... Kahhori Reshaped the World?",
+        "rating": "⭐⭐⭐"
+      },
+      {
+        "title": "Episode 7: What If... Hela Found the Ten Rings?",
+        "rating": "⭐⭐⭐"
+      },
+      {
+        "title": "Episode 8: What If... The Avengers Assembled in 1602?",
+        "rating": "⭐⭐"
+      },
+      {
+        "title": "Episode 9: What If... Strange Supreme Intervened?",
+        "rating": "⭐⭐⭐"
+      }
+    ]
+  },
+  {
+    "title": "Deadpool & Wolverine",
+    "year": 2024,
+    "type": "Movie",
+    "category": "p5",
+    "poster": "deadpool-wolverine.jpg",
+    "rating": "⭐⭐⭐⭐½",
+    "review": "really really fun movie. its nice to be able to see blade and johnny storm again, and i'd have two nickels. it doesnt NEED a story due to the nature of it but it definitely tries to lay one out, and it does a good job of making you forget its there until its needed again. the humor and absurdity is always what is going to make it special, and i am just glad we get to mention disney and fox IPs this time around because there were a lot of great cameos and references that are possible now. i enjoyed how fun it was, logan really plays well off of wade and i dont think you can ever separate them again unfortunately\n\nLast Watched: September 10th, 2026"
   },
   {
     "title": "Spider-Man: Across the Spider-Verse",
@@ -1133,33 +1259,6 @@
     "poster": "spider-man-across-the-spider-verse.jpg",
     "rating": "⭐⭐⭐⭐⭐",
     "review": "what an absolute remarkable and astonishing film. the animation, music, and story are so complete that it makes this not only one of the best animated movies of all time, but just one of the best movies of all time period. it builds so perfectly that you’d wonder how they’d wrap this up, and a to be continued leaves us at the best spot possible. i am so insanely excited for beyond the spiderverse, and this film gets better every time i watch it and enhances that excitement. there’s not a single flaw.\n\nLast Watched: August 14th, 2026"
-  },
-  {
-    "title": "Loki Season 2",
-    "year": 2023,
-    "type": "Show",
-    "category": "watching",
-    "poster": "loki-season-2.jpg",
-    "rating": "",
-    "review": ""
-  },
-  {
-    "title": "The Marvels",
-    "year": 2023,
-    "type": "Movie",
-    "category": "watching",
-    "poster": "the-marvels.jpg",
-    "rating": "",
-    "review": ""
-  },
-  {
-    "title": "What-If? Season 2",
-    "year": 2023,
-    "type": "Show",
-    "category": "watching",
-    "poster": "what-if-season-2.jpg",
-    "rating": "",
-    "review": ""
   },
   {
     "title": "Echo",
@@ -1186,16 +1285,45 @@
     "category": "watching",
     "poster": "x-men-97-season-1.jpg",
     "rating": "",
-    "review": ""
-  },
-  {
-    "title": "Deadpool & Wolverine",
-    "year": 2024,
-    "type": "Movie",
-    "category": "watching",
-    "poster": "deadpool-wolverine.jpg",
-    "rating": "",
-    "review": ""
+    "review": "",
+    "episodes": [
+      {
+        "title": "Episode 1: To Me, My X-Men",
+        "rating": "⭐⭐⭐⭐½"
+      },
+      {
+        "title": "Episode 2: Mutant Liberation Begins",
+        "rating": "⭐⭐⭐⭐⭐"
+      },
+      {
+        "title": "Episode 3: Fire Made Flesh",
+        "rating": "⭐⭐⭐⭐"
+      },
+      {
+        "title": "Episode 4: Motendo / Lifedeath (1)",
+        "rating": "⭐⭐⭐½"
+      },
+      {
+        "title": "Episode 5: Remember It",
+        "rating": "⭐⭐⭐⭐⭐"
+      },
+      {
+        "title": "Episode 6: Lifedeath (2)",
+        "rating": "⭐⭐⭐⭐"
+      },
+      {
+        "title": "Episode 7: Bright Eyes",
+        "rating": "⭐⭐⭐⭐½"
+      },
+      {
+        "title": "Episode 8: Tolerance Is Extinction (1)",
+        "rating": "⭐⭐⭐⭐⭐"
+      },
+      {
+        "title": "Episode 9: Tolerance Is Extinction (2)",
+        "rating": "⭐⭐⭐⭐⭐"
+      }
+    ]
   },
   {
     "title": "Agatha All Along",
@@ -1239,15 +1367,6 @@
     "type": "Show",
     "category": "watching",
     "poster": "your-friendly-neighborhood-spider-man-season-1.jpg",
-    "rating": "",
-    "review": ""
-  },
-  {
-    "title": "Captain America: Brave New World",
-    "year": 2025,
-    "type": "Movie",
-    "category": "watching",
-    "poster": "captain-america-brave-new-world.jpg",
     "rating": "",
     "review": ""
   },
