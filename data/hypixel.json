@@ -1,14 +1,22 @@
 {
-  "last_updated": "July 5, 2026",
+  "last_updated": "September 22, 2026",
   "general": {
     "username": "landay",
     "first_login": "June 8, 2015",
-    "last_login": "July 3, 2026",
+    "last_login": "July 18, 2026",
     "rank": "MVP+",
     "highest_monthly_rank": "MVP++ (Superstar)",
     "network_level": 179,
     "karma": "24,790,400",
-    "achievement_points": 7600
+    "achievement_points": 7600,
+    "level_exact": 179.08,
+    "quests_completed": "2,564",
+    "guild": {
+      "name": "virulent",
+      "rank": "Guild Master",
+      "joined": "August 26, 2021",
+      "members": 2
+    }
   },
   "games": [
     {
@@ -158,10 +166,10 @@
     "overall_level": 212,
     "average_skill_level": 44.9,
     "purse": "567.29M",
-    "bank": "417.19M",
-    "networth": "4.78B",
-    "non_cosmetic_networth": "4.51B",
-    "fairy_souls": "233 / 273",
+    "bank": "418.35M",
+    "networth": "4.95B",
+    "non_cosmetic_networth": "4.65B",
+    "fairy_souls": "233 / 289",
     "skills": [
       {
         "name": "Alchemy",
@@ -266,5 +274,1038 @@
         "name": "Unfavorited"
       }
     ]
+  },
+  "network": {
+    "source": "Plancke (plancke.io)",
+    "updated": "September 22, 2026",
+    "games": [
+      {
+        "name": "Bed Wars",
+        "icon": "shears",
+        "headline": [
+          "77★",
+          "Level"
+        ],
+        "stats": [
+          [
+            "Wins",
+            "431"
+          ],
+          [
+            "Losses",
+            "478"
+          ],
+          [
+            "Final kills",
+            "1,589"
+          ],
+          [
+            "Final deaths",
+            "464"
+          ],
+          [
+            "FKDR",
+            "3.42"
+          ],
+          [
+            "Beds broken",
+            "1,086"
+          ],
+          [
+            "Kills",
+            "2,699"
+          ],
+          [
+            "K/D",
+            "1.21"
+          ]
+        ],
+        "extra": [
+          [
+            "Iron collected",
+            "164,010"
+          ],
+          [
+            "Gold collected",
+            "27,170"
+          ],
+          [
+            "Diamonds",
+            "1,305"
+          ],
+          [
+            "Emeralds",
+            "803"
+          ]
+        ],
+        "modes": {
+          "cols": [
+            "Mode",
+            "Wins",
+            "W/L",
+            "FKDR",
+            "Beds"
+          ],
+          "rows": [
+            [
+              "Solo",
+              "51",
+              "0.85",
+              "3.89",
+              "247"
+            ],
+            [
+              "Doubles",
+              "113",
+              "0.63",
+              "3.39",
+              "438"
+            ],
+            [
+              "3v3v3v3",
+              "157",
+              "1.08",
+              "3.28",
+              "258"
+            ],
+            [
+              "4v4v4v4",
+              "110",
+              "1.17",
+              "3.44",
+              "143"
+            ]
+          ]
+        }
+      },
+      {
+        "name": "SkyWars",
+        "icon": "feather",
+        "headline": [
+          "21",
+          "Level · Gold prestige"
+        ],
+        "stats": [
+          [
+            "Wins",
+            "1,666"
+          ],
+          [
+            "Losses",
+            "4,942"
+          ],
+          [
+            "Kills",
+            "10,516"
+          ],
+          [
+            "Deaths",
+            "5,000"
+          ],
+          [
+            "K/D",
+            "2.10"
+          ],
+          [
+            "Assists",
+            "725"
+          ]
+        ],
+        "extra": [
+          [
+            "Soul well uses",
+            "872"
+          ],
+          [
+            "Soul well legendaries",
+            "43"
+          ],
+          [
+            "Eggs thrown",
+            "6,810"
+          ],
+          [
+            "Ender pearls thrown",
+            "2,262"
+          ],
+          [
+            "Blocks placed",
+            "110,480"
+          ]
+        ],
+        "modes": {
+          "cols": [
+            "Mode",
+            "Wins",
+            "Kills",
+            "K/D",
+            "W/L"
+          ],
+          "rows": [
+            [
+              "Solo Insane",
+              "777",
+              "5,751",
+              "1.98",
+              "0.27"
+            ],
+            [
+              "Team Insane",
+              "328",
+              "2,870",
+              "2.47",
+              "0.30"
+            ],
+            [
+              "Ranked",
+              "516",
+              "1,509",
+              "2.21",
+              "0.76"
+            ],
+            [
+              "Solo Normal",
+              "13",
+              "95",
+              "1.10",
+              "0.15"
+            ],
+            [
+              "Team Normal",
+              "16",
+              "87",
+              "1.67",
+              "0.31"
+            ]
+          ]
+        }
+      },
+      {
+        "name": "Duels",
+        "icon": "diamond_sword",
+        "headline": [
+          "3,514",
+          "Wins"
+        ],
+        "stats": [
+          [
+            "Losses",
+            "598"
+          ],
+          [
+            "W/L",
+            "5.88"
+          ],
+          [
+            "Kills",
+            "3,682"
+          ],
+          [
+            "Deaths",
+            "511"
+          ],
+          [
+            "K/D",
+            "7.21"
+          ]
+        ],
+        "extra": [
+          [
+            "Melee hits",
+            "100,856 / 263,058"
+          ],
+          [
+            "Melee accuracy",
+            "38%"
+          ],
+          [
+            "Arrows hit",
+            "3,978 / 9,448"
+          ],
+          [
+            "Bow accuracy",
+            "42%"
+          ]
+        ],
+        "modes": {
+          "cols": [
+            "Mode",
+            "Wins",
+            "Losses",
+            "W/L",
+            "K/D"
+          ],
+          "rows": [
+            [
+              "UHC 1v1",
+              "1,425",
+              "160",
+              "8.91",
+              "9.28"
+            ],
+            [
+              "Classic 1v1",
+              "1,419",
+              "193",
+              "7.35",
+              "7.14"
+            ],
+            [
+              "UHC 2v2",
+              "243",
+              "32",
+              "7.59",
+              "9.43"
+            ],
+            [
+              "Sumo 1v1",
+              "170",
+              "39",
+              "4.36",
+              "4.26"
+            ],
+            [
+              "SkyWars 1v1",
+              "40",
+              "9",
+              "4.44",
+              "4.22"
+            ]
+          ]
+        }
+      },
+      {
+        "name": "Build Battle",
+        "icon": "brick",
+        "headline": [
+          "14,420",
+          "Score"
+        ],
+        "stats": [
+          [
+            "Guess the Build wins",
+            "420"
+          ],
+          [
+            "Team wins",
+            "11"
+          ],
+          [
+            "Solo wins",
+            "6"
+          ],
+          [
+            "Pro mode wins",
+            "1"
+          ]
+        ]
+      },
+      {
+        "name": "Arcade",
+        "icon": "cake",
+        "headline": [
+          "2.23M",
+          "Arcade coins"
+        ],
+        "stats": [
+          [
+            "Hypixel Says wins",
+            "63"
+          ],
+          [
+            "Mini Walls wins",
+            "51"
+          ],
+          [
+            "Party Games wins",
+            "15"
+          ],
+          [
+            "Bounty Hunter kills",
+            "156"
+          ],
+          [
+            "Hole in the Wall best",
+            "67"
+          ],
+          [
+            "Dropper best time",
+            "56.71s"
+          ]
+        ]
+      },
+      {
+        "name": "UHC Champions",
+        "icon": "golden_apple",
+        "headline": [
+          "476",
+          "Score"
+        ],
+        "stats": [
+          [
+            "Kills",
+            "356"
+          ],
+          [
+            "Deaths",
+            "250"
+          ],
+          [
+            "K/D",
+            "1.42"
+          ],
+          [
+            "Wins",
+            "16"
+          ],
+          [
+            "Heads eaten",
+            "329"
+          ]
+        ]
+      },
+      {
+        "name": "Speed UHC",
+        "icon": "golden_carrot",
+        "headline": [
+          "40",
+          "Wins"
+        ],
+        "stats": [
+          [
+            "Losses",
+            "75"
+          ],
+          [
+            "Kills",
+            "201"
+          ],
+          [
+            "Deaths",
+            "77"
+          ],
+          [
+            "K/D",
+            "2.61"
+          ]
+        ]
+      },
+      {
+        "name": "Blitz SG",
+        "icon": "bow",
+        "headline": [
+          "14",
+          "Wins"
+        ],
+        "stats": [
+          [
+            "Kills",
+            "180"
+          ],
+          [
+            "Deaths",
+            "102"
+          ],
+          [
+            "K/D",
+            "1.76"
+          ],
+          [
+            "Solo wins",
+            "12"
+          ],
+          [
+            "Team wins",
+            "2"
+          ]
+        ]
+      },
+      {
+        "name": "Wool Games",
+        "icon": "string",
+        "headline": [
+          "35",
+          "Sheep Wars wins"
+        ],
+        "stats": [
+          [
+            "Sheep Wars W/L",
+            "1.94"
+          ],
+          [
+            "Sheep Wars kills",
+            "49"
+          ],
+          [
+            "Sheep Wars K/D",
+            "1.81"
+          ],
+          [
+            "Wool Wars wins",
+            "2"
+          ]
+        ]
+      },
+      {
+        "name": "Crazy Walls",
+        "icon": "flint",
+        "headline": [
+          "57",
+          "Kills"
+        ],
+        "stats": [
+          [
+            "Deaths",
+            "15"
+          ],
+          [
+            "K/D",
+            "3.80"
+          ],
+          [
+            "Wins",
+            "6"
+          ]
+        ]
+      },
+      {
+        "name": "TNT Games",
+        "icon": "gunpowder",
+        "headline": [
+          "4",
+          "TNT Tag wins"
+        ],
+        "stats": [
+          [
+            "TNT Run wins",
+            "2"
+          ],
+          [
+            "TNT Run record",
+            "3:47"
+          ],
+          [
+            "PVP Run record",
+            "1:53"
+          ],
+          [
+            "Wizards kills",
+            "1"
+          ]
+        ]
+      },
+      {
+        "name": "Mega Walls",
+        "icon": "nether_star",
+        "headline": [
+          "2",
+          "Wins"
+        ],
+        "stats": [
+          [
+            "Losses",
+            "1"
+          ],
+          [
+            "Kills",
+            "9"
+          ],
+          [
+            "Assists",
+            "10"
+          ],
+          [
+            "Wither damage",
+            "471"
+          ]
+        ]
+      }
+    ]
+  },
+  "skyblock_plus": {
+    "source": "SkyCrypt (sky.shiiyu.moe)",
+    "updated": "September 22, 2026",
+    "summary": {
+      "level": 212.63,
+      "skills": {
+        "skillAverage": 45,
+        "skills": {
+          "alchemy": 50,
+          "carpentry": 36,
+          "combat": 39,
+          "enchanting": 60,
+          "farming": 60,
+          "fishing": 41,
+          "foraging": 45,
+          "hunting": 15,
+          "mining": 50,
+          "runecrafting": 25,
+          "social": 5,
+          "taming": 53
+        }
+      },
+      "networth": {
+        "normal": 4951399961.4,
+        "nonCosmetic": 4648627799.9
+      },
+      "purse": 567285140.6,
+      "bank": 418348000,
+      "joined": 1581976536371,
+      "profile": "Tomato",
+      "game_mode": ""
+    },
+    "dungeons": {
+      "catacombs": {
+        "level": 20,
+        "max": 50,
+        "progress": 0.197,
+        "maxed": false,
+        "xp": 145991
+      },
+      "selected": "Berserk",
+      "classes": {
+        "archer": {
+          "level": 15,
+          "max": 50,
+          "progress": 0.374,
+          "maxed": false,
+          "xp": 29192
+        },
+        "berserk": {
+          "level": 19,
+          "max": 50,
+          "progress": 0.911,
+          "maxed": false,
+          "xp": 132247
+        },
+        "healer": {
+          "level": 14,
+          "max": 50,
+          "progress": 0.399,
+          "maxed": false,
+          "xp": 20904
+        },
+        "mage": {
+          "level": 15,
+          "max": 50,
+          "progress": 0.737,
+          "maxed": false,
+          "xp": 32927
+        },
+        "tank": {
+          "level": 13,
+          "max": 50,
+          "progress": 0.119,
+          "maxed": false,
+          "xp": 13328
+        }
+      },
+      "secrets": {
+        "found": 518,
+        "secretsPerRun": 7.85
+      },
+      "highest_normal": 6,
+      "highest_master": 0,
+      "floors": [
+        {
+          "name": "Entrance",
+          "completions": 3,
+          "fastest": 618543,
+          "best_score": 180,
+          "grade": "B"
+        },
+        {
+          "name": "Floor 1",
+          "completions": 16,
+          "fastest": 262322,
+          "best_score": 315,
+          "grade": "S+"
+        },
+        {
+          "name": "Floor 2",
+          "completions": 8,
+          "fastest": 462851,
+          "best_score": 310,
+          "grade": "S+"
+        },
+        {
+          "name": "Floor 3",
+          "completions": 3,
+          "fastest": 560370,
+          "best_score": 304,
+          "grade": "S+"
+        },
+        {
+          "name": "Floor 4",
+          "completions": 9,
+          "fastest": 447625,
+          "best_score": 304,
+          "grade": "S+"
+        },
+        {
+          "name": "Floor 5",
+          "completions": 24,
+          "fastest": 277699,
+          "best_score": 305,
+          "grade": "S+"
+        },
+        {
+          "name": "Floor 6",
+          "completions": 3,
+          "fastest": 462622,
+          "best_score": 304,
+          "grade": "S+"
+        }
+      ]
+    },
+    "slayers": [
+      {
+        "id": "zombie",
+        "name": "Revenant Horror",
+        "level": 8,
+        "max": 9,
+        "xp": 464105,
+        "kills": 381
+      },
+      {
+        "id": "spider",
+        "name": "Tarantula Broodfather",
+        "level": 6,
+        "max": 9,
+        "xp": 44005,
+        "kills": 81
+      },
+      {
+        "id": "wolf",
+        "name": "Sven Packmaster",
+        "level": 6,
+        "max": 9,
+        "xp": 30287,
+        "kills": 52
+      },
+      {
+        "id": "enderman",
+        "name": "Voidgloom Seraph",
+        "level": 4,
+        "max": 9,
+        "xp": 1592,
+        "kills": 254
+      },
+      {
+        "id": "blaze",
+        "name": "Inferno Demonlord",
+        "level": 0,
+        "max": 9,
+        "xp": 0,
+        "kills": 0
+      },
+      {
+        "id": "vampire",
+        "name": "Riftstalker Bloodfiend",
+        "level": 0,
+        "max": 5,
+        "xp": 0,
+        "kills": 0
+      }
+    ],
+    "slayer_xp": 539989,
+    "pets": {
+      "unique": 35,
+      "total": 85,
+      "score": 179,
+      "list": [
+        {
+          "name": "Enderman",
+          "rarity": "MYTHIC",
+          "level": 100
+        },
+        {
+          "name": "Rabbit",
+          "rarity": "MYTHIC",
+          "level": 100
+        },
+        {
+          "name": "Golden Dragon",
+          "rarity": "LEGENDARY",
+          "level": 199
+        },
+        {
+          "name": "Bal",
+          "rarity": "LEGENDARY",
+          "level": 100
+        },
+        {
+          "name": "Bee",
+          "rarity": "LEGENDARY",
+          "level": 100
+        },
+        {
+          "name": "Elephant",
+          "rarity": "LEGENDARY",
+          "level": 100
+        },
+        {
+          "name": "Frog",
+          "rarity": "LEGENDARY",
+          "level": 100
+        },
+        {
+          "name": "Giraffe",
+          "rarity": "LEGENDARY",
+          "level": 100
+        },
+        {
+          "name": "Hedgehog",
+          "rarity": "LEGENDARY",
+          "level": 100
+        },
+        {
+          "name": "Lion",
+          "rarity": "LEGENDARY",
+          "level": 100
+        },
+        {
+          "name": "Mithril Golem",
+          "rarity": "LEGENDARY",
+          "level": 100
+        },
+        {
+          "name": "Monkey",
+          "rarity": "LEGENDARY",
+          "level": 100
+        },
+        {
+          "name": "Mooshroom Cow",
+          "rarity": "LEGENDARY",
+          "level": 100
+        },
+        {
+          "name": "Ocelot",
+          "rarity": "LEGENDARY",
+          "level": 100
+        },
+        {
+          "name": "Silverfish",
+          "rarity": "LEGENDARY",
+          "level": 100
+        },
+        {
+          "name": "Slug",
+          "rarity": "LEGENDARY",
+          "level": 100
+        },
+        {
+          "name": "Squid",
+          "rarity": "LEGENDARY",
+          "level": 100
+        },
+        {
+          "name": "Tiger",
+          "rarity": "LEGENDARY",
+          "level": 100
+        }
+      ]
+    },
+    "accessories": {
+      "magical_power": 557,
+      "unique": 79,
+      "total": 148,
+      "recombobulated": 0,
+      "by_rarity": {
+        "common": 19,
+        "uncommon": 17,
+        "rare": 26,
+        "epic": 13,
+        "legendary": 3,
+        "special": 1
+      }
+    },
+    "minions": {
+      "unique": 61,
+      "maxed": 21,
+      "tiers": 719,
+      "maxed_tiers": 593,
+      "slots": 24
+    },
+    "bestiary": {
+      "level": 101.8,
+      "max": 576.2,
+      "unlocked": 141,
+      "completed": 30,
+      "families": 359
+    },
+    "collections": {
+      "total": 90,
+      "maxed": 63
+    },
+    "mining": {
+      "hotm": {
+        "level": 5,
+        "max": 10,
+        "progress": 0.148,
+        "maxed": false,
+        "xp": 111774
+      },
+      "mining": {
+        "level": 50,
+        "max": 60,
+        "progress": 0.656,
+        "maxed": false,
+        "xp": 57994609
+      }
+    },
+    "farming": {
+      "medals": {
+        "bronze": 55,
+        "silver": 68,
+        "gold": 28,
+        "platinum": 0,
+        "diamond": 0
+      },
+      "unique_golds": 10,
+      "copper": 6173
+    },
+    "fishing": {
+      "items": 702,
+      "treasure": 90,
+      "sea_creatures": 219,
+      "trophy": 6,
+      "trophy_stage": "Bronze Hunter"
+    },
+    "dragons": {
+      "crystals": 16,
+      "fastest": 29900,
+      "most_damage": 3501613,
+      "last_hits": 2
+    },
+    "rift": {
+      "visits": 25,
+      "motes_lifetime": 35315,
+      "enigma": 14,
+      "enigma_total": 52
+    },
+    "dojo": {
+      "points": 5417,
+      "challenges": [
+        {
+          "name": "Swiftness",
+          "rank": "B",
+          "points": 672
+        },
+        {
+          "name": "Control",
+          "rank": "D",
+          "points": 374
+        },
+        {
+          "name": "Tenacity",
+          "rank": "B",
+          "points": 710
+        },
+        {
+          "name": "Force",
+          "rank": "A",
+          "points": 880
+        },
+        {
+          "name": "Stamina",
+          "rank": "A",
+          "points": 981
+        },
+        {
+          "name": "Mastery",
+          "rank": "A",
+          "points": 976
+        },
+        {
+          "name": "Discipline",
+          "rank": "A",
+          "points": 824
+        }
+      ]
+    },
+    "kuudra": 0,
+    "auctions": {
+      "won": 498,
+      "created": 732,
+      "highest_bid": 620000000,
+      "gold_spent": 2641817096,
+      "gold_earned": 886611748
+    },
+    "essence": [
+      {
+        "name": "Undead",
+        "amount": 1058
+      },
+      {
+        "name": "Wither",
+        "amount": 510
+      },
+      {
+        "name": "Diamond",
+        "amount": 312
+      },
+      {
+        "name": "Dragon",
+        "amount": 255
+      },
+      {
+        "name": "Spider",
+        "amount": 240
+      },
+      {
+        "name": "Gold",
+        "amount": 221
+      },
+      {
+        "name": "Ice",
+        "amount": 69
+      }
+    ],
+    "kills": {
+      "total": 197444,
+      "deaths": 256,
+      "top": [
+        {
+          "name": "Enderman",
+          "amount": 63649
+        },
+        {
+          "name": "Zealot",
+          "amount": 62669
+        },
+        {
+          "name": "Crypt Ghoul",
+          "amount": 19418
+        },
+        {
+          "name": "Pest Fly",
+          "amount": 4160
+        },
+        {
+          "name": "Obsidian Defender",
+          "amount": 3605
+        }
+      ],
+      "top_deaths": [
+        {
+          "name": "Void",
+          "amount": 121
+        },
+        {
+          "name": "Enderman",
+          "amount": 25
+        },
+        {
+          "name": "Unknown",
+          "amount": 11
+        }
+      ]
+    },
+    "gifts": {
+      "given": 91,
+      "received": 226
+    },
+    "mythological_kills": 48
   }
 }

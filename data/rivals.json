@@ -1,141 +1,196 @@
 {
-  "last_updated": "July 4, 2026",
+  "last_updated": "September 22, 2026",
   "profile": {
     "username": "landay",
-    "icon": "./assets/images/rivals/profile-icon.jpg"
+    "icon": "./assets/images/rivals/profile-banner.webp"
   },
   "roles": [
     {
       "name": "Strategist",
       "icon": "./assets/images/rivals/strategist.jpg",
-      "wr": "56.9%",
-      "record": "289 W / 219 L",
-      "kda": "11.36",
-      "kdaSplit": "17.3 / 4.6 / 34.8"
+      "wr": "54.8%",
+      "record": "372 W · 679 games",
+      "hours": 72.7
     },
     {
       "name": "Duelist",
       "icon": "./assets/images/rivals/duelist.jpg",
-      "wr": "49.5%",
-      "record": "271 W / 276 L",
-      "kda": "3.62",
-      "kdaSplit": "22.6 / 6.4 / 0.7"
+      "wr": "50.6%",
+      "record": "398 W · 787 games",
+      "hours": 96.0
     },
     {
       "name": "Vanguard",
       "icon": "./assets/images/rivals/vanguard.jpg",
-      "wr": "56.2%",
-      "record": "251 W / 196 L",
-      "kda": "4.84",
-      "kdaSplit": "20.0 / 5.3 / 5.4"
+      "wr": "56.4%",
+      "record": "282 W · 500 games",
+      "hours": 63.0
     }
   ],
   "topHeroes": [
     {
       "name": "Thor",
       "icon": "./assets/images/rivals/thor.jpg",
-      "wr": "66.0%",
-      "record": "105 W / 54 L",
-      "kda": "4.40"
+      "wr": "65.3%",
+      "record": "113 W · 173 games",
+      "hours": 26.7
     },
     {
       "name": "Moon Knight",
       "icon": "./assets/images/rivals/moon-knight.jpg",
       "wr": "53.0%",
-      "record": "87 W / 77 L",
-      "kda": "3.13"
+      "record": "88 W · 166 games",
+      "hours": 24.4
     },
     {
       "name": "Rocket Raccoon",
       "icon": "./assets/images/rivals/rocket-raccoon.jpg",
-      "wr": "62.9%",
-      "record": "90 W / 53 L",
-      "kda": "6.27"
-    },
-    {
-      "name": "Star-Lord",
-      "icon": "./assets/images/rivals/star-lord.jpg",
-      "wr": "48.6%",
-      "record": "72 W / 76 L",
-      "kda": "3.11"
+      "wr": "62.2%",
+      "record": "92 W · 148 games",
+      "hours": 23.3
     },
     {
       "name": "Magneto",
       "icon": "./assets/images/rivals/magneto.jpg",
-      "wr": "51.3%",
-      "record": "97 W / 92 L",
-      "kda": "5.03"
+      "wr": "52.3%",
+      "record": "104 W · 199 games",
+      "hours": 20.1
+    },
+    {
+      "name": "Star-Lord",
+      "icon": "./assets/images/rivals/star-lord.jpg",
+      "wr": "48.3%",
+      "record": "72 W · 149 games",
+      "hours": 19.2
     }
   ],
   "summary": {
-    "winRate": 54,
-    "record": "811 W / 691 L",
-    "games": "1,502 games",
-    "kda": {
-      "k": 20.0,
-      "d": 5.5,
-      "a": 13.7,
-      "ratio": "6.17"
-    }
+    "winRate": 53,
+    "matches": "1,994",
+    "wins": "1,071",
+    "hours": 231.7,
+    "kos": "47,236",
+    "assists": "33,984",
+    "bestStreak": 87,
+    "highest": "Diamond III",
+    "awards": [
+      [
+        "MVP",
+        268
+      ],
+      [
+        "SVP",
+        238
+      ],
+      [
+        "Mighty Vanquisher",
+        345
+      ],
+      [
+        "Relentless Offense",
+        294
+      ],
+      [
+        "Impenetrable Defense",
+        148
+      ],
+      [
+        "Trusty Sidekick",
+        181
+      ],
+      [
+        "Gifted Healer",
+        224
+      ],
+      [
+        "Triple!",
+        711
+      ]
+    ]
   },
   "heroes": [
     {
       "name": "Moon Knight",
-      "image": "./assets/images/rivals/moon-knight-lord.jpg",
-      "dateObtained": "April 9, 2025"
+      "image": "./assets/images/rivals/moon-knight-lord.png",
+      "dateObtained": "April 9, 2025",
+      "color": "#c9c9c9"
     },
     {
       "name": "Thor",
-      "image": "./assets/images/rivals/thor-lord.jpg",
-      "dateObtained": "July 21, 2025"
+      "image": "./assets/images/rivals/thor-lord.png",
+      "dateObtained": "July 21, 2025",
+      "color": "#4a90d9"
     },
     {
       "name": "Rocket Raccoon",
-      "image": "./assets/images/rivals/rocket-raccoon-lord.jpg",
-      "dateObtained": "October 1, 2025"
+      "image": "./assets/images/rivals/rocket-raccoon-lord.png",
+      "dateObtained": "October 1, 2025",
+      "color": "#d2691e"
     },
     {
       "name": "Star-Lord",
-      "image": "./assets/images/rivals/star-lord-lord.jpg",
-      "dateObtained": "January 24, 2026"
+      "image": "./assets/images/rivals/star-lord-lord.png",
+      "dateObtained": "January 24, 2026",
+      "color": "#a83232"
     },
     {
       "name": "Gambit",
-      "image": "./assets/images/rivals/gambit-lord.jpg",
-      "dateObtained": "February 10, 2026"
+      "image": "./assets/images/rivals/gambit-lord.png",
+      "dateObtained": "February 10, 2026",
+      "color": "#9b30ff"
     },
     {
       "name": "Magneto",
-      "image": "./assets/images/rivals/magneto-lord.jpg",
-      "dateObtained": "February 14, 2026"
+      "image": "./assets/images/rivals/magneto-lord.png",
+      "dateObtained": "February 14, 2026",
+      "color": "#d0021b"
     },
     {
       "name": "Jeff The Land Shark",
-      "image": "./assets/images/rivals/jeff-the-land-shark-lord.jpg",
-      "dateObtained": "February 27, 2026"
+      "image": "./assets/images/rivals/jeff-the-land-shark-lord.png",
+      "dateObtained": "February 27, 2026",
+      "color": "#ff8fc7"
+    },
+    {
+      "name": "Ultron",
+      "image": "./assets/images/rivals/ultron-lord.png",
+      "dateObtained": "August 17, 2026",
+      "color": "#8e44ad"
+    },
+    {
+      "name": "Cyclops",
+      "image": "./assets/images/rivals/cyclops-lord.png",
+      "dateObtained": "August 26, 2026",
+      "color": "#d64541"
+    },
+    {
+      "name": "Jubilee",
+      "image": "./assets/images/rivals/jubilee-lord.png",
+      "dateObtained": "August 31, 2026",
+      "color": "#f2479b"
     }
   ],
   "heroStats": [
     {
       "name": "Thor",
       "icon": "./assets/images/rivals/thor.jpg",
-      "hours": 24.7,
+      "hours": 26.7,
       "highlights": [
         {
           "label": "Matches Played",
-          "value": "159"
+          "value": "173"
         },
         {
           "label": "Wins",
-          "value": "105"
+          "value": "113"
         },
         {
           "label": "KOs",
-          "value": "3,152"
+          "value": "3,378"
         },
         {
           "label": "Assists",
-          "value": "315"
+          "value": "386"
         },
         {
           "label": "Best KO Streak",
@@ -145,51 +200,51 @@
       "statistics": [
         {
           "label": "Time Played",
-          "total": "24.7 Hrs",
+          "total": "26.7 Hrs",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "Matches Played",
-          "total": "159",
+          "total": "173",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "Wins",
-          "total": "105",
+          "total": "113",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "KOs",
-          "total": "3,152",
+          "total": "3,378",
           "best": "39",
-          "avg": "21.3"
+          "avg": "21.1"
         },
         {
           "label": "Assists",
-          "total": "315",
+          "total": "386",
           "best": "14",
-          "avg": "2.1"
+          "avg": "2.4"
         },
         {
           "label": "Final Hits",
-          "total": "1,651",
+          "total": "1,753",
           "best": "26",
-          "avg": "11.1"
+          "avg": "10.9"
         },
         {
           "label": "KO Streaks in One Life",
-          "total": "4",
+          "total": "3.9",
           "best": "23",
           "avg": "—"
         },
         {
           "label": "Solo KOs",
-          "total": "451",
+          "total": "470",
           "best": "10",
-          "avg": "3"
+          "avg": "2.9"
         },
         {
           "label": "Critical Strike KOs",
@@ -198,22 +253,22 @@
           "avg": "0"
         },
         {
-          "label": "Damage Dealt",
-          "total": "2,106,998",
+          "label": "Damage",
+          "total": "2,297,237",
           "best": "33,811",
-          "avg": "14,219"
+          "avg": "14,338"
         },
         {
-          "label": "Healing Done",
-          "total": "0",
-          "best": "0",
-          "avg": "0"
+          "label": "Healing",
+          "total": "1,033",
+          "best": "298",
+          "avg": "6"
         },
         {
           "label": "Damage Blocked",
-          "total": "2,748,387",
+          "total": "3,017,731",
           "best": "39,870",
-          "avg": "18,547"
+          "avg": "18,836"
         },
         {
           "label": "Accuracy",
@@ -223,19 +278,19 @@
         },
         {
           "label": "Awakening Rune Accuracy",
-          "total": "55%",
+          "total": "54%",
           "best": "76%",
           "avg": "—"
         },
         {
           "label": "Storm Surge Launch-Ups",
-          "total": "1,592",
+          "total": "1,744",
           "best": "43",
-          "avg": "10.7"
+          "avg": "10.9"
         },
         {
           "label": "God of Thunder KOs",
-          "total": "311",
+          "total": "331",
           "best": "9",
           "avg": "2.1"
         }
@@ -245,23 +300,23 @@
     {
       "name": "Moon Knight",
       "icon": "./assets/images/rivals/moon-knight.jpg",
-      "hours": 24.0,
+      "hours": 24.4,
       "highlights": [
         {
           "label": "Matches Played",
-          "value": "164"
+          "value": "166"
         },
         {
           "label": "Wins",
-          "value": "87"
+          "value": "88"
         },
         {
           "label": "KOs",
-          "value": "3,253"
+          "value": "3,315"
         },
         {
           "label": "Assists",
-          "value": "36"
+          "value": "43"
         },
         {
           "label": "Best KO Streak",
@@ -271,39 +326,39 @@
       "statistics": [
         {
           "label": "Time Played",
-          "total": "24 Hrs",
+          "total": "24.4 Hrs",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "Matches Played",
-          "total": "164",
+          "total": "166",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "Wins",
-          "total": "87",
+          "total": "88",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "KOs",
-          "total": "3,253",
+          "total": "3,315",
           "best": "45",
           "avg": "22.6"
         },
         {
           "label": "Assists",
-          "total": "36",
+          "total": "43",
           "best": "8",
           "avg": "0.3"
         },
         {
           "label": "Final Hits",
-          "total": "1,848",
+          "total": "1,868",
           "best": "29",
-          "avg": "12.8"
+          "avg": "12.7"
         },
         {
           "label": "KO Streaks in One Life",
@@ -313,33 +368,33 @@
         },
         {
           "label": "Solo KOs",
-          "total": "697",
+          "total": "700",
           "best": "16",
           "avg": "4.8"
         },
         {
           "label": "Critical Strike KOs",
-          "total": "123",
+          "total": "124",
           "best": "7",
-          "avg": "0.9"
+          "avg": "0.8"
         },
         {
-          "label": "Damage Dealt",
-          "total": "2,204,263",
+          "label": "Damage",
+          "total": "2,260,702",
           "best": "38,977",
-          "avg": "15,310"
+          "avg": "15,416"
         },
         {
-          "label": "Healing Done",
-          "total": "3,568",
-          "best": "300",
-          "avg": "24"
+          "label": "Healing",
+          "total": "3,927",
+          "best": "359",
+          "avg": "26"
         },
         {
           "label": "Damage Blocked",
-          "total": "850,160",
+          "total": "870,927",
           "best": "12,466",
-          "avg": "5,905"
+          "avg": "5,939"
         },
         {
           "label": "Accuracy",
@@ -349,15 +404,15 @@
         },
         {
           "label": "Critical Hit Rate",
-          "total": "6%",
+          "total": "7%",
           "best": "32%",
           "avg": "—"
         },
         {
           "label": "Ankh Ejections",
-          "total": "23,122",
+          "total": "23,512",
           "best": "472",
-          "avg": "160.6"
+          "avg": "160.3"
         }
       ],
       "color": "#c9c9c9"
@@ -365,23 +420,23 @@
     {
       "name": "Rocket Raccoon",
       "icon": "./assets/images/rivals/rocket-raccoon.jpg",
-      "hours": 22.6,
+      "hours": 23.3,
       "highlights": [
         {
           "label": "Matches Played",
-          "value": "143"
+          "value": "148"
         },
         {
           "label": "Wins",
-          "value": "90"
+          "value": "92"
         },
         {
           "label": "KOs",
-          "value": "825"
+          "value": "862"
         },
         {
           "label": "Assists",
-          "value": "2,868"
+          "value": "2,950"
         },
         {
           "label": "Best KO Streak",
@@ -391,37 +446,37 @@
       "statistics": [
         {
           "label": "Time Played",
-          "total": "22.6 Hrs",
+          "total": "23.3 Hrs",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "Matches Played",
-          "total": "143",
+          "total": "148",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "Wins",
-          "total": "90",
+          "total": "92",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "KOs",
-          "total": "825",
+          "total": "862",
           "best": "22",
-          "avg": "6.1"
+          "avg": "6.2"
         },
         {
           "label": "Assists",
-          "total": "2,868",
+          "total": "2,950",
           "best": "54",
-          "avg": "21.2"
+          "avg": "21.1"
         },
         {
           "label": "Final Hits",
-          "total": "330",
+          "total": "339",
           "best": "10",
           "avg": "2.4"
         },
@@ -433,37 +488,37 @@
         },
         {
           "label": "Solo KOs",
-          "total": "50",
+          "total": "51",
           "best": "3",
           "avg": "0.4"
         },
         {
           "label": "Critical Strike KOs",
-          "total": "29",
+          "total": "30",
           "best": "2",
           "avg": "0.2"
         },
         {
-          "label": "Damage Dealt",
-          "total": "302,153",
+          "label": "Damage",
+          "total": "315,943",
           "best": "7,859",
-          "avg": "2,230"
+          "avg": "2,259"
         },
         {
-          "label": "Healing Done",
-          "total": "2,666,326",
+          "label": "Healing",
+          "total": "2,734,613",
           "best": "54,712",
-          "avg": "19,681"
+          "avg": "19,555"
         },
         {
           "label": "Damage Blocked",
-          "total": "778,878",
+          "total": "800,541",
           "best": "15,683",
-          "avg": "5,749"
+          "avg": "5,724"
         },
         {
           "label": "Accuracy",
-          "total": "34%",
+          "total": "35%",
           "best": "63%",
           "avg": "—"
         },
@@ -475,13 +530,13 @@
         },
         {
           "label": "B.R.B. Revivals",
-          "total": "577",
+          "total": "591",
           "best": "12",
-          "avg": "4.3"
+          "avg": "4.2"
         },
         {
           "label": "C.Y.A. Assists",
-          "total": "568",
+          "total": "583",
           "best": "12",
           "avg": "4.2"
         }
@@ -489,13 +544,133 @@
       "color": "#d2691e"
     },
     {
-      "name": "Star-Lord",
-      "icon": "./assets/images/rivals/star-lord.jpg",
-      "hours": 19.1,
+      "name": "Magneto",
+      "icon": "./assets/images/rivals/magneto.jpg",
+      "hours": 20.1,
       "highlights": [
         {
           "label": "Matches Played",
-          "value": "148"
+          "value": "199"
+        },
+        {
+          "label": "Wins",
+          "value": "104"
+        },
+        {
+          "label": "KOs",
+          "value": "3,763"
+        },
+        {
+          "label": "Assists",
+          "value": "1,061"
+        },
+        {
+          "label": "Best KO Streak",
+          "value": "27"
+        }
+      ],
+      "statistics": [
+        {
+          "label": "Time Played",
+          "total": "20.1 Hrs",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Matches Played",
+          "total": "199",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Wins",
+          "total": "104",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "KOs",
+          "total": "3,763",
+          "best": "49",
+          "avg": "31.2"
+        },
+        {
+          "label": "Assists",
+          "total": "1,061",
+          "best": "16",
+          "avg": "8.8"
+        },
+        {
+          "label": "Final Hits",
+          "total": "1,617",
+          "best": "29",
+          "avg": "13.4"
+        },
+        {
+          "label": "KO Streaks in One Life",
+          "total": "4",
+          "best": "27",
+          "avg": "—"
+        },
+        {
+          "label": "Solo KOs",
+          "total": "353",
+          "best": "16",
+          "avg": "2.9"
+        },
+        {
+          "label": "Critical Strike KOs",
+          "total": "0",
+          "best": "0",
+          "avg": "0"
+        },
+        {
+          "label": "Damage",
+          "total": "1,822,325",
+          "best": "36,749",
+          "avg": "15,131"
+        },
+        {
+          "label": "Healing",
+          "total": "208",
+          "best": "101",
+          "avg": "1"
+        },
+        {
+          "label": "Damage Blocked",
+          "total": "3,180,039",
+          "best": "44,382",
+          "avg": "26,405"
+        },
+        {
+          "label": "Accuracy",
+          "total": "57%",
+          "best": "75%",
+          "avg": "—"
+        },
+        {
+          "label": "Mag-Cannon KOs",
+          "total": "809",
+          "best": "11",
+          "avg": "6.7"
+        },
+        {
+          "label": "Metal Bulwark Damage Blocked",
+          "total": "257,970",
+          "best": "4,923",
+          "avg": "2,142.1"
+        }
+      ],
+      "color": "#d0021b"
+    },
+    {
+      "name": "Star-Lord",
+      "icon": "./assets/images/rivals/star-lord.jpg",
+      "hours": 19.2,
+      "highlights": [
+        {
+          "label": "Matches Played",
+          "value": "149"
         },
         {
           "label": "Wins",
@@ -503,7 +678,7 @@
         },
         {
           "label": "KOs",
-          "value": "2,939"
+          "value": "2,959"
         },
         {
           "label": "Assists",
@@ -517,253 +692,7 @@
       "statistics": [
         {
           "label": "Time Played",
-          "total": "19.1 Hrs",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "Matches Played",
-          "total": "148",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "Wins",
-          "total": "72",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "KOs",
-          "total": "2,939",
-          "best": "49",
-          "avg": "25.7"
-        },
-        {
-          "label": "Assists",
-          "total": "7",
-          "best": "3",
-          "avg": "0.1"
-        },
-        {
-          "label": "Final Hits",
-          "total": "1,461",
-          "best": "24",
-          "avg": "12.8"
-        },
-        {
-          "label": "KO Streaks in One Life",
-          "total": "3.1",
-          "best": "25",
-          "avg": "—"
-        },
-        {
-          "label": "Solo KOs",
-          "total": "510",
-          "best": "12",
-          "avg": "4.5"
-        },
-        {
-          "label": "Critical Strike KOs",
-          "total": "143",
-          "best": "6",
-          "avg": "1.3"
-        },
-        {
-          "label": "Damage Dealt",
-          "total": "1,549,404",
-          "best": "27,784",
-          "avg": "13,553"
-        },
-        {
-          "label": "Healing Done",
-          "total": "0",
-          "best": "0",
-          "avg": "0"
-        },
-        {
-          "label": "Damage Blocked",
-          "total": "886,866",
-          "best": "15,719",
-          "avg": "7,757"
-        },
-        {
-          "label": "Accuracy",
-          "total": "38%",
-          "best": "50%",
-          "avg": "—"
-        },
-        {
-          "label": "Critical Hit Rate",
-          "total": "8%",
-          "best": "60%",
-          "avg": "—"
-        },
-        {
-          "label": "Blaster Barrage KOs",
-          "total": "706",
-          "best": "17",
-          "avg": "6.2"
-        },
-        {
-          "label": "Galactic Legend KOs",
-          "total": "562",
-          "best": "13",
-          "avg": "4.9"
-        }
-      ],
-      "color": "#a83232"
-    },
-    {
-      "name": "Magneto",
-      "icon": "./assets/images/rivals/magneto.jpg",
-      "hours": 18.4,
-      "highlights": [
-        {
-          "label": "Matches Played",
-          "value": "189"
-        },
-        {
-          "label": "Wins",
-          "value": "97"
-        },
-        {
-          "label": "KOs",
-          "value": "3,581"
-        },
-        {
-          "label": "Assists",
-          "value": "1,034"
-        },
-        {
-          "label": "Best KO Streak",
-          "value": "27"
-        }
-      ],
-      "statistics": [
-        {
-          "label": "Time Played",
-          "total": "18.4 Hrs",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "Matches Played",
-          "total": "189",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "Wins",
-          "total": "97",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "KOs",
-          "total": "3,581",
-          "best": "49",
-          "avg": "32.4"
-        },
-        {
-          "label": "Assists",
-          "total": "1,034",
-          "best": "16",
-          "avg": "9.3"
-        },
-        {
-          "label": "Final Hits",
-          "total": "1,536",
-          "best": "29",
-          "avg": "13.9"
-        },
-        {
-          "label": "KO Streaks in One Life",
-          "total": "3.9",
-          "best": "27",
-          "avg": "—"
-        },
-        {
-          "label": "Solo KOs",
-          "total": "342",
-          "best": "16",
-          "avg": "3.1"
-        },
-        {
-          "label": "Critical Strike KOs",
-          "total": "0",
-          "best": "0",
-          "avg": "0"
-        },
-        {
-          "label": "Damage Dealt",
-          "total": "1,654,832",
-          "best": "27,799",
-          "avg": "14,960"
-        },
-        {
-          "label": "Healing Done",
-          "total": "0",
-          "best": "0",
-          "avg": "0"
-        },
-        {
-          "label": "Damage Blocked",
-          "total": "2,932,369",
-          "best": "39,893",
-          "avg": "26,509"
-        },
-        {
-          "label": "Accuracy",
-          "total": "57%",
-          "best": "75%",
-          "avg": "—"
-        },
-        {
-          "label": "Mag-Cannon KOs",
-          "total": "781",
-          "best": "11",
-          "avg": "7.1"
-        },
-        {
-          "label": "Metal Bulwark Damage Blocked",
-          "total": "230,436",
-          "best": "4,014",
-          "avg": "2,083.2"
-        }
-      ],
-      "color": "#d0021b"
-    },
-    {
-      "name": "Gambit",
-      "icon": "./assets/images/rivals/gambit.jpg",
-      "hours": 13.5,
-      "highlights": [
-        {
-          "label": "Matches Played",
-          "value": "149"
-        },
-        {
-          "label": "Wins",
-          "value": "76"
-        },
-        {
-          "label": "KOs",
-          "value": "2,269"
-        },
-        {
-          "label": "Assists",
-          "value": "5,209"
-        },
-        {
-          "label": "Best KO Streak",
-          "value": "15"
-        }
-      ],
-      "statistics": [
-        {
-          "label": "Time Played",
-          "total": "13.5 Hrs",
+          "total": "19.2 Hrs",
           "best": "—",
           "avg": "—"
         },
@@ -775,39 +704,165 @@
         },
         {
           "label": "Wins",
-          "total": "76",
+          "total": "72",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "KOs",
-          "total": "2,269",
-          "best": "41",
-          "avg": "28.1"
+          "total": "2,959",
+          "best": "49",
+          "avg": "25.6"
         },
         {
           "label": "Assists",
-          "total": "5,209",
-          "best": "75",
-          "avg": "64.5"
+          "total": "7",
+          "best": "3",
+          "avg": "0.1"
         },
         {
           "label": "Final Hits",
-          "total": "611",
-          "best": "12",
-          "avg": "7.6"
+          "total": "1,472",
+          "best": "24",
+          "avg": "12.8"
         },
         {
           "label": "KO Streaks in One Life",
           "total": "3.1",
+          "best": "25",
+          "avg": "—"
+        },
+        {
+          "label": "Solo KOs",
+          "total": "513",
+          "best": "12",
+          "avg": "4.4"
+        },
+        {
+          "label": "Critical Strike KOs",
+          "total": "144",
+          "best": "6",
+          "avg": "1.2"
+        },
+        {
+          "label": "Damage",
+          "total": "1,563,064",
+          "best": "27,784",
+          "avg": "13,539"
+        },
+        {
+          "label": "Healing",
+          "total": "0",
+          "best": "0",
+          "avg": "0"
+        },
+        {
+          "label": "Damage Blocked",
+          "total": "896,013",
+          "best": "15,719",
+          "avg": "7,761"
+        },
+        {
+          "label": "Accuracy",
+          "total": "38%",
+          "best": "53%",
+          "avg": "—"
+        },
+        {
+          "label": "Critical Hit Rate",
+          "total": "8%",
+          "best": "60%",
+          "avg": "—"
+        },
+        {
+          "label": "Blaster Barrage KOs",
+          "total": "712",
+          "best": "17",
+          "avg": "6.2"
+        },
+        {
+          "label": "Galactic Legend KOs",
+          "total": "568",
+          "best": "13",
+          "avg": "4.9"
+        }
+      ],
+      "color": "#a83232"
+    },
+    {
+      "name": "Gambit",
+      "icon": "./assets/images/rivals/gambit.jpg",
+      "hours": 14.5,
+      "highlights": [
+        {
+          "label": "Matches Played",
+          "value": "156"
+        },
+        {
+          "label": "Wins",
+          "value": "80"
+        },
+        {
+          "label": "KOs",
+          "value": "2,344"
+        },
+        {
+          "label": "Assists",
+          "value": "5,351"
+        },
+        {
+          "label": "Best KO Streak",
+          "value": "15"
+        }
+      ],
+      "statistics": [
+        {
+          "label": "Time Played",
+          "total": "14.5 Hrs",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Matches Played",
+          "total": "156",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Wins",
+          "total": "80",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "KOs",
+          "total": "2,344",
+          "best": "41",
+          "avg": "26.9"
+        },
+        {
+          "label": "Assists",
+          "total": "5,351",
+          "best": "75",
+          "avg": "61.5"
+        },
+        {
+          "label": "Final Hits",
+          "total": "625",
+          "best": "12",
+          "avg": "7.2"
+        },
+        {
+          "label": "KO Streaks in One Life",
+          "total": "3",
           "best": "15",
           "avg": "—"
         },
         {
           "label": "Solo KOs",
-          "total": "110",
+          "total": "111",
           "best": "5",
-          "avg": "1.4"
+          "avg": "1.3"
         },
         {
           "label": "Critical Strike KOs",
@@ -816,22 +871,22 @@
           "avg": "0"
         },
         {
-          "label": "Damage Dealt",
-          "total": "613,143",
+          "label": "Damage",
+          "total": "646,016",
           "best": "14,381",
-          "avg": "7,592"
+          "avg": "7,424"
         },
         {
-          "label": "Healing Done",
-          "total": "1,864,395",
+          "label": "Healing",
+          "total": "1,981,660",
           "best": "30,673",
-          "avg": "23,086"
+          "avg": "22,773"
         },
         {
           "label": "Damage Blocked",
-          "total": "797,610",
-          "best": "12,288",
-          "avg": "9,876"
+          "total": "841,299",
+          "best": "13,738",
+          "avg": "9,668"
         },
         {
           "label": "Accuracy",
@@ -847,43 +902,289 @@
         },
         {
           "label": "Breaking Spades Anti-Heal",
-          "total": "641",
+          "total": "664",
           "best": "17",
-          "avg": "7.9"
+          "avg": "7.6"
         },
         {
           "label": "Ragin' Royal Flush Assists",
-          "total": "1,404",
+          "total": "1,428",
           "best": "25",
-          "avg": "17.4"
+          "avg": "16.4"
         }
       ],
       "color": "#9b30ff"
     },
     {
+      "name": "Cyclops",
+      "icon": "./assets/images/rivals/cyclops.jpg",
+      "hours": 13.7,
+      "highlights": [
+        {
+          "label": "Matches Played",
+          "value": "162"
+        },
+        {
+          "label": "Wins",
+          "value": "71"
+        },
+        {
+          "label": "KOs",
+          "value": "7,052"
+        },
+        {
+          "label": "Assists",
+          "value": "1,565"
+        },
+        {
+          "label": "Best KO Streak",
+          "value": "87"
+        }
+      ],
+      "statistics": [
+        {
+          "label": "Time Played",
+          "total": "13.7 Hrs",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Matches Played",
+          "total": "162",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Wins",
+          "total": "71",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "KOs",
+          "total": "7,052",
+          "best": "98",
+          "avg": "85.5"
+        },
+        {
+          "label": "Assists",
+          "total": "1,565",
+          "best": "43",
+          "avg": "19"
+        },
+        {
+          "label": "Final Hits",
+          "total": "2,012",
+          "best": "34",
+          "avg": "24.4"
+        },
+        {
+          "label": "KO Streaks in One Life",
+          "total": "8.3",
+          "best": "87",
+          "avg": "—"
+        },
+        {
+          "label": "Solo KOs",
+          "total": "209",
+          "best": "7",
+          "avg": "2.5"
+        },
+        {
+          "label": "Critical Strike KOs",
+          "total": "125",
+          "best": "4",
+          "avg": "1.5"
+        },
+        {
+          "label": "Damage",
+          "total": "2,825,207",
+          "best": "40,929",
+          "avg": "34,260"
+        },
+        {
+          "label": "Healing",
+          "total": "2,344",
+          "best": "486",
+          "avg": "28"
+        },
+        {
+          "label": "Damage Blocked",
+          "total": "1,090,575",
+          "best": "16,950",
+          "avg": "13,225"
+        },
+        {
+          "label": "Accuracy",
+          "total": "49%",
+          "best": "66%",
+          "avg": "—"
+        },
+        {
+          "label": "Critical Hit Rate",
+          "total": "9%",
+          "best": "29%",
+          "avg": "—"
+        },
+        {
+          "label": "Beam KOs",
+          "total": "3,957",
+          "best": "59",
+          "avg": "48"
+        },
+        {
+          "label": "Ruby Rage KOs",
+          "total": "663",
+          "best": "15",
+          "avg": "8"
+        }
+      ],
+      "color": "#d64541"
+    },
+    {
       "name": "Jeff The Land Shark",
       "icon": "./assets/images/rivals/jeff-the-land-shark.jpg",
+      "hours": 9.3,
+      "highlights": [
+        {
+          "label": "Matches Played",
+          "value": "100"
+        },
+        {
+          "label": "Wins",
+          "value": "60"
+        },
+        {
+          "label": "KOs",
+          "value": "3,603"
+        },
+        {
+          "label": "Assists",
+          "value": "4,961"
+        },
+        {
+          "label": "Best KO Streak",
+          "value": "19"
+        }
+      ],
+      "statistics": [
+        {
+          "label": "Time Played",
+          "total": "9.3 Hrs",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Matches Played",
+          "total": "100",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Wins",
+          "total": "60",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "KOs",
+          "total": "3,603",
+          "best": "77",
+          "avg": "64.7"
+        },
+        {
+          "label": "Assists",
+          "total": "4,961",
+          "best": "94",
+          "avg": "89.1"
+        },
+        {
+          "label": "Final Hits",
+          "total": "597",
+          "best": "17",
+          "avg": "10.7"
+        },
+        {
+          "label": "KO Streaks in One Life",
+          "total": "7.6",
+          "best": "19",
+          "avg": "—"
+        },
+        {
+          "label": "Solo KOs",
+          "total": "178",
+          "best": "10",
+          "avg": "3.2"
+        },
+        {
+          "label": "Critical Strike KOs",
+          "total": "0",
+          "best": "0",
+          "avg": "0"
+        },
+        {
+          "label": "Damage",
+          "total": "997,164",
+          "best": "23,287",
+          "avg": "17,913"
+        },
+        {
+          "label": "Healing",
+          "total": "1,242,446",
+          "best": "38,261",
+          "avg": "22,319"
+        },
+        {
+          "label": "Damage Blocked",
+          "total": "392,360",
+          "best": "10,801",
+          "avg": "7,048"
+        },
+        {
+          "label": "Accuracy",
+          "total": "78%",
+          "best": "91%",
+          "avg": "—"
+        },
+        {
+          "label": "Hide and Seek Distance",
+          "total": "40,123",
+          "best": "4,162",
+          "avg": "720.8"
+        },
+        {
+          "label": "It's Jeff! Devours",
+          "total": "463",
+          "best": "22",
+          "avg": "8.3"
+        }
+      ],
+      "color": "#ff8fc7"
+    },
+    {
+      "name": "Jubilee",
+      "icon": "./assets/images/rivals/jubilee.jpg",
       "hours": 9.1,
       "highlights": [
         {
           "label": "Matches Played",
-          "value": "98"
+          "value": "109"
         },
         {
           "label": "Wins",
-          "value": "58"
+          "value": "50"
         },
         {
           "label": "KOs",
-          "value": "3,512"
+          "value": "5,421"
         },
         {
           "label": "Assists",
-          "value": "4,815"
+          "value": "6,718"
         },
         {
           "label": "Best KO Streak",
-          "value": "15"
+          "value": "74"
         }
       ],
       "statistics": [
@@ -895,291 +1196,171 @@
         },
         {
           "label": "Matches Played",
-          "total": "98",
+          "total": "109",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "Wins",
-          "total": "58",
+          "total": "50",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "KOs",
-          "total": "3,512",
-          "best": "77",
-          "avg": "64.5"
+          "total": "5,421",
+          "best": "108",
+          "avg": "99.3"
         },
         {
           "label": "Assists",
-          "total": "4,815",
-          "best": "94",
-          "avg": "88.4"
+          "total": "6,718",
+          "best": "127",
+          "avg": "123"
         },
         {
           "label": "Final Hits",
-          "total": "584",
-          "best": "17",
-          "avg": "10.7"
+          "total": "760",
+          "best": "20",
+          "avg": "13.9"
         },
         {
           "label": "KO Streaks in One Life",
-          "total": "7.6",
-          "best": "15",
+          "total": "13.9",
+          "best": "74",
           "avg": "—"
         },
         {
           "label": "Solo KOs",
-          "total": "172",
-          "best": "10",
-          "avg": "3.2"
+          "total": "21",
+          "best": "2",
+          "avg": "0.4"
         },
         {
           "label": "Critical Strike KOs",
-          "total": "0",
-          "best": "0",
-          "avg": "0"
+          "total": "48",
+          "best": "2",
+          "avg": "0.9"
         },
         {
-          "label": "Damage Dealt",
-          "total": "967,590",
-          "best": "23,287",
-          "avg": "17,770"
+          "label": "Damage",
+          "total": "1,433,500",
+          "best": "27,233",
+          "avg": "26,248"
         },
         {
-          "label": "Healing Done",
-          "total": "1,210,517",
-          "best": "38,261",
-          "avg": "22,232"
-        },
-        {
-          "label": "Damage Blocked",
-          "total": "381,087",
-          "best": "10,801",
-          "avg": "6,998"
-        },
-        {
-          "label": "Accuracy",
-          "total": "78%",
-          "best": "91%",
-          "avg": "—"
-        },
-        {
-          "label": "Hide and Seek Distance",
-          "total": "39,562",
-          "best": "4,162",
-          "avg": "726.6"
-        },
-        {
-          "label": "It's Jeff! Devours",
-          "total": "441",
-          "best": "22",
-          "avg": "8.1"
-        }
-      ],
-      "color": "#ff8fc7"
-    },
-    {
-      "name": "Cyclops",
-      "icon": "./assets/images/rivals/cyclops.jpg",
-      "hours": 6.5,
-      "highlights": [
-        {
-          "label": "Matches Played",
-          "value": "79"
-        },
-        {
-          "label": "Wins",
-          "value": "31"
-        },
-        {
-          "label": "KOs",
-          "value": "3,255"
-        },
-        {
-          "label": "Assists",
-          "value": "86"
-        },
-        {
-          "label": "Best KO Streak",
-          "value": "87"
-        }
-      ],
-      "statistics": [
-        {
-          "label": "Time Played",
-          "total": "6.5 Hrs",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "Matches Played",
-          "total": "79",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "Wins",
-          "total": "31",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "KOs",
-          "total": "3,255",
-          "best": "87",
-          "avg": "83.2"
-        },
-        {
-          "label": "Assists",
-          "total": "86",
-          "best": "5",
-          "avg": "2.2"
-        },
-        {
-          "label": "Final Hits",
-          "total": "929",
-          "best": "24",
-          "avg": "23.8"
-        },
-        {
-          "label": "KO Streaks in One Life",
-          "total": "7.6",
-          "best": "87",
-          "avg": "—"
-        },
-        {
-          "label": "Solo KOs",
-          "total": "89",
-          "best": "6",
-          "avg": "2.3"
-        },
-        {
-          "label": "Critical Strike KOs",
-          "total": "66",
-          "best": "4",
-          "avg": "1.7"
-        },
-        {
-          "label": "Damage Dealt",
-          "total": "1,239,159",
-          "best": "32,930",
-          "avg": "31,688"
-        },
-        {
-          "label": "Healing Done",
-          "total": "3",
-          "best": "3",
-          "avg": "0"
+          "label": "Healing",
+          "total": "2,524,305",
+          "best": "46,205",
+          "avg": "46,221"
         },
         {
           "label": "Damage Blocked",
-          "total": "507,798",
-          "best": "12,621",
-          "avg": "12,985"
+          "total": "866,321",
+          "best": "16,397",
+          "avg": "15,862"
         },
         {
           "label": "Accuracy",
-          "total": "47%",
-          "best": "63%",
+          "total": "64%",
+          "best": "93%",
           "avg": "—"
         },
         {
-          "label": "Critical Hit Rate",
-          "total": "9%",
-          "best": "20%",
-          "avg": "—"
+          "label": "Dazzling Detonation Hits",
+          "total": "8,662",
+          "best": "135",
+          "avg": "158.6"
         },
         {
-          "label": "Beam KOs",
-          "total": "1,799",
-          "best": "55",
-          "avg": "46"
+          "label": "Attack Speed Up Duration",
+          "total": "3,195",
+          "best": "68",
+          "avg": "58.5"
         },
         {
-          "label": "Ruby Rage KOs",
-          "total": "328",
-          "best": "12",
-          "avg": "8.4"
+          "label": "Firework Finale KOs and Assists",
+          "total": "2,034",
+          "best": "51",
+          "avg": "37.2"
         }
       ],
-      "color": "#d64541"
+      "color": "#f2479b"
     },
     {
       "name": "Ultron",
       "icon": "./assets/images/rivals/ultron.jpg",
-      "hours": 5.1,
+      "hours": 8.7,
       "highlights": [
         {
           "label": "Matches Played",
-          "value": "70"
+          "value": "117"
         },
         {
           "label": "Wins",
-          "value": "40"
+          "value": "64"
         },
         {
           "label": "KOs",
-          "value": "1,465"
+          "value": "2,550"
         },
         {
           "label": "Assists",
-          "value": "3,906"
+          "value": "6,941"
         },
         {
           "label": "Best KO Streak",
-          "value": "23"
+          "value": "39"
         }
       ],
       "statistics": [
         {
           "label": "Time Played",
-          "total": "5.1 Hrs",
+          "total": "8.7 Hrs",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "Matches Played",
-          "total": "70",
+          "total": "117",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "Wins",
-          "total": "40",
+          "total": "64",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "KOs",
-          "total": "1,465",
+          "total": "2,550",
           "best": "54",
-          "avg": "47.7"
+          "avg": "48.6"
         },
         {
           "label": "Assists",
-          "total": "3,906",
-          "best": "131",
-          "avg": "127.3"
+          "total": "6,941",
+          "best": "137",
+          "avg": "132.3"
         },
         {
           "label": "Final Hits",
-          "total": "466",
+          "total": "762",
           "best": "15",
-          "avg": "15.2"
+          "avg": "14.5"
         },
         {
           "label": "KO Streaks in One Life",
-          "total": "5.2",
-          "best": "23",
+          "total": "6.5",
+          "best": "39",
           "avg": "—"
         },
         {
           "label": "Solo KOs",
-          "total": "61",
+          "total": "87",
           "best": "6",
-          "avg": "2"
+          "avg": "1.7"
         },
         {
           "label": "Critical Strike KOs",
@@ -1188,27 +1369,27 @@
           "avg": "0"
         },
         {
-          "label": "Damage Dealt",
-          "total": "378,427",
-          "best": "10,536",
-          "avg": "12,333"
+          "label": "Damage",
+          "total": "740,382",
+          "best": "15,302",
+          "avg": "14,112"
         },
         {
-          "label": "Healing Done",
-          "total": "836,355",
-          "best": "27,221",
-          "avg": "27,257"
+          "label": "Healing",
+          "total": "1,624,067",
+          "best": "27,258",
+          "avg": "30,955"
         },
         {
           "label": "Damage Blocked",
-          "total": "258,471",
+          "total": "412,327",
           "best": "9,356",
-          "avg": "8,423"
+          "avg": "7,859"
         },
         {
           "label": "Accuracy",
           "total": "43%",
-          "best": "57%",
+          "best": "59%",
           "avg": "—"
         },
         {
@@ -1219,18 +1400,270 @@
         },
         {
           "label": "Encephalo-Ray Secondary Accuracy",
-          "total": "43%",
-          "best": "60%",
+          "total": "45%",
+          "best": "63%",
           "avg": "—"
         },
         {
           "label": "Imperative: Firewall Bonus Health Generated",
-          "total": "71,715",
-          "best": "4,150",
-          "avg": "2,337.3"
+          "total": "145,730",
+          "best": "4,395",
+          "avg": "2,777.7"
         }
       ],
       "color": "#8e44ad"
+    },
+    {
+      "name": "Blade",
+      "icon": "./assets/images/rivals/blade.jpg",
+      "hours": 7.5,
+      "highlights": [
+        {
+          "label": "Matches Played",
+          "value": "69"
+        },
+        {
+          "label": "Wins",
+          "value": "43"
+        },
+        {
+          "label": "KOs",
+          "value": "1,928"
+        },
+        {
+          "label": "Assists",
+          "value": "474"
+        },
+        {
+          "label": "Best KO Streak",
+          "value": "56"
+        }
+      ],
+      "statistics": [
+        {
+          "label": "Time Played",
+          "total": "7.5 Hrs",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Matches Played",
+          "total": "69",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Wins",
+          "total": "43",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "KOs",
+          "total": "1,928",
+          "best": "56",
+          "avg": "43.1"
+        },
+        {
+          "label": "Assists",
+          "total": "474",
+          "best": "16",
+          "avg": "10.6"
+        },
+        {
+          "label": "Final Hits",
+          "total": "957",
+          "best": "26",
+          "avg": "21.4"
+        },
+        {
+          "label": "KO Streaks in One Life",
+          "total": "3.8",
+          "best": "56",
+          "avg": "—"
+        },
+        {
+          "label": "Solo KOs",
+          "total": "249",
+          "best": "9",
+          "avg": "5.6"
+        },
+        {
+          "label": "Critical Strike KOs",
+          "total": "7",
+          "best": "2",
+          "avg": "0.2"
+        },
+        {
+          "label": "Damage",
+          "total": "928,441",
+          "best": "27,317",
+          "avg": "20,743"
+        },
+        {
+          "label": "Healing",
+          "total": "228,294",
+          "best": "7,119",
+          "avg": "5,100"
+        },
+        {
+          "label": "Damage Blocked",
+          "total": "716,903",
+          "best": "18,240",
+          "avg": "16,017"
+        },
+        {
+          "label": "Accuracy",
+          "total": "27%",
+          "best": "66%",
+          "avg": "—"
+        },
+        {
+          "label": "Critical Hit Rate",
+          "total": "12%",
+          "best": "53%",
+          "avg": "—"
+        },
+        {
+          "label": "Scarlet Shroud Damage Reduction",
+          "total": "20,657",
+          "best": "8,122",
+          "avg": "461.5"
+        },
+        {
+          "label": "Thousand-Fold Slash KOs",
+          "total": "251",
+          "best": "11",
+          "avg": "5.6"
+        }
+      ],
+      "color": "#3a3a3a"
+    },
+    {
+      "name": "Devil Dinosaur",
+      "icon": "./assets/images/rivals/devil-dinosaur.jpg",
+      "hours": 5.2,
+      "highlights": [
+        {
+          "label": "Matches Played",
+          "value": "63"
+        },
+        {
+          "label": "Wins",
+          "value": "34"
+        },
+        {
+          "label": "KOs",
+          "value": "2,062"
+        },
+        {
+          "label": "Assists",
+          "value": "1,704"
+        },
+        {
+          "label": "Best KO Streak",
+          "value": "51"
+        }
+      ],
+      "statistics": [
+        {
+          "label": "Time Played",
+          "total": "5.2 Hrs",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Matches Played",
+          "total": "63",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Wins",
+          "total": "34",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "KOs",
+          "total": "2,062",
+          "best": "72",
+          "avg": "66.7"
+        },
+        {
+          "label": "Assists",
+          "total": "1,704",
+          "best": "66",
+          "avg": "55.1"
+        },
+        {
+          "label": "Final Hits",
+          "total": "473",
+          "best": "17",
+          "avg": "15.3"
+        },
+        {
+          "label": "KO Streaks in One Life",
+          "total": "5.4",
+          "best": "51",
+          "avg": "—"
+        },
+        {
+          "label": "Solo KOs",
+          "total": "44",
+          "best": "7",
+          "avg": "1.4"
+        },
+        {
+          "label": "Critical Strike KOs",
+          "total": "0",
+          "best": "0",
+          "avg": "0"
+        },
+        {
+          "label": "Damage",
+          "total": "791,393",
+          "best": "29,133",
+          "avg": "25,599"
+        },
+        {
+          "label": "Healing",
+          "total": "2,240",
+          "best": "746",
+          "avg": "72"
+        },
+        {
+          "label": "Damage Blocked",
+          "total": "1,855,509",
+          "best": "61,881",
+          "avg": "60,021"
+        },
+        {
+          "label": "Accuracy",
+          "total": "69%",
+          "best": "93%",
+          "avg": "—"
+        },
+        {
+          "label": "Savage Predation Clamp Downs",
+          "total": "262",
+          "best": "11",
+          "avg": "8.5"
+        },
+        {
+          "label": "Bonus Health Generated",
+          "total": "390,389",
+          "best": "20,824",
+          "avg": "12,628.2"
+        },
+        {
+          "label": "Devil-Beast Rampage KOs",
+          "total": "284",
+          "best": "20",
+          "avg": "9.2"
+        }
+      ],
+      "color": "#b83227"
     },
     {
       "name": "Iron Fist",
@@ -1314,13 +1747,13 @@
           "avg": "0"
         },
         {
-          "label": "Damage Dealt",
+          "label": "Damage",
           "total": "220,352",
           "best": "13,641",
           "avg": "9,160"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "7,098",
           "best": "679",
           "avg": "295"
@@ -1353,13 +1786,133 @@
       "color": "#2e7d32"
     },
     {
-      "name": "Doctor Strange",
-      "icon": "./assets/images/rivals/doctor-strange.jpg",
-      "hours": 3.7,
+      "name": "Squirrel Girl",
+      "icon": "./assets/images/rivals/squirrel-girl.jpg",
+      "hours": 4.0,
       "highlights": [
         {
           "label": "Matches Played",
-          "value": "22"
+          "value": "44"
+        },
+        {
+          "label": "Wins",
+          "value": "21"
+        },
+        {
+          "label": "KOs",
+          "value": "1,639"
+        },
+        {
+          "label": "Assists",
+          "value": "125"
+        },
+        {
+          "label": "Best KO Streak",
+          "value": "58"
+        }
+      ],
+      "statistics": [
+        {
+          "label": "Time Played",
+          "total": "4 Hrs",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Matches Played",
+          "total": "44",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Wins",
+          "total": "21",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "KOs",
+          "total": "1,639",
+          "best": "70",
+          "avg": "68.8"
+        },
+        {
+          "label": "Assists",
+          "total": "125",
+          "best": "9",
+          "avg": "5.2"
+        },
+        {
+          "label": "Final Hits",
+          "total": "644",
+          "best": "30",
+          "avg": "27"
+        },
+        {
+          "label": "KO Streaks in One Life",
+          "total": "11.7",
+          "best": "58",
+          "avg": "—"
+        },
+        {
+          "label": "Solo KOs",
+          "total": "84",
+          "best": "7",
+          "avg": "3.5"
+        },
+        {
+          "label": "Critical Strike KOs",
+          "total": "0",
+          "best": "0",
+          "avg": "0"
+        },
+        {
+          "label": "Damage",
+          "total": "998,735",
+          "best": "50,409",
+          "avg": "41,894"
+        },
+        {
+          "label": "Healing",
+          "total": "793",
+          "best": "261",
+          "avg": "33"
+        },
+        {
+          "label": "Damage Blocked",
+          "total": "191,097",
+          "best": "11,991",
+          "avg": "8,016"
+        },
+        {
+          "label": "Accuracy",
+          "total": "49%",
+          "best": "67%",
+          "avg": "—"
+        },
+        {
+          "label": "Squirrel Blockade Accuracy",
+          "total": "53%",
+          "best": "100%",
+          "avg": "—"
+        },
+        {
+          "label": "Unbeatable Squirrel Tsunami KOs",
+          "total": "229",
+          "best": "16",
+          "avg": "9.6"
+        }
+      ],
+      "color": "#8b5a2b"
+    },
+    {
+      "name": "Doctor Strange",
+      "icon": "./assets/images/rivals/doctor-strange.jpg",
+      "hours": 3.9,
+      "highlights": [
+        {
+          "label": "Matches Played",
+          "value": "23"
         },
         {
           "label": "Wins",
@@ -1367,11 +1920,11 @@
         },
         {
           "label": "KOs",
-          "value": "428"
+          "value": "443"
         },
         {
           "label": "Assists",
-          "value": "48"
+          "value": "49"
         },
         {
           "label": "Best KO Streak",
@@ -1381,13 +1934,13 @@
       "statistics": [
         {
           "label": "Time Played",
-          "total": "3.7 Hrs",
+          "total": "3.9 Hrs",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "Matches Played",
-          "total": "22",
+          "total": "23",
           "best": "—",
           "avg": "—"
         },
@@ -1399,21 +1952,21 @@
         },
         {
           "label": "KOs",
-          "total": "428",
+          "total": "443",
           "best": "35",
-          "avg": "19.3"
+          "avg": "19"
         },
         {
           "label": "Assists",
-          "total": "48",
+          "total": "49",
           "best": "10",
-          "avg": "2.2"
+          "avg": "2.1"
         },
         {
           "label": "Final Hits",
-          "total": "168",
+          "total": "174",
           "best": "13",
-          "avg": "7.6"
+          "avg": "7.5"
         },
         {
           "label": "KO Streaks in One Life",
@@ -1425,7 +1978,7 @@
           "label": "Solo KOs",
           "total": "37",
           "best": "6",
-          "avg": "1.7"
+          "avg": "1.6"
         },
         {
           "label": "Critical Strike KOs",
@@ -1434,22 +1987,22 @@
           "avg": "0"
         },
         {
-          "label": "Damage Dealt",
-          "total": "247,169",
+          "label": "Damage",
+          "total": "262,676",
           "best": "26,999",
-          "avg": "11,165"
+          "avg": "11,283"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "0",
           "best": "0",
           "avg": "0"
         },
         {
           "label": "Damage Blocked",
-          "total": "491,347",
+          "total": "523,807",
           "best": "57,059",
-          "avg": "22,196"
+          "avg": "22,500"
         },
         {
           "label": "Accuracy",
@@ -1459,19 +2012,19 @@
         },
         {
           "label": "Damage Blocked by Shields",
-          "total": "151,489",
+          "total": "161,072",
           "best": "19,395",
-          "avg": "6,843.6"
+          "avg": "6,918.9"
         },
         {
           "label": "Players Teleported",
-          "total": "61",
+          "total": "63",
           "best": "10",
-          "avg": "2.8"
+          "avg": "2.7"
         },
         {
           "label": "Eye of Agamotto KOs",
-          "total": "65",
+          "total": "67",
           "best": "8",
           "avg": "2.9"
         }
@@ -1481,23 +2034,23 @@
     {
       "name": "Mister Fantastic",
       "icon": "./assets/images/rivals/mister-fantastic.jpg",
-      "hours": 3.7,
+      "hours": 3.9,
       "highlights": [
         {
           "label": "Matches Played",
-          "value": "21"
+          "value": "24"
         },
         {
           "label": "Wins",
-          "value": "13"
+          "value": "14"
         },
         {
           "label": "KOs",
-          "value": "436"
+          "value": "537"
         },
         {
           "label": "Assists",
-          "value": "74"
+          "value": "92"
         },
         {
           "label": "Best KO Streak",
@@ -1507,51 +2060,51 @@
       "statistics": [
         {
           "label": "Time Played",
-          "total": "3.7 Hrs",
+          "total": "3.9 Hrs",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "Matches Played",
-          "total": "21",
+          "total": "24",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "Wins",
-          "total": "13",
+          "total": "14",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "KOs",
-          "total": "436",
+          "total": "537",
           "best": "45",
-          "avg": "19.8"
+          "avg": "22.7"
         },
         {
           "label": "Assists",
-          "total": "74",
+          "total": "92",
           "best": "11",
-          "avg": "3.4"
+          "avg": "3.9"
         },
         {
           "label": "Final Hits",
-          "total": "180",
+          "total": "212",
           "best": "19",
-          "avg": "8.2"
+          "avg": "8.9"
         },
         {
           "label": "KO Streaks in One Life",
-          "total": "3.2",
+          "total": "3.4",
           "best": "20",
           "avg": "—"
         },
         {
           "label": "Solo KOs",
-          "total": "41",
+          "total": "42",
           "best": "4",
-          "avg": "1.9"
+          "avg": "1.8"
         },
         {
           "label": "Critical Strike KOs",
@@ -1560,34 +2113,34 @@
           "avg": "0"
         },
         {
-          "label": "Damage Dealt",
-          "total": "374,718",
+          "label": "Damage",
+          "total": "414,705",
           "best": "30,309",
-          "avg": "17,023"
+          "avg": "17,503"
         },
         {
-          "label": "Healing Done",
-          "total": "0",
-          "best": "0",
-          "avg": "0"
+          "label": "Healing",
+          "total": "176",
+          "best": "176",
+          "avg": "7"
         },
         {
           "label": "Damage Blocked",
-          "total": "366,615",
+          "total": "413,102",
           "best": "28,941",
-          "avg": "16,655"
+          "avg": "17,435"
         },
         {
           "label": "Accuracy",
           "total": "68%",
-          "best": "76%",
+          "best": "83%",
           "avg": "—"
         },
         {
           "label": "Inflated Times",
-          "total": "285",
+          "total": "289",
           "best": "19",
-          "avg": "12.9"
+          "avg": "12.2"
         },
         {
           "label": "Brainiac Bounce Average Bounces",
@@ -1599,130 +2152,250 @@
       "color": "#2b5f8a"
     },
     {
-      "name": "Devil Dinosaur",
-      "icon": "./assets/images/rivals/devil-dinosaur.jpg",
-      "hours": 3.0,
+      "name": "Phoenix",
+      "icon": "./assets/images/rivals/phoenix.jpg",
+      "hours": 3.4,
       "highlights": [
         {
           "label": "Matches Played",
-          "value": "36"
+          "value": "24"
         },
         {
           "label": "Wins",
-          "value": "18"
+          "value": "8"
         },
         {
           "label": "KOs",
-          "value": "1,033"
+          "value": "462"
         },
         {
           "label": "Assists",
-          "value": "843"
+          "value": "103"
         },
         {
           "label": "Best KO Streak",
-          "value": "38"
+          "value": "15"
         }
       ],
       "statistics": [
         {
           "label": "Time Played",
-          "total": "3 Hrs",
+          "total": "3.4 Hrs",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "Matches Played",
-          "total": "36",
+          "total": "24",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "Wins",
-          "total": "18",
+          "total": "8",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "KOs",
-          "total": "1,033",
-          "best": "54",
-          "avg": "58.3"
+          "total": "462",
+          "best": "32",
+          "avg": "22.4"
         },
         {
           "label": "Assists",
-          "total": "843",
-          "best": "44",
-          "avg": "47.6"
+          "total": "103",
+          "best": "30",
+          "avg": "5"
         },
         {
           "label": "Final Hits",
-          "total": "262",
+          "total": "193",
           "best": "17",
-          "avg": "14.8"
+          "avg": "9.3"
         },
         {
           "label": "KO Streaks in One Life",
-          "total": "4.1",
-          "best": "38",
+          "total": "3.2",
+          "best": "15",
           "avg": "—"
         },
         {
           "label": "Solo KOs",
-          "total": "36",
-          "best": "7",
-          "avg": "2"
+          "total": "30",
+          "best": "3",
+          "avg": "1.5"
         },
         {
           "label": "Critical Strike KOs",
-          "total": "0",
-          "best": "0",
-          "avg": "0"
+          "total": "23",
+          "best": "3",
+          "avg": "1.1"
         },
         {
-          "label": "Damage Dealt",
-          "total": "429,811",
-          "best": "29,133",
-          "avg": "24,259"
+          "label": "Damage",
+          "total": "351,169",
+          "best": "25,719",
+          "avg": "17,002"
         },
         {
-          "label": "Healing Done",
-          "total": "79",
-          "best": "79",
-          "avg": "4"
+          "label": "Healing",
+          "total": "13,946",
+          "best": "979",
+          "avg": "675"
         },
         {
           "label": "Damage Blocked",
-          "total": "1,078,174",
-          "best": "61,881",
-          "avg": "60,855"
+          "total": "143,601",
+          "best": "9,687",
+          "avg": "6,952"
         },
         {
           "label": "Accuracy",
-          "total": "77%",
-          "best": "93%",
+          "total": "45%",
+          "best": "54%",
           "avg": "—"
         },
         {
-          "label": "Savage Predation Clamp Downs",
-          "total": "145",
-          "best": "11",
-          "avg": "8.2"
+          "label": "Critical Hit Rate",
+          "total": "13%",
+          "best": "33%",
+          "avg": "—"
         },
         {
-          "label": "Bonus Health Generated",
-          "total": "233,862",
-          "best": "20,824",
-          "avg": "13,199.9"
-        },
-        {
-          "label": "Devil-Beast Rampage KOs",
-          "total": "143",
-          "best": "20",
-          "avg": "8.1"
+          "label": "Spark Explosions",
+          "total": "1,499",
+          "best": "132",
+          "avg": "72.6"
         }
       ],
-      "color": "#b83227"
+      "color": "#ff4d00"
+    },
+    {
+      "name": "The Punisher",
+      "icon": "./assets/images/rivals/the-punisher.jpg",
+      "hours": 2.8,
+      "highlights": [
+        {
+          "label": "Matches Played",
+          "value": "19"
+        },
+        {
+          "label": "Wins",
+          "value": "12"
+        },
+        {
+          "label": "KOs",
+          "value": "393"
+        },
+        {
+          "label": "Assists",
+          "value": "6"
+        },
+        {
+          "label": "Best KO Streak",
+          "value": "20"
+        }
+      ],
+      "statistics": [
+        {
+          "label": "Time Played",
+          "total": "2.8 Hrs",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Matches Played",
+          "total": "19",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Wins",
+          "total": "12",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "KOs",
+          "total": "393",
+          "best": "43",
+          "avg": "23.5"
+        },
+        {
+          "label": "Assists",
+          "total": "6",
+          "best": "6",
+          "avg": "0.4"
+        },
+        {
+          "label": "Final Hits",
+          "total": "208",
+          "best": "19",
+          "avg": "12.4"
+        },
+        {
+          "label": "KO Streaks in One Life",
+          "total": "2.7",
+          "best": "20",
+          "avg": "—"
+        },
+        {
+          "label": "Solo KOs",
+          "total": "63",
+          "best": "10",
+          "avg": "3.8"
+        },
+        {
+          "label": "Critical Strike KOs",
+          "total": "29",
+          "best": "6",
+          "avg": "1.7"
+        },
+        {
+          "label": "Damage",
+          "total": "211,158",
+          "best": "19,397",
+          "avg": "12,631"
+        },
+        {
+          "label": "Healing",
+          "total": "192",
+          "best": "122",
+          "avg": "11"
+        },
+        {
+          "label": "Damage Blocked",
+          "total": "130,759",
+          "best": "14,387",
+          "avg": "7,821"
+        },
+        {
+          "label": "Accuracy",
+          "total": "38%",
+          "best": "67%",
+          "avg": "—"
+        },
+        {
+          "label": "Deliverance Accuracy",
+          "total": "38%",
+          "best": "73%",
+          "avg": "—"
+        },
+        {
+          "label": "Adjudication Critical Hit Rate",
+          "total": "10%",
+          "best": "28%",
+          "avg": "—"
+        },
+        {
+          "label": "Deliverance Critical Hit Rate",
+          "total": "11%",
+          "best": "38%",
+          "avg": "—"
+        }
+      ],
+      "color": "#2b2b2b"
     },
     {
       "name": "Deadpool (Strategist)",
@@ -1806,13 +2479,13 @@
           "avg": "0.1"
         },
         {
-          "label": "Damage Dealt",
+          "label": "Damage",
           "total": "131,609",
           "best": "14,847",
           "avg": "8,479"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "377,298",
           "best": "33,591",
           "avg": "24,309"
@@ -1851,135 +2524,9 @@
       "color": "#a83246"
     },
     {
-      "name": "The Punisher",
-      "icon": "./assets/images/rivals/the-punisher.jpg",
-      "hours": 2.5,
-      "highlights": [
-        {
-          "label": "Matches Played",
-          "value": "17"
-        },
-        {
-          "label": "Wins",
-          "value": "10"
-        },
-        {
-          "label": "KOs",
-          "value": "328"
-        },
-        {
-          "label": "Assists",
-          "value": "6"
-        },
-        {
-          "label": "Best KO Streak",
-          "value": "20"
-        }
-      ],
-      "statistics": [
-        {
-          "label": "Time Played",
-          "total": "2.5 Hrs",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "Matches Played",
-          "total": "17",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "Wins",
-          "total": "10",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "KOs",
-          "total": "328",
-          "best": "32",
-          "avg": "21.7"
-        },
-        {
-          "label": "Assists",
-          "total": "6",
-          "best": "6",
-          "avg": "0.4"
-        },
-        {
-          "label": "Final Hits",
-          "total": "183",
-          "best": "19",
-          "avg": "12.1"
-        },
-        {
-          "label": "KO Streaks in One Life",
-          "total": "2.6",
-          "best": "20",
-          "avg": "—"
-        },
-        {
-          "label": "Solo KOs",
-          "total": "60",
-          "best": "10",
-          "avg": "4"
-        },
-        {
-          "label": "Critical Strike KOs",
-          "total": "26",
-          "best": "6",
-          "avg": "1.7"
-        },
-        {
-          "label": "Damage Dealt",
-          "total": "186,656",
-          "best": "19,397",
-          "avg": "12,338"
-        },
-        {
-          "label": "Healing Done",
-          "total": "122",
-          "best": "122",
-          "avg": "8"
-        },
-        {
-          "label": "Damage Blocked",
-          "total": "109,959",
-          "best": "14,387",
-          "avg": "7,268"
-        },
-        {
-          "label": "Accuracy",
-          "total": "38%",
-          "best": "67%",
-          "avg": "—"
-        },
-        {
-          "label": "Deliverance Accuracy",
-          "total": "39%",
-          "best": "73%",
-          "avg": "—"
-        },
-        {
-          "label": "Adjudication Critical Hit Rate",
-          "total": "10%",
-          "best": "28%",
-          "avg": "—"
-        },
-        {
-          "label": "Deliverance Critical Hit Rate",
-          "total": "12%",
-          "best": "38%",
-          "avg": "—"
-        }
-      ],
-      "color": "#2b2b2b"
-    },
-    {
       "name": "Captain America",
       "icon": "./assets/images/rivals/captain-america.jpg",
-      "hours": 2.4,
+      "hours": 2.5,
       "highlights": [
         {
           "label": "Matches Played",
@@ -2005,7 +2552,7 @@
       "statistics": [
         {
           "label": "Time Played",
-          "total": "2.4 Hrs",
+          "total": "2.5 Hrs",
           "best": "—",
           "avg": "—"
         },
@@ -2025,7 +2572,7 @@
           "label": "KOs",
           "total": "250",
           "best": "29",
-          "avg": "17.3"
+          "avg": "17"
         },
         {
           "label": "Assists",
@@ -2037,11 +2584,11 @@
           "label": "Final Hits",
           "total": "110",
           "best": "11",
-          "avg": "7.6"
+          "avg": "7.5"
         },
         {
           "label": "KO Streaks in One Life",
-          "total": "3.5",
+          "total": "3.3",
           "best": "19",
           "avg": "—"
         },
@@ -2049,7 +2596,7 @@
           "label": "Solo KOs",
           "total": "30",
           "best": "5",
-          "avg": "2.1"
+          "avg": "2"
         },
         {
           "label": "Critical Strike KOs",
@@ -2058,22 +2605,22 @@
           "avg": "0"
         },
         {
-          "label": "Damage Dealt",
-          "total": "151,357",
+          "label": "Damage",
+          "total": "152,767",
           "best": "15,825",
-          "avg": "10,473"
+          "avg": "10,374"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "1,335",
           "best": "387",
-          "avg": "92"
+          "avg": "90"
         },
         {
           "label": "Damage Blocked",
-          "total": "329,515",
+          "total": "333,271",
           "best": "35,645",
-          "avg": "22,800"
+          "avg": "22,633"
         },
         {
           "label": "Accuracy",
@@ -2085,13 +2632,13 @@
           "label": "Sentinel Strike KOs",
           "total": "145",
           "best": "15",
-          "avg": "10"
+          "avg": "9.8"
         },
         {
           "label": "Vibranium Energy Saw KOs",
           "total": "85",
           "best": "12",
-          "avg": "5.9"
+          "avg": "5.8"
         }
       ],
       "color": "#2c4f8c"
@@ -2099,11 +2646,11 @@
     {
       "name": "Emma Frost",
       "icon": "./assets/images/rivals/emma-frost.jpg",
-      "hours": 2.3,
+      "hours": 2.4,
       "highlights": [
         {
           "label": "Matches Played",
-          "value": "16"
+          "value": "17"
         },
         {
           "label": "Wins",
@@ -2125,13 +2672,13 @@
       "statistics": [
         {
           "label": "Time Played",
-          "total": "2.3 Hrs",
+          "total": "2.4 Hrs",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "Matches Played",
-          "total": "16",
+          "total": "17",
           "best": "—",
           "avg": "—"
         },
@@ -2145,23 +2692,23 @@
           "label": "KOs",
           "total": "231",
           "best": "27",
-          "avg": "16.5"
+          "avg": "16.2"
         },
         {
           "label": "Assists",
           "total": "43",
           "best": "6",
-          "avg": "3.1"
+          "avg": "3"
         },
         {
           "label": "Final Hits",
           "total": "100",
           "best": "11",
-          "avg": "7.1"
+          "avg": "7"
         },
         {
           "label": "KO Streaks in One Life",
-          "total": "2.4",
+          "total": "2.3",
           "best": "12",
           "avg": "—"
         },
@@ -2178,22 +2725,22 @@
           "avg": "0"
         },
         {
-          "label": "Damage Dealt",
-          "total": "173,860",
+          "label": "Damage",
+          "total": "176,532",
           "best": "19,733",
-          "avg": "12,393"
+          "avg": "12,366"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "0",
           "best": "0",
           "avg": "0"
         },
         {
           "label": "Damage Blocked",
-          "total": "307,127",
+          "total": "314,284",
           "best": "34,091",
-          "avg": "21,893"
+          "avg": "22,015"
         },
         {
           "label": "Accuracy",
@@ -2205,22 +2752,148 @@
           "label": "Psychic Spear Sentience Seized",
           "total": "88",
           "best": "14",
-          "avg": "6.3"
+          "avg": "6.2"
         },
         {
           "label": "Carbon Crush Hits",
-          "total": "107",
+          "total": "109",
           "best": "11",
           "avg": "7.6"
         },
         {
           "label": "Psionic Seduction Minds Controlled",
-          "total": "74",
+          "total": "75",
           "best": "9",
           "avg": "5.3"
         }
       ],
       "color": "#d9e4f5"
+    },
+    {
+      "name": "Iron Man",
+      "icon": "./assets/images/rivals/iron-man.jpg",
+      "hours": 2.3,
+      "highlights": [
+        {
+          "label": "Matches Played",
+          "value": "22"
+        },
+        {
+          "label": "Wins",
+          "value": "15"
+        },
+        {
+          "label": "KOs",
+          "value": "733"
+        },
+        {
+          "label": "Assists",
+          "value": "13"
+        },
+        {
+          "label": "Best KO Streak",
+          "value": "53"
+        }
+      ],
+      "statistics": [
+        {
+          "label": "Time Played",
+          "total": "2.3 Hrs",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Matches Played",
+          "total": "22",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Wins",
+          "total": "15",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "KOs",
+          "total": "733",
+          "best": "69",
+          "avg": "54.2"
+        },
+        {
+          "label": "Assists",
+          "total": "13",
+          "best": "6",
+          "avg": "1"
+        },
+        {
+          "label": "Final Hits",
+          "total": "341",
+          "best": "38",
+          "avg": "25.2"
+        },
+        {
+          "label": "KO Streaks in One Life",
+          "total": "7",
+          "best": "53",
+          "avg": "—"
+        },
+        {
+          "label": "Solo KOs",
+          "total": "82",
+          "best": "10",
+          "avg": "6.1"
+        },
+        {
+          "label": "Critical Strike KOs",
+          "total": "0",
+          "best": "0",
+          "avg": "0"
+        },
+        {
+          "label": "Damage",
+          "total": "297,842",
+          "best": "27,915",
+          "avg": "22,012"
+        },
+        {
+          "label": "Healing",
+          "total": "82",
+          "best": "82",
+          "avg": "6"
+        },
+        {
+          "label": "Damage Blocked",
+          "total": "76,747",
+          "best": "5,572",
+          "avg": "5,672"
+        },
+        {
+          "label": "Accuracy",
+          "total": "55%",
+          "best": "87%",
+          "avg": "—"
+        },
+        {
+          "label": "Micro-Missile Barrage KOs",
+          "total": "5",
+          "best": "2",
+          "avg": "0.4"
+        },
+        {
+          "label": "Unibeam KOs",
+          "total": "397",
+          "best": "41",
+          "avg": "29.3"
+        },
+        {
+          "label": "Invincible Pulse Cannon KOs",
+          "total": "90",
+          "best": "11",
+          "avg": "6.7"
+        }
+      ],
+      "color": "#b8302a"
     },
     {
       "name": "Loki",
@@ -2304,13 +2977,13 @@
           "avg": "0"
         },
         {
-          "label": "Damage Dealt",
+          "label": "Damage",
           "total": "102,684",
           "best": "13,799",
           "avg": "8,643"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "115,759",
           "best": "18,363",
           "avg": "9,743"
@@ -2424,13 +3097,13 @@
           "avg": "0"
         },
         {
-          "label": "Damage Dealt",
+          "label": "Damage",
           "total": "132,048",
           "best": "14,070",
           "avg": "11,781"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "8,121",
           "best": "1,194",
           "avg": "724"
@@ -2463,325 +3136,79 @@
       "color": "#f1c40f"
     },
     {
-      "name": "Blade",
-      "icon": "./assets/images/rivals/blade.jpg",
-      "hours": 1.4,
+      "name": "Scarlet Witch",
+      "icon": "./assets/images/rivals/scarlet-witch.jpg",
+      "hours": 1.9,
       "highlights": [
         {
           "label": "Matches Played",
-          "value": "9"
+          "value": "21"
         },
         {
           "label": "Wins",
-          "value": "4"
+          "value": "13"
         },
         {
           "label": "KOs",
-          "value": "184"
+          "value": "860"
         },
         {
           "label": "Assists",
-          "value": "42"
+          "value": "150"
         },
         {
           "label": "Best KO Streak",
-          "value": "24"
+          "value": "40"
         }
       ],
       "statistics": [
         {
           "label": "Time Played",
-          "total": "1.4 Hrs",
+          "total": "1.9 Hrs",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "Matches Played",
-          "total": "9",
+          "total": "21",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "Wins",
-          "total": "4",
+          "total": "13",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "KOs",
-          "total": "184",
-          "best": "47",
-          "avg": "21.2"
+          "total": "860",
+          "best": "66",
+          "avg": "74.5"
         },
         {
           "label": "Assists",
-          "total": "42",
-          "best": "13",
-          "avg": "4.8"
+          "total": "150",
+          "best": "22",
+          "avg": "13"
         },
         {
           "label": "Final Hits",
-          "total": "95",
-          "best": "20",
-          "avg": "11"
-        },
-        {
-          "label": "KO Streaks in One Life",
-          "total": "2.6",
+          "total": "294",
           "best": "24",
-          "avg": "—"
-        },
-        {
-          "label": "Solo KOs",
-          "total": "24",
-          "best": "4",
-          "avg": "2.8"
-        },
-        {
-          "label": "Critical Strike KOs",
-          "total": "5",
-          "best": "2",
-          "avg": "0.6"
-        },
-        {
-          "label": "Damage Dealt",
-          "total": "89,225",
-          "best": "19,822",
-          "avg": "10,285"
-        },
-        {
-          "label": "Healing Done",
-          "total": "19,738",
-          "best": "5,001",
-          "avg": "2,275"
-        },
-        {
-          "label": "Damage Blocked",
-          "total": "82,664",
-          "best": "14,261",
-          "avg": "9,529"
-        },
-        {
-          "label": "Accuracy",
-          "total": "27%",
-          "best": "33%",
-          "avg": "—"
-        },
-        {
-          "label": "Critical Hit Rate",
-          "total": "13%",
-          "best": "30%",
-          "avg": "—"
-        },
-        {
-          "label": "Scarlet Shroud Damage Reduction",
-          "total": "3,289",
-          "best": "918",
-          "avg": "379.3"
-        },
-        {
-          "label": "Thousand-Fold Slash KOs",
-          "total": "22",
-          "best": "9",
-          "avg": "2.5"
-        }
-      ],
-      "color": "#3a3a3a"
-    },
-    {
-      "name": "Phoenix",
-      "icon": "./assets/images/rivals/phoenix.jpg",
-      "hours": 1.3,
-      "highlights": [
-        {
-          "label": "Matches Played",
-          "value": "11"
-        },
-        {
-          "label": "Wins",
-          "value": "4"
-        },
-        {
-          "label": "KOs",
-          "value": "234"
-        },
-        {
-          "label": "Assists",
-          "value": "10"
-        },
-        {
-          "label": "Best KO Streak",
-          "value": "12"
-        }
-      ],
-      "statistics": [
-        {
-          "label": "Time Played",
-          "total": "1.3 Hrs",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "Matches Played",
-          "total": "11",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "Wins",
-          "total": "4",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "KOs",
-          "total": "234",
-          "best": "32",
-          "avg": "30.1"
-        },
-        {
-          "label": "Assists",
-          "total": "10",
-          "best": "3",
-          "avg": "1.3"
-        },
-        {
-          "label": "Final Hits",
-          "total": "105",
-          "best": "15",
-          "avg": "13.5"
+          "avg": "25.5"
         },
         {
           "label": "KO Streaks in One Life",
-          "total": "4.2",
-          "best": "12",
+          "total": "9",
+          "best": "40",
           "avg": "—"
         },
         {
           "label": "Solo KOs",
-          "total": "18",
-          "best": "3",
-          "avg": "2.3"
-        },
-        {
-          "label": "Critical Strike KOs",
-          "total": "16",
-          "best": "3",
-          "avg": "2.1"
-        },
-        {
-          "label": "Damage Dealt",
-          "total": "153,624",
-          "best": "22,654",
-          "avg": "19,793"
-        },
-        {
-          "label": "Healing Done",
-          "total": "7,166",
-          "best": "979",
-          "avg": "923"
-        },
-        {
-          "label": "Damage Blocked",
-          "total": "51,949",
-          "best": "7,442",
-          "avg": "6,693"
-        },
-        {
-          "label": "Accuracy",
-          "total": "48%",
-          "best": "54%",
-          "avg": "—"
-        },
-        {
-          "label": "Critical Hit Rate",
-          "total": "19%",
-          "best": "33%",
-          "avg": "—"
-        },
-        {
-          "label": "Spark Explosions",
-          "total": "585",
-          "best": "94",
-          "avg": "75.4"
-        }
-      ],
-      "color": "#ff4d00"
-    },
-    {
-      "name": "Iron Man",
-      "icon": "./assets/images/rivals/iron-man.jpg",
-      "hours": 1.1,
-      "highlights": [
-        {
-          "label": "Matches Played",
-          "value": "8"
-        },
-        {
-          "label": "Wins",
-          "value": "5"
-        },
-        {
-          "label": "KOs",
-          "value": "166"
-        },
-        {
-          "label": "Assists",
-          "value": "1"
-        },
-        {
-          "label": "Best KO Streak",
-          "value": "14"
-        }
-      ],
-      "statistics": [
-        {
-          "label": "Time Played",
-          "total": "1.1 Hrs",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "Matches Played",
-          "total": "8",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "Wins",
-          "total": "5",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "KOs",
-          "total": "166",
-          "best": "37",
-          "avg": "25.9"
-        },
-        {
-          "label": "Assists",
-          "total": "1",
-          "best": "1",
-          "avg": "0.2"
-        },
-        {
-          "label": "Final Hits",
-          "total": "96",
-          "best": "20",
-          "avg": "15"
-        },
-        {
-          "label": "KO Streaks in One Life",
-          "total": "3.1",
-          "best": "14",
-          "avg": "—"
-        },
-        {
-          "label": "Solo KOs",
-          "total": "39",
-          "best": "10",
-          "avg": "6.1"
+          "total": "49",
+          "best": "7",
+          "avg": "4.2"
         },
         {
           "label": "Critical Strike KOs",
@@ -2790,49 +3217,43 @@
           "avg": "0"
         },
         {
-          "label": "Damage Dealt",
-          "total": "76,976",
-          "best": "14,590",
-          "avg": "12,005"
+          "label": "Damage",
+          "total": "311,051",
+          "best": "30,091",
+          "avg": "26,951"
         },
         {
-          "label": "Healing Done",
-          "total": "0",
-          "best": "0",
-          "avg": "0"
+          "label": "Healing",
+          "total": "1,630",
+          "best": "471",
+          "avg": "141"
         },
         {
           "label": "Damage Blocked",
-          "total": "31,377",
-          "best": "5,572",
-          "avg": "4,893"
+          "total": "129,235",
+          "best": "13,899",
+          "avg": "11,197"
         },
         {
           "label": "Accuracy",
-          "total": "53%",
-          "best": "64%",
+          "total": "65%",
+          "best": "86%",
           "avg": "—"
         },
         {
-          "label": "Micro-Missile Barrage KOs",
-          "total": "1",
-          "best": "1",
-          "avg": "0.2"
+          "label": "Chthonian Burst Accuracy",
+          "total": "65%",
+          "best": "86%",
+          "avg": "—"
         },
         {
-          "label": "Unibeam KOs",
-          "total": "60",
-          "best": "15",
-          "avg": "9.4"
-        },
-        {
-          "label": "Invincible Pulse Cannon KOs",
-          "total": "23",
-          "best": "10",
-          "avg": "3.6"
+          "label": "Reality Erasure KOs",
+          "total": "144",
+          "best": "16",
+          "avg": "12.5"
         }
       ],
-      "color": "#b8302a"
+      "color": "#c0143c"
     },
     {
       "name": "Hela",
@@ -2883,7 +3304,7 @@
           "label": "KOs",
           "total": "157",
           "best": "28",
-          "avg": "24.5"
+          "avg": "24"
         },
         {
           "label": "Assists",
@@ -2895,11 +3316,11 @@
           "label": "Final Hits",
           "total": "103",
           "best": "19",
-          "avg": "16.1"
+          "avg": "15.7"
         },
         {
           "label": "KO Streaks in One Life",
-          "total": "3.6",
+          "total": "3.4",
           "best": "19",
           "avg": "—"
         },
@@ -2907,31 +3328,31 @@
           "label": "Solo KOs",
           "total": "30",
           "best": "10",
-          "avg": "4.7"
+          "avg": "4.6"
         },
         {
           "label": "Critical Strike KOs",
           "total": "23",
           "best": "5",
-          "avg": "3.6"
+          "avg": "3.5"
         },
         {
-          "label": "Damage Dealt",
-          "total": "92,550",
+          "label": "Damage",
+          "total": "93,070",
           "best": "15,081",
-          "avg": "14,460"
+          "avg": "14,226"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "0",
           "best": "0",
           "avg": "0"
         },
         {
           "label": "Damage Blocked",
-          "total": "32,570",
+          "total": "33,140",
           "best": "6,421",
-          "avg": "5,089"
+          "avg": "5,065"
         },
         {
           "label": "Accuracy",
@@ -2967,7 +3388,7 @@
       "highlights": [
         {
           "label": "Matches Played",
-          "value": "8"
+          "value": "9"
         },
         {
           "label": "Wins",
@@ -2975,11 +3396,11 @@
         },
         {
           "label": "KOs",
-          "value": "54"
+          "value": "58"
         },
         {
           "label": "Assists",
-          "value": "115"
+          "value": "139"
         },
         {
           "label": "Best KO Streak",
@@ -2995,7 +3416,7 @@
         },
         {
           "label": "Matches Played",
-          "total": "8",
+          "total": "9",
           "best": "—",
           "avg": "—"
         },
@@ -3007,21 +3428,21 @@
         },
         {
           "label": "KOs",
-          "total": "54",
+          "total": "58",
           "best": "12",
-          "avg": "8.3"
+          "avg": "8.5"
         },
         {
           "label": "Assists",
-          "total": "115",
+          "total": "139",
           "best": "36",
-          "avg": "17.7"
+          "avg": "20.3"
         },
         {
           "label": "Final Hits",
-          "total": "18",
+          "total": "20",
           "best": "4",
-          "avg": "2.8"
+          "avg": "2.9"
         },
         {
           "label": "KO Streaks in One Life",
@@ -3033,35 +3454,35 @@
           "label": "Solo KOs",
           "total": "1",
           "best": "1",
-          "avg": "0.2"
+          "avg": "0.1"
         },
         {
           "label": "Critical Strike KOs",
           "total": "5",
           "best": "2",
-          "avg": "0.8"
+          "avg": "0.7"
         },
         {
-          "label": "Damage Dealt",
-          "total": "31,772",
+          "label": "Damage",
+          "total": "34,386",
           "best": "7,467",
-          "avg": "4,890"
+          "avg": "5,032"
         },
         {
-          "label": "Healing Done",
-          "total": "105,940",
+          "label": "Healing",
+          "total": "117,398",
           "best": "23,587",
-          "avg": "16,305"
+          "avg": "17,181"
         },
         {
           "label": "Damage Blocked",
-          "total": "48,429",
+          "total": "52,726",
           "best": "8,711",
-          "avg": "7,453"
+          "avg": "7,716"
         },
         {
           "label": "Accuracy",
-          "total": "41%",
+          "total": "42%",
           "best": "54%",
           "avg": "—"
         },
@@ -3073,15 +3494,15 @@
         },
         {
           "label": "Enemies Sedated",
-          "total": "28",
+          "total": "30",
           "best": "9",
-          "avg": "4.3"
+          "avg": "4.4"
         },
         {
           "label": "Allied Inspiration Assists",
           "total": "54",
           "best": "18",
-          "avg": "8.3"
+          "avg": "7.9"
         }
       ],
       "color": "#7cb342"
@@ -3089,7 +3510,7 @@
     {
       "name": "Psylocke",
       "icon": "./assets/images/rivals/psylocke.jpg",
-      "hours": 1.0,
+      "hours": 1.1,
       "highlights": [
         {
           "label": "Matches Played",
@@ -3101,7 +3522,7 @@
         },
         {
           "label": "KOs",
-          "value": "110"
+          "value": "139"
         },
         {
           "label": "Assists",
@@ -3109,13 +3530,13 @@
         },
         {
           "label": "Best KO Streak",
-          "value": "9"
+          "value": "11"
         }
       ],
       "statistics": [
         {
           "label": "Time Played",
-          "total": "1 Hrs",
+          "total": "1.1 Hrs",
           "best": "—",
           "avg": "—"
         },
@@ -3133,9 +3554,9 @@
         },
         {
           "label": "KOs",
-          "total": "110",
+          "total": "139",
           "best": "37",
-          "avg": "17.9"
+          "avg": "21.3"
         },
         {
           "label": "Assists",
@@ -3145,45 +3566,45 @@
         },
         {
           "label": "Final Hits",
-          "total": "85",
+          "total": "93",
           "best": "30",
-          "avg": "13.8"
+          "avg": "14.3"
         },
         {
           "label": "KO Streaks in One Life",
-          "total": "2.2",
-          "best": "9",
+          "total": "2.5",
+          "best": "11",
           "avg": "—"
         },
         {
           "label": "Solo KOs",
           "total": "36",
           "best": "14",
-          "avg": "5.8"
+          "avg": "5.5"
         },
         {
           "label": "Critical Strike KOs",
-          "total": "6",
+          "total": "7",
           "best": "2",
-          "avg": "1"
+          "avg": "1.1"
         },
         {
-          "label": "Damage Dealt",
-          "total": "59,229",
+          "label": "Damage",
+          "total": "66,550",
           "best": "11,726",
-          "avg": "9,612"
+          "avg": "10,215"
         },
         {
-          "label": "Healing Done",
-          "total": "0",
-          "best": "0",
-          "avg": "0"
+          "label": "Healing",
+          "total": "45",
+          "best": "45",
+          "avg": "6"
         },
         {
           "label": "Damage Blocked",
-          "total": "31,508",
+          "total": "36,047",
           "best": "5,831",
-          "avg": "5,113"
+          "avg": "5,533"
         },
         {
           "label": "Accuracy",
@@ -3201,13 +3622,13 @@
           "label": "Wing Shurikens Average Hits",
           "total": "4.2",
           "best": "5.7",
-          "avg": "0.7"
+          "avg": "0.6"
         },
         {
           "label": "Dance of the Butterfly KOs",
-          "total": "19",
+          "total": "25",
           "best": "6",
-          "avg": "3.1"
+          "avg": "3.8"
         }
       ],
       "color": "#b23fc4"
@@ -3294,13 +3715,13 @@
           "avg": "0"
         },
         {
-          "label": "Damage Dealt",
+          "label": "Damage",
           "total": "81,145",
           "best": "18,947",
           "avg": "13,063"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "7,624",
           "best": "2,173",
           "avg": "1,227"
@@ -3420,13 +3841,13 @@
           "avg": "1.1"
         },
         {
-          "label": "Damage Dealt",
+          "label": "Damage",
           "total": "92,929",
           "best": "29,301",
           "avg": "16,763"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "0",
           "best": "0",
           "avg": "0"
@@ -3465,13 +3886,139 @@
       "color": "#1a7a5e"
     },
     {
-      "name": "Scarlet Witch",
-      "icon": "./assets/images/rivals/scarlet-witch.jpg",
-      "hours": 0.9,
+      "name": "Hawkeye",
+      "icon": "./assets/images/rivals/hawkeye.jpg",
+      "hours": 0.8,
       "highlights": [
         {
           "label": "Matches Played",
-          "value": "6"
+          "value": "7"
+        },
+        {
+          "label": "Wins",
+          "value": "3"
+        },
+        {
+          "label": "KOs",
+          "value": "88"
+        },
+        {
+          "label": "Assists",
+          "value": "15"
+        },
+        {
+          "label": "Best KO Streak",
+          "value": "9"
+        }
+      ],
+      "statistics": [
+        {
+          "label": "Time Played",
+          "total": "49 Mins",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Matches Played",
+          "total": "7",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Wins",
+          "total": "3",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "KOs",
+          "total": "88",
+          "best": "20",
+          "avg": "17.7"
+        },
+        {
+          "label": "Assists",
+          "total": "15",
+          "best": "4",
+          "avg": "3"
+        },
+        {
+          "label": "Final Hits",
+          "total": "56",
+          "best": "9",
+          "avg": "11.2"
+        },
+        {
+          "label": "KO Streaks in One Life",
+          "total": "1.7",
+          "best": "9",
+          "avg": "—"
+        },
+        {
+          "label": "Solo KOs",
+          "total": "17",
+          "best": "3",
+          "avg": "3.4"
+        },
+        {
+          "label": "Critical Strike KOs",
+          "total": "17",
+          "best": "4",
+          "avg": "3.4"
+        },
+        {
+          "label": "Damage",
+          "total": "57,231",
+          "best": "19,349",
+          "avg": "11,489"
+        },
+        {
+          "label": "Healing",
+          "total": "201",
+          "best": "180",
+          "avg": "40"
+        },
+        {
+          "label": "Damage Blocked",
+          "total": "31,546",
+          "best": "6,498",
+          "avg": "6,333"
+        },
+        {
+          "label": "Accuracy",
+          "total": "44%",
+          "best": "60%",
+          "avg": "—"
+        },
+        {
+          "label": "Critical Hit Rate",
+          "total": "13%",
+          "best": "33%",
+          "avg": "—"
+        },
+        {
+          "label": "Crescent Slash Launch-Ups",
+          "total": "11",
+          "best": "10",
+          "avg": "2.2"
+        },
+        {
+          "label": "Hunter's Sight KOs",
+          "total": "20",
+          "best": "6",
+          "avg": "4"
+        }
+      ],
+      "color": "#5b3a8e"
+    },
+    {
+      "name": "Adam Warlock",
+      "icon": "./assets/images/rivals/adam-warlock.jpg",
+      "hours": 0.7,
+      "highlights": [
+        {
+          "label": "Matches Played",
+          "value": "4"
         },
         {
           "label": "Wins",
@@ -3479,27 +4026,27 @@
         },
         {
           "label": "KOs",
-          "value": "133"
+          "value": "55"
         },
         {
           "label": "Assists",
-          "value": "17"
+          "value": "113"
         },
         {
           "label": "Best KO Streak",
-          "value": "16"
+          "value": "7"
         }
       ],
       "statistics": [
         {
           "label": "Time Played",
-          "total": "54 Mins",
+          "total": "39 Mins",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "Matches Played",
-          "total": "6",
+          "total": "4",
           "best": "—",
           "avg": "—"
         },
@@ -3511,78 +4058,84 @@
         },
         {
           "label": "KOs",
-          "total": "133",
-          "best": "27",
-          "avg": "24.5"
+          "total": "55",
+          "best": "12",
+          "avg": "14.1"
         },
         {
           "label": "Assists",
-          "total": "17",
-          "best": "7",
-          "avg": "3.1"
+          "total": "113",
+          "best": "46",
+          "avg": "29"
         },
         {
           "label": "Final Hits",
-          "total": "74",
-          "best": "16",
-          "avg": "13.6"
+          "total": "22",
+          "best": "5",
+          "avg": "5.6"
         },
         {
           "label": "KO Streaks in One Life",
-          "total": "4.8",
-          "best": "16",
+          "total": "1.7",
+          "best": "7",
           "avg": "—"
         },
         {
           "label": "Solo KOs",
-          "total": "24",
-          "best": "7",
-          "avg": "4.4"
+          "total": "4",
+          "best": "1",
+          "avg": "1"
         },
         {
           "label": "Critical Strike KOs",
-          "total": "0",
-          "best": "0",
-          "avg": "0"
+          "total": "5",
+          "best": "2",
+          "avg": "1.3"
         },
         {
-          "label": "Damage Dealt",
-          "total": "64,989",
-          "best": "12,673",
-          "avg": "11,959"
+          "label": "Damage",
+          "total": "29,785",
+          "best": "9,776",
+          "avg": "7,634"
         },
         {
-          "label": "Healing Done",
-          "total": "0",
-          "best": "0",
-          "avg": "0"
+          "label": "Healing",
+          "total": "51,471",
+          "best": "18,331",
+          "avg": "13,192"
         },
         {
           "label": "Damage Blocked",
-          "total": "31,909",
-          "best": "7,409",
-          "avg": "5,871"
+          "total": "26,260",
+          "best": "6,714",
+          "avg": "6,730"
         },
         {
           "label": "Accuracy",
-          "total": "58%",
-          "best": "65%",
+          "total": "39%",
+          "best": "50%",
           "avg": "—"
         },
         {
-          "label": "Chthonian Burst Accuracy",
-          "total": "58%",
-          "best": "73%",
+          "label": "Critical Hit Rate",
+          "total": "15%",
+          "best": "50%",
           "avg": "—"
         },
         {
-          "label": "Reality Erasure KOs",
-          "total": "10",
-          "best": "4",
-          "avg": "1.8"
+          "label": "Cosmic Cluster KOs",
+          "total": "27",
+          "best": "12",
+          "avg": "6.9"
+        },
+        {
+          "label": "Karmic Revival Revivals",
+          "total": "28",
+          "best": "11",
+          "avg": "7.2"
         }
       ],
-      "color": "#c0143c"
+      "color": "#f0a500"
     },
     {
       "name": "Peni Parker",
@@ -3666,13 +4219,13 @@
           "avg": "0.3"
         },
         {
-          "label": "Damage Dealt",
+          "label": "Damage",
           "total": "34,893",
           "best": "7,397",
           "avg": "10,116"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "9,048",
           "best": "2,962",
           "avg": "2,623"
@@ -3786,13 +4339,13 @@
           "avg": "0"
         },
         {
-          "label": "Damage Dealt",
+          "label": "Damage",
           "total": "33,783",
           "best": "10,957",
           "avg": "9,635"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "0",
           "best": "0",
           "avg": "0"
@@ -3845,7 +4398,7 @@
         },
         {
           "label": "KOs",
-          "value": "46"
+          "value": "48"
         },
         {
           "label": "Assists",
@@ -3859,7 +4412,7 @@
       "statistics": [
         {
           "label": "Time Played",
-          "total": "35 Mins",
+          "total": "37 Mins",
           "best": "—",
           "avg": "—"
         },
@@ -3877,21 +4430,21 @@
         },
         {
           "label": "KOs",
-          "total": "46",
+          "total": "48",
           "best": "14",
-          "avg": "13.1"
+          "avg": "12.9"
         },
         {
           "label": "Assists",
           "total": "28",
           "best": "11",
-          "avg": "8"
+          "avg": "7.5"
         },
         {
           "label": "Final Hits",
-          "total": "26",
+          "total": "28",
           "best": "9",
-          "avg": "7.4"
+          "avg": "7.5"
         },
         {
           "label": "KO Streaks in One Life",
@@ -3903,35 +4456,35 @@
           "label": "Solo KOs",
           "total": "7",
           "best": "3",
-          "avg": "2"
+          "avg": "1.9"
         },
         {
           "label": "Critical Strike KOs",
-          "total": "2",
+          "total": "3",
           "best": "1",
-          "avg": "0.6"
+          "avg": "0.8"
         },
         {
-          "label": "Damage Dealt",
-          "total": "34,883",
+          "label": "Damage",
+          "total": "37,007",
           "best": "10,323",
-          "avg": "9,909"
+          "avg": "9,944"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "0",
           "best": "0",
           "avg": "0"
         },
         {
           "label": "Damage Blocked",
-          "total": "27,164",
+          "total": "29,827",
           "best": "7,250",
-          "avg": "7,717"
+          "avg": "8,014"
         },
         {
           "label": "Accuracy",
-          "total": "55%",
+          "total": "54%",
           "best": "67%",
           "avg": "—"
         },
@@ -3943,7 +4496,7 @@
         },
         {
           "label": "Bionic Hook Grabs",
-          "total": "35",
+          "total": "37",
           "best": "11",
           "avg": "9.9"
         },
@@ -3955,252 +4508,6 @@
         }
       ],
       "color": "#4a5a6a"
-    },
-    {
-      "name": "Adam Warlock",
-      "icon": "./assets/images/rivals/adam-warlock.jpg",
-      "hours": 0.6,
-      "highlights": [
-        {
-          "label": "Matches Played",
-          "value": "4"
-        },
-        {
-          "label": "Wins",
-          "value": "3"
-        },
-        {
-          "label": "KOs",
-          "value": "46"
-        },
-        {
-          "label": "Assists",
-          "value": "96"
-        },
-        {
-          "label": "Best KO Streak",
-          "value": "7"
-        }
-      ],
-      "statistics": [
-        {
-          "label": "Time Played",
-          "total": "36 Mins",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "Matches Played",
-          "total": "4",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "Wins",
-          "total": "3",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "KOs",
-          "total": "46",
-          "best": "12",
-          "avg": "12.5"
-        },
-        {
-          "label": "Assists",
-          "total": "96",
-          "best": "46",
-          "avg": "26"
-        },
-        {
-          "label": "Final Hits",
-          "total": "19",
-          "best": "5",
-          "avg": "5.2"
-        },
-        {
-          "label": "KO Streaks in One Life",
-          "total": "1.6",
-          "best": "7",
-          "avg": "—"
-        },
-        {
-          "label": "Solo KOs",
-          "total": "3",
-          "best": "1",
-          "avg": "0.8"
-        },
-        {
-          "label": "Critical Strike KOs",
-          "total": "5",
-          "best": "2",
-          "avg": "1.4"
-        },
-        {
-          "label": "Damage Dealt",
-          "total": "28,357",
-          "best": "9,776",
-          "avg": "7,690"
-        },
-        {
-          "label": "Healing Done",
-          "total": "48,528",
-          "best": "18,331",
-          "avg": "13,159"
-        },
-        {
-          "label": "Damage Blocked",
-          "total": "23,026",
-          "best": "6,714",
-          "avg": "6,244"
-        },
-        {
-          "label": "Accuracy",
-          "total": "39%",
-          "best": "50%",
-          "avg": "—"
-        },
-        {
-          "label": "Critical Hit Rate",
-          "total": "14%",
-          "best": "50%",
-          "avg": "—"
-        },
-        {
-          "label": "Cosmic Cluster KOs",
-          "total": "20",
-          "best": "12",
-          "avg": "5.4"
-        },
-        {
-          "label": "Karmic Revival Revivals",
-          "total": "28",
-          "best": "11",
-          "avg": "7.6"
-        }
-      ],
-      "color": "#f0a500"
-    },
-    {
-      "name": "Squirrel Girl",
-      "icon": "./assets/images/rivals/squirrel-girl.jpg",
-      "hours": 0.6,
-      "highlights": [
-        {
-          "label": "Matches Played",
-          "value": "4"
-        },
-        {
-          "label": "Wins",
-          "value": "2"
-        },
-        {
-          "label": "KOs",
-          "value": "81"
-        },
-        {
-          "label": "Assists",
-          "value": "9"
-        },
-        {
-          "label": "Best KO Streak",
-          "value": "11"
-        }
-      ],
-      "statistics": [
-        {
-          "label": "Time Played",
-          "total": "38 Mins",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "Matches Played",
-          "total": "4",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "Wins",
-          "total": "2",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "KOs",
-          "total": "81",
-          "best": "24",
-          "avg": "21.1"
-        },
-        {
-          "label": "Assists",
-          "total": "9",
-          "best": "4",
-          "avg": "2.3"
-        },
-        {
-          "label": "Final Hits",
-          "total": "47",
-          "best": "15",
-          "avg": "12.3"
-        },
-        {
-          "label": "KO Streaks in One Life",
-          "total": "2.5",
-          "best": "11",
-          "avg": "—"
-        },
-        {
-          "label": "Solo KOs",
-          "total": "14",
-          "best": "5",
-          "avg": "3.6"
-        },
-        {
-          "label": "Critical Strike KOs",
-          "total": "0",
-          "best": "0",
-          "avg": "0"
-        },
-        {
-          "label": "Damage Dealt",
-          "total": "60,009",
-          "best": "17,355",
-          "avg": "15,644"
-        },
-        {
-          "label": "Healing Done",
-          "total": "0",
-          "best": "0",
-          "avg": "0"
-        },
-        {
-          "label": "Damage Blocked",
-          "total": "23,463",
-          "best": "6,068",
-          "avg": "6,117"
-        },
-        {
-          "label": "Accuracy",
-          "total": "36%",
-          "best": "53%",
-          "avg": "—"
-        },
-        {
-          "label": "Squirrel Blockade Accuracy",
-          "total": "44%",
-          "best": "100%",
-          "avg": "—"
-        },
-        {
-          "label": "Unbeatable Squirrel Tsunami KOs",
-          "total": "17",
-          "best": "7",
-          "avg": "4.4"
-        }
-      ],
-      "color": "#8b5a2b"
     },
     {
       "name": "Invisible Woman",
@@ -4284,13 +4591,13 @@
           "avg": "0"
         },
         {
-          "label": "Damage Dealt",
+          "label": "Damage",
           "total": "27,783",
           "best": "7,622",
           "avg": "7,395"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "78,672",
           "best": "31,574",
           "avg": "20,939"
@@ -4404,13 +4711,13 @@
           "avg": "0.7"
         },
         {
-          "label": "Damage Dealt",
+          "label": "Damage",
           "total": "27,005",
           "best": "10,620",
           "avg": "9,532"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "0",
           "best": "0",
           "avg": "0"
@@ -4530,13 +4837,13 @@
           "avg": "0"
         },
         {
-          "label": "Damage Dealt",
+          "label": "Damage",
           "total": "15,490",
           "best": "5,962",
           "avg": "5,209"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "50,732",
           "best": "18,255",
           "avg": "17,060"
@@ -4577,11 +4884,11 @@
     {
       "name": "Black Widow",
       "icon": "./assets/images/rivals/black-widow.jpg",
-      "hours": 0.4,
+      "hours": 0.5,
       "highlights": [
         {
           "label": "Matches Played",
-          "value": "2"
+          "value": "4"
         },
         {
           "label": "Wins",
@@ -4589,11 +4896,11 @@
         },
         {
           "label": "KOs",
-          "value": "34"
+          "value": "36"
         },
         {
           "label": "Assists",
-          "value": "2"
+          "value": "4"
         },
         {
           "label": "Best KO Streak",
@@ -4603,13 +4910,13 @@
       "statistics": [
         {
           "label": "Time Played",
-          "total": "24 Mins",
+          "total": "32 Mins",
           "best": "—",
           "avg": "—"
         },
         {
           "label": "Matches Played",
-          "total": "2",
+          "total": "4",
           "best": "—",
           "avg": "—"
         },
@@ -4621,25 +4928,25 @@
         },
         {
           "label": "KOs",
-          "total": "34",
+          "total": "36",
           "best": "17",
-          "avg": "14.1"
+          "avg": "11.1"
         },
         {
           "label": "Assists",
-          "total": "2",
+          "total": "4",
           "best": "1",
-          "avg": "0.8"
+          "avg": "1.2"
         },
         {
           "label": "Final Hits",
-          "total": "23",
+          "total": "25",
           "best": "12",
-          "avg": "9.6"
+          "avg": "7.7"
         },
         {
           "label": "KO Streaks in One Life",
-          "total": "1.7",
+          "total": "1.2",
           "best": "9",
           "avg": "—"
         },
@@ -4647,49 +4954,55 @@
           "label": "Solo KOs",
           "total": "11",
           "best": "6",
-          "avg": "4.6"
+          "avg": "3.4"
         },
         {
           "label": "Critical Strike KOs",
           "total": "7",
           "best": "6",
-          "avg": "2.9"
+          "avg": "2.1"
         },
         {
-          "label": "Damage Dealt",
-          "total": "21,610",
-          "best": "7,728",
-          "avg": "8,983"
+          "label": "Damage",
+          "total": "32,490",
+          "best": "9,088",
+          "avg": "9,973"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "0",
           "best": "0",
           "avg": "0"
         },
         {
           "label": "Damage Blocked",
-          "total": "10,581",
+          "total": "17,636",
           "best": "4,569",
-          "avg": "4,398"
+          "avg": "5,413"
         },
         {
           "label": "Accuracy",
-          "total": "52%",
+          "total": "46%",
           "best": "59%",
           "avg": "—"
         },
         {
-          "label": "ADS Critical Hit Rate",
+          "label": "Straight Shooter Critical Rate",
           "total": "16%",
           "best": "25%",
           "avg": "—"
         },
         {
-          "label": "Electro-Plasma Explosion Accuracy",
-          "total": "16",
-          "best": "7",
-          "avg": "6.7"
+          "label": "Plasma Cannon Accuracy",
+          "total": "41",
+          "best": "19",
+          "avg": "12.6"
+        },
+        {
+          "label": "Red Room Rifle Critical Hit Rate",
+          "total": "0%",
+          "best": "0%",
+          "avg": "—"
         }
       ],
       "color": "#8c1c1c"
@@ -4776,13 +5089,13 @@
           "avg": "0.4"
         },
         {
-          "label": "Damage Dealt",
+          "label": "Damage",
           "total": "37,788",
           "best": "18,203",
           "avg": "16,712"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "2,778",
           "best": "1,276",
           "avg": "1,228"
@@ -4821,132 +5134,6 @@
       "color": "#a1272d"
     },
     {
-      "name": "Hawkeye",
-      "icon": "./assets/images/rivals/hawkeye.jpg",
-      "hours": 0.3,
-      "highlights": [
-        {
-          "label": "Matches Played",
-          "value": "3"
-        },
-        {
-          "label": "Wins",
-          "value": "2"
-        },
-        {
-          "label": "KOs",
-          "value": "36"
-        },
-        {
-          "label": "Assists",
-          "value": "7"
-        },
-        {
-          "label": "Best KO Streak",
-          "value": "4"
-        }
-      ],
-      "statistics": [
-        {
-          "label": "Time Played",
-          "total": "19 Mins",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "Matches Played",
-          "total": "3",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "Wins",
-          "total": "2",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "KOs",
-          "total": "36",
-          "best": "13",
-          "avg": "18.6"
-        },
-        {
-          "label": "Assists",
-          "total": "7",
-          "best": "4",
-          "avg": "3.6"
-        },
-        {
-          "label": "Final Hits",
-          "total": "26",
-          "best": "8",
-          "avg": "13.4"
-        },
-        {
-          "label": "KO Streaks in One Life",
-          "total": "1.6",
-          "best": "4",
-          "avg": "—"
-        },
-        {
-          "label": "Solo KOs",
-          "total": "9",
-          "best": "3",
-          "avg": "4.7"
-        },
-        {
-          "label": "Critical Strike KOs",
-          "total": "9",
-          "best": "4",
-          "avg": "4.7"
-        },
-        {
-          "label": "Damage Dealt",
-          "total": "14,954",
-          "best": "4,632",
-          "avg": "7,735"
-        },
-        {
-          "label": "Healing Done",
-          "total": "201",
-          "best": "180",
-          "avg": "104"
-        },
-        {
-          "label": "Damage Blocked",
-          "total": "12,259",
-          "best": "4,625",
-          "avg": "6,341"
-        },
-        {
-          "label": "Accuracy",
-          "total": "40%",
-          "best": "47%",
-          "avg": "—"
-        },
-        {
-          "label": "Critical Hit Rate",
-          "total": "10%",
-          "best": "16%",
-          "avg": "—"
-        },
-        {
-          "label": "Crescent Slash Launch-Ups",
-          "total": "1",
-          "best": "1",
-          "avg": "0.5"
-        },
-        {
-          "label": "Hunter's Sight KOs",
-          "total": "8",
-          "best": "6",
-          "avg": "4.1"
-        }
-      ],
-      "color": "#5b3a8e"
-    },
-    {
       "name": "Spider-Man",
       "icon": "./assets/images/rivals/spider-man.jpg",
       "hours": 0.3,
@@ -4975,7 +5162,7 @@
       "statistics": [
         {
           "label": "Time Played",
-          "total": "16 Mins",
+          "total": "17 Mins",
           "best": "—",
           "avg": "—"
         },
@@ -4995,7 +5182,7 @@
           "label": "KOs",
           "total": "12",
           "best": "9",
-          "avg": "7.4"
+          "avg": "6.9"
         },
         {
           "label": "Assists",
@@ -5007,11 +5194,11 @@
           "label": "Final Hits",
           "total": "10",
           "best": "7",
-          "avg": "6.1"
+          "avg": "5.8"
         },
         {
           "label": "KO Streaks in One Life",
-          "total": "0.6",
+          "total": "0.5",
           "best": "4",
           "avg": "—"
         },
@@ -5019,7 +5206,7 @@
           "label": "Solo KOs",
           "total": "4",
           "best": "4",
-          "avg": "2.5"
+          "avg": "2.3"
         },
         {
           "label": "Critical Strike KOs",
@@ -5028,26 +5215,26 @@
           "avg": "0"
         },
         {
-          "label": "Damage Dealt",
-          "total": "9,161",
+          "label": "Damage",
+          "total": "9,331",
           "best": "6,699",
-          "avg": "5,618"
+          "avg": "5,401"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "0",
           "best": "0",
           "avg": "0"
         },
         {
           "label": "Damage Blocked",
-          "total": "9,353",
+          "total": "9,826",
           "best": "4,518",
-          "avg": "5,736"
+          "avg": "5,687"
         },
         {
           "label": "Accuracy",
-          "total": "34%",
+          "total": "33%",
           "best": "46%",
           "avg": "—"
         },
@@ -5061,7 +5248,7 @@
           "label": "Spectacular Spin KOs",
           "total": "6",
           "best": "4",
-          "avg": "3.7"
+          "avg": "3.5"
         }
       ],
       "color": "#d62828"
@@ -5148,13 +5335,13 @@
           "avg": "1.5"
         },
         {
-          "label": "Damage Dealt",
+          "label": "Damage",
           "total": "28,579",
           "best": "9,450",
           "avg": "13,819"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "4,031",
           "best": "1,849",
           "avg": "1,949"
@@ -5394,13 +5581,13 @@
           "avg": "0"
         },
         {
-          "label": "Damage Dealt",
+          "label": "Damage",
           "total": "6,456",
           "best": "5,689",
           "avg": "5,304"
         },
         {
-          "label": "Healing Done",
+          "label": "Healing",
           "total": "15,440",
           "best": "13,111",
           "avg": "12,686"
@@ -5437,6 +5624,132 @@
         }
       ],
       "color": "#5ec8e6"
+    },
+    {
+      "name": "Storm",
+      "icon": "./assets/images/rivals/storm.jpg",
+      "hours": 0.2,
+      "highlights": [
+        {
+          "label": "Matches Played",
+          "value": "1"
+        },
+        {
+          "label": "Wins",
+          "value": "1"
+        },
+        {
+          "label": "KOs",
+          "value": "16"
+        },
+        {
+          "label": "Assists",
+          "value": "24"
+        },
+        {
+          "label": "Best KO Streak",
+          "value": "6"
+        }
+      ],
+      "statistics": [
+        {
+          "label": "Time Played",
+          "total": "11 Mins",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Matches Played",
+          "total": "1",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "Wins",
+          "total": "1",
+          "best": "—",
+          "avg": "—"
+        },
+        {
+          "label": "KOs",
+          "total": "16",
+          "best": "16",
+          "avg": "14.1"
+        },
+        {
+          "label": "Assists",
+          "total": "24",
+          "best": "22",
+          "avg": "21.1"
+        },
+        {
+          "label": "Final Hits",
+          "total": "5",
+          "best": "5",
+          "avg": "4.4"
+        },
+        {
+          "label": "KO Streaks in One Life",
+          "total": "1.8",
+          "best": "6",
+          "avg": "—"
+        },
+        {
+          "label": "Solo KOs",
+          "total": "0",
+          "best": "0",
+          "avg": "0"
+        },
+        {
+          "label": "Critical Strike KOs",
+          "total": "0",
+          "best": "0",
+          "avg": "0"
+        },
+        {
+          "label": "Damage",
+          "total": "13,967",
+          "best": "11,073",
+          "avg": "12,307"
+        },
+        {
+          "label": "Healing",
+          "total": "0",
+          "best": "0",
+          "avg": "0"
+        },
+        {
+          "label": "Damage Blocked",
+          "total": "5,914",
+          "best": "3,818",
+          "avg": "5,211"
+        },
+        {
+          "label": "Accuracy",
+          "total": "67%",
+          "best": "81%",
+          "avg": "—"
+        },
+        {
+          "label": "Bolt Rush KOs",
+          "total": "2",
+          "best": "2",
+          "avg": "1.8"
+        },
+        {
+          "label": "Lightning KOs",
+          "total": "3",
+          "best": "3",
+          "avg": "2.6"
+        },
+        {
+          "label": "Omega Hurricane KOs",
+          "total": "0",
+          "best": "0",
+          "avg": "0"
+        }
+      ],
+      "color": "#d9d9e3"
     },
     {
       "name": "White Fox",
@@ -5689,132 +6002,6 @@
         }
       ],
       "color": "#1c2b1c"
-    },
-    {
-      "name": "Storm",
-      "icon": "./assets/images/rivals/storm.jpg",
-      "hours": 0.0,
-      "highlights": [
-        {
-          "label": "Matches Played",
-          "value": "0"
-        },
-        {
-          "label": "Wins",
-          "value": "0"
-        },
-        {
-          "label": "KOs",
-          "value": "0"
-        },
-        {
-          "label": "Assists",
-          "value": "0"
-        },
-        {
-          "label": "Best KO Streak",
-          "value": "0"
-        }
-      ],
-      "statistics": [
-        {
-          "label": "Time Played",
-          "total": "0 Mins",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "Matches Played",
-          "total": "0",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "Wins",
-          "total": "0",
-          "best": "—",
-          "avg": "—"
-        },
-        {
-          "label": "KOs",
-          "total": "0",
-          "best": "0",
-          "avg": "0.0"
-        },
-        {
-          "label": "Assists",
-          "total": "0",
-          "best": "0",
-          "avg": "0.0"
-        },
-        {
-          "label": "Final Hits",
-          "total": "0",
-          "best": "0",
-          "avg": "0.0"
-        },
-        {
-          "label": "KO Streaks in One Life",
-          "total": "0",
-          "best": "0",
-          "avg": "—"
-        },
-        {
-          "label": "Solo KOs",
-          "total": "0",
-          "best": "0",
-          "avg": "0.0"
-        },
-        {
-          "label": "Critical Strike KOs",
-          "total": "0",
-          "best": "0",
-          "avg": "0.0"
-        },
-        {
-          "label": "Damage Dealt",
-          "total": "0",
-          "best": "0",
-          "avg": "0.0"
-        },
-        {
-          "label": "Healing Done",
-          "total": "0",
-          "best": "0",
-          "avg": "0.0"
-        },
-        {
-          "label": "Damage Blocked",
-          "total": "0",
-          "best": "0",
-          "avg": "0.0"
-        },
-        {
-          "label": "Accuracy",
-          "total": "0%",
-          "best": "0%",
-          "avg": "—"
-        },
-        {
-          "label": "Bolt Rush KOs",
-          "total": "0",
-          "best": "0",
-          "avg": "0.0"
-        },
-        {
-          "label": "Lightning KOs",
-          "total": "0",
-          "best": "0",
-          "avg": "0.0"
-        },
-        {
-          "label": "Omega Hurricane KOs",
-          "total": "0",
-          "best": "0",
-          "avg": "0.0"
-        }
-      ],
-      "color": "#d9d9e3"
     },
     {
       "name": "Bruce Banner",
@@ -6685,6 +6872,123 @@
         }
       ],
       "color": "#e8c39e"
+    }
+  ],
+  "proficiency": {
+    "Thor": 21,
+    "Moon Knight": 20,
+    "Rocket Raccoon": 20,
+    "Star-Lord": 20,
+    "Magneto": 21,
+    "Gambit": 21,
+    "Jeff The Land Shark": 20,
+    "Cyclops": 20,
+    "Ultron": 20,
+    "Iron Fist": 7,
+    "Doctor Strange": 7,
+    "Mister Fantastic": 7,
+    "Devil Dinosaur": 13,
+    "Deadpool (Strategist)": 8,
+    "The Punisher": 5,
+    "Captain America": 6,
+    "Emma Frost": 5,
+    "Loki": 5,
+    "Wolverine": 5,
+    "Blade": 13,
+    "Phoenix": 6,
+    "Iron Man": 7,
+    "Hela": 3,
+    "Mantis": 3,
+    "Psylocke": 3,
+    "Rogue": 3,
+    "Namor": 3,
+    "Scarlet Witch": 6,
+    "Peni Parker": 2,
+    "Daredevil": 2,
+    "Winter Soldier": 2,
+    "Adam Warlock": 2,
+    "Squirrel Girl": 10,
+    "Invisible Woman": 2,
+    "Human Torch": 1,
+    "Cloak & Dagger": 2,
+    "Black Widow": 1,
+    "Deadpool (Duelist)": 8,
+    "Hawkeye": 2,
+    "Spider-Man": 1,
+    "Deadpool (Vanguard)": 8,
+    "Groot": 1,
+    "Luna Snow": 1,
+    "White Fox": 1,
+    "Venom": 1,
+    "Storm": 1,
+    "Bruce Banner": 1,
+    "Magik": 1,
+    "Elsa Bloodstone": 1,
+    "The Thing": 1,
+    "Black Panther": 1,
+    "Black Cat": 1,
+    "Angela": 1,
+    "Jubilee": 20,
+    "The Hood": 1,
+    "Gorr": 1
+  },
+  "rankHistory": [
+    {
+      "season": "S0",
+      "peak": 4238,
+      "final": 4204,
+      "wins": 45,
+      "games": null
+    },
+    {
+      "season": "S2",
+      "peak": 3241,
+      "final": 3241,
+      "wins": 6,
+      "games": null
+    },
+    {
+      "season": "S3",
+      "peak": 3836,
+      "final": 3836,
+      "wins": 27,
+      "games": null
+    },
+    {
+      "season": "S4",
+      "peak": 3719,
+      "final": 3719,
+      "wins": 16,
+      "games": null
+    },
+    {
+      "season": "S5",
+      "peak": 4232,
+      "final": 4232,
+      "wins": 30,
+      "games": 44
+    },
+    {
+      "season": "S7",
+      "peak": 4230,
+      "final": 4190,
+      "wins": 15,
+      "games": 26
+    },
+    {
+      "season": "S9",
+      "peak": 3960,
+      "final": 3903,
+      "wins": 9,
+      "games": 21
+    },
+    {
+      "season": "S10",
+      "peak": 3650,
+      "final": 3650,
+      "wins": 0,
+      "games": 0,
+      "current": true
     }
   ]
 }
