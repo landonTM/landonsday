@@ -160,6 +160,18 @@
 .tj-pull { margin: 1rem 0 1.4rem; padding-left: 1rem; border-left: 3px solid var(--accent); font: 700 1.7rem/1.25 var(--hand); color: var(--pen); }
 .tj-sign { margin: 1.2rem 0 0; font: 700 1.5rem var(--hand); color: var(--pen); text-align: right; }
 
+/* folded entries (phones): a contact strip that opens the page */
+.tj-peek, .tj-fold { display: none; }
+.tj-entry.closed .tj-body { display: none; }
+.tj-entry.closed .tj-peek { display: block; }
+.tj-entry.closed { padding-bottom: 1.4rem; }
+.tj-peek { width: 100%; margin: -0.4rem 0 0; padding: 7px 7px 0; border: 0; background: #fff; box-shadow: 0 6px 14px rgba(60, 45, 25, 0.25); transform: rotate(-0.6deg); cursor: pointer; }
+.tj-peek .strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
+.tj-peek img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; filter: saturate(1.05) contrast(1.03) sepia(0.1); }
+.tj-peek .open-label { display: block; padding: 0.35rem 0 0.45rem; font: 700 1.3rem var(--hand); color: var(--pen); }
+.tj-peek:focus-visible, .tj-fold:focus-visible { outline: 3px solid var(--pen); outline-offset: 3px; }
+.tj-fold { margin: 0.6rem auto 0; padding: 0.3rem 1rem; border: 1.5px solid var(--pen); border-radius: 999px; background: none; color: var(--pen); font: 700 1.2rem var(--hand); cursor: pointer; }
+
 /* ---------- lightbox ---------- */
 .tj-lightbox { padding: 12px 12px 0; border: 0; background: #fff; max-width: min(92vw, 1100px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); }
 .tj-lightbox::backdrop { background: rgba(30, 25, 18, 0.85); }
@@ -190,6 +202,8 @@
   .tj-typed { padding: 1.6rem 1.1rem 1.4rem; }
   .tj-text { font-size: 0.98rem; }
   .lb-close { top: 6px; right: 6px; }
+  .tj-fold { display: block; }
+  .tj-entry.closed .tj-place { margin-bottom: 1.1rem; }
 }
 
 @media (prefers-reduced-motion: reduce) { .tj-print { transition: none; } }

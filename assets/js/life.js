@@ -27,12 +27,24 @@
         </figure>`;
     }
 
+    // Folded view: a strip of the first few photos, tapped to open the whole entry.
+    function peek(e) {
+        const photos = e.sections.flatMap(s => s.photos);
+        return `
+            <button class="tj-peek" aria-expanded="false" aria-controls="${esc(e.id)}-body">
+                <span class="strip">${photos.slice(0, 4).map(p => `<img src="${esc(e.folder + p.file)}" alt="" loading="lazy">`).join('')}</span>
+                <span class="open-label">Open · ${photos.length} photos ▾</span>
+            </button>`;
+    }
+
     function trip(e) {
         const stamp = `'${e.date.slice(2, 4)}`;
         let n = 0;
         return `
             <h2 class="tj-title">${title(e.title)}</h2>
             ${e.place ? `<p class="tj-place">${esc(e.place)}</p>` : ''}
+            ${peek(e)}
+            <div class="tj-body" id="${esc(e.id)}-body">
             ${(e.body || []).map(p => `<p class="tj-text">${esc(p)}</p>`).join('')}
             ${e.sections.map(s => `
                 <section class="tj-part ${s.kind === 'food' ? 'food' : ''}">
@@ -40,7 +52,9 @@
                     ${s.heading ? `<h3 class="tj-hand">${esc(s.heading)}</h3>` : ''}
                     <div class="tj-prints">${s.photos.map(p => print(p, e.folder, stamp, n++)).join('')}</div>
                     ${s.note ? `<p class="tj-note">${esc(s.note)}</p>` : ''}
-                </section>`).join('')}`;
+                </section>`).join('')}
+                <button class="tj-fold">Fold this entry ▴</button>
+            </div>`;
     }
 
     function thought(e) {
@@ -80,6 +94,32 @@
             </article>`).join('') + '<p class="tj-empty" id="noneMsg" hidden>Nothing here yet.</p>';
     }
 
+    // On phones every trip but the newest starts folded, so the page isn't one endless scroll.
+    function setOpen(entry, on) {
+        entry.classList.toggle('closed', !on);
+        entry.querySelector('.tj-peek')?.setAttribute('aria-expanded', String(on));
+    }
+
+    function wireFolding() {
+        if (matchMedia('(max-width: 680px)').matches) {
+            document.querySelectorAll('.tj-entry.trip').forEach((el, i) => { if (i > 0) setOpen(el, false); });
+        }
+        document.addEventListener('click', e => {
+            const peekBtn = e.target.closest('.tj-peek');
+            if (peekBtn) { setOpen(peekBtn.closest('.tj-entry'), true); return; }
+            const fold = e.target.closest('.tj-fold');
+            if (fold) {
+                const entry = fold.closest('.tj-entry');
+                setOpen(entry, false);
+                entry.scrollIntoView();
+                return;
+            }
+            const link = e.target.closest('#index a');
+            const target = link && document.getElementById(link.hash.slice(1));
+            if (target) setOpen(target, true);
+        });
+    }
+
     function wireFilter() {
         const btns = document.querySelectorAll('.tj-filter button');
         btns.forEach(b => b.addEventListener('click', () => {
@@ -112,10 +152,10 @@
     fetch('data/posts.json')
         .then(r => { if (!r.ok) throw new Error(); return r.json(); })
         .then(d => {
-            render(d.posts || []); wireFilter(); wireLightbox();
+            render(d.posts || []); wireFilter(); wireLightbox(); wireFolding();
             // Entries render after load, so jump to a linked one (life#id) once it exists.
             const target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
-            if (target) target.scrollIntoView();
+            if (target) { setOpen(target, true); target.scrollIntoView(); }
         })
         .catch(() => { $('#entries').innerHTML = '<p class="tj-empty">The journal couldn’t load. Try again in a moment.</p>'; });
 })();
