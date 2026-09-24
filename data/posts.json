@@ -411,10 +411,10 @@
     {
       "id": "cruise-2023",
       "type": "trip",
-      "title": "Disney Cruise",
+      "title": "Disney Fantasy",
       "date": "2023-02-04",
       "dates": "Feb 4 – 8, 2023",
-      "place": "Disney Cruise Line",
+      "place": "U.S. & British Virgin Islands",
       "folder": "./assets/images/life/cruise-2023/",
       "sections": [
         {
@@ -538,7 +538,7 @@
       "folder": "./assets/images/life/chattanooga-2025/",
       "sections": [
         {
-          "park": "The Zoo",
+          "park": "Chattanooga Zoo",
           "photos": [
             {
               "file": "cougar-express.jpg",
@@ -698,7 +698,7 @@
             },
             {
               "file": "grand-building.jpg",
-              "caption": "A grand old government building",
+              "caption": "The Eisenhower Executive Office Building",
               "tall": true,
               "stamped": true
             }
