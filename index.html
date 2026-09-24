@@ -162,7 +162,7 @@
             p1: 'Phase One', p2: 'Phase Two', tv: 'Marvel TV', p3: 'Phase Three', sony: 'Sony Universe', p4: 'Phase Four', p5: 'Phase Five'
         };
 
-        const DATA = { marvel: [], movies: [], matches: [], games: { games: [] }, rosie: [] };
+        const DATA = { marvel: [], movies: [], matches: [], games: { games: [] }, rosie: [], posts: { posts: [] } };
         const dataReady = Promise.all(Object.keys(DATA).map(key =>
             fetch(`data/${key}.json`).then(r => r.json()).then(d => { DATA[key] = d; }).catch(() => {})
         ));
@@ -456,7 +456,7 @@
                                 <dt>Registered to:</dt>
                                 <dd>Landon<br>Rosie (co-owner, unpaid)</dd>
                                 <dt>Computer:</dt>
-                                <dd>${reviewed} Marvel reviews<br>${DATA.movies.length} movies &amp; shows<br>${DATA.matches.length} WrestleMania matches<br>${g.game_count || g.games.length} games · ${Math.round(g.total_hours || 0).toLocaleString()} hrs on Steam<br>${DATA.rosie.length} Rosie posts</dd>
+                                <dd>${reviewed} Marvel reviews<br>${DATA.movies.length} movies &amp; shows<br>${DATA.matches.length} WrestleMania matches<br>${g.game_count || g.games.length} games · ${Math.round(g.total_hours || 0).toLocaleString()} hrs on Steam<br>${DATA.rosie.length} Rosie posts<br>${DATA.posts.posts.filter(p => p.type === 'trip').length} trips in Field Notes</dd>
                             </dl>
                         </div>
                         <div class="win-footer"><button class="btn default" data-close>OK</button></div>`;
@@ -580,9 +580,20 @@
             },
 
             life: {
-                title: 'life.txt - Notepad', icon: 'notepad', w: 480, h: 320, menu: ['File', 'Edit', 'Search', 'Help'],
-                render: () => notepad("LIFE\n====\n\nMy pseudo-blog for vacations, life updates, and everything in between.\n\n(still writing this one... check back soon)") +
-                    `<div class="win-footer"><a class="btn" href="life">Open Life ▸</a></div>`
+                title: 'Life', icon: 'life', w: 600, h: 420, menu: ['File', 'Edit', 'View', 'Help'],
+                render: () => {
+                    const entries = DATA.posts.posts.slice().sort((a, b) => b.date.localeCompare(a.date));
+                    const trips = entries.filter(e => e.type === 'trip').length;
+                    return explorer({
+                        path: 'C:\\Landon\\Life\\Field Notes', href: 'life', hrefLabel: 'Open Life',
+                        body: `<table class="details">
+                            <thead><tr><th>Entry</th><th>Where</th><th>When</th></tr></thead>
+                            <tbody>${entries.map(e => `
+                                <tr class="row" data-href="life#${esc(e.id)}"><td>${esc(e.title)}</td><td>${esc(e.type === 'trip' ? e.place : 'Thought')}</td><td>${esc(e.dates || e.date)}</td></tr>`).join('')}
+                            </tbody></table>`,
+                        status: [`${trips} trips · ${entries.length - trips} thoughts`, 'Newest first']
+                    });
+                }
             },
 
             recycle: {
@@ -1007,6 +1018,8 @@
             const mo = latestReview(DATA.movies);
             if (mo) news.push({ d: mo._d, icon: 'movies', open: 'movies', text: `Watched ${mo.title}` });
             if (game && game.last_played_ts) news.push({ d: new Date(game.last_played_ts * 1000), icon: 'games', open: 'games', text: `Played ${game.name}` });
+            const entry = DATA.posts.posts.slice().sort((a, b) => b.date.localeCompare(a.date))[0];
+            if (entry) news.push({ d: new Date(entry.date + 'T12:00'), icon: 'life', open: 'life', text: entry.type === 'trip' ? `Went to ${entry.title}` : `Wrote “${clip(entry.title, 40)}”` });
             news.sort((a, b) => b.d - a.d);
             if (news.length) {
                 html.push(`

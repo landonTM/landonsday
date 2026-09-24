@@ -111,6 +111,11 @@
 
     fetch('data/posts.json')
         .then(r => { if (!r.ok) throw new Error(); return r.json(); })
-        .then(d => { render(d.posts || []); wireFilter(); wireLightbox(); })
+        .then(d => {
+            render(d.posts || []); wireFilter(); wireLightbox();
+            // Entries render after load, so jump to a linked one (life#id) once it exists.
+            const target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+            if (target) target.scrollIntoView();
+        })
         .catch(() => { $('#entries').innerHTML = '<p class="tj-empty">The journal couldn’t load. Try again in a moment.</p>'; });
 })();
