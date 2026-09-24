@@ -94,7 +94,7 @@
             </article>`).join('') + '<p class="tj-empty" id="noneMsg" hidden>Nothing here yet.</p>';
     }
 
-    // On phones every trip but the newest starts folded, so the page isn't one endless scroll.
+    // On phones every trip starts folded, so the page isn't one endless scroll.
     function setOpen(entry, on) {
         entry.classList.toggle('closed', !on);
         entry.querySelector('.tj-peek')?.setAttribute('aria-expanded', String(on));
@@ -102,7 +102,7 @@
 
     function wireFolding() {
         if (matchMedia('(max-width: 680px)').matches) {
-            document.querySelectorAll('.tj-entry.trip').forEach((el, i) => { if (i > 0) setOpen(el, false); });
+            document.querySelectorAll('.tj-entry.trip').forEach(el => setOpen(el, false));
         }
         document.addEventListener('click', e => {
             const peekBtn = e.target.closest('.tj-peek');
