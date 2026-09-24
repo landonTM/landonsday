@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,400;1,6..72,500&family=Caveat:wght@500;700&family=Courier+Prime:wght@400;700&display=swap');
+
+/* ================================
+   Life — travel journal
+   Somewhere between a scrapbook and a notebook: a kraft journal cover with a
+   label-maker title, dot-grid pages, photos taped in with a date stamp,
+   handwritten captions, and typed pages for thoughts. Loaded only on life.html.
+   ================================ */
+
+.life-page {
+  --ink: #2a2620;
+  --soft: #6d6557;
+  --pen: #24408e;
+  --paper: #fdfbf5;
+  --kraft: #c9a878;
+  --accent: #b3402e;
+  --serif: 'Newsreader', Georgia, serif;
+  --hand: 'Caveat', 'Comic Sans MS', cursive;
+  --type: 'Courier Prime', 'Courier New', monospace;
+  background:
+    repeating-linear-gradient(0deg, rgba(120, 100, 70, 0.05) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(120, 100, 70, 0.05) 0 1px, transparent 1px 3px),
+    linear-gradient(#ddd2bd, #d3c6ad);
+  background-attachment: fixed;
+  color: var(--ink);
+}
+.life-page .site-nav { background: #2a2620; border-bottom-color: rgba(255, 255, 255, 0.08); }
+.life-page .site-nav-link.active { color: #f0c96a; border-bottom-color: #f0c96a; }
+.life-page > footer { background: transparent; color: var(--soft); }
+
+.tj, .tj * { box-sizing: border-box; }
+.tj { max-width: 920px; margin: 0 auto; padding: 2.4rem 16px 3.5rem; }
+.tj-empty { color: var(--soft); font: 700 1.5rem var(--hand); text-align: center; }
+
+/* ---------- journal cover ---------- */
+.tj-cover {
+  position: relative;
+  padding: 2.6rem 2rem 2.2rem;
+  border-radius: 6px 14px 14px 6px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 25% 15%, rgba(255, 255, 255, 0.22), transparent 55%),
+    repeating-linear-gradient(35deg, rgba(0, 0, 0, 0.025) 0 2px, transparent 2px 6px),
+    var(--kraft);
+  box-shadow: inset 10px 0 0 rgba(0, 0, 0, 0.12), 0 14px 28px rgba(60, 45, 25, 0.35);
+}
+.tj-cover .band { position: absolute; top: 0; bottom: 0; right: 9%; width: 14px; background: linear-gradient(90deg, #2a2620, #45403a 50%, #2a2620); box-shadow: 2px 0 4px rgba(0, 0, 0, 0.25); }
+.dymo {
+  display: inline-block;
+  margin: 0;
+  padding: 0.35rem 1.1rem 0.3rem;
+  border-radius: 3px;
+  background: linear-gradient(#1f1f1f, #0e0e0e);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  color: #f2f2f2;
+  font: 700 clamp(1.6rem, 5vw, 2.6rem)/1.1 var(--type);
+  letter-spacing: 0.2em;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.25);
+  transform: rotate(-1deg);
+}
+.tj-sub { margin: 1.1rem 0 0; font: 700 clamp(1.4rem, 4vw, 1.8rem) var(--hand); color: var(--ink); }
+.tj-by { margin: 0.2rem 0 0; font: 400 0.85rem var(--type); letter-spacing: 0.1em; color: #4b4234; text-transform: uppercase; }
+
+/* ---------- index card ---------- */
+.tj-index {
+  position: relative;
+  width: min(100%, 560px);
+  margin: -0.8rem 0 2.6rem 6%;
+  padding: 1.3rem 1.4rem 1rem;
+  background:
+    linear-gradient(transparent 2.7rem, #e8828a 2.7rem, #e8828a calc(2.7rem + 2px), transparent calc(2.7rem + 2px)),
+    repeating-linear-gradient(transparent 0 calc(2.1rem - 1px), #b7cde6 calc(2.1rem - 1px) 2.1rem),
+    var(--paper);
+  background-position: 0 0, 0 0.55rem, 0 0;
+  box-shadow: 0 8px 20px rgba(60, 45, 25, 0.28);
+  transform: rotate(-0.8deg);
+}
+.tape { position: absolute; top: -12px; left: 50%; width: 96px; height: 26px; transform: translateX(-50%) rotate(-3deg); background: var(--tape, rgba(159, 216, 232, 0.75)); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12); clip-path: polygon(0 10%, 4% 0, 9% 12%, 14% 0, 20% 10%, 100% 4%, 96% 90%, 91% 100%, 86% 88%, 80% 100%, 0 94%); z-index: 2; }
+.tj-index-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.35rem; }
+.tj-index h2 { margin: 0; font: 700 0.85rem var(--type); letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); }
+.tj-filter { display: flex; gap: 0.25rem; }
+.tj-filter button { padding: 0.1rem 0.55rem; border: 1.5px solid transparent; border-radius: 999px; background: none; color: var(--soft); font: 700 1.15rem var(--hand); cursor: pointer; }
+.tj-filter button[aria-pressed="true"] { border-color: var(--pen); color: var(--pen); }
+.tj-filter button:hover, .tj-filter button:focus-visible { outline: none; color: var(--pen); }
+.tj-index ol { list-style: none; margin: 0; padding: 0; }
+.tj-index li[hidden], .tj-entry[hidden] { display: none; }
+.tj-index a { display: flex; align-items: baseline; gap: 0.6rem; height: 2.1rem; color: var(--pen); text-decoration: none; }
+.tj-index a:hover .t, .tj-index a:focus-visible .t { text-decoration: underline wavy; }
+.tj-index a:focus-visible { outline: none; }
+.tj-index .no, .tj-index .k, .tj-index .d, .tj-index .m { font: 400 0.8rem var(--type); color: var(--soft); white-space: nowrap; }
+.tj-index .t { font: 700 1.45rem var(--hand); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tj-index .m { display: none; }
+.tj-index .dots { flex: 1; border-bottom: 2px dotted rgba(36, 64, 142, 0.3); transform: translateY(-0.35rem); }
+
+/* ---------- journal pages ---------- */
+.tj-entry {
+  position: relative;
+  margin-bottom: 2.6rem;
+  padding: 2rem 2.2rem 2.4rem 3.4rem;
+  border-radius: 3px;
+  background:
+    radial-gradient(circle, rgba(90, 80, 60, 0.22) 1px, transparent 1.4px) 0 0 / 22px 22px,
+    var(--paper);
+  box-shadow: 0 14px 30px rgba(60, 45, 25, 0.3), inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+  scroll-margin-top: 70px;
+}
+.holes { position: absolute; left: 13px; top: 0; bottom: 0; width: 16px; background: radial-gradient(circle, #d7cbb4 0 6px, rgba(0, 0, 0, 0.18) 6px 7px, transparent 8px) center 36px / 16px 110px repeat-y; }
+.tj-meta { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; color: var(--soft); font: 400 0.8rem var(--type); letter-spacing: 0.12em; text-transform: uppercase; }
+.tj-title { margin: 0.8rem 0 0.2rem; font: italic 500 clamp(2.1rem, 6vw, 3.1rem)/1.05 var(--serif); color: var(--ink); letter-spacing: -0.01em; }
+.tj-place { margin: 0 0 1.6rem; font: 700 1.5rem var(--hand); color: var(--pen); }
+.tj-text { max-width: 64ch; margin: 0 0 1rem; font: 400 1.05rem/1.75 var(--type); }
+
+/* ticket-stub park headers */
+.ticket { display: flex; margin: 2.2rem 0 1.4rem; }
+.ticket span {
+  position: relative;
+  padding: 0.4rem 1.4rem 0.4rem 1.8rem;
+  background: #fbe9c6;
+  border: 2px dashed rgba(179, 64, 46, 0.45);
+  outline: 4px solid #fbe9c6;
+  color: var(--accent);
+  font: 700 0.95rem var(--type);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 8px rgba(60, 45, 25, 0.18);
+  transform: rotate(-1deg);
+}
+.tj-hand { margin: -0.4rem 0 1rem; font: 700 1.9rem var(--hand); color: var(--ink); }
+
+/* taped-in prints */
+.tj-prints { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 0.4rem 1.8rem; }
+.tj-print { position: relative; width: min(100%, 300px); margin: 0 0 1.6rem; padding: 9px 9px 0; background: #fff; box-shadow: 0 6px 14px rgba(60, 45, 25, 0.28), 0 1px 1px rgba(0, 0, 0, 0.15); transform: rotate(var(--tilt)); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.tj-print.tall { width: min(100%, 215px); }
+.tj-print:hover, .tj-print:focus-within { transform: rotate(0deg) scale(1.03); box-shadow: 0 12px 24px rgba(60, 45, 25, 0.35); z-index: 3; }
+.tj-print .tape { width: 80px; height: 22px; top: -10px; }
+.tj-photo { position: relative; display: block; width: 100%; padding: 0; border: 0; background: #222; cursor: zoom-in; }
+.tj-photo:focus-visible { outline: 3px solid var(--pen); outline-offset: 3px; }
+.tj-photo img { display: block; width: 100%; height: auto; filter: saturate(1.05) contrast(1.03) sepia(0.1); }
+.datestamp { position: absolute; right: 8px; bottom: 6px; color: #ff8a1f; font: 700 0.9rem var(--type); letter-spacing: 0.1em; text-shadow: 0 0 4px rgba(255, 110, 0, 0.85), 0 0 1px #ffb266; }
+.tj-print figcaption { padding: 0.4rem 0.2rem 0.5rem; text-align: center; font: 700 1.3rem/1.15 var(--hand); color: var(--pen); }
+
+/* food on graph paper */
+.tj-part.food .tj-prints {
+  gap: 1.2rem;
+  padding: 1.6rem 1.2rem 0.4rem;
+  background:
+    repeating-linear-gradient(0deg, rgba(90, 140, 200, 0.25) 0 1px, transparent 1px 20px),
+    repeating-linear-gradient(90deg, rgba(90, 140, 200, 0.25) 0 1px, transparent 1px 20px),
+    #fff;
+  box-shadow: 0 6px 16px rgba(60, 45, 25, 0.2);
+  transform: rotate(0.5deg);
+}
+.tj-part.food .tj-print { width: min(100%, 175px); }
+.tj-note { margin: 0.9rem 0 0 0.4rem; font: 700 1.35rem var(--hand); color: var(--soft); }
+
+/* thoughts: a typed sheet clipped to the page */
+.tj-typed { position: relative; max-width: 700px; margin: 1.2rem auto 0.4rem; padding: 2rem 2.2rem 1.8rem; background: #fff; box-shadow: 0 6px 16px rgba(60, 45, 25, 0.22); transform: rotate(-0.4deg); }
+.tj-typed .tj-title { margin-top: 0; }
+.clip { position: absolute; top: -16px; left: 36px; width: 22px; height: 58px; border: 3px solid #9aa0a8; border-radius: 12px; border-bottom-color: transparent; }
+.tj-pull { margin: 1rem 0 1.4rem; padding-left: 1rem; border-left: 3px solid var(--accent); font: 700 1.7rem/1.25 var(--hand); color: var(--pen); }
+.tj-sign { margin: 1.2rem 0 0; font: 700 1.5rem var(--hand); color: var(--pen); text-align: right; }
+
+/* ---------- lightbox ---------- */
+.tj-lightbox { padding: 12px 12px 0; border: 0; background: #fff; max-width: min(92vw, 1100px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); }
+.tj-lightbox::backdrop { background: rgba(30, 25, 18, 0.85); }
+.tj-lightbox figure { margin: 0; }
+.tj-lightbox img { display: block; max-width: 100%; max-height: 78vh; margin: 0 auto; }
+.tj-lightbox figcaption { padding: 0.5rem 0 0.7rem; text-align: center; font: 700 1.5rem var(--hand); color: var(--pen); }
+.lb-close { position: absolute; top: -14px; right: -14px; width: 36px; height: 36px; border: 3px solid #fff; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 800; cursor: pointer; }
+
+/* ---------- phones ---------- */
+@media (max-width: 680px) {
+  .tj { padding-top: 1.4rem; }
+  .tj-cover { padding: 2rem 2.2rem 1.8rem 1.4rem; }
+  .tj-sub { font-size: 1.3rem; }
+  .tj-cover .band { right: 6%; width: 10px; }
+  .tj-index { margin: -0.6rem auto 2rem; }
+  .tj-index .k, .tj-index .dots, .tj-index .d { display: none; }
+  .tj-index .m { display: inline; }
+  .tj-index .t { flex: 1; font-size: 1.3rem; }
+  .tj-entry { padding: 1.5rem 1rem 1.8rem 2.2rem; }
+  .holes { left: 5px; }
+  .tj-print, .tj-print.tall { width: 100%; }
+  .tj-prints { gap: 0.2rem 0.9rem; }
+  .tj-print.tall { width: calc(50% - 0.45rem); padding: 6px 6px 0; }
+  .tj-print.tall figcaption { font-size: 1.1rem; }
+  .tj-print.tall .tape { width: 56px; height: 18px; }
+  .tj-part.food .tj-prints { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 1.2rem 0.7rem 0.3rem; }
+  .tj-part.food .tj-print { width: 100%; }
+  .tj-typed { padding: 1.6rem 1.1rem 1.4rem; }
+  .tj-text { font-size: 0.98rem; }
+  .lb-close { top: 6px; right: 6px; }
+}
+
+@media (prefers-reduced-motion: reduce) { .tj-print { transition: none; } }

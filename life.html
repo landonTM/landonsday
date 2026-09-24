@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Life — Landon's Day</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/life.css">
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Life — Landon's Day">
-    <meta property="og:description" content="My pseudo-blog for vacations, life updates, and everything in between.">
+    <meta property="og:description" content="A travel journal: places I've been, and what's on my mind.">
     <meta property="og:url" content="https://www.landonday.com/life">
     <meta property="og:image" content="https://www.landonday.com/assets/images/life.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Life — Landon's Day">
-    <meta name="twitter:description" content="My pseudo-blog for vacations, life updates, and everything in between.">
+    <meta name="twitter:description" content="A travel journal: places I've been, and what's on my mind.">
     <meta name="twitter:image" content="https://www.landonday.com/assets/images/life.png">
-
 </head>
-<body>
+<body class="life-page">
 
-        <nav class="site-nav">
+    <nav class="site-nav">
         <a class="site-nav-logo" href="index">Landon's Day</a>
         <div class="site-nav-links">
             <a class="site-nav-link" href="marvel">Marvel</a>
@@ -31,45 +31,42 @@
         </div>
     </nav>
 
-    <div class="page-hero">
-        <img src="./assets/images/life.png" alt="Life">
-        <h1 class="page-hero-title">Life</h1>
-    </div>
-
-    <div class="coming-soon">
-        <div class="coming-soon-card">
-            <span class="coming-soon-badge">In Progress</span>
-            <h2>My Personal Blog</h2>
-            <p>This one's becoming a pseudo-blog — vacations, life updates, and whatever else feels worth writing down as it happens.</p>
-            <ul class="coming-soon-list">
-                <li>Vacation recaps and photos</li>
-                <li>General life updates</li>
-                <li>Posted as things happen, not all at once</li>
-            </ul>
+    <main class="tj">
+        <div class="tj-cover">
+            <span class="band" aria-hidden="true"></span>
+            <h1 class="dymo">FIELD NOTES</h1>
+            <p class="tj-sub">Places I’ve been, and what’s on my mind.</p>
+            <p class="tj-by">— L.D. · <span id="entryCount"></span></p>
         </div>
-    </div>
+
+        <section class="tj-index" aria-label="Index of entries">
+            <span class="tape" aria-hidden="true"></span>
+            <div class="tj-index-head">
+                <h2>Index</h2>
+                <div class="tj-filter" role="group" aria-label="Show">
+                    <button data-f="all" aria-pressed="true">All</button>
+                    <button data-f="trip" aria-pressed="false">Trips</button>
+                    <button data-f="thought" aria-pressed="false">Thoughts</button>
+                </div>
+            </div>
+            <ol id="index"></ol>
+        </section>
+
+        <div id="entries"><p class="tj-empty">Opening the journal…</p></div>
+    </main>
+
+    <dialog class="tj-lightbox" id="lightbox" aria-label="Photo">
+        <figure>
+            <img id="lbImg" alt="">
+            <figcaption id="lbCap"></figcaption>
+        </figure>
+        <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+    </dialog>
 
     <footer>
         <p>&copy; 2026 Landon's Day. All rights reserved.</p>
     </footer>
 
-
-    <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top" title="Back to top">&uarr;</button>
-
-    <script>
-        (function () {
-            const btn = document.getElementById('backToTopBtn');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 400) {
-                    btn.classList.add('visible');
-                } else {
-                    btn.classList.remove('visible');
-                }
-            });
-            btn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        })();
-    </script>
+    <script src="./assets/js/life.js"></script>
 </body>
 </html>

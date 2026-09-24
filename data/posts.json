@@ -1,0 +1,844 @@
+{
+  "posts": [
+    {
+      "id": "disney-2020",
+      "type": "trip",
+      "title": "Disney World, Vol. 1",
+      "date": "2020-09-28",
+      "dates": "Sep 28 – Oct 1, 2020",
+      "place": "Walt Disney World, Florida",
+      "folder": "./assets/images/life/disney-2020/",
+      "sections": [
+        {
+          "park": "Animal Kingdom",
+          "photos": [
+            {
+              "file": "ak-river.jpg",
+              "caption": "The river around Discovery Island"
+            },
+            {
+              "file": "ak-floating-rock.jpg",
+              "caption": "The floating mountains"
+            },
+            {
+              "file": "ak-pandora-path.jpg",
+              "caption": "Walking into Pandora"
+            },
+            {
+              "file": "ak-overlook.jpg",
+              "caption": "Pandora from the overlook"
+            },
+            {
+              "file": "ak-lookout.jpg",
+              "caption": "Lily pads everywhere"
+            }
+          ]
+        },
+        {
+          "park": "Hollywood Studios",
+          "photos": [
+            {
+              "file": "hs-runaway-railway.jpg",
+              "caption": "Mickey & Minnie's Runaway Railway"
+            },
+            {
+              "file": "hs-potato-head.jpg",
+              "caption": "Mr. Potato Head, Toy Story Mania",
+              "tall": true
+            }
+          ]
+        },
+        {
+          "park": "Magic Kingdom",
+          "photos": [
+            {
+              "file": "mk-castle.jpg",
+              "caption": "Cinderella Castle",
+              "tall": true
+            },
+            {
+              "file": "mk-main-street.jpg",
+              "caption": "Main Street, pumpkins everywhere"
+            },
+            {
+              "file": "mk-trolley.jpg",
+              "caption": "The Main Street trolley"
+            }
+          ]
+        },
+        {
+          "park": "EPCOT",
+          "kind": "food",
+          "heading": "Eat around the world",
+          "note": "The spork says Flower & Garden Festival.",
+          "photos": [
+            {
+              "file": "food-1.jpg",
+              "caption": "Food #1"
+            },
+            {
+              "file": "food-2.jpg",
+              "caption": "Food #2"
+            },
+            {
+              "file": "food-3.jpg",
+              "caption": "Food #3"
+            },
+            {
+              "file": "food-4.jpg",
+              "caption": "Food #4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "st-louis-2022",
+      "type": "trip",
+      "title": "St. Louis",
+      "date": "2022-06-25",
+      "dates": "Jun 25 – 26, 2022",
+      "place": "St. Louis, Missouri",
+      "folder": "./assets/images/life/st-louis-2022/",
+      "sections": [
+        {
+          "park": "St. Louis",
+          "photos": [
+            {
+              "file": "alpaca.jpg",
+              "caption": "Alpaca",
+              "tall": true
+            },
+            {
+              "file": "goat.jpg",
+              "caption": "Goat",
+              "tall": true
+            },
+            {
+              "file": "water-buffalo.jpg",
+              "caption": "Water buffalo",
+              "tall": true
+            },
+            {
+              "file": "snout.jpg",
+              "caption": "A little too close",
+              "tall": true
+            },
+            {
+              "file": "pizza.jpg",
+              "caption": "Pizza",
+              "tall": true
+            },
+            {
+              "file": "bear.jpg",
+              "caption": "Bear, going for a swim",
+              "tall": true
+            },
+            {
+              "file": "penguins.jpg",
+              "caption": "Penguins",
+              "tall": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disney-2022",
+      "type": "trip",
+      "title": "Disney World, Vol. 2",
+      "date": "2022-10-01",
+      "dates": "Oct 1 – 4, 2022",
+      "place": "Walt Disney World, Florida",
+      "folder": "./assets/images/life/disney-2022/",
+      "sections": [
+        {
+          "park": "Animal Kingdom",
+          "photos": [
+            {
+              "file": "ak-tree-of-life.jpg",
+              "caption": "The Tree of Life"
+            },
+            {
+              "file": "ak-everest.jpg",
+              "caption": "Expedition Everest, across the water",
+              "tall": true
+            },
+            {
+              "file": "ak-floating-mountains.jpg",
+              "caption": "Pandora's floating mountains"
+            },
+            {
+              "file": "ak-kevin.jpg",
+              "caption": "Kevin, from Up",
+              "tall": true
+            }
+          ]
+        },
+        {
+          "park": "Magic Kingdom",
+          "photos": [
+            {
+              "file": "mk-castle-moat.jpg",
+              "caption": "Cinderella Castle over the moat",
+              "tall": true
+            },
+            {
+              "file": "mk-castle.jpg",
+              "caption": "Cinderella Castle",
+              "tall": true
+            }
+          ]
+        },
+        {
+          "park": "EPCOT",
+          "kind": "food",
+          "heading": "Eat around the world",
+          "note": "EPCOT International Food & Wine Festival.",
+          "photos": [
+            {
+              "file": "food-belgium.jpg",
+              "caption": "Belgium — Belgian Waffle with Chocolate",
+              "tall": true
+            },
+            {
+              "file": "food-india.jpg",
+              "caption": "India — Crispy Paneer",
+              "tall": true
+            },
+            {
+              "file": "food-france.jpg",
+              "caption": "France — Brioche aux Escargots, Sauce Crème à l'ail & La Passion Martini Slush",
+              "tall": true
+            },
+            {
+              "file": "food-brazil.jpg",
+              "caption": "Brazil — Pão de Queijo",
+              "tall": true
+            },
+            {
+              "file": "food-greece.jpg",
+              "caption": "Greece — Spanakopita",
+              "tall": true
+            },
+            {
+              "file": "food-china.jpg",
+              "caption": "China — Mongolian Beef Bao Bun",
+              "tall": true
+            },
+            {
+              "file": "food-canada.jpg",
+              "caption": "Canada — Cheddar and Bacon Soup & Wild Mushroom Beef Filet Mignonette",
+              "tall": true
+            },
+            {
+              "file": "food-italy.jpg",
+              "caption": "Italy — Coppa Del Nonno",
+              "tall": true
+            }
+          ]
+        },
+        {
+          "park": "Disney Springs",
+          "photos": [
+            {
+              "file": "ds-balloon.jpg",
+              "caption": "The balloon over the water at night"
+            },
+            {
+              "file": "ds-night.jpg",
+              "caption": "Across the lake at night"
+            }
+          ]
+        },
+        {
+          "park": "Planet Hollywood, Disney Springs",
+          "photos": [
+            {
+              "file": "props-spider-man.jpg",
+              "caption": "Spider-Man suit",
+              "tall": true
+            },
+            {
+              "file": "props-wolverine.jpg",
+              "caption": "Wolverine's claws",
+              "tall": true
+            },
+            {
+              "file": "props-deadpool.jpg",
+              "caption": "Deadpool's katana",
+              "tall": true
+            },
+            {
+              "file": "props-daredevil.jpg",
+              "caption": "Daredevil suit",
+              "tall": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dc-2023",
+      "type": "trip",
+      "title": "Washington, D.C., Vol. 1",
+      "date": "2023-01-08",
+      "dates": "Jan 8 – 13, 2023",
+      "place": "Washington, D.C.",
+      "folder": "./assets/images/life/dc-2023/",
+      "sections": [
+        {
+          "park": "The Monuments",
+          "photos": [
+            {
+              "file": "capitol.jpg",
+              "caption": "The Capitol"
+            },
+            {
+              "file": "washington-monument.jpg",
+              "caption": "Washington Monument",
+              "tall": true
+            },
+            {
+              "file": "lincoln-memorial.jpg",
+              "caption": "Lincoln Memorial",
+              "tall": true
+            },
+            {
+              "file": "wwii-memorial.jpg",
+              "caption": "World War II Memorial",
+              "tall": true
+            }
+          ]
+        },
+        {
+          "park": "Air and Space Museum",
+          "photos": [
+            {
+              "file": "freedom-7.jpg",
+              "caption": "Freedom 7",
+              "tall": true
+            },
+            {
+              "file": "apollo-suit.jpg",
+              "caption": "Apollo spacesuit",
+              "tall": true
+            },
+            {
+              "file": "x-wing.jpg",
+              "caption": "Star Wars X-wing"
+            },
+            {
+              "file": "biplane.jpg",
+              "caption": "Biplane"
+            }
+          ]
+        },
+        {
+          "park": "American History Museum",
+          "photos": [
+            {
+              "file": "cap-shield.jpg",
+              "caption": "Captain America's shield"
+            },
+            {
+              "file": "c3po-r2d2.jpg",
+              "caption": "C-3PO and R2-D2",
+              "tall": true
+            },
+            {
+              "file": "kermit.jpg",
+              "caption": "Kermit the Frog",
+              "tall": true
+            },
+            {
+              "file": "superman.jpg",
+              "caption": "Superman suit",
+              "tall": true
+            },
+            {
+              "file": "ali-robe.jpg",
+              "caption": "Muhammad Ali's robe",
+              "tall": true
+            }
+          ]
+        },
+        {
+          "park": "Natural History Museum",
+          "photos": [
+            {
+              "file": "dinosaurs.jpg",
+              "caption": "Dinosaur skeletons"
+            },
+            {
+              "file": "hippo.jpg",
+              "caption": "Hippo",
+              "tall": true
+            },
+            {
+              "file": "coral-reef.jpg",
+              "caption": "Coral reef"
+            }
+          ]
+        },
+        {
+          "park": "National Zoo",
+          "photos": [
+            {
+              "file": "panda.jpg",
+              "caption": "Giant panda",
+              "tall": true
+            },
+            {
+              "file": "tiger.jpg",
+              "caption": "Tiger",
+              "tall": true
+            },
+            {
+              "file": "red-panda.jpg",
+              "caption": "Red panda",
+              "tall": true
+            },
+            {
+              "file": "tortoise.jpg",
+              "caption": "Giant tortoise",
+              "tall": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cruise-2023",
+      "type": "trip",
+      "title": "Disney Cruise",
+      "date": "2023-02-04",
+      "dates": "Feb 4 – 8, 2023",
+      "place": "Disney Cruise Line",
+      "folder": "./assets/images/life/cruise-2023/",
+      "sections": [
+        {
+          "park": "At sea",
+          "photos": [
+            {
+              "file": "ship-dock.jpg",
+              "caption": "The ship at the dock"
+            },
+            {
+              "file": "terminal-model.jpg",
+              "caption": "A model ship in the terminal"
+            },
+            {
+              "file": "sunset-deck.jpg",
+              "caption": "Sunset from the deck"
+            },
+            {
+              "file": "island.jpg",
+              "caption": "Hills over the harbor"
+            },
+            {
+              "file": "sunset-coast.jpg",
+              "caption": "Sunset off the coast"
+            },
+            {
+              "file": "horizon.jpg",
+              "caption": "Islands on the horizon"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ga-aquarium-2024",
+      "type": "trip",
+      "title": "Georgia Aquarium",
+      "date": "2024-02-14",
+      "dates": "Feb 14, 2024",
+      "place": "Atlanta, Georgia",
+      "folder": "./assets/images/life/ga-aquarium-2024/",
+      "sections": [
+        {
+          "park": "Georgia Aquarium",
+          "photos": [
+            {
+              "file": "jellies.jpg",
+              "caption": "Jellyfish, drifting",
+              "tall": true
+            },
+            {
+              "file": "tentacles.jpg",
+              "caption": "Tangled tentacles",
+              "tall": true
+            },
+            {
+              "file": "reef.jpg",
+              "caption": "The coral reef"
+            },
+            {
+              "file": "whale-shark.jpg",
+              "caption": "A whale shark"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "garden-2024",
+      "type": "trip",
+      "title": "Atlanta",
+      "date": "2024-08-18",
+      "dates": "Aug 18, 2024",
+      "place": "Atlanta, Georgia",
+      "folder": "./assets/images/life/garden-2024/",
+      "sections": [
+        {
+          "park": "Zoo Atlanta",
+          "photos": [
+            {
+              "file": "binturong.jpg",
+              "caption": "A binturong",
+              "tall": true
+            },
+            {
+              "file": "ostrich.jpg",
+              "caption": "An ostrich",
+              "tall": true
+            },
+            {
+              "file": "meerkats.jpg",
+              "caption": "Meerkats in the sun",
+              "tall": true
+            }
+          ]
+        },
+        {
+          "park": "Atlanta Botanical Garden",
+          "photos": [
+            {
+              "file": "card-soldiers.jpg",
+              "caption": "Topiary card soldiers on a chessboard",
+              "tall": true
+            },
+            {
+              "file": "mad-hatter.jpg",
+              "caption": "A topiary Mad Hatter over the water",
+              "tall": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chattanooga-2025",
+      "type": "trip",
+      "title": "Chattanooga",
+      "date": "2025-07-08",
+      "dates": "Jul 8, 2025",
+      "place": "Chattanooga, Tennessee",
+      "folder": "./assets/images/life/chattanooga-2025/",
+      "sections": [
+        {
+          "park": "The Zoo",
+          "photos": [
+            {
+              "file": "cougar-express.jpg",
+              "caption": "The Cougar Express sign",
+              "tall": true
+            },
+            {
+              "file": "snake.jpg",
+              "caption": "A snake, curled up",
+              "tall": true
+            }
+          ]
+        },
+        {
+          "park": "The Aquarium",
+          "photos": [
+            {
+              "file": "river-view.jpg",
+              "caption": "The river from upstairs",
+              "tall": true
+            },
+            {
+              "file": "glass-roof.jpg",
+              "caption": "Under the glass roof",
+              "tall": true
+            },
+            {
+              "file": "shark.jpg",
+              "caption": "A shark swims by",
+              "tall": true
+            },
+            {
+              "file": "flower-garden-banks.jpg",
+              "caption": "Flower Garden Banks",
+              "tall": true
+            },
+            {
+              "file": "jellies-glow.jpg",
+              "caption": "Glowing jellyfish",
+              "tall": true
+            },
+            {
+              "file": "jellies-pink.jpg",
+              "caption": "Jellies, pink and white",
+              "tall": true
+            },
+            {
+              "file": "clownfish.jpg",
+              "caption": "Clownfish and coral",
+              "tall": true
+            },
+            {
+              "file": "otter.jpg",
+              "caption": "An otter",
+              "tall": true
+            },
+            {
+              "file": "eel.jpg",
+              "caption": "An eel reaching up",
+              "tall": true
+            },
+            {
+              "file": "alligators.jpg",
+              "caption": "Alligators on a log",
+              "tall": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disney-2025",
+      "type": "trip",
+      "title": "Disney World, Vol. 3",
+      "date": "2025-11-09",
+      "dates": "Nov 9 – 10, 2025",
+      "place": "Walt Disney World, Florida",
+      "folder": "./assets/images/life/disney-2025/",
+      "sections": [
+        {
+          "park": "Magic Kingdom",
+          "photos": [
+            {
+              "file": "castle.jpg",
+              "caption": "Cinderella Castle",
+              "tall": true
+            }
+          ]
+        },
+        {
+          "park": "Snacks",
+          "kind": "food",
+          "heading": "Eat around the parks",
+          "photos": [
+            {
+              "file": "swirl-cone.jpg",
+              "caption": "An orange swirl cone",
+              "tall": true,
+              "stamped": true
+            },
+            {
+              "file": "chocolate-desserts.jpg",
+              "caption": "Two chocolate desserts with whipped cream",
+              "tall": true,
+              "stamped": true
+            },
+            {
+              "file": "remy-shake.jpg",
+              "caption": "A pink shake with Remy on top",
+              "tall": true,
+              "stamped": true
+            },
+            {
+              "file": "pretzel.jpg",
+              "caption": "A pretzel with cheese dip",
+              "tall": true,
+              "stamped": true
+            },
+            {
+              "file": "pastries.jpg",
+              "caption": "Pastries with a green dip",
+              "tall": true,
+              "stamped": true
+            },
+            {
+              "file": "dipped-bar.jpg",
+              "caption": "A chocolate-dipped bar on a stick",
+              "tall": true,
+              "stamped": true
+            },
+            {
+              "file": "fried.jpg",
+              "caption": "Fried fish and fries",
+              "tall": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dc-2025",
+      "type": "trip",
+      "title": "Washington, D.C., Vol. 2",
+      "date": "2025-12-12",
+      "dates": "Dec 12 – 14, 2025",
+      "place": "Washington, D.C.",
+      "folder": "./assets/images/life/dc-2025/",
+      "sections": [
+        {
+          "park": "Around the City",
+          "photos": [
+            {
+              "file": "washington-monument.jpg",
+              "caption": "The Washington Monument",
+              "tall": true,
+              "stamped": true
+            },
+            {
+              "file": "grand-building.jpg",
+              "caption": "A grand old government building",
+              "tall": true,
+              "stamped": true
+            }
+          ]
+        },
+        {
+          "park": "The Museums",
+          "photos": [
+            {
+              "file": "planets.jpg",
+              "caption": "The planets, hanging from the ceiling",
+              "tall": true
+            },
+            {
+              "file": "r2d2.jpg",
+              "caption": "R2-D2",
+              "tall": true
+            },
+            {
+              "file": "andretti.jpg",
+              "caption": "Mario Andretti’s race car",
+              "tall": true
+            },
+            {
+              "file": "cars-racers.jpg",
+              "caption": "The racers from Cars",
+              "tall": true
+            },
+            {
+              "file": "x-wing.jpg",
+              "caption": "An X-wing"
+            }
+          ]
+        },
+        {
+          "park": "Natural History Museum",
+          "photos": [
+            {
+              "file": "dinosaur-hall.jpg",
+              "caption": "The dinosaur hall"
+            },
+            {
+              "file": "long-neck.jpg",
+              "caption": "A long-necked dinosaur"
+            },
+            {
+              "file": "skull.jpg",
+              "caption": "A dinosaur skull",
+              "tall": true
+            },
+            {
+              "file": "iphone.jpg",
+              "caption": "An early human with an iPhone",
+              "tall": true
+            }
+          ]
+        },
+        {
+          "park": "Capital One Arena",
+          "photos": [
+            {
+              "file": "marquee.jpg",
+              "caption": "Tonight: John Cena’s final match",
+              "tall": true
+            },
+            {
+              "file": "arena.jpg",
+              "caption": "Outside Capital One Arena",
+              "tall": true
+            },
+            {
+              "file": "ring.jpg",
+              "caption": "The ring from the seats",
+              "tall": true
+            }
+          ],
+          "note": "WWE Saturday Night’s Main Event — John Cena’s final match."
+        },
+        {
+          "park": "The Window Seat",
+          "photos": [
+            {
+              "file": "clouds.jpg",
+              "caption": "Above the clouds",
+              "tall": true
+            },
+            {
+              "file": "snow.jpg",
+              "caption": "A snowy city below",
+              "tall": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "savannah-2026",
+      "type": "trip",
+      "title": "Savannah",
+      "date": "2026-05-08",
+      "dates": "May 8 – 9, 2026",
+      "place": "Savannah, Georgia",
+      "folder": "./assets/images/life/savannah-2026/",
+      "sections": [
+        {
+          "park": "Savannah",
+          "photos": [
+            {
+              "file": "railings.jpg",
+              "caption": "White railings over the water",
+              "tall": true
+            },
+            {
+              "file": "oak-road.jpg",
+              "caption": "The road under the oaks",
+              "tall": true
+            },
+            {
+              "file": "snake.jpg",
+              "caption": "A snake in the leaves",
+              "tall": true
+            },
+            {
+              "file": "lizard.jpg",
+              "caption": "A lizard in the leaves",
+              "tall": true
+            },
+            {
+              "file": "tractor.jpg",
+              "caption": "Following a tractor under the oaks",
+              "tall": true
+            },
+            {
+              "file": "yatai.jpg",
+              "caption": "Yatai, ramen and yakitori",
+              "tall": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
