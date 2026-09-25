@@ -39,6 +39,8 @@
             <p class="tj-by">— L.D. · <span id="entryCount"></span></p>
         </div>
 
+        <div class="tj-front">
+        <div class="tj-main">
         <section class="tj-index" aria-label="Index of entries">
             <span class="tape" aria-hidden="true"></span>
             <div class="tj-index-head">
@@ -51,6 +53,23 @@
             </div>
             <ol id="index"></ol>
         </section>
+
+        <section class="tj-now" aria-labelledby="nowTitle" hidden>
+            <span class="pin" aria-hidden="true"></span>
+            <h2 class="tj-now-title" id="nowTitle">Currently</h2>
+            <dl id="now"></dl>
+        </section>
+        </div>
+
+        <div class="tj-side">
+        <section class="tj-bucket" aria-labelledby="bucketTitle" hidden>
+            <span class="tape" aria-hidden="true"></span>
+            <h2 class="tj-bucket-title" id="bucketTitle">Bucket list</h2>
+            <ul id="bucket"></ul>
+            <p class="tj-bucket-count" id="bucketCount"></p>
+        </section>
+        </div>
+        </div>
 
         <div id="entries"><p class="tj-empty">Opening the journal…</p></div>
     </main>

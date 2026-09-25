@@ -114,10 +114,72 @@
                 entry.scrollIntoView();
                 return;
             }
-            const link = e.target.closest('#index a');
+            const link = e.target.closest('#index a, #bucket a, #now a[href^="#"]');
             const target = link && document.getElementById(link.hash.slice(1));
             if (target) setOpen(target, true);
         });
+    }
+
+    // Bucket list (data/bucket.json): open goals first, then what's been checked off, newest first.
+    function renderBucket(items) {
+        const open = items.filter(i => !i.done);
+        const done = items.filter(i => i.done).sort((a, b) => b.done.localeCompare(a.done));
+        const when = iso => localDate(iso).toLocaleDateString('en-US', { month: 'short', year: '2-digit' }).replace(' ', " '");
+        $('#bucket').innerHTML = open.concat(done).map(i => {
+            const text = i.entry ? `<a href="#${esc(i.entry)}">${esc(i.text)}</a>` : esc(i.text);
+            return `<li class="${i.done ? 'done' : ''}">
+                <span class="box" aria-hidden="true">${i.done ? '✓' : ''}</span>
+                <span class="txt">${text}</span>
+                ${i.done ? `<span class="when">${esc(when(i.done))}</span>` : ''}
+                <span class="sr-only">${i.done ? '(done)' : '(not yet)'}</span>
+            </li>`;
+        }).join('');
+        $('#bucketCount').textContent = `${done.length} down, ${open.length} to go`;
+        $('.tj-bucket').hidden = false;
+    }
+
+    // "Currently" note: filled in from the other sections' data, same rules as the homepage widgets.
+    function stars(text) {
+        if (!text || !/[⭐¾½¼]/.test(text)) return null;
+        const full = (text.match(/⭐/g) || []).length;
+        const frac = text.includes('¾') ? 0.75 : text.includes('½') ? 0.5 : text.includes('¼') ? 0.25 : 0;
+        return full + frac;
+    }
+    function lastWatched(review) {
+        const m = /Last Watched:\s*([A-Za-z]+ \d+)(?:st|nd|rd|th)?,?\s*(\d{4})/.exec(review || '');
+        const d = m && new Date(`${m[1]}, ${m[2]}`);
+        return d && !isNaN(d) ? d : null;
+    }
+    function ago(date) {
+        const days = Math.floor((Date.now() - date) / 86400000);
+        if (days < 1) return 'today';
+        if (days === 1) return 'yesterday';
+        if (days < 30) return `${days} days ago`;
+        const months = Math.floor(days / 30.4);
+        if (months < 12) return months === 1 ? 'a month ago' : `${months} months ago`;
+        const years = Math.floor(months / 12);
+        return years === 1 ? 'a year ago' : `${years} years ago`;
+    }
+    const clip = (s, n) => (s.length > n ? s.slice(0, n - 1).trimEnd() + '…' : s);
+    const latest = list => list.map(i => ({ ...i, _d: lastWatched(i.review) })).filter(i => i._d).sort((a, b) => b._d - a._d)[0];
+
+    function renderNow({ games, marvel, movies, rosie }, posts) {
+        const rows = [];
+        const game = (games?.games || []).slice().sort((a, b) => (b.last_played_ts || 0) - (a.last_played_ts || 0))[0];
+        if (game?.last_played_ts) rows.push(['Playing', 'games', game.name, `${Math.round(game.hours).toLocaleString()} hrs · ${ago(game.last_played_ts * 1000)}`]);
+        const mo = latest(movies || []);
+        if (mo) rows.push(['Watched', 'movies', mo.title, ago(mo._d)]);
+        const mv = latest(marvel || []);
+        if (mv) rows.push(['Reviewed', 'marvel', mv.title, stars(mv.rating) !== null ? `${Math.round(stars(mv.rating) * 4) / 4}★ · ${ago(mv._d)}` : ago(mv._d)]);
+        const trip = posts.filter(p => p.type === 'trip').sort((a, b) => b.date.localeCompare(a.date))[0];
+        if (trip) rows.push(['Last trip', `#${trip.id}`, trip.title, trip.dates || dateLabel(trip.date)]);
+        const cat = (rosie || []).slice().sort((a, b) => b.date.localeCompare(a.date))[0];
+        if (cat) rows.push(['Rosie', 'rosie', `“${clip(cat.caption, 38)}”`, ago(new Date(cat.date))]);
+        if (!rows.length) return;
+        $('#now').innerHTML = rows.map(([label, href, text, sub]) => `
+            <dt>${esc(label)}</dt>
+            <dd><a href="${esc(href)}">${esc(text)}</a><small>${esc(sub)}</small></dd>`).join('');
+        $('.tj-now').hidden = false;
     }
 
     function wireFilter() {
@@ -149,10 +211,18 @@
         box.addEventListener('click', e => { if (e.target === box) box.close(); });
     }
 
+    fetch('data/bucket.json')
+        .then(r => { if (!r.ok) throw new Error(); return r.json(); })
+        .then(d => renderBucket(d.items || []))
+        .catch(() => {});
+
     fetch('data/posts.json')
         .then(r => { if (!r.ok) throw new Error(); return r.json(); })
         .then(d => {
             render(d.posts || []); wireFilter(); wireLightbox(); wireFolding();
+            const other = ['games', 'marvel', 'movies', 'rosie'];
+            Promise.all(other.map(k => fetch(`data/${k}.json`).then(r => r.json()).catch(() => null)))
+                .then(vals => renderNow(Object.fromEntries(other.map((k, i) => [k, vals[i]])), d.posts || []));
             // Entries render after load, so jump to a linked one (life#id) once it exists.
             const target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
             if (target) { setOpen(target, true); target.scrollIntoView(); }

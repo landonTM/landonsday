@@ -92,6 +92,58 @@
 .tj-index .m { display: none; }
 .tj-index .dots { flex: 1; border-bottom: 2px dotted rgba(36, 64, 142, 0.3); transform: translateY(-0.35rem); }
 
+/* index card + bucket list side by side under the cover */
+.tj-front { display: flex; align-items: flex-start; gap: 1.8rem; margin: -0.8rem 0 2.6rem 4%; }
+.tj-main { flex: 1 1 520px; display: flex; flex-direction: column; gap: 2rem; }
+.tj-front .tj-index { margin: 0; }
+
+/* left column: index card, then the "Currently" note; right column: the bucket list */
+.tj-side { flex: 0 1 340px; margin-top: 1.2rem; }
+.tj-now { align-self: flex-start; width: min(100%, 400px); margin-left: 8%; }
+
+/* ---------- "Currently": a pinned sticky note that fills itself in ---------- */
+.tj-now {
+  position: relative;
+  padding: 1.5rem 1.2rem 1rem;
+  background: linear-gradient(160deg, #d9f2c7, #c6e8b0);
+  box-shadow: 0 10px 18px rgba(60, 45, 25, 0.28), inset 0 -18px 18px -18px rgba(0, 0, 0, 0.12);
+  transform: rotate(-1.8deg);
+}
+.tj-now .pin { position: absolute; top: -9px; left: 50%; width: 18px; height: 18px; margin-left: -9px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #ff8f7a, #c0392b 60%, #7d1f14); box-shadow: 1px 3px 3px rgba(0, 0, 0, 0.35); }
+.tj-now-title { margin: 0 0 0.5rem; font: 700 0.85rem var(--type); letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); }
+.tj-now dl { display: grid; grid-template-columns: auto 1fr; gap: 0.45rem 0.8rem; margin: 0; }
+.tj-now dt { font: 400 0.75rem/1.9 var(--type); letter-spacing: 0.06em; text-transform: uppercase; color: var(--soft); white-space: nowrap; }
+.tj-now dd { margin: 0; min-width: 0; }
+.tj-now dd a { display: block; color: var(--pen); font: 700 1.3rem/1.1 var(--hand); text-decoration: none; }
+.tj-now dd a:hover, .tj-now dd a:focus-visible { text-decoration: underline wavy; outline: none; }
+.tj-now small { display: block; font: 400 0.72rem var(--type); color: var(--soft); }
+
+/* ---------- bucket list: a sheet of yellow legal pad ---------- */
+.tj-bucket {
+  position: relative;
+  padding: 2.1rem 1.2rem 1rem 2.6rem;
+  background:
+    linear-gradient(90deg, transparent 1.9rem, rgba(214, 70, 70, 0.55) 1.9rem, rgba(214, 70, 70, 0.55) calc(1.9rem + 1px), transparent calc(1.9rem + 1px), transparent calc(1.9rem + 4px), rgba(214, 70, 70, 0.55) calc(1.9rem + 4px), rgba(214, 70, 70, 0.55) calc(1.9rem + 5px), transparent calc(1.9rem + 5px)),
+    repeating-linear-gradient(transparent 0 calc(2rem - 1px), rgba(80, 120, 190, 0.35) calc(2rem - 1px) 2rem),
+    #fcf3a8;
+  background-position: 0 0, 0 1.55rem, 0 0;
+  box-shadow: 0 8px 20px rgba(60, 45, 25, 0.28);
+  transform: rotate(1.4deg);
+}
+.tj-bucket .tape { --tape: rgba(244, 166, 184, 0.7); }
+.tj-bucket::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 0.7rem; background: #8e2b22; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25); }
+.tj-bucket-title { margin: 0 0 0.2rem; font: 700 1.9rem/1 var(--hand); color: var(--ink); }
+.tj-bucket ul { list-style: none; margin: 0; padding: 0; }
+.tj-bucket li { display: flex; align-items: center; gap: 0.5rem; min-height: 2rem; font: 700 1.3rem/1.1 var(--hand); color: var(--pen); }
+.tj-bucket .box { flex: 0 0 auto; display: grid; place-items: center; width: 1.05rem; height: 1.05rem; border: 2px solid var(--pen); border-radius: 2px; color: var(--accent); font: 700 1.4rem/1 var(--hand); }
+.tj-bucket .txt { flex: 1; }
+.tj-bucket .txt a { color: inherit; text-decoration: underline dotted; text-underline-offset: 3px; }
+.tj-bucket li.done .txt { color: var(--soft); text-decoration: line-through 2px rgba(179, 64, 46, 0.8); }
+.tj-bucket li.done .box { transform: rotate(-4deg); }
+.tj-bucket .when { flex: 0 0 auto; font: 400 0.75rem var(--type); color: var(--soft); letter-spacing: 0.05em; }
+.tj-bucket-count { margin: 0.4rem 0 0; font: 400 0.8rem var(--type); letter-spacing: 0.12em; text-transform: uppercase; color: var(--soft); text-align: right; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
 /* ---------- journal pages ---------- */
 .tj-entry {
   position: relative;
@@ -155,8 +207,8 @@
 
 /* thoughts: a typed sheet clipped to the page */
 .tj-typed { position: relative; max-width: 700px; margin: 1.2rem auto 0.4rem; padding: 2rem 2.2rem 1.8rem; background: #fff; box-shadow: 0 6px 16px rgba(60, 45, 25, 0.22); transform: rotate(-0.4deg); }
-.tj-typed .tj-title { margin-top: 0; }
-.clip { position: absolute; top: -16px; left: 36px; width: 22px; height: 58px; border: 3px solid #9aa0a8; border-radius: 12px; border-bottom-color: transparent; }
+.tj-typed .tj-title { margin-top: 0.8rem; }
+.clip { position: absolute; top: -16px; right: 40px; width: 22px; height: 58px; border: 3px solid #9aa0a8; border-radius: 12px; border-bottom-color: transparent; }
 .tj-pull { margin: 1rem 0 1.4rem; padding-left: 1rem; border-left: 3px solid var(--accent); font: 700 1.7rem/1.25 var(--hand); color: var(--pen); }
 .tj-sign { margin: 1.2rem 0 0; font: 700 1.5rem var(--hand); color: var(--pen); text-align: right; }
 
@@ -186,7 +238,12 @@
   .tj-cover { padding: 2rem 2.2rem 1.8rem 1.4rem; }
   .tj-sub { font-size: 1.3rem; }
   .tj-cover .band { right: 6%; width: 10px; }
-  .tj-index { margin: -0.6rem auto 2rem; }
+  .tj-front { flex-direction: column; align-items: stretch; gap: 1.4rem; margin: -0.6rem 0 2rem; }
+  .tj-main, .tj-side { flex: none; width: 100%; }
+  .tj-main { gap: 1.6rem; }
+  .tj-now { width: 100%; margin-left: 0; }
+  .tj-side { margin: 0.4rem 0 0; }
+  .tj-bucket { transform: rotate(0.8deg); }
   .tj-index .k, .tj-index .dots, .tj-index .d { display: none; }
   .tj-index .m { display: inline; }
   .tj-index .t { flex: 1; font-size: 1.3rem; }

@@ -1,0 +1,17 @@
+{
+  "items": [
+    { "text": "Visit New York" },
+    { "text": "Visit Italy" },
+    { "text": "Graduate college" },
+    { "text": "Get a real job" },
+    { "text": "Get a master PC" },
+    { "text": "Get an iPhone Duo" },
+    { "text": "See CM Punk's last match" },
+    { "text": "See John Cena's last match", "done": "2025-12-13", "entry": "dc-2025" },
+    { "text": "See Evolution PPV", "done": "2025-07-13" },
+    { "text": "See Goldberg's last match", "done": "2025-07-12" },
+    { "text": "Get a car", "done": "2025-05-31" },
+    { "text": "Eat around the world at Disney", "done": "2022-10-03", "entry": "disney-2022" },
+    { "text": "Graduate high school", "done": "2021-06-03" }
+  ]
+}
