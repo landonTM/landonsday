@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wrestling — Landon's Day</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/ppv.css">
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Wrestling — Landon's Day">
@@ -15,11 +16,10 @@
     <meta name="twitter:title" content="Wrestling — Landon's Day">
     <meta name="twitter:description" content="Every WrestleMania match, rated and reviewed from Mania 39 down to 30.">
     <meta name="twitter:image" content="https://www.landonday.com/assets/images/wrestling.png">
-
 </head>
-<body>
+<body class="ppv-page">
 
-        <nav class="site-nav">
+    <nav class="site-nav">
         <a class="site-nav-logo" href="index">Landon's Day</a>
         <div class="site-nav-links">
             <a class="site-nav-link" href="marvel">Marvel</a>
@@ -31,104 +31,205 @@
         </div>
     </nav>
 
-    <div class="page-hero">
-        <img src="./assets/images/wrestling.png" alt="Wrestling">
-        <h1 class="page-hero-title">Wrestling</h1>
-    </div>
-
-    <div class="content-section">
-        <h2>The Big 4</h2>
-        <div class="big4-row">
-            <a class="big4-card" data-title="WrestleMania" href="wrestlemania"><img src="./assets/images/wrestling/wrestlemania.jpg" alt="WrestleMania"></a>
-            <div class="big4-card" data-title="SummerSlam" tabindex="0" role="button" aria-label="SummerSlam" onclick="showDeadModal('SummerSlam')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showDeadModal('SummerSlam');}"><img src="./assets/images/wrestling/summerslam.jpg" alt="SummerSlam"></div>
-            <div class="big4-card" data-title="Royal Rumble" tabindex="0" role="button" aria-label="Royal Rumble" onclick="showDeadModal('Royal Rumble')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showDeadModal('Royal Rumble');}"><img src="./assets/images/wrestling/royalrumble.jpg" alt="Royal Rumble"></div>
-            <div class="big4-card" data-title="Money in the Bank" tabindex="0" role="button" aria-label="Money in the Bank" onclick="showDeadModal('Money in the Bank')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showDeadModal('Money in the Bank');}"><img src="./assets/images/wrestling/mitb.jpg" alt="Money in the Bank"></div>
+    <main class="ppv">
+        <div class="tv">
+            <div class="tv-cabinet">
+                <div class="bezel">
+                <div class="screen">
+                    <span class="bug live">LIVE</span>
+                    <span class="bug clock" id="clock">8:00 PM</span>
+                    <div class="ch-home" id="chHome">
+                        <p class="presents">Landon's Day presents</p>
+                        <h1 class="chrome">Wrestling</h1>
+                        <p class="tagline">Every WrestleMania match, rated and reviewed from Mania 39 down to 30.</p>
+                    </div>
+                    <div class="ch-show" id="chShow" hidden aria-live="polite"></div>
+                    <div class="static" id="static" aria-hidden="true"></div>
+                    <div class="ticker" aria-hidden="true"><span id="ticker">WRESTLEMANIA 30–39 · EVERY MATCH RATED · SUMMERSLAM, ROYAL RUMBLE &amp; MONEY IN THE BANK ARE OFF THE AIR · STAY TUNED</span></div>
+                    <span class="bug net">LDN</span>
+                </div>
+                </div>
+                <div class="tv-side">
+                    <div class="grille" aria-hidden="true"></div>
+                    <span class="tv-brand" aria-hidden="true">Landon's Day</span>
+                    <button class="ch" id="chBtn" aria-label="Next channel">CH 03</button>
+                    <div class="knobs"><button class="knob" data-step="-1" aria-label="Channel down"></button><button class="knob" data-step="1" aria-label="Channel up"></button></div>
+                    <div class="tv-buttons" aria-hidden="true"><span></span><span></span><span></span><span class="power"><i class="led"></i></span></div>
+                </div>
+            </div>
+            <div class="vcr" aria-hidden="true"><span class="slot"></span><span class="brand">Landon's Day VHS</span><span class="lcd">12:00</span></div>
         </div>
 
-        <div class="saga">
-            <div class="saga-chapter">
-                <span class="saga-number">Chapter 1</span>
-                <h3>The Project</h3>
-                <p>It started simple enough: rewatch every WrestleMania, SummerSlam, Royal Rumble, and Money in the Bank, working backwards from the most recent show all the way to the very first. Rate every match. Review every match. No skipping, no shortcuts.</p>
+        <section aria-labelledby="bigFour">
+            <h2 class="slab" id="bigFour">The Big 4</h2>
+            <div class="posters">
+                <a class="poster" href="wrestlemania">
+                    <span class="art"><img src="./assets/images/wrestling/wrestlemania.jpg" alt=""></span>
+                    <span class="label"><span class="name">WrestleMania</span><span class="status">▶ WATCH REPLAYS</span></span>
+                </a>
+                <button class="poster off" data-show="SummerSlam">
+                    <span class="art"><img src="./assets/images/wrestling/summerslam.jpg" alt=""></span>
+                    <span class="label"><span class="name">SummerSlam</span><span class="status">NO SIGNAL</span></span>
+                </button>
+                <button class="poster off" data-show="Royal Rumble">
+                    <span class="art"><img src="./assets/images/wrestling/royalrumble.jpg" alt=""></span>
+                    <span class="label"><span class="name">Royal Rumble</span><span class="status">NO SIGNAL</span></span>
+                </button>
+                <button class="poster off" data-show="Money in the Bank">
+                    <span class="art"><img src="./assets/images/wrestling/mitb.jpg" alt=""></span>
+                    <span class="label"><span class="name">Money in the Bank</span><span class="status">NO SIGNAL</span></span>
+                </button>
             </div>
-            <div class="saga-chapter">
-                <span class="saga-number">Chapter 2</span>
-                <h3>The Execution</h3>
-                <p>Turns out wrestling is an unbelievably varied medium. Ladder matches, cinematic brawls, technical clinics, comedy segments dressed up as fights — the format bends in ways almost nothing else on TV does.</p>
-            </div>
-            <div class="saga-chapter">
-                <span class="saga-number">Chapter 3</span>
-                <h3>The Dread</h3>
-                <p>And then the fun started running out. Bad wrestling is spectacularly bad. Negative-star matches exist for a reason. Three, five, seven-hour pay-per-views stop feeling like entertainment and start feeling like a hostage situation.</p>
-            </div>
-            <div class="saga-chapter">
-                <span class="saga-number">Chapter 4</span>
-                <h3>The Downfall</h3>
-                <p>Eventually the novelty of modern wrestling wore off completely, and Marvel movies and regular ol' films started looking a lot more appealing — more consistent, better made, and reliably over in under three hours.</p>
-            </div>
-            <div class="saga-chapter">
-                <span class="saga-number">Chapter 5</span>
-                <h3>The End</h3>
-                <p>So here we are. The WrestleMania project is done, and I'm genuinely happy with how the charts turned out. I have no plans to pick the rest of the Big Four back up — truthfully, I don't even watch wrestling anymore. Consider this section permanently retired.</p>
-            </div>
-        </div>
-    </div>
+        </section>
 
-    <div class="modal-overlay" id="deadModal">
-        <div class="modal-box">
-            <button class="modal-close" id="deadModalClose" aria-label="Close">&times;</button>
-            <h2 class="modal-title" id="deadModalTitle"></h2>
-            <div class="modal-review" id="deadModalBody"></div>
+        <section aria-labelledby="liveTitle" id="liveSection" hidden>
+            <h2 class="slab" id="liveTitle">Live events I've been to</h2>
+            <div class="stubs" id="stubs"></div>
+        </section>
+
+        <section aria-labelledby="previously">
+            <h2 class="slab" id="previously">Previously on…</h2>
+            <ol class="segments">
+                <li class="segment">
+                    <span class="tc">00:01:00</span>
+                    <div class="lower-third"><span class="tab">Chapter 1</span><span class="title">The Project</span></div>
+                    <p>It started simple enough: rewatch every WrestleMania, SummerSlam, Royal Rumble, and Money in the Bank, working backwards from the most recent show all the way to the very first. Rate every match. Review every match. No skipping, no shortcuts.</p>
+                </li>
+                <li class="segment">
+                    <span class="tc">00:02:00</span>
+                    <div class="lower-third"><span class="tab">Chapter 2</span><span class="title">The Execution</span></div>
+                    <p>Turns out wrestling is an unbelievably varied medium. Ladder matches, cinematic brawls, technical clinics, comedy segments dressed up as fights — the format bends in ways almost nothing else on TV does.</p>
+                </li>
+                <li class="segment">
+                    <span class="tc">00:03:00</span>
+                    <div class="lower-third"><span class="tab">Chapter 3</span><span class="title">The Dread</span></div>
+                    <p>And then the fun started running out. Bad wrestling is spectacularly bad. Negative-star matches exist for a reason. Three, five, seven-hour pay-per-views stop feeling like entertainment and start feeling like a hostage situation.</p>
+                </li>
+                <li class="segment">
+                    <span class="tc">00:04:00</span>
+                    <div class="lower-third"><span class="tab">Chapter 4</span><span class="title">The Downfall</span></div>
+                    <p>Eventually the novelty of modern wrestling wore off completely, and Marvel movies and regular ol' films started looking a lot more appealing — more consistent, better made, and reliably over in under three hours.</p>
+                </li>
+                <li class="segment">
+                    <span class="tc">00:05:00</span>
+                    <div class="lower-third"><span class="tab">Chapter 5</span><span class="title">The End</span></div>
+                    <p>So here we are. The WrestleMania project is done, and I'm genuinely happy with how the charts turned out. I have no plans to pick the rest of the Big Four back up — truthfully, I don't even watch wrestling anymore. Consider this section permanently retired.</p>
+                </li>
+            </ol>
+        </section>
+    </main>
+
+    <dialog class="standby" id="standby" aria-labelledby="standbyShow">
+        <div class="bars" aria-hidden="true"></div>
+        <div class="bars-low" aria-hidden="true"></div>
+        <div class="card">
+            <p class="psb">PLEASE STAND BY</p>
+            <p class="show" id="standbyShow"></p>
+            <p class="msg" id="standbyMsg"></p>
+            <button class="btn-ppv" id="standbyClose">Change channel</button>
         </div>
-    </div>
+    </dialog>
 
     <footer>
         <p>&copy; 2026 Landon's Day. All rights reserved.</p>
     </footer>
 
-    <script>
-        const DEAD_MESSAGES = {
-            "SummerSlam": "There is nothing here. There was never anything here. I rewatched every WrestleMania and I have chosen peace. Please, I am begging you, stop clicking on SummerSlam.",
-            "Royal Rumble": "You've clicked on the Royal Rumble tile expecting content. There is no content. There is only the void, and my quiet acceptance that this project is over. Move along.",
-            "Money in the Bank": "Congratulations, you've cashed in your curiosity on absolutely nothing. This section is dead. It has been dead. It will remain dead. I don't even watch wrestling anymore. Let it rest."
-        };
-
-        function showDeadModal(name) {
-            document.getElementById('deadModalTitle').textContent = name;
-            document.getElementById('deadModalBody').textContent = DEAD_MESSAGES[name];
-            document.getElementById('deadModal').classList.add('open');
-        }
-
-        function closeDeadModal() {
-            document.getElementById('deadModal').classList.remove('open');
-        }
-
-        document.getElementById('deadModalClose').addEventListener('click', closeDeadModal);
-        document.getElementById('deadModal').addEventListener('click', (e) => {
-            if (e.target.id === 'deadModal') closeDeadModal();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeDeadModal();
-        });
-    </script>
-
-
     <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top" title="Back to top">&uarr;</button>
 
     <script>
         (function () {
+            const DEAD_MESSAGES = {
+                "SummerSlam": "There is nothing here. There was never anything here. I rewatched every WrestleMania and I have chosen peace. Please, I am begging you, stop clicking on SummerSlam.",
+                "Royal Rumble": "You've clicked on the Royal Rumble tile expecting content. There is no content. There is only the void, and my quiet acceptance that this project is over. Move along.",
+                "Money in the Bank": "Congratulations, you've cashed in your curiosity on absolutely nothing. This section is dead. It has been dead. It will remain dead. I don't even watch wrestling anymore. Let it rest."
+            };
+
+            // The dead shows now cut to colour bars instead of a plain modal.
+            const box = document.getElementById('standby');
+            document.querySelectorAll('.poster.off').forEach(p => p.addEventListener('click', () => {
+                document.getElementById('standbyShow').textContent = p.dataset.show;
+                document.getElementById('standbyMsg').textContent = DEAD_MESSAGES[p.dataset.show];
+                box.showModal();
+            }));
+            document.getElementById('standbyClose').addEventListener('click', () => box.close());
+            box.addEventListener('click', e => { if (e.target === box) box.close(); });
+
+            const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+            const rating = t => { const f = (t.match(/⭐/g) || []).length + (t.includes('¾') ? 0.75 : t.includes('½') ? 0.5 : t.includes('¼') ? 0.25 : 0); return t.includes('-') ? -f : f; };
+            const glyphs = v => { const a = Math.abs(v), f = Math.floor(a), r = a - f; return ((v < 0 ? '−' : '') + '★'.repeat(f) + (r === 0.25 ? '¼' : r === 0.5 ? '½' : r === 0.75 ? '¾' : '')) || '0★'; };
+
+            // Channel knob: CH 03 is the title card; CH 30–39 each show one WrestleMania.
+            const chBtn = document.getElementById('chBtn'), home = document.getElementById('chHome'), show = document.getElementById('chShow');
+            const staticEl = document.getElementById('static');
+            let channels = [{ no: 3 }], at = 0;
+            function tune(step) {
+                at = (at + step + channels.length) % channels.length;
+                const c = channels[at];
+                chBtn.textContent = `CH ${String(c.no).padStart(2, '0')}`;
+                staticEl.classList.remove('on');
+                void staticEl.offsetWidth;
+                staticEl.classList.add('on');
+                home.hidden = !!c.event;
+                show.hidden = !c.event;
+                if (c.event) show.innerHTML = `
+                    <p class="presents">Channel ${c.no}</p>
+                    <h2 class="chrome ch-title">${esc(c.event)}</h2>
+                    <dl class="ch-stats">
+                        <div><dt>Best match</dt><dd><span class="st">${glyphs(c.best._v)}</span> ${esc(c.best.match)}</dd></div>
+                        <div><dt>Worst match</dt><dd><span class="st${c.worst._v < 0 ? ' neg' : ''}">${glyphs(c.worst._v)}</span> ${esc(c.worst.match)}</dd></div>
+                        <div><dt>Average</dt><dd><span class="st">${c.avg.toFixed(2)}</span> across ${c.count} matches</dd></div>
+                    </dl>
+                    <a class="btn-ppv" href="wrestlemania?event=${encodeURIComponent(c.event)}">▶ Watch replays</a>`;
+            }
+            chBtn.addEventListener('click', () => tune(1));
+            document.querySelectorAll('.knob[data-step]').forEach(k => k.addEventListener('click', () => {
+                k.classList.toggle('turned');
+                tune(+k.dataset.step);
+            }));
+
+            fetch('data/matches.json').then(r => r.json()).then(data => {
+                const by = {};
+                data.forEach(m => (by[m.event] = by[m.event] || []).push({ ...m, _v: rating(m.rating) }));
+                const events = Object.keys(by).sort((a, b) => parseInt(a.match(/\d+/)) - parseInt(b.match(/\d+/)));
+                channels = channels.concat(events.map(e => {
+                    const list = by[e];
+                    const best = list.reduce((a, b) => b._v > a._v ? b : a), worst = list.reduce((a, b) => b._v < a._v ? b : a);
+                    return { no: parseInt(e.match(/\d+/)), event: e, best, worst, count: list.length, avg: list.reduce((s, m) => s + m._v, 0) / list.length };
+                }));
+            });
+
+            // Ticket stubs for shows seen live (data/live-events.json).
+            fetch('data/live-events.json').then(r => r.json()).then(d => {
+                const stubs = (d.events || []).slice().sort((a, b) => b.date.localeCompare(a.date));
+                if (!stubs.length) return;
+                const day = iso => { const [y, m, dd] = iso.split('-').map(Number); return new Date(y, m - 1, dd).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' }); };
+                document.getElementById('stubs').innerHTML = stubs.map((e, i) => {
+                    const inner = `
+                        <span class="stub-main">
+                            <span class="stub-brand">${esc(e.promo || 'WWE')} · Admit one</span>
+                            <span class="stub-show">${esc(e.show)}</span>
+                            ${e.note ? `<span class="stub-note">${esc(e.note)}</span>` : ''}
+                            ${e.venue ? `<span class="stub-venue">${esc(e.venue)} · ${esc(e.city)}</span>` : ''}
+                        </span>
+                        <span class="stub-tear"><span class="stub-date">${esc(day(e.date))}</span>${e.trip ? '<span class="stub-go">See the trip ▸</span>' : ''}</span>`;
+                    return e.trip
+                        ? `<a class="stub" style="--tilt:${[-1.5, 1, -0.5][i % 3]}deg" href="life#${esc(e.trip)}">${inner}</a>`
+                        : `<div class="stub" style="--tilt:${[-1.5, 1, -0.5][i % 3]}deg">${inner}</div>`;
+                }).join('');
+                document.getElementById('liveSection').hidden = false;
+            });
+
+            // On-screen clock, like the corner of a live broadcast.
+            const clock = document.getElementById('clock');
+            const tick = () => { clock.textContent = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }); };
+            tick();
+            setInterval(tick, 15000);
+
             const btn = document.getElementById('backToTopBtn');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 400) {
-                    btn.classList.add('visible');
-                } else {
-                    btn.classList.remove('visible');
-                }
-            });
-            btn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+            window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 400));
+            btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
         })();
     </script>
+    <script src="./assets/js/arena.js"></script>
 </body>
 </html>

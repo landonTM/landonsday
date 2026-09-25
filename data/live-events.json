@@ -1,0 +1,56 @@
+{
+  "events": [
+    {
+      "promo": "WWE",
+      "show": "Saturday Night's Main Event",
+      "note": "John Cena's last match",
+      "date": "2025-12-13",
+      "venue": "Capital One Arena",
+      "city": "Washington, D.C.",
+      "trip": "dc-2025"
+    },
+    {
+      "promo": "WWE",
+      "show": "Evolution",
+      "date": "2025-07-13",
+      "venue": "State Farm Arena",
+      "city": "Atlanta, GA"
+    },
+    {
+      "promo": "WWE",
+      "show": "Saturday Night's Main Event",
+      "note": "Goldberg's last match",
+      "date": "2025-07-12",
+      "venue": "State Farm Arena",
+      "city": "Atlanta, GA"
+    },
+    {
+      "promo": "AEW",
+      "show": "Fyter Fest: Dynamite & Collision",
+      "date": "2023-08-23",
+      "venue": "Gas South Arena",
+      "city": "Duluth, GA"
+    },
+    {
+      "promo": "WWE",
+      "show": "WWE Live",
+      "date": "2022-03-20",
+      "venue": "Von Braun Center",
+      "city": "Huntsville, AL"
+    },
+    {
+      "promo": "NJPW",
+      "show": "The New Beginning USA",
+      "date": "2020-02-01",
+      "venue": "Coca-Cola Roxy",
+      "city": "Atlanta, GA"
+    },
+    {
+      "promo": "WWE",
+      "show": "Starrcade",
+      "date": "2019-12-01",
+      "venue": "Infinite Energy Arena",
+      "city": "Duluth, GA"
+    }
+  ]
+}

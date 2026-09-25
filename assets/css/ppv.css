@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;700&family=VT323&display=swap');
+
+/* ================================
+   Wrestling — late-'90s pay-per-view broadcast
+   The pages play on an old CRT: scanlines, a LIVE bug, a network watermark,
+   chrome logo type, lower-third chyrons for every match, and SMPTE colour
+   bars when a show is off the air. Loaded on wrestling.html and wrestlemania.html.
+   ================================ */
+
+.ppv-page {
+  --red: #d81e1e;
+  --red-dark: #7d0d0d;
+  --gold: #f2c230;
+  --ink: #f3f0ea;
+  --dim: #a7a3b3;
+  --panel: #14131c;
+  --head: 'Anton', 'Impact', sans-serif;
+  --body: 'Oswald', 'Arial Narrow', sans-serif;
+  --lcd: 'VT323', 'Courier New', monospace;
+  background:
+    radial-gradient(ellipse 45% 70% at 18% -10%, rgba(255, 240, 200, 0.16), transparent 70%),
+    radial-gradient(ellipse 45% 70% at 82% -10%, rgba(200, 220, 255, 0.14), transparent 70%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.07) 1px, transparent 1.6px) 0 100% / 9px 9px,
+    linear-gradient(#0b0a12, #07060b 70%, #120910);
+  background-attachment: fixed;
+  color: var(--ink);
+}
+/* pixel arena (assets/js/arena.js), dimmed so the page reads on top of it */
+.arena-bg { position: fixed; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated; filter: brightness(0.5) saturate(0.9); transition: filter 0.3s ease; }
+.arena-bg.lit { filter: brightness(0.9) saturate(1); }
+.ppv-page .site-nav { background: #07060b; border-bottom-color: rgba(216, 30, 30, 0.35); }
+.ppv-page .site-nav-link.active { color: var(--gold); border-bottom-color: var(--gold); }
+.ppv-page > footer { background: transparent; color: var(--dim); }
+
+.ppv, .ppv * { box-sizing: border-box; }
+.ppv { max-width: 1040px; margin: 0 auto; padding: 2rem 16px 3.5rem; font-family: var(--body); }
+
+/* ---------- the TV set: a chunky '90s CRT on a VCR ---------- */
+.tv { position: relative; max-width: 900px; margin: 0 auto 2.8rem; }
+.tv-cabinet {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 132px;
+  gap: 20px;
+  padding: 24px 22px 26px 26px;
+  border-radius: 22px 22px 16px 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.10), transparent 18%),
+    linear-gradient(160deg, #4a4950, #2a292f 45%, #1b1a1f);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.18), inset 0 -3px 0 rgba(0, 0, 0, 0.5),
+    0 10px 0 #111015, 0 18px 0 #0b0a0e, 0 40px 60px rgba(0, 0, 0, 0.7);
+}
+/* the deep back of the set, peeking over the top */
+.tv-cabinet::before { content: ''; position: absolute; left: 9%; right: 9%; top: -14px; height: 16px; border-radius: 12px 12px 0 0; background: linear-gradient(#3b3a40, #2a292f); z-index: -1; }
+
+.bezel { padding: 16px; border-radius: 34px / 40px; background: linear-gradient(145deg, #121116, #050407 60%, #1b1a20); box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.12); }
+.screen {
+  position: relative;
+  overflow: clip;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  padding: 3.4rem 2rem 4.2rem;
+  border-radius: 26px / 32px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(216, 30, 30, 0.35), transparent 65%),
+    radial-gradient(ellipse at 50% 120%, rgba(242, 194, 48, 0.25), transparent 60%),
+    #050408;
+  box-shadow: inset 0 0 70px rgba(0, 0, 0, 0.95), inset 0 0 0 3px #000;
+}
+/* scanlines + curved glass */
+.screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse 60% 40% at 28% 12%, rgba(255, 255, 255, 0.13), transparent 70%),
+    radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.6));
+  animation: flicker 6s infinite steps(1);
+}
+@keyframes flicker { 0%, 96%, 100% { opacity: 1; } 97% { opacity: 0.82; } 98% { opacity: 0.95; } }
+
+/* side panel: speaker grille, channel read-out, knobs, power */
+.tv-side { display: flex; flex-direction: column; align-items: center; gap: 14px; padding-top: 6px; }
+.grille { width: 100%; height: 150px; border-radius: 8px; background: repeating-linear-gradient(0deg, #111014 0 4px, #34333a 4px 7px); box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.7); }
+.tv-brand { font: 700 0.72rem var(--body); letter-spacing: 0.32em; text-transform: uppercase; color: #b9b7c2; text-shadow: 0 1px 0 #000; }
+.ch { min-width: 5.4rem; padding: 0.1rem 0.5rem; border-radius: 4px; background: #070608; box-shadow: inset 0 1px 3px #000; font: 400 1.5rem var(--lcd); color: #3dff6e; text-shadow: 0 0 6px rgba(61, 255, 110, 0.8); text-align: center; letter-spacing: 0.08em; }
+.knobs { display: flex; gap: 14px; }
+.knob { position: relative; width: 38px; height: 38px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #77767f, #2a2930 62%, #141317); box-shadow: 0 3px 4px rgba(0, 0, 0, 0.6); }
+.knob::after { content: ''; position: absolute; top: 5px; left: 50%; width: 3px; height: 12px; margin-left: -1.5px; border-radius: 2px; background: #cfcdd6; }
+.knob + .knob::after { transform: rotate(40deg); transform-origin: 50% 14px; }
+.tv-buttons { display: flex; align-items: center; gap: 7px; }
+.tv-buttons span { width: 16px; height: 9px; border-radius: 2px; background: linear-gradient(#5b5a62, #2d2c32); box-shadow: 0 1px 0 #000; }
+.tv-buttons .power { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; }
+.led { width: 7px; height: 7px; border-radius: 50%; background: #ff3b30; box-shadow: 0 0 8px #ff3b30; }
+
+/* knobs and the channel read-out are real buttons */
+button.knob, button.ch { padding: 0; border: 0; cursor: pointer; }
+button.knob { transition: transform 0.25s ease; }
+button.knob.turned { transform: rotate(60deg); }
+button.knob:focus-visible, button.ch:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+button.ch:hover { color: #9dffb4; }
+
+/* channel change: a quick burst of snow over the screen */
+.static { position: absolute; inset: 0; z-index: 4; pointer-events: none; opacity: 0; border-radius: inherit; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0 / 160px 120px, #777; }
+.static.on { animation: snow 0.38s steps(6) forwards; }
+@keyframes snow {
+  0% { opacity: 1; background-position: 0 0; }
+  33% { background-position: -40px 30px; }
+  66% { background-position: 50px -20px; opacity: 1; }
+  100% { opacity: 0; background-position: -20px 60px; }
+}
+
+/* a WrestleMania "channel" on the main TV */
+.ch-show { position: relative; }
+.ch-title { font-size: clamp(1.7rem, 5vw, 3rem); white-space: nowrap; margin: 0.1rem 0 0.8rem; }
+.ch-stats { display: grid; gap: 0.5rem; max-width: 30rem; margin: 0 auto 1rem; text-align: left; }
+.ch-stats div { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.6rem; align-items: baseline; padding: 0.3rem 0.6rem; background: rgba(0, 0, 0, 0.55); border-left: 3px solid var(--red); }
+.ch-stats dt { font: 700 0.72rem var(--body); letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); }
+.ch-stats dd { margin: 0; font: 500 1rem/1.3 var(--body); }
+.ch-stats .st { color: var(--gold); font-weight: 700; white-space: nowrap; }
+.ch-stats .st.neg { color: #ff5a4f; }
+.ch-show .btn-ppv { display: inline-block; text-decoration: none; }
+
+/* ---------- live events: ticket stubs ---------- */
+.stubs { display: flex; flex-wrap: wrap; gap: 1.2rem; }
+.stub {
+  --tilt: 0deg;
+  position: relative;
+  display: flex;
+  flex: 1 1 290px;
+  max-width: 420px;
+  color: #1c1406;
+  text-decoration: none;
+  background: linear-gradient(90deg, #f7ecd0, #efdfb5);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  transform: rotate(var(--tilt));
+  transition: transform 0.2s ease;
+  /* notched corners where the stub was torn */
+  -webkit-mask: radial-gradient(circle 9px at 0 50%, transparent 98%, #000) left / 51% 100% no-repeat, radial-gradient(circle 9px at 100% 50%, transparent 98%, #000) right / 51% 100% no-repeat;
+  mask: radial-gradient(circle 9px at 0 50%, transparent 98%, #000) left / 51% 100% no-repeat, radial-gradient(circle 9px at 100% 50%, transparent 98%, #000) right / 51% 100% no-repeat;
+}
+a.stub:hover, a.stub:focus-visible { outline: none; transform: rotate(0deg) translateY(-3px); }
+.stub-main { flex: 1; display: flex; flex-direction: column; gap: 0.1rem; padding: 0.8rem 1rem 0.85rem 1.4rem; border-left: 8px solid var(--red); }
+.stub-brand { font: 700 0.62rem var(--body); letter-spacing: 0.3em; text-transform: uppercase; color: var(--red-dark); }
+.stub-show { font: 400 1.45rem/1.05 var(--head); letter-spacing: 0.03em; text-transform: uppercase; }
+.stub-note { font: 700 0.95rem var(--body); color: var(--red-dark); }
+.stub-venue { font: 500 0.85rem var(--body); color: #5b4a2a; }
+.stub-tear { flex: 0 0 6.6rem; display: flex; flex-direction: column; justify-content: center; gap: 0.3rem; padding: 0.6rem 0.8rem 0.6rem 0.9rem; border-left: 2px dashed rgba(90, 70, 30, 0.5); text-align: center; }
+.stub-date { font: 400 1.05rem/1.15 var(--lcd); color: #2b2210; }
+.stub-go { font: 700 0.7rem var(--body); letter-spacing: 0.08em; text-transform: uppercase; color: var(--red); }
+
+/* the VCR it sits on, blinking 12:00 forever */
+.vcr { position: relative; display: flex; align-items: center; gap: 18px; width: 86%; height: 46px; margin: 18px auto 0; padding: 0 22px; border-radius: 6px; background: linear-gradient(#26252b, #111014); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 12px 24px rgba(0, 0, 0, 0.6); }
+.vcr .slot { flex: 0 0 38%; height: 12px; border-radius: 3px; background: #030304; box-shadow: inset 0 2px 3px #000, 0 1px 0 rgba(255, 255, 255, 0.08); }
+.vcr .brand { font: 700 0.62rem var(--body); letter-spacing: 0.3em; color: #8d8b96; text-transform: uppercase; }
+.vcr .lcd { margin-left: auto; padding: 0.05rem 0.45rem; background: #050a07; font: 400 1.35rem var(--lcd); color: #3dff6e; text-shadow: 0 0 6px rgba(61, 255, 110, 0.8); animation: blink 1s infinite steps(1); }
+
+.bug { position: absolute; z-index: 1; font: 400 1.35rem var(--lcd); letter-spacing: 0.08em; }
+.bug.live { top: 14px; left: 22px; padding: 0 0.5rem; background: var(--red); color: #fff; }
+.bug.live::before { content: '●'; margin-right: 0.35rem; animation: blink 1.2s infinite steps(1); }
+@keyframes blink { 50% { opacity: 0; } }
+.bug.clock { top: 14px; right: 22px; color: rgba(255, 255, 255, 0.8); }
+.bug.net { right: 20px; bottom: 12px; color: rgba(255, 255, 255, 0.4); font: 400 1rem var(--head); letter-spacing: 0.12em; }
+
+.presents { position: relative; margin: 0; font: 700 0.85rem var(--body); letter-spacing: 0.5em; text-transform: uppercase; color: var(--gold); }
+.chrome {
+  position: relative;
+  margin: 0.2rem 0 0.4rem;
+  font: 400 clamp(3rem, 12vw, 6.4rem)/0.95 var(--head);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: linear-gradient(#ffffff 0%, #d9dde6 38%, #5b6070 50%, #e9ecf2 56%, #9aa0ad 80%, #ffffff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.4);
+  filter: drop-shadow(0 4px 0 var(--red-dark)) drop-shadow(0 0 18px rgba(216, 30, 30, 0.55));
+  transform: skewX(-8deg);
+}
+.tagline { position: relative; margin: 0 auto; max-width: 34rem; font: 500 1.15rem var(--body); color: var(--ink); }
+
+/* crawl along the bottom of the screen */
+.ticker { position: absolute; left: 0; right: 0; bottom: 38px; overflow: hidden; background: rgba(0, 0, 0, 0.75); border-top: 2px solid var(--red); white-space: nowrap; }
+.ticker span { display: inline-block; padding: 0.25rem 0 0.2rem 100%; font: 400 1.3rem var(--lcd); letter-spacing: 0.08em; color: var(--gold); animation: crawl 22s linear infinite; }
+@keyframes crawl { to { transform: translateX(-100%); } }
+
+/* ---------- section slabs ---------- */
+.slab { display: flex; align-items: center; gap: 0.8rem; margin: 0 0 1.2rem; font: 400 clamp(1.6rem, 5vw, 2.2rem)/1 var(--head); letter-spacing: 0.06em; text-transform: uppercase; }
+.slab::before { content: ''; width: 14px; height: 1.4em; background: var(--red); transform: skewX(-12deg); }
+.slab::after { content: ''; flex: 1; height: 3px; background: linear-gradient(90deg, var(--red), transparent); }
+.ppv section + section { margin-top: 2.8rem; }
+
+/* ---------- pay-per-view posters ---------- */
+.posters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.1rem; }
+.poster { position: relative; display: flex; flex-direction: column; padding: 0; border: 0; background: var(--panel); color: inherit; text-align: left; text-decoration: none; cursor: pointer; box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.poster:hover, .poster:focus-visible { outline: none; transform: translateY(-4px); box-shadow: 0 16px 28px rgba(0, 0, 0, 0.6), 0 0 0 2px var(--gold); }
+.poster .art { position: relative; display: grid; place-items: center; aspect-ratio: 4 / 3; overflow: hidden; background: #000; }
+.poster .art img { width: 100%; height: 100%; object-fit: contain; }
+.poster .label { padding: 0.55rem 0.7rem 0.65rem; border-top: 3px solid var(--red); }
+.poster .name { display: block; font: 400 1.25rem/1.1 var(--head); letter-spacing: 0.04em; text-transform: uppercase; }
+.poster .status { display: block; margin-top: 0.15rem; font: 400 1.2rem var(--lcd); letter-spacing: 0.08em; color: var(--gold); }
+.poster.off .art img { filter: grayscale(1) brightness(0.55); }
+.poster.off .status { color: var(--dim); }
+.poster.off .art::after { content: 'OFF THE AIR'; position: absolute; top: 34%; left: 50%; padding: 0.2rem 0.6rem; border: 3px solid var(--red); color: var(--red); background: rgba(0, 0, 0, 0.55); font: 400 1.1rem var(--head); letter-spacing: 0.12em; white-space: nowrap; transform: translate(-50%, -50%) rotate(-10deg); }
+
+/* ---------- "previously on…" segments ---------- */
+.segments { display: grid; gap: 1.3rem; margin: 0; padding: 0; list-style: none; }
+.segment { position: relative; padding: 1.1rem 1.2rem 1.2rem; background: linear-gradient(90deg, rgba(20, 19, 28, 0.95), rgba(20, 19, 28, 0.8)); box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45); }
+.segment .tc { position: absolute; top: 0.7rem; right: 0.9rem; font: 400 1.15rem var(--lcd); color: var(--dim); letter-spacing: 0.06em; }
+.lower-third { display: inline-flex; align-items: stretch; margin: 0 0 0.7rem; transform: skewX(-10deg); }
+.lower-third .tab { padding: 0.2rem 0.7rem; background: var(--red); font: 700 0.85rem/1.8 var(--body); letter-spacing: 0.2em; text-transform: uppercase; }
+.lower-third .title { padding: 0.1rem 0.9rem; background: linear-gradient(#ffe27a, var(--gold) 55%, #c9971a); color: #1a1206; font: 400 1.45rem/1.3 var(--head); letter-spacing: 0.05em; text-transform: uppercase; }
+.lower-third > * { display: inline-block; }
+.segment p { margin: 0; max-width: 68ch; font: 500 1.05rem/1.6 var(--body); color: var(--ink); }
+
+/* ---------- "please stand by" colour bars ---------- */
+.standby { width: min(92vw, 560px); padding: 0; border: 0; background: #000; color: #fff; box-shadow: 0 24px 70px rgba(0, 0, 0, 0.8); }
+.standby::backdrop { background: rgba(0, 0, 0, 0.8); }
+.standby .bars { height: 150px; background: linear-gradient(90deg, #c0c0c0 0 14.28%, #c0c000 0 28.57%, #00c0c0 0 42.85%, #00c000 0 57.14%, #c000c0 0 71.42%, #c00000 0 85.71%, #0000c0 0); }
+.standby .bars-low { height: 26px; background: linear-gradient(90deg, #0000c0 0 14.28%, #131313 0 28.57%, #c000c0 0 42.85%, #131313 0 57.14%, #00c0c0 0 71.42%, #131313 0 85.71%, #c0c0c0 0); }
+.standby .card { padding: 1.2rem 1.4rem 1.4rem; text-align: center; }
+.standby .psb { margin: 0; font: 400 2rem var(--head); letter-spacing: 0.12em; }
+.standby .show { margin: 0.2rem 0 0.8rem; font: 400 1.4rem var(--lcd); color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; }
+.standby .msg { margin: 0 0 1.2rem; font: 500 1.05rem/1.6 var(--body); color: #ddd; }
+.btn-ppv { padding: 0.45rem 1.2rem; border: 0; background: var(--red); color: #fff; font: 400 1.1rem var(--head); letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
+.btn-ppv:hover, .btn-ppv:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* ================= WrestleMania replays ================= */
+.tv.small .screen { padding-bottom: 3rem; }
+.scoreboard { position: relative; display: flex; justify-content: center; gap: 0.8rem; margin-top: 1rem; }
+.scoreboard div { min-width: 7.5rem; padding: 0.35rem 0.8rem 0.25rem; background: #000; border: 2px solid #3a3440; }
+.scoreboard b { display: block; font: 400 2.3rem/1 var(--lcd); color: #ffb020; text-shadow: 0 0 8px rgba(255, 150, 20, 0.7); }
+.scoreboard span { font: 700 0.7rem var(--body); letter-spacing: 0.25em; text-transform: uppercase; color: var(--dim); }
+
+/* ratings by Mania: horizontal bars on a 0–5 scale, like a TV ratings graphic */
+.chart-note { margin: -0.6rem 0 1rem; font: 500 0.95rem var(--body); color: var(--dim); }
+.ratings { display: grid; gap: 6px; padding: 1rem 1.1rem; background: rgba(20, 19, 28, 0.92); box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45); }
+.rbar { display: grid; grid-template-columns: 3.6rem 1fr 3.2rem; align-items: center; gap: 0.8rem; min-height: 32px; padding: 0 0.3rem; border: 0; background: none; color: var(--ink); cursor: pointer; text-align: left; }
+.rbar:hover, .rbar:focus-visible { outline: none; background: rgba(255, 255, 255, 0.06); }
+.rlab { font: 400 1.1rem var(--head); letter-spacing: 0.04em; color: var(--ink); white-space: nowrap; }
+.rtrack { position: relative; height: 16px; background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 20%); }
+.rfill { position: absolute; left: 0; top: 0; bottom: 0; width: var(--w); border-radius: 0 4px 4px 0; background: linear-gradient(#ffd75e, var(--gold) 55%, #c9971a); }
+.rval { font: 400 1.35rem var(--lcd); color: var(--ink); text-align: right; }
+.rbar.on .rlab, .rbar.on .rval { color: var(--gold); }
+.rbar.on .rtrack { box-shadow: 0 0 0 2px var(--gold); }
+
+/* replay reel of five-star posters */
+.reel { display: flex; gap: 0.9rem; overflow-x: auto; padding: 0.2rem 0.2rem 0.9rem; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: var(--red) transparent; }
+.reel button { flex: 0 0 min(72%, 300px); position: relative; padding: 0; border: 0; background: #000; cursor: pointer; scroll-snap-align: start; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); }
+.reel img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.reel .cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 0.25rem 0.5rem; background: linear-gradient(transparent, rgba(0, 0, 0, 0.9)); font: 400 1.15rem var(--lcd); color: var(--gold); text-align: left; letter-spacing: 0.05em; }
+.reel button:hover, .reel button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* remote-control style filters */
+.remote { display: flex; flex-wrap: wrap; gap: 0.8rem 1rem; margin: 0 0 1.4rem; padding: 0.9rem 1rem; background: linear-gradient(#26252d, #17161c); border-radius: 14px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 8px 18px rgba(0, 0, 0, 0.45); }
+.remote label { display: flex; flex-direction: column; gap: 0.25rem; flex: 1 1 180px; font: 700 0.72rem var(--body); letter-spacing: 0.22em; text-transform: uppercase; color: var(--dim); }
+.remote select, .remote input { width: 100%; padding: 0.4rem 0.6rem; border: 2px solid #3a3440; border-radius: 6px; background: #000; color: #ffb020; font: 400 1.35rem var(--lcd); letter-spacing: 0.05em; }
+.remote select:focus, .remote input:focus { outline: none; border-color: var(--gold); }
+.remote input::placeholder { color: #6d5a2e; }
+
+/* every match as a lower-third chyron */
+.card { display: grid; gap: 0.7rem; margin: 0; padding: 0; list-style: none; }
+.chyron { display: grid; grid-template-columns: 7.2rem 1fr auto; align-items: stretch; background: linear-gradient(90deg, #1b1a24, #121119); box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45); transform: skewX(-6deg); }
+.chyron > * { transform: skewX(6deg); }
+.chyron .rate { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0.4rem 0.3rem; background: var(--red); }
+.chyron .stars { color: var(--gold); font-size: 1.05rem; letter-spacing: 0.02em; white-space: nowrap; text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5); }
+.chyron .num { font: 400 1.5rem/1 var(--lcd); color: #fff; }
+.chyron.neg .rate { background: #2b2b2b; }
+.chyron.neg .stars { color: #ff5a4f; }
+.chyron.neg .num::before { content: 'BOTCH '; color: #ff5a4f; font-size: 0.9rem; }
+.chyron .info { min-width: 0; padding: 0.55rem 0.9rem 0.6rem; }
+.chyron .match { display: block; font: 400 1.3rem/1.15 var(--head); letter-spacing: 0.03em; text-transform: uppercase; }
+.chyron .result { display: block; margin-top: 0.15rem; font: 500 0.95rem var(--body); color: var(--ink); }
+.chyron .result b { color: var(--gold); font-weight: 700; }
+.chyron .type { display: block; margin-top: 0.1rem; font: 400 0.85rem var(--body); color: var(--dim); text-transform: uppercase; letter-spacing: 0.08em; }
+.chyron .when { display: flex; flex-direction: column; justify-content: center; align-items: flex-end; padding: 0.5rem 1rem 0.5rem 0.6rem; border-left: 2px solid rgba(255, 255, 255, 0.08); text-align: right; white-space: nowrap; }
+.chyron .ev { font: 400 1.1rem var(--head); letter-spacing: 0.05em; color: var(--gold); }
+.chyron .date { font: 400 1.1rem var(--lcd); color: var(--dim); }
+.chyron.flash { animation: flash 1.2s ease 2; }
+@keyframes flash { 50% { box-shadow: 0 0 0 3px var(--gold), 0 0 24px rgba(242, 194, 48, 0.6); } }
+.no-signal { padding: 2.4rem 1rem; text-align: center; font: 400 2rem var(--lcd); letter-spacing: 0.2em; color: var(--dim); background: repeating-linear-gradient(0deg, #111 0 2px, #1a1a1a 2px 4px); }
+
+/* ---------- phones ---------- */
+@media (max-width: 680px) {
+  .ppv { padding-top: 1.2rem; }
+  .tv-cabinet { grid-template-columns: 1fr; gap: 12px; padding: 14px 12px 14px; border-radius: 16px; }
+  .bezel { padding: 9px; border-radius: 22px / 26px; }
+  .screen { aspect-ratio: auto; min-height: 280px; padding: 3rem 1rem 4.2rem; border-radius: 16px / 22px; }
+  .tv-side { flex-direction: row; justify-content: space-between; gap: 10px; padding: 0 4px; }
+  .grille { flex: 1; height: 34px; }
+  .tv-brand { display: none; }
+  .ch { min-width: 4.4rem; font-size: 1.25rem; }
+  .knob { width: 28px; height: 28px; }
+  .knob::after { top: 4px; height: 9px; }
+  .knob + .knob::after { transform-origin: 50% 10px; }
+  .knobs { gap: 8px; }
+  .tv-buttons span:not(.power) { display: none; }
+  .vcr { width: 92%; height: 38px; gap: 12px; padding: 0 14px; }
+  .vcr .brand { display: none; }
+  .ch-stats div { grid-template-columns: 1fr; gap: 0.1rem; }
+  .ch-title { margin-bottom: 0.6rem; font-size: clamp(1.4rem, 7.5vw, 2rem); white-space: normal; }
+  .stub { flex-basis: 100%; }
+  .stub-show { font-size: 1.25rem; }
+  .rbar { grid-template-columns: 3.3rem 1fr 2.8rem; gap: 0.5rem; }
+  .ratings { padding: 0.8rem 0.6rem; }
+  .bug.live, .bug.clock { top: 10px; font-size: 1.15rem; }
+  .bug.live { left: 12px; }
+  .bug.clock { right: 12px; }
+  .ticker { bottom: 30px; }
+  .ticker span { font-size: 1.15rem; }
+  .posters { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem; }
+  .segment { padding: 0.9rem 0.9rem 1rem; }
+  .segment .tc { position: static; display: block; margin-bottom: 0.3rem; }
+  .lower-third .title { font-size: 1.25rem; }
+  .chyron { grid-template-columns: 5.2rem 1fr; transform: none; }
+  .chyron > * { transform: none; }
+  .chyron .stars { font-size: 0.78rem; }
+  .chyron .when { grid-column: 2; flex-direction: row; justify-content: flex-start; gap: 0.6rem; padding: 0 0.9rem 0.55rem; border-left: 0; }
+  .chyron .rate { grid-row: span 2; }
+  .chyron .match { font-size: 1.1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen::after, .bug.live::before, .chyron.flash, .vcr .lcd, .static.on { animation: none; }
+  button.knob, .stub { transition: none; }
+  .ticker span { animation: none; padding-left: 1rem; }
+  .poster { transition: none; }
+}

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WrestleMania Matches — Landon's Day</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/ppv.css">
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
     <meta property="og:type" content="website">
     <meta property="og:title" content="WrestleMania Matches — Landon's Day">
@@ -15,11 +16,10 @@
     <meta name="twitter:title" content="WrestleMania Matches — Landon's Day">
     <meta name="twitter:description" content="Every WrestleMania match, rated and reviewed from Mania 39 down to 30.">
     <meta name="twitter:image" content="https://www.landonday.com/assets/images/wrestling/wrestlemania.jpg">
-
 </head>
-<body>
+<body class="ppv-page">
 
-        <nav class="site-nav">
+    <nav class="site-nav">
         <a class="site-nav-logo" href="index">Landon's Day</a>
         <div class="site-nav-links">
             <a class="site-nav-link" href="marvel">Marvel</a>
@@ -31,192 +31,234 @@
         </div>
     </nav>
 
-    <div class="page-hero">
-        <img src="./assets/images/wrestling/wrestlemania.jpg" alt="WrestleMania">
-        <h1 class="page-hero-title">WrestleMania Matches</h1>
-    </div>
-
-    <div class="filter-bar">
-        <div class="filter-group">
-            <label for="eventFilter">Filter by Event:</label>
-            <select id="eventFilter">
-                <option value="all">All</option>
-            </select>
+    <main class="ppv">
+        <div class="tv small">
+            <div class="tv-cabinet">
+                <div class="bezel">
+                <div class="screen">
+                    <span class="bug live">REPLAY</span>
+                    <span class="bug clock" id="clock">8:00 PM</span>
+                    <p class="presents"><a href="wrestling" style="color:inherit">◀ Wrestling</a></p>
+                    <h1 class="chrome">WrestleMania</h1>
+                    <p class="tagline">Every match from Mania 39 down to 30, rated.</p>
+                    <div class="scoreboard" aria-live="polite">
+                        <div><b id="matchCount">—</b><span>Matches</span></div>
+                        <div><b id="avgRating">—</b><span>Avg rating</span></div>
+                    </div>
+                    <span class="bug net">LDN</span>
+                </div>
+                </div>
+                <div class="tv-side">
+                    <div class="grille" aria-hidden="true"></div>
+                    <span class="tv-brand" aria-hidden="true">Landon's Day</span>
+                    <button class="ch" id="chLabel" aria-label="Next event">CH ALL</button>
+                    <div class="knobs"><button class="knob" data-step="-1" aria-label="Previous event"></button><button class="knob" data-step="1" aria-label="Next event"></button></div>
+                    <div class="tv-buttons" aria-hidden="true"><span></span><span></span><span></span><span class="power"><i class="led"></i></span></div>
+                </div>
+            </div>
+            <div class="vcr" aria-hidden="true"><span class="slot"></span><span class="brand">Landon's Day VHS</span><span class="lcd">12:00</span></div>
         </div>
-        <div class="filter-group">
-            <label for="wrestlerSearch">Search Wrestler:</label>
-            <input type="text" id="wrestlerSearch" placeholder="e.g. Roman Reigns">
-        </div>
-        <div class="filter-group">
-            <label for="sortSelect">Sort by:</label>
-            <select id="sortSelect">
-                <option value="high">Rating: High to Low</option>
-                <option value="low">Rating: Low to High</option>
-                <option value="date-desc">Date: Newest First</option>
-                <option value="date-asc">Date: Oldest First</option>
-            </select>
-        </div>
-    </div>
 
-    <div class="stats-bar" id="eventStats">
-        Showing all events. Total matches: <span id="matchCount"></span>
-    </div>
+        <section aria-labelledby="ratingsTitle" id="ratingsSection" hidden>
+            <h2 class="slab" id="ratingsTitle">Ratings by Mania</h2>
+            <p class="chart-note">Average match rating out of 5★. Tap a Mania to show just its matches.</p>
+            <div class="ratings" id="ratings"></div>
+        </section>
 
-    <table class="matches-table" id="matchTable">
-        <thead>
-            <tr>
-                <th>Rating</th>
-                <th>Date</th>
-                <th>Match</th>
-                <th>Event</th>
-                <th>Winner</th>
-                <th>Loser</th>
-                <th>Match Type</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+        <section aria-labelledby="reelTitle" id="reelSection" hidden>
+            <h2 class="slab" id="reelTitle">Top-rated replays</h2>
+            <div class="reel" id="reel"></div>
+        </section>
+
+        <section aria-labelledby="cardTitle">
+            <h2 class="slab" id="cardTitle">The card</h2>
+            <div class="remote">
+                <label>Event
+                    <select id="eventFilter"><option value="all">All</option></select>
+                </label>
+                <label>Search wrestler
+                    <input type="text" id="wrestlerSearch" placeholder="e.g. Roman Reigns">
+                </label>
+                <label>Sort by
+                    <select id="sortSelect">
+                        <option value="high">Rating: High to Low</option>
+                        <option value="low">Rating: Low to High</option>
+                        <option value="date-desc">Date: Newest First</option>
+                        <option value="date-asc">Date: Oldest First</option>
+                    </select>
+                </label>
+            </div>
+            <ol class="card" id="card"></ol>
+            <p class="no-signal" id="noSignal" hidden>NO SIGNAL</p>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2025 Landon's Day. All rights reserved.</p>
+        <p>&copy; 2026 Landon's Day. All rights reserved.</p>
     </footer>
-
-    <script>
-        async function loadMatches() {
-            const res = await fetch('data/matches.json');
-            const data = await res.json();
-            const tableBody = document.querySelector('#matchTable tbody');
-            const eventSet = new Set();
-
-            tableBody.innerHTML = '';
-
-            data.forEach((match, index) => {
-                const row = document.createElement('tr');
-                row.dataset.originalIndex = index;
-                row.innerHTML = `
-                    <td data-label="Rating">${match.rating}</td>
-                    <td data-label="Date">${match.date}</td>
-                    <td data-label="Match">${match.match}</td>
-                    <td data-label="Event">${match.event}</td>
-                    <td data-label="Winner">${match.winner}</td>
-                    <td data-label="Loser">${match.loser}</td>
-                    <td data-label="Match Type">${match.type || ''}</td>
-                `;
-                tableBody.appendChild(row);
-                eventSet.add(match.event);
-            });
-
-            const filter = document.getElementById('eventFilter');
-            const wrestlerInput = document.getElementById('wrestlerSearch');
-            const sortSelect = document.getElementById('sortSelect');
-
-            Array.from(eventSet)
-                .sort((a, b) => parseInt(b.match(/\d+/)) - parseInt(a.match(/\d+/)))
-                .forEach(event => {
-                    const opt = document.createElement('option');
-                    opt.value = event;
-                    opt.textContent = event;
-                    filter.appendChild(opt);
-                });
-
-            function parseMatchDate(text) {
-                const cleaned = text.replace(/(\d+)(st|nd|rd|th)/, '$1');
-                return new Date(cleaned);
-            }
-
-            function applySort() {
-                const rows = Array.from(document.querySelectorAll('#matchTable tbody tr'));
-                const mode = sortSelect.value;
-
-                rows.sort((a, b) => {
-                    if (mode === 'high' || mode === 'low') {
-                        const ratingA = extractRating(a.children[0].innerText);
-                        const ratingB = extractRating(b.children[0].innerText);
-                        return mode === 'high' ? ratingB - ratingA : ratingA - ratingB;
-                    } else {
-                        const dateA = parseMatchDate(a.children[1].innerText);
-                        const dateB = parseMatchDate(b.children[1].innerText);
-                        return mode === 'date-desc' ? dateB - dateA : dateA - dateB;
-                    }
-                });
-
-                const tbody = document.querySelector('#matchTable tbody');
-                rows.forEach(row => tbody.appendChild(row));
-                applyCombinedFilters();
-            }
-
-            function applyCombinedFilters() {
-                const eventValue = filter.value;
-                const term = wrestlerInput.value.toLowerCase();
-                const rows = document.querySelectorAll('#matchTable tbody tr');
-
-                rows.forEach(row => {
-                    const event = row.children[3].innerText;
-                    const match = row.children[2].innerText.toLowerCase();
-                    const winner = row.children[4].innerText.toLowerCase();
-                    const loser = row.children[5].innerText.toLowerCase();
-
-                    const eventMatch = eventValue === 'all' || event === eventValue;
-                    const wrestlerMatch = match.includes(term) || winner.includes(term) || loser.includes(term);
-
-                    row.style.display = eventMatch && wrestlerMatch ? '' : 'none';
-                });
-
-                updateStats();
-            }
-
-            filter.addEventListener('change', applyCombinedFilters);
-            wrestlerInput.addEventListener('input', applyCombinedFilters);
-            sortSelect.addEventListener('change', applySort);
-
-            applyCombinedFilters();
-        }
-
-        function extractRating(text) {
-            const negative = text.includes('-');
-            const full = (text.match(/⭐/g) || []).length;
-            const fraction = text.includes('¾') ? 0.75 : text.includes('½') ? 0.5 : text.includes('¼') ? 0.25 : 0;
-            const rating = full + fraction;
-            return negative ? -rating : rating;
-        }
-
-        function updateStats() {
-            const filter = document.getElementById('eventFilter');
-            const rows = document.querySelectorAll('#matchTable tbody tr');
-            const stats = document.getElementById('eventStats');
-
-            const visibleRows = Array.from(rows).filter(row => row.style.display !== 'none');
-
-            const ratings = visibleRows
-                .map(row => extractRating(row.children[0].innerText))
-                .filter(r => typeof r === 'number' && !isNaN(r));
-            const avgRating = ratings.length ? (ratings.reduce((a, b) => a + b, 0) / ratings.length).toFixed(2) : 'N/A';
-
-            const eventName = filter.value === 'all' ? 'all events' : filter.value;
-            stats.innerHTML = `Showing ${eventName}. Total matches: <span id="matchCount">${visibleRows.length}</span>. Average rating: <strong>${avgRating}</strong>`;
-        }
-
-        loadMatches();
-    </script>
-
 
     <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to top" title="Back to top">&uarr;</button>
 
     <script>
         (function () {
-            const btn = document.getElementById('backToTopBtn');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 400) {
-                    btn.classList.add('visible');
-                } else {
-                    btn.classList.remove('visible');
+            const $ = s => document.querySelector(s);
+            const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+            // Posters for some of the top-rated matches, matched to the data by title.
+            const POSTERS = {
+                'Roman Reigns vs. Cody Rhodes': 'roman-cody.jpg',
+                'Cody Rhodes vs. Seth Rollins': 'cody-seth.jpg',
+                'Bianca Belair vs. Becky Lynch': 'bianca-becky.jpg',
+                'Bianca Belair vs. Sasha Banks': 'bianca-sasha.jpg',
+                'The Usos vs. Sami Zayn & Kevin Owens': 'usos-sami-kevin.jpg',
+                'Sami Zayn vs. Johnny Knoxville': 'sami-johnny.jpg',
+                'Randy Orton vs. Daniel Bryan vs. Batista': 'randy-daniel-batista.jpg',
+                'Drew McIntyre vs. Sheamus vs. Gunther': 'drew-sheamus-gunther.jpg',
+                'Rhea Ripley vs. Charlotte': 'rhea-charlotte.jpg',
+                'Roman Reigns vs. Daniel Bryan vs. Edge': 'roman-daniel-edge.jpg'
+            };
+
+            function extractRating(text) {
+                const negative = text.includes('-');
+                const full = (text.match(/⭐/g) || []).length;
+                const fraction = text.includes('¾') ? 0.75 : text.includes('½') ? 0.5 : text.includes('¼') ? 0.25 : 0;
+                const rating = full + fraction;
+                return negative ? -rating : rating;
+            }
+            const parseMatchDate = text => new Date(text.replace(/(\d+)(st|nd|rd|th)/, '$1'));
+            // Stars drawn as glyphs: ★ for each full star plus ¼/½/¾.
+            function starGlyphs(v) {
+                const a = Math.abs(v), full = Math.floor(a), frac = a - full;
+                const f = frac === 0.25 ? '¼' : frac === 0.5 ? '½' : frac === 0.75 ? '¾' : '';
+                return (v < 0 ? '−' : '') + '★'.repeat(full) + f || '—';
+            }
+            const shortDate = t => { const d = parseMatchDate(t); return isNaN(d) ? t : d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); };
+            const shortEvent = e => e.replace('WrestleMania', 'WM');
+
+            let matches = [];
+            const card = $('#card'), eventSel = $('#eventFilter'), search = $('#wrestlerSearch'), sortSel = $('#sortSelect');
+
+            function chyron(m) {
+                const v = m._v;
+                return `<li class="chyron${v < 0 ? ' neg' : ''}" id="m${m._i}">
+                    <div class="rate"><span class="stars" aria-hidden="true">${starGlyphs(v)}</span><span class="num">${v}</span></div>
+                    <div class="info">
+                        <span class="match">${esc(m.match)}</span>
+                        <span class="result"><b>${esc(m.winner)}</b> def. ${esc(m.loser)}</span>
+                        ${m.type ? `<span class="type">${esc(m.type)}</span>` : ''}
+                    </div>
+                    <div class="when"><span class="ev">${esc(shortEvent(m.event))}</span><span class="date">${esc(shortDate(m.date))}</span></div>
+                </li>`;
+            }
+
+            function update() {
+                const mode = sortSel.value, ev = eventSel.value, term = search.value.trim().toLowerCase();
+                const list = matches
+                    .filter(m => ev === 'all' || m.event === ev)
+                    .filter(m => !term || [m.match, m.winner, m.loser].some(s => s.toLowerCase().includes(term)))
+                    .sort((a, b) => mode === 'high' ? b._v - a._v : mode === 'low' ? a._v - b._v
+                        : mode === 'date-desc' ? b._d - a._d : a._d - b._d);
+                card.innerHTML = list.map(chyron).join('');
+                $('#noSignal').hidden = list.length > 0;
+                $('#matchCount').textContent = list.length;
+                $('#avgRating').textContent = list.length ? (list.reduce((s, m) => s + m._v, 0) / list.length).toFixed(2) : 'N/A';
+                $('#chLabel').textContent = ev === 'all' ? 'CH ALL' : `CH ${ev.match(/\d+/)}`;
+                document.querySelectorAll('.rbar').forEach(b => b.classList.toggle('on', b.dataset.ev === ev));
+            }
+
+            // Ratings by Mania: one bar per event, average rating on a 0–5 scale.
+            function renderRatings() {
+                const events = [...eventSel.options].map(o => o.value).filter(v => v !== 'all');
+                $('#ratings').innerHTML = events.map(e => {
+                    const list = matches.filter(m => m.event === e);
+                    const avg = list.reduce((s, m) => s + m._v, 0) / list.length;
+                    const best = list.reduce((a, b) => b._v > a._v ? b : a);
+                    const tip = `${e}: ${avg.toFixed(2)} average across ${list.length} matches. Best: ${best.match} (${starGlyphs(best._v)})`;
+                    return `<button class="rbar" data-ev="${esc(e)}" title="${esc(tip)}" aria-label="${esc(tip)}">
+                        <span class="rlab">${esc(shortEvent(e))}</span>
+                        <span class="rtrack"><span class="rfill" style="--w:${Math.max(0, avg) / 5 * 100}%"></span></span>
+                        <span class="rval">${avg.toFixed(2)}</span>
+                    </button>`;
+                }).join('');
+                $('#ratingsSection').hidden = false;
+            }
+            $('#ratings').addEventListener('click', e => {
+                const b = e.target.closest('.rbar');
+                if (!b) return;
+                eventSel.value = eventSel.value === b.dataset.ev ? 'all' : b.dataset.ev;
+                update();
+                $('#cardTitle').scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // The knobs and CH button step through the event filter like channels.
+            function step(n) {
+                const i = eventSel.selectedIndex, len = eventSel.options.length;
+                eventSel.selectedIndex = (i + n + len) % len;
+                update();
+            }
+            $('#chLabel').addEventListener('click', () => step(1));
+            document.querySelectorAll('.knob[data-step]').forEach(k => k.addEventListener('click', () => {
+                k.classList.toggle('turned');
+                step(+k.dataset.step);
+            }));
+
+            // The pixel crowd reacts: a flash storm for five stars, boos for a botch.
+            const react = v => { if (window.arena) { if (v >= 5) arena.react('cheer'); else if (v < 0) arena.react('boo'); } };
+            card.addEventListener('click', e => {
+                const row = e.target.closest('.chyron');
+                if (row) react(matches[+row.id.slice(1)]._v);
+            });
+
+            fetch('data/matches.json').then(r => r.json()).then(data => {
+                matches = data.map((m, i) => ({ ...m, _i: i, _v: extractRating(m.rating), _d: parseMatchDate(m.date) }));
+                [...new Set(matches.map(m => m.event))]
+                    .sort((a, b) => parseInt(b.match(/\d+/)) - parseInt(a.match(/\d+/)))
+                    .forEach(e => eventSel.insertAdjacentHTML('beforeend', `<option value="${esc(e)}">${esc(e)}</option>`));
+
+                const reel = matches.filter(m => POSTERS[m.match]).sort((a, b) => b._d - a._d);
+                if (reel.length) {
+                    $('#reel').innerHTML = reel.map(m => `
+                        <button data-i="${m._i}" aria-label="${esc(m.match)}, ${esc(m.event)}">
+                            <img src="./assets/images/wrestling/${POSTERS[m.match]}" alt="" loading="lazy">
+                            <span class="cap">${starGlyphs(m._v)} ${esc(shortEvent(m.event))}</span>
+                        </button>`).join('');
+                    $('#reelSection').hidden = false;
                 }
+                const wanted = new URLSearchParams(location.search).get('event');
+                if (wanted && [...eventSel.options].some(o => o.value === wanted)) eventSel.value = wanted;
+                renderRatings();
+                update();
             });
-            btn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Picking a poster jumps to that match on the card and flashes it.
+            $('#reel').addEventListener('click', e => {
+                const b = e.target.closest('button');
+                if (!b) return;
+                eventSel.value = 'all';
+                search.value = '';
+                update();
+                const row = document.getElementById('m' + b.dataset.i);
+                row.scrollIntoView({ block: 'center' });
+                row.classList.remove('flash');
+                void row.offsetWidth;
+                row.classList.add('flash');
+                react(matches[+b.dataset.i]._v);
             });
+
+            eventSel.addEventListener('change', update);
+            search.addEventListener('input', update);
+            sortSel.addEventListener('change', update);
+
+            const clock = $('#clock');
+            const tick = () => { clock.textContent = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }); };
+            tick();
+            setInterval(tick, 15000);
+
+            const btn = $('#backToTopBtn');
+            window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 400));
+            btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
         })();
     </script>
+    <script src="./assets/js/arena.js"></script>
 </body>
 </html>
