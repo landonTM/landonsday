@@ -1,0 +1,145 @@
+/* ================================
+   Halloween mode (October only)
+   assets/js/halloween.js adds html.halloween and the decoration elements;
+   everything here is scoped to that class, so the rest of the year this file
+   does nothing. Decorations never take clicks (pointer-events: none).
+   ================================ */
+
+html.halloween {
+  --hw-orange: #ff7a1a;
+  --hw-purple: #6b2fa0;
+  --hw-night: #120a1c;
+  --hw-slime: #8dff6a;
+}
+
+/* ---------- shared nav: orange accent (pages keep their own nav colours) ---------- */
+.halloween .site-nav { border-bottom-color: rgba(255, 122, 26, 0.45) !important; }
+.halloween .site-nav-link.active { color: var(--hw-orange) !important; border-bottom-color: var(--hw-orange) !important; }
+/* Rosie's nav is light, so it gets a darker orange that still reads. */
+.halloween body:has(.rosie-wall) .site-nav-link.active { color: #b4410a !important; border-bottom-color: #b4410a !important; }
+.halloween .hw-pumpkin { display: inline-flex; width: 1.15em; height: 1.15em; margin-right: 0.35em; vertical-align: -0.2em; }
+.halloween .hw-pumpkin svg { width: 100%; height: 100%; }
+.halloween .site-nav-logo .hw-pumpkin { animation: hw-wobble 3.5s ease-in-out infinite; }
+@keyframes hw-wobble { 0%, 80%, 100% { transform: rotate(0); } 85% { transform: rotate(-12deg); } 90% { transform: rotate(10deg); } 95% { transform: rotate(-6deg); } }
+
+.halloween .hw-strip {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.3rem 1rem;
+  background: repeating-linear-gradient(-45deg, #1a0d26 0 14px, #221033 14px 28px);
+  border-bottom: 1px solid rgba(255, 122, 26, 0.35);
+  color: #ffb070;
+  font: 700 0.78rem/1.4 'Courier New', monospace;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+}
+.halloween .hw-strip .hw-pumpkin { margin: 0; }
+.halloween .hw-strip .hw-web, .halloween .hw-strip .hw-spider { top: 100%; }
+
+/* ---------- decorations ---------- */
+.hw-web, .hw-spider, .hw-bats, .hw-fog, .hw-ghost { pointer-events: none; }
+.hw-web { position: absolute; top: 0; z-index: 40; width: clamp(80px, 14vw, 150px); height: clamp(80px, 14vw, 150px); }
+.hw-web svg { width: 100%; height: 100%; }
+.hw-web.hw-left { left: 0; }
+.hw-web.hw-right { right: 0; transform: scaleX(-1); }
+
+.hw-spider { position: absolute; top: 0; z-index: 41; right: clamp(40px, 7vw, 75px); width: 16px; animation: hw-drop 7s ease-in-out infinite; transform-origin: top center; }
+.hw-spider .thread { display: block; width: 1px; height: 90px; margin: 0 auto; background: rgba(150, 140, 170, 0.8); }
+.hw-spider .body { position: relative; display: block; width: 14px; height: 16px; margin: -2px auto 0; border-radius: 50%; background: #120a1c; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15); }
+.hw-spider .body::before, .hw-spider .body::after { content: ''; position: absolute; top: 3px; width: 26px; height: 9px; left: -6px; border: 2px solid #120a1c; border-bottom: 0; border-radius: 50% 50% 0 0; }
+.hw-spider .body::after { top: 8px; }
+@keyframes hw-drop { 0%, 100% { transform: scaleY(0.55); } 50% { transform: scaleY(1); } }
+
+.hw-bats { position: fixed; inset: 0; z-index: 45; overflow: hidden; }
+.hw-bats .bat { position: absolute; left: -80px; width: 46px; opacity: 0; animation: hw-fly 22s linear infinite; }
+.hw-bats .bat svg { width: 100%; display: block; animation: hw-flap 0.28s ease-in-out infinite alternate; transform-origin: center 45%; }
+.hw-bats .b0 { top: 18%; animation-delay: 1s; }
+.hw-bats .b1 { top: 32%; width: 32px; animation-delay: 9s; animation-duration: 26s; }
+.hw-bats .b2 { top: 12%; width: 38px; animation-delay: 15s; animation-duration: 19s; }
+.hw-bats .b3 { top: 44%; width: 28px; animation-delay: 4s; animation-duration: 30s; }
+@keyframes hw-fly {
+  0% { opacity: 0; transform: translate(0, 0); }
+  4% { opacity: 0.9; }
+  25% { transform: translate(30vw, -40px); }
+  50% { transform: translate(60vw, 30px); }
+  75% { transform: translate(90vw, -30px); }
+  92% { opacity: 0.9; }
+  100% { opacity: 0; transform: translate(118vw, 10px); }
+}
+@keyframes hw-flap { from { transform: scaleY(1); } to { transform: scaleY(0.45); } }
+
+.hw-fog { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; height: 130px; overflow: hidden; }
+.hw-fog span { position: absolute; bottom: -30px; left: -50%; width: 200%; height: 140px; background: radial-gradient(ellipse 18% 55% at 20% 70%, rgba(200, 190, 230, 0.16), transparent 70%), radial-gradient(ellipse 22% 60% at 55% 75%, rgba(200, 190, 230, 0.13), transparent 70%), radial-gradient(ellipse 16% 50% at 85% 70%, rgba(200, 190, 230, 0.15), transparent 70%); animation: hw-fog 40s linear infinite; }
+.hw-fog span + span { animation-duration: 55s; animation-direction: reverse; opacity: 0.7; }
+@keyframes hw-fog { to { transform: translateX(25%); } }
+
+.hw-ghost { position: fixed; right: 18px; bottom: -110px; z-index: 46; width: 64px; }
+.hw-ghost svg { width: 100%; display: block; filter: drop-shadow(0 0 10px rgba(200, 180, 255, 0.6)); }
+.hw-ghost .boo { position: absolute; top: -26px; left: -30px; padding: 0.1rem 0.5rem; border-radius: 10px; background: #fff; color: #1b1030; font: 700 0.9rem 'Comic Sans MS', 'Chalkboard SE', cursive; opacity: 0; }
+.hw-ghost.peek { animation: hw-peek 5s ease-in-out; }
+.hw-ghost.peek .boo { animation: hw-boo 5s ease-in-out; }
+@keyframes hw-peek { 0%, 100% { transform: translateY(0); } 25%, 70% { transform: translateY(-120px) rotate(-6deg); } 45% { transform: translateY(-112px) rotate(5deg); } }
+@keyframes hw-boo { 0%, 30%, 70%, 100% { opacity: 0; } 38%, 62% { opacity: 1; } }
+
+@media (max-width: 680px) {
+  .halloween .hw-strip { font-size: 0.66rem; letter-spacing: 0.08em; }
+  .hw-spider .thread { height: 60px; }
+  .hw-ghost { width: 50px; right: 10px; }
+  .hw-fog { height: 90px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .halloween .site-nav-logo .hw-pumpkin, .hw-spider, .hw-fog span { animation: none; }
+  .hw-ghost { display: none; }
+}
+
+/* ---------- per-page touches ---------- */
+
+/* Homepage (Landon's Day 98): night-purple desktop, orange title bars. */
+html.halloween:root {
+  --teal: #241036;
+  --title: #3d0f5c;
+  --title-end: #e8651a;
+  --select: #5a1f86;
+}
+.halloween .desktop::after { content: ''; position: absolute; top: 7%; left: 44%; width: 90px; height: 90px; border-radius: 50%; background: radial-gradient(circle at 38% 38%, #fffbe6, #f4e3a1 60%, #d9c27a); box-shadow: 0 0 40px rgba(255, 240, 180, 0.45); pointer-events: none; z-index: 0; }
+
+/* Movies (Landon's Video): the store's blue and ticket-yellow go purple and orange. */
+html.halloween:root {
+  --store-blue: #2c0f47;
+  --store-deep: #150826;
+  --ticket: #ff8a1f;
+  --ticket-dark: #d9650a;
+}
+
+/* Marvel: a Halloween Special stamp across the cover, and Rosie's seal goes orange. */
+.halloween .cover-masthead { position: relative; }
+.halloween .cover-masthead::after { content: 'Halloween Special!'; position: absolute; right: 110px; top: 50%; z-index: 2; padding: 0.4rem 1rem; background: var(--hw-orange); color: #140a1e; border: 3px solid #140a1e; font: 400 1.15rem/1 'Bangers', 'Impact', sans-serif; letter-spacing: 0.08em; text-transform: uppercase; transform: translateY(-50%) rotate(6deg); box-shadow: 4px 4px 0 #140a1e; }
+@media (max-width: 680px) { .halloween .cover-masthead::after { top: auto; bottom: -14px; right: 10px; font-size: 0.85rem; padding: 0.3rem 0.6rem; transform: rotate(6deg); } }
+.halloween .cover-seal { background: var(--hw-orange) !important; color: #140a1e !important; }
+
+/* Rosie's wall: pumpkin-and-lilac pastels instead of pink. */
+.halloween .rosie-wall { background: linear-gradient(160deg, #ffe0bf 0%, #e7cff9 50%, #ffd2a6 100%); }
+.halloween body:has(.rosie-wall) .site-nav { background: #f7dcc4; }
+/* ...and Rosie gets a witch hat on her profile picture. */
+.halloween .rosie-sidebar-avatar, .halloween .rosie-mprofile-avatar { position: relative; overflow: visible; }
+.halloween .rosie-sidebar-avatar img, .halloween .rosie-mprofile-avatar img { border-radius: 50%; }
+.halloween .rosie-sidebar-avatar::before, .halloween .rosie-mprofile-avatar::before { content: ''; position: absolute; left: 50%; top: -58%; z-index: 2; width: 92%; aspect-ratio: 4 / 3; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 48'%3E%3Cpath d='M30 2c6 4 8 14 12 30H22C24 18 26 8 30 2z' fill='%231b1030'/%3E%3Cpath d='M30 2c3 1 5 3 6 6-3-1-5-3-6-6z' fill='%231b1030'/%3E%3Cpath d='M23 26h20l1 6H22z' fill='%23ff7a1a'/%3E%3Cellipse cx='32' cy='36' rx='30' ry='7' fill='%231b1030'/%3E%3C/svg%3E") center / contain no-repeat; transform: translateX(-50%) rotate(-12deg); filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.3)); }
+
+/* Life: the desk under the journal goes to night. */
+.halloween .life-page { background: radial-gradient(ellipse at 50% 0%, rgba(255, 140, 50, 0.18), transparent 60%), repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.12) 0 2px, transparent 2px 9px), linear-gradient(#3a2a3f, #241a2c); background-attachment: fixed; }
+.halloween .life-page > footer { color: #cbb9d6; }
+
+/* Games (the console menu): orange accents. */
+html.halloween:root { --accent: #ff7a1a; --accent-deep: #c9540a; --menu-bg: #e8dff1; --bar-top: #e6dcef; --bar-bottom: #c4b3d8; }
+
+/* Wrestling: orange spotlight on the PPV pages (the arena itself turns orange in arena.js). */
+.halloween .ppv-page .chrome { filter: drop-shadow(0 4px 0 #5a1f86) drop-shadow(0 0 18px rgba(255, 122, 26, 0.6)); }
+.halloween .ppv-page .bug.live { background: var(--hw-orange); color: #140a1e; }
+.halloween .ppv-page .screen { background: radial-gradient(ellipse at 50% 40%, rgba(255, 122, 26, 0.32), transparent 65%), radial-gradient(ellipse at 50% 120%, rgba(107, 47, 160, 0.45), transparent 60%), #050408; }
+.halloween .ppv-page .slab::before, .halloween .ppv-page .chyron .rate:not(.neg .rate) { background: var(--hw-orange); }

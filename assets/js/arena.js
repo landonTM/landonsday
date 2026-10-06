@@ -9,6 +9,9 @@
     const g = canvas.getContext('2d');
     const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
     let seats = [], flashes = [], screen = null, reacting = null;
+    // In October (halloween.js tags <html>), the arena goes orange and purple.
+    const spooky = document.documentElement.classList.contains('halloween');
+    const SCREEN = spooky ? ['#2a0a3a', '#e8651a', '#ffb347'] : ['#7d0d0d', '#d81e1e', '#f2c230'];
 
     // 4x5 pixel letters for the entrance screen.
     const FONT = {
@@ -70,7 +73,7 @@
 
         // Big entrance screen.
         screen = { x: cx - 28, y: 14, w: 56, h: 30 };
-        paintScreen('LDN', ['#7d0d0d', '#d81e1e', '#f2c230']);
+        paintScreen('LDN', SCREEN);
 
         // Ring geometry, scaled to the canvas.
         const farHalf = Math.min(58, Math.round(W * 0.34));
@@ -128,12 +131,24 @@
         wrestler(cx - 13, ringTop - 2, '#f1c7a1', '#111', '#5a3a1a');
         wrestler(cx + 8, ringTop - 2, '#a9744f', '#d81e1e', '#111');
 
+        // Jack-o'-lanterns lined up along ringside in October.
+        if (spooky) {
+            for (let i = -3; i <= 3; i++) {
+                const x = cx + i * Math.round(nearHalf / 3.2) - 3, y = ringBot + 9;
+                rect(x + 3, y - 1, 1, 1, '#3d7a2a');
+                rect(x, y, 7, 5, '#e8651a');
+                rect(x + 1, y + 1, 1, 1, '#ffd23f'); rect(x + 5, y + 1, 1, 1, '#ffd23f');
+                rect(x + 2, y + 3, 3, 1, '#ffd23f');
+            }
+        }
+
         // Spotlights raking down from the truss.
         g.globalCompositeOperation = 'lighter';
         [cx - W * 0.33, cx, cx + W * 0.33].forEach((x, i) => {
             const cone = g.createLinearGradient(0, 10, 0, ringBot);
-            cone.addColorStop(0, `rgba(255, 244, 214, ${i === 1 ? 0.14 : 0.2})`);
-            cone.addColorStop(1, 'rgba(255, 244, 214, 0)');
+            const tint = spooky ? '255, 140, 50' : '255, 244, 214';
+            cone.addColorStop(0, `rgba(${tint}, ${i === 1 ? 0.14 : 0.2})`);
+            cone.addColorStop(1, `rgba(${tint}, 0)`);
             g.fillStyle = cone;
             g.beginPath();
             g.moveTo(x - 2, 10); g.lineTo(x + 2, 10);
@@ -181,7 +196,7 @@
             reacting = setInterval(() => {
                 n++;
                 if (kind === 'cheer') {
-                    paintScreen(n % 2 ? 'LDN!' : 'LDN', n % 2 ? ['#f2c230', '#fff6d8', '#f2c230'] : ['#7d0d0d', '#d81e1e', '#f2c230']);
+                    paintScreen(n % 2 ? 'LDN!' : 'LDN', n % 2 ? ['#f2c230', '#fff6d8', '#f2c230'] : SCREEN);
                     if (!still) flash(14);
                 }
                 if (n > 14) { clearInterval(reacting); reacting = null; flashes = []; draw(); canvas.classList.remove('lit'); }
