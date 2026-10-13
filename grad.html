@@ -102,7 +102,18 @@
         .cal-menu a:hover, .cal-menu button:hover, .cal-menu a:focus-visible, .cal-menu button:focus-visible { outline: none; background: #eef3f8; }
         .cal-wrap { position: relative; }
 
+        body { grid-template-rows: auto auto; align-content: center; gap: 28px; }
+        .explore { width: min(100%, 760px); text-align: center; color: rgba(255, 250, 240, 0.8); }
+        .explore-title { margin: 0 0 10px; font: 500 italic 1.15rem var(--serif); }
+        .explore-title a { color: var(--gold); text-decoration: none; font-style: normal; font-weight: 700; }
+        .explore ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 0; margin: 0; padding: 0; list-style: none; }
+        .explore li + li::before { content: '✦'; margin: 0 12px; color: var(--gold-deep); font-size: 0.7rem; vertical-align: 0.15em; }
+        .explore ul a { color: #fffaf0; font: 600 0.72rem var(--sans); letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none; padding: 4px 0; border-bottom: 1px solid transparent; }
+        .explore a:hover, .explore a:focus-visible { outline: none; color: var(--gold); border-bottom-color: var(--gold); }
+
         @media (max-width: 480px) {
+            .explore ul { display: grid; grid-template-columns: repeat(3, auto); justify-content: center; gap: 12px 26px; }
+            .explore li + li::before { content: none; }
             .card { padding: 46px 26px 34px; }
             .when { gap: 10px; }
             .when .side { font-size: 0.66rem; letter-spacing: 0.14em; }
@@ -170,6 +181,19 @@
             </a>
         </div>
     </main>
+
+    <!-- A quiet way into the rest of the site. Nothing on the site links back here. -->
+    <nav class="explore" aria-label="More of Landon's Day">
+        <p class="explore-title">While you're here, explore <a href="index">Landon's Day</a></p>
+        <ul>
+            <li><a href="marvel">Marvel</a></li>
+            <li><a href="movies">Movies</a></li>
+            <li><a href="rosie">Rosie</a></li>
+            <li><a href="games">Games</a></li>
+            <li><a href="life">Life</a></li>
+            <li><a href="wrestling">Wrestling</a></li>
+        </ul>
+    </nav>
 
     <script>
         (function () {
