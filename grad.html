@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Private invitation: not linked from the site, and kept out of search results. -->
+    <meta name="robots" content="noindex, nofollow">
+    <title>Landon's Graduation</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Landon's Graduation · Class of 2026">
+    <meta property="og:description" content="Chattahoochee Technical College · Wednesday, December 16, 2026 at 3:00 PM · Clarence Brown Conference Center, Cartersville">
+    <meta property="og:url" content="https://www.landonday.com/grad">
+    <meta property="og:image" content="https://www.landonday.com/assets/images/grad-card.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Landon's Graduation · Class of 2026">
+    <meta name="twitter:description" content="Wednesday, December 16, 2026 at 3:00 PM · Cartersville, GA">
+    <meta name="twitter:image" content="https://www.landonday.com/assets/images/grad-card.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0a2a4a;
+            --blue: #045a8c;
+            --gold: #fcce04;
+            --gold-deep: #c9a227;
+            --ivory: #fffaf0;
+            --ink: #1c2633;
+            --soft: #5d6878;
+            --serif: 'Cormorant Garamond', Georgia, serif;
+            --script: 'Great Vibes', 'Segoe Script', cursive;
+            --sans: 'Montserrat', 'Segoe UI', sans-serif;
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { margin: 0; }
+        body {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 40px 16px 56px;
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(252, 206, 4, 0.14), transparent 55%),
+                radial-gradient(circle, rgba(252, 206, 4, 0.12) 1px, transparent 1.5px) 0 0 / 22px 22px,
+                linear-gradient(160deg, #0d3a63, var(--navy) 55%, #061a30);
+            color: var(--ink);
+            font-family: var(--serif);
+        }
+        #confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
+
+        .card {
+            position: relative;
+            width: min(100%, 560px);
+            padding: 54px 44px 40px;
+            text-align: center;
+            background: linear-gradient(170deg, #fffdf7, var(--ivory) 60%, #fbf2de);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(201, 162, 39, 0.4);
+            animation: rise 0.9s cubic-bezier(.2, .8, .2, 1) both;
+        }
+        /* gold foil double border */
+        .card::before, .card::after { content: ''; position: absolute; pointer-events: none; }
+        .card::before { inset: 12px; border: 2px solid var(--gold-deep); }
+        .card::after { inset: 18px; border: 1px solid rgba(201, 162, 39, 0.55); }
+        @keyframes rise { from { opacity: 0; transform: translateY(24px) scale(0.98); } }
+
+        .school-logo { display: block; width: min(250px, 78%); height: auto; margin: 0 auto 18px; }
+        .cap { width: 70px; margin: 0 auto 10px; display: block; }
+        .kicker { margin: 0; font: 600 0.72rem/1.6 var(--sans); letter-spacing: 0.32em; text-transform: uppercase; color: var(--blue); }
+        .name { margin: 6px 0 2px; font: 400 clamp(2.3rem, 9.5vw, 3.4rem)/1.1 var(--script); color: var(--navy); }
+        .nowrap { white-space: nowrap; }
+        .rule { display: flex; align-items: center; gap: 12px; margin: 14px auto 16px; width: 70%; color: var(--gold-deep); }
+        .rule::before, .rule::after { content: ''; flex: 1; height: 1px; background: currentColor; }
+        .degree { margin: 0; font: 600 1.35rem/1.3 var(--serif); color: var(--ink); }
+        .degree em { display: block; font-weight: 500; font-size: 1.1rem; color: var(--soft); }
+        .school { margin: 10px 0 0; font: 700 1.1rem/1.3 var(--serif); letter-spacing: 0.04em; color: var(--blue); }
+        .class { margin: 2px 0 0; font: 600 0.7rem var(--sans); letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-deep); }
+
+        .when { margin: 26px 0 0; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 14px; }
+        .when .side { font: 600 0.78rem var(--sans); letter-spacing: 0.22em; text-transform: uppercase; color: var(--soft); border-top: 1px solid rgba(201, 162, 39, 0.6); border-bottom: 1px solid rgba(201, 162, 39, 0.6); padding: 8px 0; }
+        .when .day { font: 600 3.4rem/1 var(--serif); color: var(--navy); }
+        .when .day small { display: block; font: 600 0.72rem var(--sans); letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold-deep); margin-top: 4px; }
+
+        .where { margin: 22px 0 0; font: 500 1.1rem/1.45 var(--serif); }
+        .where b { display: block; font-weight: 700; color: var(--navy); }
+
+        .countdown { display: flex; justify-content: center; gap: 10px; margin: 24px 0 0; }
+        .countdown div { min-width: 64px; padding: 8px 6px 6px; background: var(--navy); color: #fff; border-radius: 4px; box-shadow: inset 0 0 0 1px rgba(252, 206, 4, 0.35); }
+        .countdown b { display: block; font: 600 1.6rem/1 var(--serif); color: var(--gold); }
+        .countdown span { font: 600 0.58rem var(--sans); letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255, 255, 255, 0.75); }
+        .countdown-done { margin: 24px 0 0; font: 600 1.25rem var(--serif); color: var(--blue); }
+
+        .note { margin: 24px 0 0; font: 500 italic 1.2rem/1.4 var(--serif); color: var(--ink); }
+        .sig { margin: 2px 0 0; font: 400 1.9rem var(--script); color: var(--blue); }
+
+        .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 26px 0 0; position: relative; z-index: 1; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border: 1px solid var(--navy); border-radius: 999px; background: var(--navy); color: #fff; font: 600 0.8rem var(--sans); letter-spacing: 0.06em; text-decoration: none; cursor: pointer; }
+        .btn.ghost { background: transparent; color: var(--navy); }
+        .btn:hover, .btn:focus-visible { outline: none; background: var(--blue); border-color: var(--blue); color: #fff; }
+        .btn svg { width: 16px; height: 16px; }
+        .cal-menu { position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); display: grid; min-width: 220px; padding: 6px; background: #fff; border-radius: 10px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25); z-index: 2; }
+        .cal-menu[hidden] { display: none; }
+        .cal-menu a, .cal-menu button { padding: 10px 12px; border: 0; border-radius: 6px; background: none; color: var(--ink); font: 600 0.82rem var(--sans); text-align: left; text-decoration: none; cursor: pointer; }
+        .cal-menu a:hover, .cal-menu button:hover, .cal-menu a:focus-visible, .cal-menu button:focus-visible { outline: none; background: #eef3f8; }
+        .cal-wrap { position: relative; }
+
+        @media (max-width: 480px) {
+            .card { padding: 46px 26px 34px; }
+            .when { gap: 10px; }
+            .when .side { font-size: 0.66rem; letter-spacing: 0.14em; }
+            .countdown { gap: 6px; }
+            .countdown div { min-width: 0; flex: 1; }
+        }
+        @media (prefers-reduced-motion: reduce) { .card { animation: none; } }
+    </style>
+</head>
+<body>
+    <canvas id="confetti" aria-hidden="true"></canvas>
+
+    <main class="card">
+        <img class="school-logo" src="./assets/images/ctc-logo.png" alt="Chattahoochee Technical College" width="375" height="73">
+        <svg class="cap" viewBox="0 0 100 70" aria-hidden="true">
+            <path d="M50 6 4 26l46 20 46-20z" fill="#0a2a4a"/>
+            <path d="M24 36v16c0 7 12 12 26 12s26-5 26-12V36L50 47z" fill="#0a2a4a"/>
+            <path d="M50 26 82 34v20" stroke="#fcce04" stroke-width="2.5" fill="none"/>
+            <circle cx="50" cy="26" r="3" fill="#fcce04"/>
+            <path d="M80 52h4l2 12h-8z" fill="#fcce04"/>
+        </svg>
+        <p class="kicker">You're invited to celebrate the graduation of</p>
+        <h1 class="name">Landon <span class="nowrap">Tuggle-LiVigni</span></h1>
+        <div class="rule" aria-hidden="true">✦</div>
+        <p class="degree">Associate of Applied Science<em>Computer Programming</em></p>
+        <p class="school">Chattahoochee Technical College</p>
+        <p class="class">Class of 2026</p>
+
+        <div class="when">
+            <span class="side">Wednesday</span>
+            <span class="day">16<small>December</small></span>
+            <span class="side">3:00 PM</span>
+        </div>
+
+        <p class="where">
+            <b>Clarence Brown Conference Center</b>
+            5450 GA-20, Cartersville, GA 30121
+        </p>
+
+        <div class="countdown" id="countdown" aria-live="polite">
+            <div><b id="cdDays">–</b><span>Days</span></div>
+            <div><b id="cdHours">–</b><span>Hours</span></div>
+            <div><b id="cdMins">–</b><span>Minutes</span></div>
+            <div><b id="cdSecs">–</b><span>Seconds</span></div>
+        </div>
+        <p class="countdown-done" id="countdownDone" hidden></p>
+
+        <p class="note">I'd love for you to be there.</p>
+        <p class="sig">Landon</p>
+
+        <div class="actions">
+            <div class="cal-wrap">
+                <button class="btn" id="calBtn" aria-expanded="false" aria-controls="calMenu">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2"/></svg>
+                    Add to calendar
+                </button>
+                <div class="cal-menu" id="calMenu" hidden>
+                    <button id="icsBtn">Apple / Outlook (.ics)</button>
+                    <a id="gcalLink" target="_blank" rel="noopener">Google Calendar</a>
+                </div>
+            </div>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Clarence%20Brown%20Conference%20Center%2C%205450%20GA-20%2C%20Cartersville%2C%20GA%2030121">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.5" fill="currentColor"/></svg>
+                Get directions
+            </a>
+        </div>
+    </main>
+
+    <script>
+        (function () {
+            // Ceremony: Wed Dec 16, 2026, 3:00 PM Eastern (EST, UTC-5). The end time is a
+            // two-hour placeholder for calendar apps only; it isn't shown on the card.
+            const START = new Date('2026-12-16T15:00:00-05:00');
+            const END = new Date('2026-12-16T17:00:00-05:00');
+            const TITLE = "Landon's Graduation";
+            const PLACE = 'Clarence Brown Conference Center, 5450 GA-20, Cartersville, GA 30121';
+            const DETAILS = 'Chattahoochee Technical College commencement: Landon Tuggle-LiVigni, Associate of Applied Science in Computer Programming. https://www.landonday.com/grad';
+
+            // Countdown
+            const $ = id => document.getElementById(id);
+            const pad = n => String(n).padStart(2, '0');
+            function tick() {
+                const ms = START - Date.now();
+                if (ms <= 0) {
+                    $('countdown').hidden = true;
+                    const done = $('countdownDone');
+                    done.hidden = false;
+                    done.textContent = Date.now() < END.getTime() + 6 * 3600e3 ? "Today's the day!" : 'Thank you for celebrating with me.';
+                    return;
+                }
+                const s = Math.floor(ms / 1000);
+                $('cdDays').textContent = Math.floor(s / 86400);
+                $('cdHours').textContent = pad(Math.floor(s / 3600) % 24);
+                $('cdMins').textContent = pad(Math.floor(s / 60) % 60);
+                $('cdSecs').textContent = pad(s % 60);
+            }
+            tick();
+            setInterval(tick, 1000);
+
+            // Add to calendar: an .ics file (Apple/Outlook) or a Google Calendar link.
+            const utc = d => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+            $('gcalLink').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+                + `&text=${encodeURIComponent(TITLE)}&dates=${utc(START)}/${utc(END)}`
+                + `&details=${encodeURIComponent(DETAILS)}&location=${encodeURIComponent(PLACE)}`;
+            $('icsBtn').addEventListener('click', () => {
+                const ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//landonday.com//grad//EN', 'BEGIN:VEVENT',
+                    'UID:landon-graduation-2026@landonday.com', `DTSTAMP:${utc(new Date())}`, `DTSTART:${utc(START)}`, `DTEND:${utc(END)}`,
+                    `SUMMARY:${TITLE}`, `LOCATION:${PLACE.replace(/,/g, '\\,')}`, `DESCRIPTION:${DETAILS.replace(/,/g, '\\,')}`,
+                    'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));
+                a.download = 'landon-graduation.ics';
+                a.click();
+                setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+            });
+            const calBtn = $('calBtn'), calMenu = $('calMenu');
+            calBtn.addEventListener('click', e => {
+                e.stopPropagation();
+                calMenu.hidden = !calMenu.hidden;
+                calBtn.setAttribute('aria-expanded', String(!calMenu.hidden));
+            });
+            document.addEventListener('click', e => {
+                if (!calMenu.hidden && !e.target.closest('.cal-wrap')) { calMenu.hidden = true; calBtn.setAttribute('aria-expanded', 'false'); }
+            });
+
+            // A burst of blue and gold confetti when the card opens.
+            if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            const c = $('confetti'), g = c.getContext('2d');
+            const fit = () => { c.width = innerWidth * devicePixelRatio; c.height = innerHeight * devicePixelRatio; };
+            fit();
+            addEventListener('resize', fit);
+            const COLORS = ['#fcce04', '#ffe27a', '#045a8c', '#ffffff', '#c9a227'];
+            const bits = Array.from({ length: 140 }, () => ({
+                x: Math.random() * c.width, y: -Math.random() * c.height * 0.6,
+                w: (6 + Math.random() * 6) * devicePixelRatio, h: (3 + Math.random() * 4) * devicePixelRatio,
+                vy: (2 + Math.random() * 3) * devicePixelRatio, vx: (Math.random() - 0.5) * 1.5 * devicePixelRatio,
+                r: Math.random() * Math.PI, vr: (Math.random() - 0.5) * 0.2, col: COLORS[Math.floor(Math.random() * COLORS.length)]
+            }));
+            let frames = 0;
+            (function fall() {
+                g.clearRect(0, 0, c.width, c.height);
+                let alive = 0;
+                bits.forEach(b => {
+                    b.x += b.vx; b.y += b.vy; b.r += b.vr;
+                    if (b.y < c.height + 20) alive++;
+                    g.save(); g.translate(b.x, b.y); g.rotate(b.r);
+                    g.fillStyle = b.col; g.fillRect(-b.w / 2, -b.h / 2, b.w, b.h);
+                    g.restore();
+                });
+                if (alive && ++frames < 900) requestAnimationFrame(fall);
+                else g.clearRect(0, 0, c.width, c.height);
+            })();
+        })();
+    </script>
+</body>
+</html>
