@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movies & Shows — Landon's Day</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
-    <link rel="stylesheet" href="./assets/css/video-store.css">
+    <link rel="stylesheet" href="./assets/css/video-store.css?v=2">
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Movies & Shows — Landon's Day">
@@ -74,23 +74,7 @@
         <section class="aisle">
             <div class="aisle-sign"><span class="num">Aisle 2</span><h2>Taped Off TV</h2></div>
             <p class="aisle-note">perfect episodes, recorded at home. do NOT tape over these.</p>
-            <div class="tapes" id="homeTapes"></div>
-            <div class="vcr" id="vcr" aria-label="VCR: flip through the perfect episodes">
-                <div class="vcr-window" id="vcrWindow"></div>
-                <div class="vcr-body">
-                    <div class="vcr-slot"></div>
-                    <div class="vcr-panel">
-                        <div class="vcr-display" id="vcrDisplay" aria-live="polite">TAPE 01/01</div>
-                        <div class="vcr-buttons">
-                            <button class="vcr-btn" id="vcrPrev" aria-label="Previous tape">⏮</button>
-                            <button class="vcr-btn play" id="vcrPlay" aria-label="Play this tape">▶</button>
-                            <button class="vcr-btn" id="vcrNext" aria-label="Next tape">⏭</button>
-                        </div>
-                    </div>
-                    <div class="vcr-brand"><span>LANDON-VISION</span><span>VHS · HQ · 4 HEAD</span></div>
-                </div>
-                <p class="tapes-hint">⏮ ⏭ to swap tapes · ▶ or tap the tape to watch</p>
-            </div>
+            <div class="tape-log" id="tapeLog"></div>
         </section>
 
         <section class="aisle">
@@ -199,7 +183,7 @@
             "Dallas Buyers Club", "The Apprentice", "What Dreams May Come", "Good Will Hunting"
         ];
         const WATCHLIST_SHOWS = [
-            "The Bear Season 5", "Chernobyl Season 1", "Breaking Bad (All Seasons)", "Better Call Saul (All Seasons)",
+            "Chernobyl Season 1", "Better Call Saul (All Seasons)",
             "The Beauty Season 1", "Peacemaker (Seasons 1-2)", "The Sopranos (Seasons 1-6)", "Mad Men (Seasons 1-7)",
             "Peaky Blinders (Seasons 1-6)", "The Lincoln Lawyer (Seasons 1-3)", "Ted Lasso (Seasons 1-3)",
             "Pluribus (Seasons 1-2)", "Arcane (Seasons 1-2)", "The Last of Us (Seasons 1-2)", "Squid Game (Seasons 1-3)",
@@ -207,9 +191,8 @@
             "Black Mirror (Seasons 1-7)", "True Detective Season 1"
         ];
         const CURRENTLY_WATCHING = [
-            "How I Met Your Mother Season 1",
-            "The Bear Season 5",
-            "The Good Place"
+            "How I Met Your Mother Season 5",
+            "Breaking Bad Season 1"
         ];
 
         // The suggestion slip posts straight to the same Google Form the
@@ -389,79 +372,35 @@
             });
         }
 
-        // "September 10th, 2026" -> "taped 9/10/26", scribbled on the label
-        // the way you'd date a home recording.
-        function tapedOn(date) {
-            const d = new Date(String(date || '').replace(/(\d+)(st|nd|rd|th)/, '$1'));
-            if (!date || isNaN(d)) return '';
-            return `<div class="taped">taped ${d.getMonth() + 1}/${d.getDate()}/${String(d.getFullYear()).slice(2)}</div>`;
-        }
-
-        function buildTape(ep, byTitle) {
-            const show = byTitle.get(ep.show);
-            const el = document.createElement('button');
-            el.className = 'home-tape';
-            el.setAttribute('aria-label', `${ep.show}, season ${ep.season} episode ${ep.episode}${ep.episodeTitle ? ', ' + ep.episodeTitle : ''}`);
-            el.innerHTML = `
-                <div class="tape-label">
-                    <div class="show">${esc(ep.show)}</div>
-                    <div class="ep">S${ep.season} E${ep.episode}${ep.episodeTitle ? ' · ' + esc(ep.episodeTitle) : ''}</div>
-                    ${tapedOn(ep.watchedDate)}
-                    <div class="dont">★★★★★ keep!!</div>
-                </div>
-                <div class="reels"><i></i><i></i></div>`;
-            if (show) clickable(el, show);
-            return el;
-        }
-
+        // Every perfect episode on one home-recorded tape's paper insert: a
+        // handwritten track list grouped by show. Tapping a show opens its case.
         function renderHomeTapes(episodes, byTitle) {
-            const wrap = $('#homeTapes');
-            if (!episodes.length) { wrap.innerHTML = '<p class="aisle-note">nothing recorded yet.</p>'; $('#vcr').hidden = true; return; }
-            episodes.forEach(ep => wrap.appendChild(buildTape(ep, byTitle)));
-            initVcr(episodes, byTitle);
-        }
-
-        // Phones get a VCR instead of the grid: one tape sticks out of the
-        // slot, ⏮ ⏭ (or a swipe) ejects it and loads the next, ▶ plays it.
-        function initVcr(episodes, byTitle) {
-            const win = $('#vcrWindow'), display = $('#vcrDisplay'), n = episodes.length;
-            const pad = x => String(x).padStart(2, '0');
-            let i = 0, busy = false;
-
-            function load() {
-                const tape = buildTape(episodes[i], byTitle);
-                tape.classList.add('in');
-                win.replaceChildren(tape);
-                display.textContent = `TAPE ${pad(i + 1)}/${pad(n)}`;
-            }
-
-            function go(step) {
-                if (busy) return;
-                const old = win.firstElementChild;
-                const next = () => { i = (i + step + n) % n; load(); };
-                if (!old || reducedMotion()) { next(); return; }
-                busy = true;
-                old.classList.add('out');
-                setTimeout(() => { busy = false; next(); }, 220);
-            }
-
-            $('#vcrPrev').addEventListener('click', () => go(-1));
-            $('#vcrNext').addEventListener('click', () => go(1));
-            $('#vcrPlay').addEventListener('click', () => {
-                const show = byTitle.get(episodes[i].show);
+            const wrap = $('#tapeLog');
+            if (!episodes.length) { wrap.innerHTML = '<p class="aisle-note">nothing recorded yet.</p>'; return; }
+            const groups = new Map();
+            episodes.forEach(ep => { if (!groups.has(ep.show)) groups.set(ep.show, []); groups.get(ep.show).push(ep); });
+            const short = date => { const d = new Date(String(date || '').replace(/(\d+)(st|nd|rd|th)/, '$1')); return isNaN(d) ? '' : `${d.getMonth() + 1}/${d.getDate()}/${String(d.getFullYear()).slice(2)}`; };
+            wrap.innerHTML = `
+                <div class="log-head">
+                    <span class="log-title">Best of TV</span>
+                    <span class="log-meta">${episodes.length} episodes · ${groups.size} shows · EP mode</span>
+                </div>
+                <div class="log-body">${[...groups].map(([name, eps]) => `
+                    <div class="log-show">
+                        <button class="log-name"${byTitle.has(name) ? '' : ' disabled'} data-show="${esc(name)}">
+                            <img src="${poster(eps[0].poster)}" alt="" loading="lazy">
+                            <span>${esc(name)}</span>
+                        </button>
+                        <ol>${eps.map(ep => `
+                            <li><span class="se">S${ep.season}E${ep.episode}</span><span class="t">${esc(ep.episodeTitle || '')}</span><span class="d">${short(ep.watchedDate)}</span></li>`).join('')}
+                        </ol>
+                    </div>`).join('')}
+                </div>
+                <div class="log-foot">★★★★★ every one · do NOT tape over</div>`;
+            wrap.querySelectorAll('.log-name[data-show]').forEach(b => b.addEventListener('click', () => {
+                const show = byTitle.get(b.dataset.show);
                 if (show) openRental(show);
-            });
-
-            let startX = null;
-            win.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-            win.addEventListener('touchend', e => {
-                if (startX === null) return;
-                const dx = e.changedTouches[0].clientX - startX;
-                startX = null;
-                if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
-            });
-
-            load();
+            }));
         }
 
         let shelfItems = [], shelfType = 'Movie', shelfQuery = '';

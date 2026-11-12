@@ -287,166 +287,38 @@ body {
 .talker b { display: block; font-weight: 400; color: #d11; font-size: 0.8rem; }
 
 /* ================================
-   Taped Off TV: perfect episodes as home-recorded VHS
+   Taped Off TV: every perfect episode on one home-recorded tape's
+   paper insert, a handwritten track list grouped by show
    ================================ */
-.tapes-hint { text-align: center; margin: 0.9rem 0 0; font-family: 'Permanent Marker', cursive; font-size: 0.85rem; color: var(--ticket); }
-
-/* ---- VCR deck (phones) ----
-   The window shows the top of the current tape; its bottom is cut off
-   right where the slot on the VCR begins, so it looks half inserted. */
-.vcr { display: none; max-width: 340px; margin: 0 auto; }
-.vcr[hidden] { display: none !important; }
-
-.vcr-window {
-  position: relative;
-  height: 128px;
-  margin: 0 7%;
-  overflow: hidden;
-  touch-action: pan-y;
-}
-
-.vcr-window .home-tape { position: absolute; left: 0; right: 0; top: 6px; }
-.vcr-window .home-tape:hover, .vcr-window .home-tape:focus-visible { transform: translateY(-4px); }
-.vcr-window .home-tape.in { animation: tapeIn 0.28s ease-out; }
-.vcr-window .home-tape.out { animation: tapeOut 0.22s ease-in forwards; }
-
-@keyframes tapeIn { from { transform: translateY(105%); } to { transform: none; } }
-@keyframes tapeOut { to { transform: translateY(105%); } }
-
-.vcr-body {
-  position: relative;
-  padding: 10px 14px 10px;
-  background: linear-gradient(#4a4a4a, #262626 45%, #1a1a1a);
-  border-radius: 8px 8px 12px 12px;
-  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.18);
-}
-
-.vcr-slot {
-  height: 16px;
-  margin: 0 3% 12px;
-  border-radius: 3px;
-  background: linear-gradient(#000, #111 60%, #2a2a2a);
-  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.12);
-}
-
-.vcr-panel { display: flex; align-items: center; gap: 12px; }
-
-.vcr-display {
-  flex: 1;
-  padding: 6px 10px 4px;
-  background: #061006;
-  border-radius: 4px;
-  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.9);
-  color: #3cff3c;
-  text-shadow: 0 0 6px rgba(60, 255, 60, 0.6);
-  font-family: 'VT323', monospace;
-  font-size: 1.35rem;
-  letter-spacing: 0.06em;
-  white-space: nowrap;
-}
-
-.vcr-buttons { display: flex; gap: 6px; }
-
-.vcr-btn {
-  width: 42px;
-  height: 34px;
-  padding: 0;
-  border: none;
-  border-radius: 4px;
-  background: linear-gradient(#d9d9d9, #9a9a9a);
-  box-shadow: 0 3px 0 #555, inset 0 1px 0 #fff;
-  color: #222;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.vcr-btn.play { background: linear-gradient(var(--ticket), var(--ticket-dark)); }
-.vcr-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #555, inset 0 1px 0 #fff; }
-.vcr-btn:focus-visible { outline: 2px solid var(--ticket); outline-offset: 2px; }
-
-.vcr-brand {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 9px;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.14em;
-  color: #9a9a9a;
-}
-
-.tapes {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 1.4rem;
-}
-
-.home-tape {
-  position: relative;
-  aspect-ratio: 187 / 102;
-  padding: 4% 5% 0;
-  background: linear-gradient(#232323, #0e0e0e);
-  border-radius: 6px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  cursor: pointer;
-  transition: transform 0.18s ease;
-  text-align: left;
-  border: none;
-  color: inherit;
-  font: inherit;
-  width: 100%;
-}
-
-.home-tape:hover,
-.home-tape:focus-visible { transform: translateY(-4px) rotate(-1deg); outline: none; }
-.home-tape:focus-visible { box-shadow: 0 0 0 3px var(--ticket); }
-
-/* Positioned against the tape's own box (not padding %, which is
-   relative to width) so it can never slide down into the reels. */
-.tape-label {
-  position: absolute;
-  top: 7%;
-  left: 5%;
-  right: 5%;
-  height: 50%;
-  padding: 0.35rem 3.4rem 0.35rem 0.6rem;
+.tape-log {
+  max-width: 900px;
+  margin: 0 auto;
   background: var(--paper);
-  background-image: repeating-linear-gradient(transparent 0 17px, rgba(40, 80, 200, 0.18) 17px 18px);
-  border-radius: 2px;
+  background-image: repeating-linear-gradient(transparent 0 25px, rgba(40, 80, 200, 0.16) 25px 26px);
+  background-position: 0 6px;
+  border-radius: 4px;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.45);
   color: #1a1a1a;
-  font-family: 'Permanent Marker', cursive;
+  transform: rotate(-0.4deg);
   overflow: hidden;
 }
+.log-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem 1rem; flex-wrap: wrap; padding: 0.6rem 1.1rem 0.5rem; background: #111; color: #fff; }
+.log-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.08em; color: var(--ticket); }
+.log-meta { font-family: 'VT323', monospace; font-size: 1.15rem; color: #c9d4f2; letter-spacing: 0.05em; }
+.log-body { columns: 2 300px; column-gap: 2rem; padding: 0.9rem 1.1rem 0.4rem; }
+.log-show { break-inside: avoid; margin: 0 0 0.9rem; }
+.log-name { display: flex; align-items: center; gap: 0.55rem; padding: 0; border: 0; background: none; color: inherit; cursor: pointer; font-family: 'Permanent Marker', cursive; font-size: 1.15rem; text-align: left; }
+.log-name img { width: 30px; height: 45px; object-fit: cover; border-radius: 2px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35); transform: rotate(-3deg); }
+.log-name:hover span, .log-name:focus-visible span { text-decoration: underline wavy #d11; }
+.log-name:focus-visible { outline: 2px solid #d11; outline-offset: 3px; }
+.log-name:disabled { cursor: default; }
+.log-show ol { list-style: none; margin: 0.25rem 0 0 2.4rem; padding: 0; }
+.log-show li { display: grid; grid-template-columns: 3.4rem 1fr auto; gap: 0.5rem; align-items: baseline; min-height: 26px; font-family: 'Permanent Marker', cursive; font-size: 0.9rem; color: #1d3fae; }
+.log-show .se { color: #d11; }
+.log-show .t { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.log-show .d { font-size: 0.75rem; color: #666; }
+.log-foot { padding: 0.35rem 1.1rem 0.55rem; text-align: right; font-family: 'Permanent Marker', cursive; font-size: 0.85rem; color: #d11; transform: rotate(-1deg); }
 
-.tape-label .show { font-size: 1.05rem; line-height: 1.1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.tape-label .ep { font-size: 0.78rem; color: #1d3fae; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.tape-label .taped { margin-top: 0.1rem; font-size: 0.72rem; color: #555; transform: rotate(-1.5deg); transform-origin: left; }
-.tape-label .dont { position: absolute; right: 0.45rem; top: 0.45rem; width: 2.8rem; text-align: center; line-height: 1.1; font-size: 0.7rem; color: #d11; transform: rotate(-4deg); }
-
-/* reel window */
-.reels {
-  position: absolute;
-  left: 22%;
-  right: 22%;
-  bottom: 8%;
-  height: 28%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 6%;
-  background: #3a3a3a;
-  border-radius: 999px;
-  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.8);
-}
-
-.reels i {
-  width: 26%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: radial-gradient(circle, #111 0 22%, transparent 23%), repeating-conic-gradient(#eee 0 20deg, #bbb 20deg 60deg);
-}
-
-.home-tape:hover .reels i { animation: spin 1.2s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
 
 /* ================================
    The aisles: VHS spines on metal shelves
@@ -1100,11 +972,10 @@ footer { background: #000; color: #778; text-align: center; padding: 1rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .open-sign, .osd-play, .home-tape:hover .reels i { animation: none; }
+  .open-sign, .osd-play { animation: none; }
   .slip { transition: none; }
   .clamshell.closing { animation: none; }
   .hold-cover { transition: none; }
-  .vcr-window .home-tape.in, .vcr-window .home-tape.out { animation: none; }
   .clamshell { animation: none; }
 }
 
@@ -1131,9 +1002,8 @@ footer { background: #000; color: #778; text-align: center; padding: 1rem; }
   .tape-rating { width: 36px; height: 22px; font-size: 0.85rem; }
   .tape-title { font-size: 0.95rem; top: 32px; }
 
-  /* Taped Off TV: the VCR replaces the grid */
-  .tapes { display: none; }
-  .vcr { display: block; }
+  .log-body { padding: 0.7rem 0.8rem 0.3rem; }
+  .log-show ol { margin-left: 0.4rem; }
 
   .counter, .counter-row { grid-template-columns: minmax(0, 1fr); }
   .rack { padding: 0.7rem 0.6rem 0; }

@@ -1264,28 +1264,50 @@
     "title": "Echo",
     "year": 2024,
     "type": "Show",
-    "category": "watching",
+    "category": "p5",
     "poster": "echo.jpg",
-    "rating": "",
-    "review": ""
+    "rating": "⭐⭐½",
+    "review": "it’s…. a marvel show. i didn’t necessarily have a wonderful time watching it, mostly because half of it is in sign language and i have a hard attention span, but i also sadly couldn’t care really. however the action for what we got was okay, and wilson fisk is really wonderful despite it not making much sense from what we know. it’s not offensive but it’s not good either. just there\n\nLast Watched: November 1st, 2026",
+    "episodes": [
+      {
+        "title": "Episode 1: Chafa",
+        "rating": "⭐⭐⭐"
+      },
+      {
+        "title": "Episode 2: Lowak",
+        "rating": "⭐⭐½"
+      },
+      {
+        "title": "Episode 3: Tuklo",
+        "rating": "⭐⭐½"
+      },
+      {
+        "title": "Episode 4: Taloa",
+        "rating": "⭐⭐⭐⭐"
+      },
+      {
+        "title": "Episode 5: Maya",
+        "rating": "⭐⭐⭐"
+      }
+    ]
   },
   {
     "title": "Madame Web",
     "year": 2024,
     "type": "Movie",
-    "category": "watching",
+    "category": "sony",
     "poster": "madame-web.jpg",
-    "rating": "",
-    "review": ""
+    "rating": "½",
+    "review": "i’ve got nothing to say that hasn’t been said already, but lord this awful. terrible story, actings, writing, dialog, everything. it’s like they intentionally went out of their way to make it this bad, which makes it feel like a parody and really good. it’s remarkable. it’s so bad. i love it\n\nLast Watched: November 3rd, 2026"
   },
   {
     "title": "X-Men '97 Season 1",
     "year": 2024,
     "type": "Show",
-    "category": "watching",
+    "category": "p5",
     "poster": "x-men-97-season-1.jpg",
-    "rating": "",
-    "review": "",
+    "rating": "⭐⭐⭐⭐⭐",
+    "review": "probably the most perfect season of animated, and maybe just television i have ever seen. everyone is properly set up, reintroduced, and given an actual tangible emotional arc that you can connect to. every single character had something going on for you to care about, and everyone had their moments to shine. genosha as an event was properly built in the first episode and just jaw dropping to watch. it entirely changed the vibe of the season and show as a whole, and the final 3 episodes kept building like an actual cinematic movie would. i wish to watch this for the first time again\n\nLast Watched: September 21st, 2026",
     "episodes": [
       {
         "title": "Episode 1: To Me, My X-Men",
@@ -1322,6 +1344,10 @@
       {
         "title": "Episode 9: Tolerance Is Extinction (2)",
         "rating": "⭐⭐⭐⭐⭐"
+      },
+      {
+        "title": "Episode 11: None",
+        "rating": "⭐⭐⭐⭐⭐"
       }
     ]
   },
@@ -1329,10 +1355,48 @@
     "title": "Agatha All Along",
     "year": 2024,
     "type": "Show",
-    "category": "watching",
+    "category": "p5",
     "poster": "agatha-all-along.jpg",
-    "rating": "",
-    "review": ""
+    "rating": "⭐⭐⭐⭐⭐",
+    "review": "this was BRILLIANT. i was blown away, and stunned in almost every episode. i knew most of the major spoilers before going into it, but the actual level of storytelling and reveals on agatha’s past, the roads history, and almost everything with billy was top notch. i hope to see jen again soon, and i can’t believe how well you grow to love lilla and alice along with jen. some characters just are great, and some characters just tell a story without having to show a backstory. lilla did so much for me and was set up so brilliantly throughout the show, and continued to carry the narrative episodes later that’s how goated she was. everyone’s acting was IMPECCABLE. there’s a lot more story to tell here, i hope to see everyone again.\n\nLast Watched: November 8th, 2026",
+    "episodes": [
+      {
+        "title": "Episode 1: Seekest Thou the Road",
+        "rating": "⭐⭐⭐⭐"
+      },
+      {
+        "title": "Episode 2: Circle Sewn with Fate / Unlock Thy Hidden Gate",
+        "rating": "⭐⭐⭐⭐"
+      },
+      {
+        "title": "Episode 3: Through Many Miles / Of Tricks and Trials",
+        "rating": "⭐⭐⭐⭐½"
+      },
+      {
+        "title": "Episode 4: If I Can't Reach You / Let My Song Teach You",
+        "rating": "⭐⭐⭐⭐½"
+      },
+      {
+        "title": "Episode 5: Darkest Hour / Wake Thy Power",
+        "rating": "⭐⭐⭐⭐½"
+      },
+      {
+        "title": "Episode 6: Familiar by Thy Side",
+        "rating": "⭐⭐⭐⭐"
+      },
+      {
+        "title": "Episode 7: Death's Hand in Mine",
+        "rating": "⭐⭐⭐⭐⭐"
+      },
+      {
+        "title": "Episode 8: Follow Me My Friend / To Glory at the End",
+        "rating": "⭐⭐⭐⭐⭐"
+      },
+      {
+        "title": "Episode 9: Maiden Mother Crone",
+        "rating": "⭐⭐⭐⭐⭐"
+      }
+    ]
   },
   {
     "title": "Venom 3",
@@ -1347,10 +1411,44 @@
     "title": "What-If Season 3",
     "year": 2024,
     "type": "Show",
-    "category": "watching",
+    "category": "p5",
     "poster": "what-if-season-3.jpg",
-    "rating": "",
-    "review": ""
+    "rating": "⭐½",
+    "review": "everything i said about last season can be moved onto this season. this is so insanely sad and a fumble for what a concept this could’ve been. who cares if agatha went to hollywood. who cares if HOWARD THE DUCK and DARCY had a CHILD EGG????? last season was boring and dumb theoretical situations, this season was purposefully angering and dumb theoretical situations. i don’t understand how it gets this bad, and it’s all topped off at the end with captain carter becoming a WATCHER OF THE MULTIVERSE before her sacrifice. unreal.\n\nLast Watched: November 8th, 2026",
+    "episodes": [
+      {
+        "title": "Episode 1: What If... The Hulk Fought the Mech Avengers?",
+        "rating": "⭐⭐⭐"
+      },
+      {
+        "title": "Episode 2: What If... Agatha Went to Hollywood?",
+        "rating": "⭐⭐½"
+      },
+      {
+        "title": "Episode 3: What If... The Red Guardian Stopped the Winter Soldier?",
+        "rating": "⭐⭐⭐"
+      },
+      {
+        "title": "Episode 4: What If... Howard the Duck Got Hitched?",
+        "rating": "⭐"
+      },
+      {
+        "title": "Episode 5: What If... The Emergence Destroyed the Earth?",
+        "rating": "⭐⭐½"
+      },
+      {
+        "title": "Episode 6: What If... 1872?",
+        "rating": "⭐½"
+      },
+      {
+        "title": "Episode 7: What If... The Watcher Disappeared? (1)",
+        "rating": "⭐⭐½"
+      },
+      {
+        "title": "Episode 8: What If... What If? (2)",
+        "rating": "⭐½"
+      }
+    ]
   },
   {
     "title": "Kraven the Hunter",
@@ -1365,10 +1463,52 @@
     "title": "Your Friendly Neighborhood Spider-Man Season 1",
     "year": 2026,
     "type": "Show",
-    "category": "watching",
+    "category": "p5",
     "poster": "your-friendly-neighborhood-spider-man-season-1.jpg",
-    "rating": "",
-    "review": ""
+    "rating": "⭐⭐⭐⭐",
+    "review": "this took me so incredibly off guard?!!? literally immediately my jaw was on the floor because SISTER GRIMM NICO MINORU is here. this is what the mcu should attempt to feel like and recreate after secret wars. this a marvel full of life and characters at every corner both street level and big time. you had so many interactions here that i never even considered but im such a big fan of. i absolutely love our main trio, and i love the parallels we do see from this into our current mcu, i hope that means they also agree with this being the direction going forward. remarkably welcomed shock here i binged this all in a day, i want more it’s great\n\nLast Watched: November 8th, 2026",
+    "episodes": [
+      {
+        "title": "Episode 1: Amazing Fantasy",
+        "rating": "⭐⭐⭐⭐"
+      },
+      {
+        "title": "Episode 2: The Parker Luck",
+        "rating": "⭐⭐⭐½"
+      },
+      {
+        "title": "Episode 3: Secret Identity Crisis",
+        "rating": "⭐⭐⭐½"
+      },
+      {
+        "title": "Episode 4: Hitting the Big Time",
+        "rating": "⭐⭐⭐"
+      },
+      {
+        "title": "Episode 5: The Unicorn Unleashed",
+        "rating": "⭐⭐⭐⭐"
+      },
+      {
+        "title": "Episode 6: Duel with the Devil",
+        "rating": "⭐⭐⭐⭐½"
+      },
+      {
+        "title": "Episode 7: Scorpion Rising",
+        "rating": "⭐⭐⭐⭐"
+      },
+      {
+        "title": "Episode 8: Tangled Web",
+        "rating": "⭐⭐⭐"
+      },
+      {
+        "title": "Episode 9: Hero or Menace",
+        "rating": "⭐⭐⭐⭐"
+      },
+      {
+        "title": "Episode 10: If This Be My Destiny...",
+        "rating": "⭐⭐⭐⭐½"
+      }
+    ]
   },
   {
     "title": "Daredevil Born Again Season 1",

@@ -134,5 +134,13 @@
     "episodeTitle": "The Cottage",
     "poster": "heated-rivalry.jpg",
     "watchedDate": "June 11th, 2026"
+  },
+  {
+    "show": "Breaking Bad",
+    "season": 1,
+    "episode": 1,
+    "episodeTitle": "Pilot",
+    "poster": "breaking-bad.jpg",
+    "watchedDate": "November 11th, 2026"
   }
 ]
